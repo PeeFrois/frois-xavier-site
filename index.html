@@ -1,797 +1,452 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Frois Xavier Construtora — Jacareí e Vale do Paraíba</title>
-  <meta name="description" content="Construção residencial, reformas com orçamento fechado e Minha Casa Minha Vida no Vale do Paraíba. Engenheiro responsável em todas as obras." />
-  <link rel="canonical" href="https://froisxavier.com.br/" />
-
+  <meta name="description" content="Construção residencial, reformas com orçamento fechado e Minha Casa Minha Vida no Vale do Paraíba."/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            g900:'#061410', g800:'#0a1f1a', g700:'#0e2a23', g600:'#14352c', g500:'#1c463a',
-            gold:'#b48a4a', 'gold-soft':'#c9a25e', 'gold-pale':'#d8b97e',
-            cream:'#f0e9da', 'cream-dim':'#c9c0aa',
+            forest:'#0a2a1e','forest-mid':'#134030','forest-light':'#1c5c42',
+            gold:'#a07830','gold-light':'#c09848','gold-pale':'#e8d5a8',
+            stone:'#f5f3ef','stone-mid':'#e8e4dc','stone-dark':'#c0b89e',
+            ink:'#1a1a1a','ink-mid':'#4a4a4a','ink-light':'#7a7a7a',
           },
-          fontFamily: {
+          fontFamily:{
             serif:['"Cormorant Garamond"','Georgia','serif'],
             sans:['Manrope','system-ui','sans-serif'],
             mono:['"JetBrains Mono"','monospace'],
           },
-          maxWidth:{ site:'1320px' },
+          maxWidth:{site:'1280px'},
         }
       }
     }
   </script>
-
   <style>
-    body { background:#0e2a23; color:#f0e9da; font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-    body::before { content:""; position:fixed; inset:0; pointer-events:none; background-image:radial-gradient(circle at 20% 10%,rgba(180,138,74,.06),transparent 50%),radial-gradient(circle at 80% 80%,rgba(180,138,74,.04),transparent 60%); z-index:0; }
-    ::selection { background:#b48a4a; color:#0a1f1a; }
-
-    /* reveal */
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity 900ms cubic-bezier(.2,.7,.2,1), transform 900ms cubic-bezier(.2,.7,.2,1); }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .reveal[data-delay="100"]{transition-delay:100ms}
-    .reveal[data-delay="200"]{transition-delay:200ms}
-    .reveal[data-delay="300"]{transition-delay:300ms}
-    .reveal[data-delay="400"]{transition-delay:400ms}
-    .reveal[data-delay="500"]{transition-delay:500ms}
-
-    /* stripe bg */
-    .stripe-bg { background-image:repeating-linear-gradient(135deg,rgba(180,138,74,.06) 0 2px,transparent 2px 20px); }
-
-    /* gold rule */
-    .gold-rule { width:64px; height:1px; background:#b48a4a; border:none; margin:20px 0 28px; }
-
-    /* eyebrow */
-    .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#b48a4a; }
-
-    /* buttons */
-    .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border:1px solid #b48a4a; background:transparent; color:#f0e9da; font-family:'Manrope',sans-serif; font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; transition:background 250ms,color 250ms,border-color 250ms; cursor:pointer; white-space:nowrap; }
-    .btn:hover { background:#b48a4a; color:#0a1f1a; }
-    .btn-solid { background:#b48a4a; color:#0a1f1a; }
-    .btn-solid:hover { background:#d8b97e; border-color:#d8b97e; }
-    .btn .arrow { transition:transform 250ms; display:inline-block; }
-    .btn:hover .arrow { transform:translateX(4px); }
-
-    /* nav */
-    #site-nav { transition:background 300ms,backdrop-filter 300ms,padding 300ms; }
-    #site-nav.scrolled { background:rgba(6,20,16,.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(180,138,74,.15); padding-top:12px!important; padding-bottom:12px!important; }
-    .nav-link { opacity:.8; transition:opacity 200ms; }
-    .nav-link:hover { opacity:1; }
-
-    /* hamburger */
-    .hamburger span { display:block; width:18px; height:1px; background:#f0e9da; transition:transform 300ms,opacity 200ms; transform-origin:center; }
-    .hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);background:#b48a4a}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:#b48a4a}
-
-    /* drawer */
-    #mobile-drawer { opacity:0; pointer-events:none; transition:opacity 350ms; }
-    #mobile-drawer.open { opacity:1; pointer-events:auto; }
-    #mobile-drawer .drawer-link { opacity:0; transform:translateY(12px); transition:opacity 400ms,transform 400ms; }
-    #mobile-drawer.open .drawer-link { opacity:1; transform:translateY(0); }
-
-    /* service card hover */
-    .service-card { transition:border-color 300ms; }
-
-    /* filter */
-    .filter-btn { font-family:'Manrope',sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; padding:10px 18px; background:transparent; color:#f0e9da; border:none; cursor:pointer; transition:background 200ms,color 200ms; }
-    .filter-btn.active { background:#b48a4a; color:#0a1f1a; }
-    .filter-btn:not(.active):hover { background:rgba(180,138,74,.12); }
-
-    /* obra item hover overlay */
-    .obra-overlay { opacity:0; transition:opacity 300ms; }
-    .obra-item:hover .obra-overlay { opacity:1; }
-
-    /* map */
-    .map-frame { filter:saturate(.7) contrast(1.1); }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;overflow:hidden}
+    body{font-family:'Manrope',sans-serif;background:#f5f3ef;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+    .page{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 450ms ease,transform 450ms ease;transform:translateY(16px);overflow-y:auto;padding-top:65px}
+    .page.active{opacity:1;pointer-events:auto;transform:translateY(0)}
+    .page.out{opacity:0;transform:translateY(-10px)}
+    .nav-link{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4a4a4a;transition:color 200ms;cursor:pointer;position:relative;padding-bottom:2px}
+    .nav-link::after{content:'';position:absolute;bottom:0;left:0;right:100%;height:1px;background:#a07830;transition:right 250ms ease}
+    .nav-link:hover{color:#0a2a1e}.nav-link:hover::after,.nav-link.active-link::after{right:0}.nav-link.active-link{color:#0a2a1e}
+    .gold-line{width:40px;height:2px;background:#a07830;display:block;margin-bottom:20px}
+    .sec-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#a07830}
+    .btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:#0a2a1e;color:#f5f3ef;font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border:1px solid #0a2a1e;transition:background 250ms;cursor:pointer;text-decoration:none}
+    .btn-p:hover{background:#134030}
+    .btn-o{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:transparent;color:#0a2a1e;font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border:1px solid #a07830;transition:background 250ms,color 250ms;cursor:pointer;text-decoration:none}
+    .btn-o:hover{background:#a07830;color:#fff}
+    .arrow{display:inline-block;transition:transform 250ms}
+    .btn-p:hover .arrow,.btn-o:hover .arrow{transform:translateX(4px)}
+    .img-ph{background:linear-gradient(135deg,#eae6de,#d8d3c8);display:flex;align-items:center;justify-content:center;border:1px dashed #c0b89e;position:relative;overflow:hidden}
+    .img-ph::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(160,120,48,.04) 0 1px,transparent 1px 16px)}
+    .img-ph span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#a07830;opacity:.7;position:relative;z-index:1;text-align:center;padding:0 12px;line-height:1.8}
+    .serv-card{border:1px solid #e8e4dc;padding:28px;transition:border-color 250ms,box-shadow 250ms;background:#fff}
+    .serv-card:hover{border-color:#a07830;box-shadow:0 4px 24px rgba(10,42,30,.06)}
+    .obra-item .obra-img{position:relative;overflow:hidden}
+    .obra-overlay{position:absolute;inset:0;background:rgba(10,42,30,.75);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 300ms}
+    .obra-item:hover .obra-overlay{opacity:1}
+    .hbg span{display:block;width:18px;height:1.5px;background:#1a1a1a;margin:3.5px 0;transition:transform 300ms,opacity 200ms}
+    .hbg.open span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+    .hbg.open span:nth-child(2){opacity:0}
+    .hbg.open span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+    #mobile-nav{position:fixed;top:65px;left:0;right:0;bottom:0;background:#f5f3ef;z-index:45;display:flex;flex-direction:column;padding:32px 28px;opacity:0;pointer-events:none;transition:opacity 300ms}
+    #mobile-nav.open{opacity:1;pointer-events:auto}
+    .m-link{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,9vw,48px);color:#1a1a1a;padding:14px 0;border-bottom:1px solid #e8e4dc;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .m-link:hover{color:#0a2a1e}
+    .fade-in{opacity:0;transform:translateY(18px);transition:opacity 600ms ease,transform 600ms ease}
+    .fade-in.shown{opacity:1;transform:translateY(0)}
+    .fade-in[data-d="1"]{transition-delay:80ms}.fade-in[data-d="2"]{transition-delay:160ms}.fade-in[data-d="3"]{transition-delay:240ms}.fade-in[data-d="4"]{transition-delay:320ms}.fade-in[data-d="5"]{transition-delay:400ms}.fade-in[data-d="6"]{transition-delay:480ms}
+    .filter-btn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 16px;background:transparent;color:#4a4a4a;border:none;cursor:pointer;transition:background 200ms,color 200ms}
+    .filter-btn.active{background:#a07830;color:#fff}
+    .filter-btn:not(.active):hover{background:rgba(160,120,48,.1)}
+    ::selection{background:#a07830;color:#fff}
   </style>
 </head>
-<body class="relative">
+<body>
 
-<!-- ═══════════════════════════════════════════
-     NAV
-════════════════════════════════════════════ -->
-<nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 py-5 px-8 md:px-10">
-  <div class="max-w-site mx-auto flex items-center justify-between gap-6">
-
-    <!-- Logo -->
-    <a href="#topo" class="flex items-center gap-3 flex-shrink-0">
-      <img src="assets/logo.png" alt="Frois Xavier Construtora"
-           class="h-12 w-auto object-contain drop-shadow-lg" />
-    </a>
-
-    <!-- Desktop links -->
-    <div class="hidden md:flex items-center gap-9">
-      <a href="#sobre"    class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Sobre</a>
-      <a href="#servicos" class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Serviços</a>
-      <a href="#obras"    class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Obras</a>
-      <a href="#contato"  class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Contato</a>
-    </div>
-
-    <!-- CTA desktop -->
-    <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-       target="_blank" rel="noopener"
-       class="btn btn-solid hidden md:inline-flex !py-[10px] !px-5 !text-[12px]">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-stone/95 backdrop-blur-sm border-b border-stone-mid h-[65px] flex items-center">
+  <div class="max-w-site mx-auto px-6 md:px-10 w-full flex items-center justify-between">
+    <button onclick="showPage('home')" class="focus:outline-none">
+      <img src="logo.png" alt="Frois Xavier Construtora" class="h-10 w-auto object-contain"/>
+    </button>
+    <nav class="hidden md:flex items-center gap-9">
+      <button onclick="showPage('sobre')"    class="nav-link" data-page="sobre">Sobre</button>
+      <button onclick="showPage('servicos')" class="nav-link" data-page="servicos">Serviços</button>
+      <button onclick="showPage('obras')"    class="nav-link" data-page="obras">Obras</button>
+      <button onclick="showPage('contato')"  class="nav-link" data-page="contato">Contato</button>
+    </nav>
+    <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener"
+       class="btn-p hidden md:inline-flex" style="font-size:11px;padding:11px 18px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
       Solicitar Orçamento
     </a>
-
-    <!-- Hamburger -->
-    <button id="hamburger" aria-label="Menu" aria-expanded="false"
-            class="hamburger md:hidden flex flex-col items-center justify-center gap-[5px] w-11 h-11 border border-gold/30 hover:border-gold transition-colors">
+    <button id="hbg-btn" onclick="toggleMobileNav()" class="hbg md:hidden flex flex-col justify-center p-2">
       <span></span><span></span><span></span>
     </button>
   </div>
-</nav>
+</header>
 
-<!-- Mobile Drawer -->
-<div id="mobile-drawer" class="fixed inset-0 z-40 bg-g900 flex flex-col overflow-y-auto">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(circle at 80% 0%,rgba(180,138,74,.08),transparent 50%)"></div>
-  <div class="relative flex-1 flex flex-col justify-between px-7 pt-28 pb-10 max-w-lg mx-auto w-full">
-    <nav class="flex flex-col">
-      <a href="#sobre"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:100ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">01</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Sobre</span><span class="ml-auto text-cream-dim">→</span></a>
-      <a href="#servicos" class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:160ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">02</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Serviços</span><span class="ml-auto text-cream-dim">→</span></a>
-      <a href="#obras"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:220ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">03</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Obras</span><span class="ml-auto text-cream-dim">→</span></a>
-      <a href="#contato"  class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:280ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">04</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Contato</span><span class="ml-auto text-cream-dim">→</span></a>
-    </nav>
-    <div class="pt-8 border-t border-gold/25 flex flex-col gap-5">
-      <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-solid w-full justify-center !py-4">Solicitar orçamento</a>
-      <div>
-        <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Contato direto</span>
-        <p class="mt-2 text-base text-cream">(12) 98866-7973</p>
-        <p class="mt-1 text-[13px] text-cream-dim">Jacareí · Vale do Paraíba</p>
-      </div>
-    </div>
-  </div>
+<div id="mobile-nav">
+  <div class="m-link" onclick="showPage('sobre');toggleMobileNav()">Sobre<span style="color:#a07830">→</span></div>
+  <div class="m-link" onclick="showPage('servicos');toggleMobileNav()">Serviços<span style="color:#a07830">→</span></div>
+  <div class="m-link" onclick="showPage('obras');toggleMobileNav()">Obras<span style="color:#a07830">→</span></div>
+  <div class="m-link" onclick="showPage('contato');toggleMobileNav()">Contato<span style="color:#a07830">→</span></div>
+  <div class="pt-8"><a href="https://wa.me/5512988667973" target="_blank" class="btn-p w-full justify-center" style="display:flex">WhatsApp</a></div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     HERO
-════════════════════════════════════════════ -->
-<section id="topo" class="relative bg-g900 pt-[120px] overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 80% 20%,rgba(180,138,74,.07),transparent 55%),radial-gradient(ellipse at 0% 80%,rgba(20,53,44,.6),transparent 60%)"></div>
-
-  <div class="relative z-10 max-w-site mx-auto px-6 md:px-10">
-
-    <!-- Eyebrow -->
-    <div class="reveal flex items-center gap-4 mb-6 flex-wrap">
-      <span class="eyebrow">Construtora · Engenharia Civil</span>
-      <span class="w-7 h-px bg-gold block"></span>
-      <span class="font-mono text-[11px] text-cream-dim tracking-[.12em]">CREA · ART · Jacareí – SP</span>
+<!-- ══ HOME ══ -->
+<div id="page-home" class="page active" style="padding-top:0">
+  <div class="relative flex-1 flex flex-col" style="min-height:100vh">
+    <!-- Hero BG -->
+    <div class="absolute inset-0 img-ph" style="background:linear-gradient(160deg,#0a2a1e 0%,#134030 50%,#1c5c42 100%)">
+      <!-- SUBSTITUA: <img src="hero.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
+      <span style="color:rgba(200,180,120,.4)">hero.jpg — foto principal da empresa ou obra</span>
     </div>
-
-    <!-- Hero image area -->
-    <div class="reveal relative w-full border border-gold/25 overflow-hidden" style="aspect-ratio:21/9">
-      <!-- SUBSTITUA ESTE BLOCO POR: <img src="assets/hero.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
-      <div class="absolute inset-0 stripe-bg" style="background-color:#0e2a23"></div>
-      <div class="absolute inset-0" style="background:radial-gradient(ellipse at 65% 35%,rgba(180,138,74,.2),transparent 55%),radial-gradient(ellipse at 15% 80%,rgba(180,138,74,.08),transparent 50%)"></div>
-      <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 50%,rgba(6,20,16,.7) 100%)"></div>
-      <!-- Linhas diagonais decorativas -->
-      <svg class="absolute inset-0 w-full h-full opacity-25 pointer-events-none" preserveAspectRatio="none">
-        <defs><linearGradient id="gf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b48a4a" stop-opacity=".6"/><stop offset="100%" stop-color="#b48a4a" stop-opacity="0"/></linearGradient></defs>
-        <line x1="20%" y1="100%" x2="38%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-        <line x1="37%" y1="100%" x2="55%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-        <line x1="54%" y1="100%" x2="72%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-        <line x1="71%" y1="100%" x2="89%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-      </svg>
-      <!-- Cantos dourados -->
-      <div class="absolute top-0 left-0 w-14 h-14 border-t border-l border-gold pointer-events-none"></div>
-      <div class="absolute top-0 right-0 w-14 h-14 border-t border-r border-gold pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-14 h-14 border-b border-l border-gold pointer-events-none"></div>
-      <div class="absolute bottom-0 right-0 w-14 h-14 border-b border-r border-gold pointer-events-none"></div>
-      <!-- Caption -->
-      <div class="absolute bottom-6 left-7 flex items-center gap-3">
-        <span class="font-mono text-[11px] text-gold tracking-[.2em] uppercase">Adicione sua foto principal aqui</span>
-        <span class="w-5 h-px bg-gold block"></span>
-        <span class="font-mono text-[11px] text-cream tracking-[.15em]">assets/hero.jpg</span>
-      </div>
-    </div>
-
-    <!-- Headline + copy -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-10 md:gap-20 pt-16 pb-20 items-start">
-      <h1 class="font-serif font-normal leading-none tracking-[-0.015em] text-cream" style="font-size:clamp(38px,5.8vw,84px)">
-        Construímos com<br>
-        <em class="text-gold-soft not-italic">engenharia</em>.<br>
-        Entregamos com<br>
-        <em class="text-gold-soft not-italic">palavra</em>.
-      </h1>
-      <div>
-        <hr class="gold-rule"/>
-        <p class="text-[17px] leading-[1.7] text-cream-dim">
-          Construção residencial, reformas e assessoria no Minha Casa Minha Vida — com ART assinada, engenheiro responsável e orçamento fechado do início ao fim da obra.
+    <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(10,42,30,.88) 0%,rgba(10,42,30,.45) 60%,transparent 100%)"></div>
+    <!-- Content -->
+    <div class="relative z-10 flex-1 flex flex-col justify-end max-w-site mx-auto w-full px-6 md:px-10 pb-16 pt-24">
+      <div style="max-width:560px">
+        <span class="fade-in sec-label" style="color:rgba(192,152,72,.9)">Construtora · Eng. Civil · Jacareí–SP</span>
+        <h1 class="fade-in font-serif font-normal text-white mt-4 mb-6" data-d="1" style="font-size:clamp(44px,6vw,82px);line-height:1.0;letter-spacing:-.01em">
+          Construímos com<br><em style="color:#e8d5a8">engenharia</em>.<br>Entregamos com<br><em style="color:#e8d5a8">palavra</em>.
+        </h1>
+        <p class="fade-in text-[17px] leading-[1.7] mb-9" style="color:rgba(240,235,220,.82)" data-d="2">
+          Do projeto à chave na mão — com ART, CREA e engenheiro responsável em cada etapa.
         </p>
-        <div class="flex flex-col sm:flex-row gap-3 mt-9 flex-wrap">
-          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-solid">
+        <div class="fade-in flex flex-col sm:flex-row gap-3" data-d="3">
+          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener"
+             class="btn-p" style="background:#a07830;border-color:#a07830">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
             Falar no WhatsApp
           </a>
-          <a href="#servicos" class="btn">Nossos Serviços <span class="arrow">→</span></a>
+          <button onclick="showPage('servicos')" class="btn-o" style="border-color:rgba(255,255,255,.4);color:#fff">
+            Nossos Serviços <span class="arrow">→</span>
+          </button>
         </div>
+      </div>
+    </div>
+    <!-- Stats bar -->
+    <div class="relative z-10" style="background:rgba(10,42,30,.9);backdrop-filter:blur(8px)">
+      <div class="max-w-site mx-auto px-6 md:px-10 py-5 flex flex-wrap items-center justify-between gap-5">
+        <div class="flex items-center gap-3"><span class="font-serif font-medium text-[28px]" style="color:#c09848;line-height:1">10+</span><span class="font-mono text-[10px] tracking-[.14em] uppercase" style="color:rgba(200,200,200,.7)">Anos de experiência</span></div>
+        <div class="flex items-center gap-3"><span class="font-serif font-medium text-[28px]" style="color:#c09848;line-height:1">50+</span><span class="font-mono text-[10px] tracking-[.14em] uppercase" style="color:rgba(200,200,200,.7)">Obras entregues</span></div>
+        <div class="flex items-center gap-3"><span class="font-serif font-medium text-[28px]" style="color:#c09848;line-height:1">100%</span><span class="font-mono text-[10px] tracking-[.14em] uppercase" style="color:rgba(200,200,200,.7)">ART & CREA</span></div>
+        <div class="flex items-center gap-3"><span class="font-serif font-medium text-[28px]" style="color:#c09848;line-height:1">SP</span><span class="font-mono text-[10px] tracking-[.14em] uppercase" style="color:rgba(200,200,200,.7)">Vale do Paraíba</span></div>
       </div>
     </div>
   </div>
-
-  <!-- Stats bar -->
-  <div class="border-t border-b border-gold/20 bg-g800">
-    <div class="max-w-site mx-auto px-6 md:px-10 py-6 flex flex-wrap items-center justify-between gap-6">
-      <div class="flex items-baseline gap-3">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">10+</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">Anos de experiência</span>
-      </div>
-      <div class="flex items-baseline gap-3">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">50+</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">Obras entregues</span>
-      </div>
-      <div class="flex items-baseline gap-3">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">100%</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">ART e CREA assinados</span>
-      </div>
-      <div class="flex items-baseline gap-3">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">SP</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">Vale do Paraíba</span>
-      </div>
+  <footer style="background:#e8e4dc;border-top:1px solid #c0b89e" class="px-6 md:px-10 py-4">
+    <div class="max-w-site mx-auto flex flex-wrap items-center justify-between gap-3">
+      <p class="font-mono text-[10px] tracking-[.12em] text-ink-light uppercase">© 2025 Frois Xavier Construtora</p>
+      <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="font-mono text-[10px] tracking-[.14em] text-ink-light uppercase hover:text-forest transition-colors">@froisxavier</a>
     </div>
-  </div>
-</section>
+  </footer>
+</div>
 
-
-<!-- ═══════════════════════════════════════════
-     SOBRE
-════════════════════════════════════════════ -->
-<section id="sobre" class="relative bg-g800 py-36 border-t border-b border-white/5">
-  <div class="max-w-site mx-auto px-6 md:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-16 md:gap-24 items-center">
-
-      <!-- Imagem -->
-      <div class="reveal relative">
-        <!-- SUBSTITUA POR: <img src="assets/sobre.jpg" class="w-full object-cover border border-gold/25" style="aspect-ratio:4/5"> -->
-        <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/5; background:#0e2a23">
-          <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">Adicionar foto: assets/sobre.jpg</span>
-          </div>
-        </div>
-        <!-- Badge -->
-        <div class="hidden md:block absolute top-8 -right-7 bg-g700 border border-gold p-5 max-w-[210px] z-10">
-          <span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase block">Responsável Técnico</span>
-          <p class="font-serif text-[20px] leading-[1.25] mt-2 text-cream">Engenheiro presente em todas as obras</p>
-        </div>
+<!-- ══ SOBRE ══ -->
+<div id="page-sobre" class="page">
+  <main class="flex-1 overflow-y-auto">
+    <div class="max-w-site mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div class="fade-in flex items-center gap-2 mb-10">
+        <button onclick="showPage('home')" class="font-mono text-[10px] tracking-[.18em] uppercase text-ink-light hover:text-forest transition-colors">Início</button>
+        <span style="color:#c0b89e">›</span>
+        <span class="font-mono text-[10px] tracking-[.18em] uppercase text-gold">Sobre</span>
       </div>
-
-      <!-- Texto -->
-      <div class="reveal" data-delay="200">
-        <span class="eyebrow">Quem somos</span>
-        <hr class="gold-rule"/>
-        <h2 class="font-serif font-normal text-cream mb-8" style="font-size:clamp(34px,4.2vw,54px);line-height:1.06">
-          Uma construtora feita por quem<br>
-          <em class="text-gold-soft not-italic">põe a mão na obra</em>.
-        </h2>
-        <p class="text-[17px] leading-[1.75] text-cream-dim mb-6">
-          A Frois Xavier nasceu da parceria entre Pedro Frois, especialista em gestão de obras e processos, e Andrei Xavier, engenheiro civil com experiência em execução técnica. Juntos, atendem famílias e empresas que querem construir, reformar ou regularizar — sempre com responsável técnico presente, ART assinada e orçamento fechado antes de começar.
-        </p>
-        <p class="text-[16px] leading-[1.7] text-cream-dim">
-          Atuamos em Jacareí, São José dos Campos e toda a região do Vale do Paraíba, levando engenharia séria para quem precisa de resultado, não de promessa.
-        </p>
-
-        <!-- Diferenciais -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-11">
-          <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Orçamento fechado</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Você sabe o valor final antes de começar. Sem cobranças surpresa no meio da obra.</p>
-          </div>
-          <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Engenheiro na obra</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Responsável técnico presente. ART assinada, execução supervisionada do início ao fim.</p>
-          </div>
-          <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Prazo real</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Cronograma combinado e cumprido. A entrega na data marcada é parte do contrato.</p>
-          </div>
-          <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Respaldo jurídico</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Documentação completa, CREA e ART em todas as etapas — segurança para você e para o imóvel.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     SERVIÇOS
-════════════════════════════════════════════ -->
-<section id="servicos" class="py-36 bg-g700">
-  <div class="max-w-site mx-auto px-6 md:px-10">
-
-    <!-- Header -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 items-end">
-      <div>
-        <span class="eyebrow">O que fazemos</span>
-        <hr class="gold-rule"/>
-        <h2 class="font-serif font-normal text-cream" style="font-size:clamp(40px,5vw,68px);line-height:1.02">
-          Do projeto<br>
-          <em class="text-gold-soft not-italic">à entrega das chaves</em>.
-        </h2>
-      </div>
-      <p class="text-[17px] leading-[1.7] text-cream-dim md:self-end">
-        Construção, reforma e engenharia técnica — com responsável presente em cada etapa, orçamento fechado e ART garantida.
-      </p>
-    </div>
-
-    <!-- ── Serviço 1: Construção Residencial ── -->
-    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16 border-b border-white/5">
-      <div>
-        <div class="flex items-baseline gap-4 mb-5 flex-wrap">
-          <span class="font-mono text-[13px] text-gold tracking-[.15em]">01 /</span>
-          <span class="font-mono text-[11px] text-cream-dim tracking-[.2em] uppercase">Do alicerce à chave na mão</span>
-        </div>
-        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(36px,4.5vw,58px);line-height:1.05">Construção<br>Residencial</h3>
-        <p class="text-[16px] leading-[1.75] text-cream-dim max-w-[480px] mb-8">
-          Projetos residenciais completos, do zero até a entrega — com engenheiro responsável acompanhando cada etapa, documentação em dia e padrão de qualidade definido antes da primeira pedra.
-        </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mb-9 list-none p-0">
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Projeto + Execução completa</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>MCMV & Financiamento</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Engenheiro responsável in loco</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>ART & Documentação legal</li>
-        </ul>
-        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20constru%C3%A7%C3%A3o%20residencial." target="_blank" rel="noopener" class="btn">Quero construir minha casa <span class="arrow">→</span></a>
-      </div>
-      <div class="relative w-full border border-gold/20 overflow-hidden stripe-bg" style="aspect-ratio:4/3;background:#0e2a23">
-        <!-- SUBSTITUA POR: <img src="assets/servico-construcao.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
-        <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
-        <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">assets/servico-construcao.jpg</span></div>
-      </div>
-    </article>
-
-    <!-- ── Serviço 2: Reformas ── -->
-    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16 border-b border-white/5">
-      <div class="relative w-full border border-gold/20 overflow-hidden order-last md:order-first" style="aspect-ratio:4/3;background:linear-gradient(135deg,#1c463a,#0e2a23)">
-        <!-- SUBSTITUA POR: <img src="assets/servico-reforma.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
-        <div class="absolute inset-0 stripe-bg"></div>
-        <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
-        <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">assets/servico-reforma.jpg</span></div>
-      </div>
-      <div>
-        <div class="flex items-baseline gap-4 mb-5 flex-wrap">
-          <span class="font-mono text-[13px] text-gold tracking-[.15em]">02 /</span>
-          <span class="font-mono text-[11px] text-cream-dim tracking-[.2em] uppercase">Com ART e orçamento fechado</span>
-        </div>
-        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(36px,4.5vw,58px);line-height:1.05">Reformas com<br>qualidade</h3>
-        <p class="text-[16px] leading-[1.75] text-cream-dim max-w-[480px] mb-8">
-          Engenheiro, ART e orçamento fechado — sem surpresa no meio da obra. Do banheiro ao telhado, cada serviço executado com técnica, prazo e acabamento que valorizam o imóvel.
-        </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mb-9 list-none p-0">
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Banheiro e fachada</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Telhado e estrutura</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Hidráulica e elétrica</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Alvenaria e acabamentos</li>
-        </ul>
-        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20reforma." target="_blank" rel="noopener" class="btn">Quero reformar meu imóvel <span class="arrow">→</span></a>
-      </div>
-    </article>
-
-    <!-- ── Serviço 3: MCMV ── -->
-    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16 border-b border-white/5">
-      <div>
-        <div class="flex items-baseline gap-4 mb-5 flex-wrap">
-          <span class="font-mono text-[13px] text-gold tracking-[.15em]">03 /</span>
-          <span class="font-mono text-[11px] text-cream-dim tracking-[.2em] uppercase">Programa habitacional federal</span>
-        </div>
-        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(36px,4.5vw,58px);line-height:1.05">Minha Casa<br>Minha Vida</h3>
-        <p class="text-[16px] leading-[1.75] text-cream-dim max-w-[480px] mb-8">
-          Sua casa própria está mais perto do que você imagina. Cuidamos de todo o processo — do perfil ao cadastro, da documentação à entrega das chaves — com subsídio do governo e taxas que o mercado não oferece.
-        </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mb-3 list-none p-0">
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Perfil verificado sem custo</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Juros muito abaixo do mercado</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Subsídio direto do governo</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Todo o processo acompanhado</li>
-        </ul>
-        <p class="font-mono text-[11px] text-gold/70 tracking-[.08em] mb-9">As condições mudam — consulte-nos hoje.</p>
-        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20Minha%20Casa%20Minha%20Vida." target="_blank" rel="noopener" class="btn">Quero minha casa própria <span class="arrow">→</span></a>
-      </div>
-      <div class="relative w-full border border-gold/20 overflow-hidden" style="aspect-ratio:4/3;background:linear-gradient(135deg,#061410,#0a1f1a)">
-        <!-- SUBSTITUA POR: <img src="assets/servico-mcmv.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
-        <div class="absolute inset-0 stripe-bg"></div>
-        <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
-        <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">assets/servico-mcmv.jpg</span></div>
-      </div>
-    </article>
-
-    <!-- ── Serviço 4: Engenharia / Projetos / Vistoria (grade compacta) ── -->
-    <div class="reveal pt-16">
-      <div class="mb-10">
-        <span class="eyebrow">Também fazemos</span>
-        <hr class="gold-rule"/>
-        <h3 class="font-serif font-normal text-cream" style="font-size:clamp(28px,3.5vw,44px);line-height:1.1">Engenharia técnica completa.</h3>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gold/10">
-
-        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
-          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          </div>
-          <h4 class="font-semibold text-[15px] text-cream mb-2">ART & Laudos Técnicos</h4>
-          <p class="text-[13px] leading-[1.6] text-cream-dim">ART em todas as obras, laudos de vistoria para compra, venda, seguro e ações judiciais.</p>
-        </div>
-
-        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
-          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <h4 class="font-semibold text-[15px] text-cream mb-2">Plantas & Regularização</h4>
-          <p class="text-[13px] leading-[1.6] text-cream-dim">Usucapião, desmembramento, regularização urbana e aprovação na prefeitura com documentação completa.</p>
-        </div>
-
-        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
-          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          </div>
-          <h4 class="font-semibold text-[15px] text-cream mb-2">Vistoria Imobiliária</h4>
-          <p class="text-[13px] leading-[1.6] text-cream-dim">Laudos de entrada/saída, cautelar de vizinhança e vícios construtivos — com fotos, vídeo e ART.</p>
-        </div>
-
-        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
-          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h4 class="font-semibold text-[15px] text-cream mb-2">Bombeiro & PPCI</h4>
-          <p class="text-[13px] leading-[1.6] text-cream-dim">Projeto, execução e AVCB — segurança contra incêndio em conformidade com o Corpo de Bombeiros.</p>
-        </div>
-
-      </div>
-      <div class="mt-8 flex justify-end">
-        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" class="btn">Tenho dúvidas, quero conversar <span class="arrow">→</span></a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     OBRAS
-════════════════════════════════════════════ -->
-<section id="obras" class="py-36 bg-g800 border-t border-white/5">
-  <div class="max-w-site mx-auto px-6 md:px-10">
-
-    <!-- Header -->
-    <div class="reveal flex flex-wrap justify-between items-end gap-10 mb-16">
-      <div>
-        <span class="eyebrow">Portfólio</span>
-        <hr class="gold-rule"/>
-        <h2 class="font-serif font-normal text-cream" style="font-size:clamp(40px,5vw,68px);line-height:1.02">
-          Cada obra,<br>uma <em class="text-gold-soft not-italic">história</em>.
-        </h2>
-      </div>
-      <div class="flex gap-1 border border-gold/25 p-1 flex-wrap">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="construcao">Construção</button>
-        <button class="filter-btn" data-filter="reforma">Reforma</button>
-        <button class="filter-btn" data-filter="mcmv">MCMV</button>
-      </div>
-    </div>
-
-    <!-- GRADE DE OBRAS — gerada via JavaScript a partir da pasta obras/ -->
-    <div id="obras-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- As obras são carregadas pelo script abaixo.
-           Para adicionar uma obra, crie um arquivo obras/dados.json
-           e adicione as fotos na pasta obras/
-           Exemplo de dados.json está descrito no README -->
-    </div>
-
-    <!-- Mensagem enquanto carrega / fallback -->
-    <div id="obras-empty" class="text-center py-20 hidden">
-      <p class="font-mono text-[12px] text-gold/60 tracking-[.2em] uppercase mb-4">Em breve</p>
-      <p class="font-serif text-[28px] text-cream-dim">As obras serão publicadas em breve.</p>
-    </div>
-
-    <!-- Placeholder visual enquanto não há fotos ainda -->
-    <div id="obras-placeholder" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="obra-item reveal group cursor-pointer" data-category="construcao">
-        <div class="relative overflow-hidden border border-gold/20 stripe-bg" style="aspect-ratio:4/3;background:#0e2a23">
-          <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.08),transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">obras/foto-01.jpg</span></div>
-          <div class="obra-overlay absolute inset-0 flex items-end p-6" style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))"><span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span></div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div><p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">Construção</p><h4 class="font-serif text-[22px] text-cream font-medium">Nome da Obra</h4><p class="font-mono text-[11px] text-cream-dim mt-1">Jacareí · SP</p></div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">2025</span>
-        </div>
-      </div>
-      <div class="obra-item reveal group cursor-pointer" data-category="reforma" data-delay="100">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:3/4;background:linear-gradient(135deg,#1c463a,#0e2a23)">
-          <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">obras/foto-02.jpg</span></div>
-          <div class="obra-overlay absolute inset-0 flex items-end p-6" style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))"><span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span></div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div><p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">Reforma</p><h4 class="font-serif text-[22px] text-cream font-medium">Nome da Obra</h4><p class="font-mono text-[11px] text-cream-dim mt-1">São José dos Campos · SP</p></div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">2025</span>
-        </div>
-      </div>
-      <div class="obra-item reveal group cursor-pointer" data-category="mcmv" data-delay="200">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3;background:linear-gradient(135deg,#061410,#0a1f1a)">
-          <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">obras/foto-03.jpg</span></div>
-          <div class="obra-overlay absolute inset-0 flex items-end p-6" style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))"><span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span></div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div><p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">MCMV</p><h4 class="font-serif text-[22px] text-cream font-medium">Nome da Obra</h4><p class="font-mono text-[11't] text-cream-dim mt-1">Vale do Paraíba · SP</p></div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">2024</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     CONTATO
-════════════════════════════════════════════ -->
-<section id="contato" class="relative bg-g900 py-40 overflow-hidden">
-  <svg class="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] opacity-[0.06] pointer-events-none" viewBox="0 0 600 600">
-    <circle cx="300" cy="300" r="280" fill="none" stroke="#b48a4a" stroke-width="1"/>
-    <circle cx="300" cy="300" r="230" fill="none" stroke="#b48a4a" stroke-width="1"/>
-    <circle cx="300" cy="300" r="180" fill="none" stroke="#b48a4a" stroke-width="1"/>
-  </svg>
-
-  <div class="relative z-10 max-w-site mx-auto px-6 md:px-10">
-
-    <!-- Topo: headline + contatos diretos -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-16 md:gap-20 items-start mb-20">
-
-      <div>
-        <span class="eyebrow">Vamos conversar</span>
-        <hr class="gold-rule"/>
-        <h2 class="font-serif font-normal text-cream mb-7" style="font-size:clamp(44px,5.5vw,80px);line-height:1.0">
-          Fale com<br>
-          <em class="text-gold-soft not-italic">a gente</em>.
-        </h2>
-        <p class="text-[17px] leading-[1.75] text-cream-dim max-w-[520px] mb-11">
-          Estamos prontos para ouvir seu projeto e encontrar o melhor caminho para você. Atendimento direto, sem burocracia — resposta rápida no mesmo dia.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 flex-wrap">
-          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-solid">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-            Chamar no WhatsApp
-          </a>
-          <a href="mailto:froisxavier@gmail.com" class="btn">Enviar e-mail <span class="arrow">→</span></a>
-        </div>
-      </div>
-
-      <!-- Equipe + dados -->
-      <div class="border-t md:border-t-0 md:border-l border-gold/25 pt-10 md:pt-2 md:pl-10 flex flex-col gap-8">
-
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Pedro Frois</span>
-          <p class="text-[13px] text-cream-dim mt-0.5 mb-2">Gestão de Obras & Processos</p>
-          <a href="tel:+5512988667973" class="text-[20px] font-medium text-cream hover:text-gold-soft transition-colors block">(12) 98866-7973</a>
+          <span class="fade-in sec-label">Quem somos</span>
+          <span class="gold-line fade-in" data-d="1"></span>
+          <h1 class="fade-in font-serif font-normal text-ink mb-8" data-d="1" style="font-size:clamp(36px,4.5vw,56px);line-height:1.06">
+            Uma construtora feita por quem<br><em class="text-forest-mid">põe a mão na obra</em>.
+          </h1>
+          <p class="fade-in text-[16px] leading-[1.8] text-ink-mid mb-5" data-d="2">
+            A Frois Xavier nasceu da parceria entre <strong class="text-ink">Pedro Frois</strong>, especialista em gestão de obras e processos, e <strong class="text-ink">Andrei Xavier</strong>, engenheiro civil com experiência em execução técnica.
+          </p>
+          <p class="fade-in text-[16px] leading-[1.8] text-ink-mid mb-10" data-d="3">
+            Atendemos famílias e empresas que querem construir, reformar ou regularizar — sempre com responsável técnico presente, ART assinada e orçamento fechado. Atuamos em Jacareí, São José dos Campos e toda a região do Vale do Paraíba.
+          </p>
+          <div class="fade-in grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10" data-d="4">
+            <div class="flex gap-3 items-start"><div style="width:2px;background:#a07830;flex-shrink:0;min-height:44px"></div><div><h4 class="font-semibold text-[14px] text-ink mb-1">Orçamento fechado</h4><p class="text-[13px] leading-[1.6] text-ink-mid">Valor definido antes de começar. Sem surpresas.</p></div></div>
+            <div class="flex gap-3 items-start"><div style="width:2px;background:#a07830;flex-shrink:0;min-height:44px"></div><div><h4 class="font-semibold text-[14px] text-ink mb-1">Engenheiro na obra</h4><p class="text-[13px] leading-[1.6] text-ink-mid">Responsável técnico presente, ART assinada.</p></div></div>
+            <div class="flex gap-3 items-start"><div style="width:2px;background:#a07830;flex-shrink:0;min-height:44px"></div><div><h4 class="font-semibold text-[14px] text-ink mb-1">Prazo cumprido</h4><p class="text-[13px] leading-[1.6] text-ink-mid">Cronograma real, acompanhado diariamente.</p></div></div>
+            <div class="flex gap-3 items-start"><div style="width:2px;background:#a07830;flex-shrink:0;min-height:44px"></div><div><h4 class="font-semibold text-[14px] text-ink mb-1">Respaldo jurídico</h4><p class="text-[13px] leading-[1.6] text-ink-mid">Documentação completa e CREA em cada projeto.</p></div></div>
+          </div>
+          <div class="fade-in flex flex-col sm:flex-row gap-3" data-d="5">
+            <button onclick="showPage('servicos')" class="btn-p">Ver serviços <span class="arrow">→</span></button>
+            <button onclick="showPage('contato')"  class="btn-o">Falar conosco</button>
+          </div>
         </div>
-
-        <div>
-          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Andrei Xavier</span>
-          <p class="text-[13px] text-cream-dim mt-0.5 mb-2">Engenharia & Execução</p>
-          <a href="tel:+5512996599313" class="text-[20px] font-medium text-cream hover:text-gold-soft transition-colors block">(12) 99659-9313</a>
+        <div class="fade-in" data-d="2">
+          <!-- SUBSTITUA: <img src="sobre.jpg" class="w-full object-cover" style="aspect-ratio:4/5"> -->
+          <div class="img-ph w-full" style="aspect-ratio:4/5;min-height:340px">
+            <span>sobre.jpg<br>Foto da equipe ou canteiro</span>
+          </div>
         </div>
-
-        <div>
-          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">E-mail</span>
-          <a href="mailto:froisxavier@gmail.com" class="text-[18px] font-medium text-cream hover:text-gold-soft transition-colors block mt-2">froisxavier@gmail.com</a>
-        </div>
-
-        <div>
-          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Instagram</span>
-          <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="text-[18px] font-medium text-cream hover:text-gold-soft transition-colors block mt-2">@froisxavier</a>
-        </div>
-
       </div>
     </div>
+  </main>
+</div>
 
-    <!-- Mapa + Endereço -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 items-start border-t border-gold/15 pt-16">
+<!-- ══ SERVIÇOS ══ -->
+<div id="page-servicos" class="page">
+  <main class="flex-1 overflow-y-auto">
+    <div class="max-w-site mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div class="fade-in flex items-center gap-2 mb-10">
+        <button onclick="showPage('home')" class="font-mono text-[10px] tracking-[.18em] uppercase text-ink-light hover:text-forest transition-colors">Início</button>
+        <span style="color:#c0b89e">›</span>
+        <span class="font-mono text-[10px] tracking-[.18em] uppercase text-gold">Serviços</span>
+      </div>
+      <div class="mb-14">
+        <span class="fade-in sec-label">O que fazemos</span>
+        <span class="gold-line fade-in" data-d="1"></span>
+        <h1 class="fade-in font-serif font-normal text-ink" data-d="1" style="font-size:clamp(36px,4.5vw,56px);line-height:1.06">
+          Do projeto <em class="text-forest-mid">à entrega das chaves</em>.
+        </h1>
+      </div>
+      <!-- 3 serviços principais -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        <div class="fade-in serv-card" data-d="1">
+          <div class="img-ph mb-5" style="aspect-ratio:3/2"><!-- SUBSTITUA: <img src="servico-construcao.jpg" class="w-full object-cover" style="aspect-ratio:3/2"> --><span>servico-construcao.jpg</span></div>
+          <span class="sec-label block mb-2">01</span>
+          <h3 class="font-serif text-[26px] text-ink font-normal mb-3">Construção Residencial</h3>
+          <p class="text-[14px] leading-[1.7] text-ink-mid mb-5">Do alicerce à chave na mão. Projetos completos com engenheiro responsável, ART e cronograma fechado em contrato.</p>
+          <ul class="space-y-1.5 mb-6 text-[13px] text-ink-mid">
+            <li class="flex gap-2"><span class="text-gold">—</span>Projeto + Execução completa</li>
+            <li class="flex gap-2"><span class="text-gold">—</span>MCMV & Financiamento</li>
+            <li class="flex gap-2"><span class="text-gold">—</span>ART & Documentação legal</li>
+          </ul>
+          <a href="https://wa.me/5512988667973?text=Quero%20saber%20sobre%20constru%C3%A7%C3%A3o%20residencial." target="_blank" rel="noopener" class="btn-o" style="font-size:11px;padding:10px 16px">Saiba mais <span class="arrow">→</span></a>
+        </div>
+        <div class="fade-in serv-card" data-d="2">
+          <div class="img-ph mb-5" style="aspect-ratio:3/2"><span>servico-reforma.jpg</span></div>
+          <span class="sec-label block mb-2">02</span>
+          <h3 class="font-serif text-[26px] text-ink font-normal mb-3">Reformas com Qualidade</h3>
+          <p class="text-[14px] leading-[1.7] text-ink-mid mb-5">Com engenheiro, ART e orçamento fechado. Do banheiro ao telhado — sem surpresas no meio da obra.</p>
+          <ul class="space-y-1.5 mb-6 text-[13px] text-ink-mid">
+            <li class="flex gap-2"><span class="text-gold">—</span>Banheiro, fachada e telhado</li>
+            <li class="flex gap-2"><span class="text-gold">—</span>Hidráulica e elétrica</li>
+            <li class="flex gap-2"><span class="text-gold">—</span>Alvenaria e acabamentos</li>
+          </ul>
+          <a href="https://wa.me/5512988667973?text=Quero%20fazer%20uma%20reforma." target="_blank" rel="noopener" class="btn-o" style="font-size:11px;padding:10px 16px">Saiba mais <span class="arrow">→</span></a>
+        </div>
+        <div class="fade-in serv-card" data-d="3">
+          <div class="img-ph mb-5" style="aspect-ratio:3/2"><span>servico-mcmv.jpg</span></div>
+          <span class="sec-label block mb-2">03</span>
+          <h3 class="font-serif text-[26px] text-ink font-normal mb-3">Minha Casa Minha Vida</h3>
+          <p class="text-[14px] leading-[1.7] text-ink-mid mb-5">Assessoria completa no programa habitacional federal. Do cadastro à entrega das chaves — com subsídio e juros reduzidos.</p>
+          <ul class="space-y-1.5 mb-6 text-[13px] text-ink-mid">
+            <li class="flex gap-2"><span class="text-gold">—</span>Análise de perfil gratuita</li>
+            <li class="flex gap-2"><span class="text-gold">—</span>Subsídio direto do governo</li>
+            <li class="flex gap-2"><span class="text-gold">—</span>Todo o processo acompanhado</li>
+          </ul>
+          <a href="https://wa.me/5512988667973?text=Quero%20saber%20sobre%20o%20Minha%20Casa%20Minha%20Vida." target="_blank" rel="noopener" class="btn-o" style="font-size:11px;padding:10px 16px">Saiba mais <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <!-- Grid técnicos -->
+      <div style="border-top:1px solid #e8e4dc;padding-top:48px">
+        <h2 class="fade-in font-serif text-[28px] font-normal text-ink mb-8">Engenharia técnica completa.</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="fade-in serv-card" data-d="1"><div class="w-8 h-8 rounded-full flex items-center justify-center mb-4" style="background:#0a2a1e"><svg width="14" height="14" fill="none" stroke="#e8d5a8" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><h4 class="font-semibold text-[14px] text-ink mb-2">ART & Laudos Técnicos</h4><p class="text-[12px] leading-[1.6] text-ink-light">ART em todas as obras. Laudos de vistoria para compra, venda e seguro.</p></div>
+          <div class="fade-in serv-card" data-d="2"><div class="w-8 h-8 rounded-full flex items-center justify-center mb-4" style="background:#0a2a1e"><svg width="14" height="14" fill="none" stroke="#e8d5a8" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h4 class="font-semibold text-[14px] text-ink mb-2">Plantas & Regularização</h4><p class="text-[12px] leading-[1.6] text-ink-light">Usucapião, desmembramento, regularização urbana e aprovação na prefeitura.</p></div>
+          <div class="fade-in serv-card" data-d="3"><div class="w-8 h-8 rounded-full flex items-center justify-center mb-4" style="background:#0a2a1e"><svg width="14" height="14" fill="none" stroke="#e8d5a8" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div><h4 class="font-semibold text-[14px] text-ink mb-2">Vistoria Imobiliária</h4><p class="text-[12px] leading-[1.6] text-ink-light">Laudos de entrada/saída, cautelar de vizinhança e vícios construtivos com ART.</p></div>
+          <div class="fade-in serv-card" data-d="4"><div class="w-8 h-8 rounded-full flex items-center justify-center mb-4" style="background:#0a2a1e"><svg width="14" height="14" fill="none" stroke="#e8d5a8" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg></div><h4 class="font-semibold text-[14px] text-ink mb-2">Projetos de Arquitetura</h4><p class="text-[12px] leading-[1.6] text-ink-light">Residencial e comercial — do esboço à aprovação na prefeitura e Habite-se.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
 
-      <!-- Endereço -->
-      <div>
-        <span class="eyebrow mb-4 block">Onde nos encontrar</span>
-        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(28px,3.2vw,42px);line-height:1.1">
-          Jacareí e toda a região do<br>
-          <em class="text-gold-soft not-italic">Vale do Paraíba</em>.
-        </h3>
-        <div class="space-y-4">
-          <div class="flex gap-3 items-start">
-            <svg class="w-4 h-4 text-gold mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-            <div>
-              <p class="text-[16px] text-cream leading-[1.6]">R. Cap. João José de Macedo, 237<br>Sala 1 · Centro · Jacareí – SP<br>CEP 12327-030</p>
+<!-- ══ OBRAS ══ -->
+<div id="page-obras" class="page">
+  <main class="flex-1 overflow-y-auto">
+    <div class="max-w-site mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div class="fade-in flex items-center gap-2 mb-10">
+        <button onclick="showPage('home')" class="font-mono text-[10px] tracking-[.18em] uppercase text-ink-light hover:text-forest transition-colors">Início</button>
+        <span style="color:#c0b89e">›</span>
+        <span class="font-mono text-[10px] tracking-[.18em] uppercase text-gold">Obras</span>
+      </div>
+      <div class="flex flex-wrap justify-between items-end gap-8 mb-12">
+        <div>
+          <span class="fade-in sec-label">Portfólio</span>
+          <span class="gold-line fade-in" data-d="1"></span>
+          <h1 class="fade-in font-serif font-normal text-ink" data-d="1" style="font-size:clamp(36px,4.5vw,56px);line-height:1.06">
+            Cada obra,<br><em class="text-forest-mid">uma história</em>.
+          </h1>
+        </div>
+        <div class="fade-in flex gap-1 flex-wrap" style="border:1px solid #e8e4dc;padding:4px" data-d="2">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="construcao">Construção</button>
+          <button class="filter-btn" data-filter="reforma">Reforma</button>
+          <button class="filter-btn" data-filter="mcmv">MCMV</button>
+        </div>
+      </div>
+      <div id="obras-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <div id="obras-placeholder" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="obra-item fade-in" data-category="construcao">
+          <div class="obra-img mb-4"><div class="img-ph" style="aspect-ratio:4/3"><span>obras/foto-01.jpg</span></div><div class="obra-overlay"><span class="font-mono text-[11px] tracking-[.15em] uppercase text-white">Ver obra →</span></div></div>
+          <span class="sec-label">Construção</span><h4 class="font-serif text-[22px] text-ink mt-1">Nome da Obra</h4><p class="font-mono text-[11px] text-ink-light mt-1">Jacareí · SP · 2025</p>
+        </div>
+        <div class="obra-item fade-in" data-category="reforma" data-d="1">
+          <div class="obra-img mb-4"><div class="img-ph" style="aspect-ratio:3/4;background:linear-gradient(135deg,#e0ddd5,#d0ccc0)"><span>obras/foto-02.jpg</span></div><div class="obra-overlay"><span class="font-mono text-[11px] tracking-[.15em] uppercase text-white">Ver obra →</span></div></div>
+          <span class="sec-label">Reforma</span><h4 class="font-serif text-[22px] text-ink mt-1">Nome da Obra</h4><p class="font-mono text-[11px] text-ink-light mt-1">São José dos Campos · SP · 2025</p>
+        </div>
+        <div class="obra-item fade-in" data-category="mcmv" data-d="2">
+          <div class="obra-img mb-4"><div class="img-ph" style="aspect-ratio:4/3"><span>obras/foto-03.jpg</span></div><div class="obra-overlay"><span class="font-mono text-[11px] tracking-[.15em] uppercase text-white">Ver obra →</span></div></div>
+          <span class="sec-label">MCMV</span><h4 class="font-serif text-[22px] text-ink mt-1">Nome da Obra</h4><p class="font-mono text-[11px] text-ink-light mt-1">Jacareí · SP · 2024</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ══ CONTATO ══ -->
+<div id="page-contato" class="page">
+  <main class="flex-1 overflow-y-auto">
+    <div class="max-w-site mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div class="fade-in flex items-center gap-2 mb-10">
+        <button onclick="showPage('home')" class="font-mono text-[10px] tracking-[.18em] uppercase text-ink-light hover:text-forest transition-colors">Início</button>
+        <span style="color:#c0b89e">›</span>
+        <span class="font-mono text-[10px] tracking-[.18em] uppercase text-gold">Contato</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-16">
+        <div>
+          <span class="fade-in sec-label">Fale conosco</span>
+          <span class="gold-line fade-in" data-d="1"></span>
+          <h1 class="fade-in font-serif font-normal text-ink mb-6" data-d="1" style="font-size:clamp(36px,4.5vw,56px);line-height:1.06">
+            Estamos prontos<br>para ouvir seu <em class="text-forest-mid">projeto</em>.
+          </h1>
+          <p class="fade-in text-[16px] leading-[1.75] text-ink-mid mb-10" data-d="2">
+            Atendimento direto, sem burocracia. Resposta no mesmo dia útil.
+          </p>
+          <div class="fade-in space-y-7 mb-10" data-d="3">
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0a2a1e">
+                <span class="font-mono text-[10px]" style="color:#e8d5a8">PF</span>
+              </div>
+              <div>
+                <p class="font-semibold text-[15px] text-ink">Pedro Frois</p>
+                <p class="font-mono text-[11px] text-ink-light tracking-[.08em] mb-1">Gestão de Obras & Processos</p>
+                <a href="tel:+5512988667973" class="text-[20px] font-medium text-forest hover:text-forest-light transition-colors">(12) 98866-7973</a>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:#0a2a1e">
+                <span class="font-mono text-[10px]" style="color:#e8d5a8">AX</span>
+              </div>
+              <div>
+                <p class="font-semibold text-[15px] text-ink">Andrei Xavier</p>
+                <p class="font-mono text-[11px] text-ink-light tracking-[.08em] mb-1">Engenharia & Execução</p>
+                <a href="tel:+5512996599313" class="text-[20px] font-medium text-forest hover:text-forest-light transition-colors">(12) 99659-9313</a>
+              </div>
             </div>
           </div>
-          <div class="flex gap-3 items-start">
-            <svg class="w-4 h-4 text-gold mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-            <a href="https://froisxavier.com.br" class="text-[16px] text-cream hover:text-gold-soft transition-colors">www.froisxavier.com.br</a>
+          <div class="fade-in grid grid-cols-2 gap-6 pt-8 mb-10" style="border-top:1px solid #e8e4dc" data-d="4">
+            <div><span class="sec-label block mb-2">E-mail</span><a href="mailto:froisxavier@gmail.com" class="text-[14px] text-ink hover:text-forest transition-colors">froisxavier@gmail.com</a></div>
+            <div><span class="sec-label block mb-2">Instagram</span><a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="text-[14px] text-ink hover:text-forest transition-colors">@froisxavier</a></div>
+            <div><span class="sec-label block mb-2">Endereço</span><p class="text-[13px] text-ink-mid leading-[1.6]">R. Cap. João José de Macedo, 237<br>Sala 1 · Centro · Jacareí – SP</p></div>
+            <div><span class="sec-label block mb-2">Atendimento</span><p class="text-[13px] text-ink-mid">Jacareí e todo<br>o Vale do Paraíba</p></div>
+          </div>
+          <div class="fade-in flex flex-col sm:flex-row gap-3" data-d="5">
+            <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn-p">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+              Chamar no WhatsApp
+            </a>
+            <a href="https://maps.google.com/?q=R.+Cap.+João+José+de+Macedo,+237,+Jacareí+SP" target="_blank" rel="noopener" class="btn-o">Ver no mapa <span class="arrow">→</span></a>
           </div>
         </div>
-        <a href="https://maps.google.com/?q=R.+Cap.+João+José+de+Macedo,+237,+Jacareí+SP" target="_blank" rel="noopener" class="btn mt-8">
-          Abrir no Google Maps <span class="arrow">→</span>
-        </a>
-      </div>
-
-      <!-- Google Maps embed -->
-      <div class="relative border border-gold/20 overflow-hidden" style="aspect-ratio:16/10;min-height:300px">
-        <iframe
-          class="map-frame absolute inset-0 w-full h-full"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.88!2d-45.9661!3d-23.3055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4a3f8b1b1b1b%3A0x0!2sR.+Cap.+Jo%C3%A3o+Jos%C3%A9+de+Macedo%2C+237%2C+Jacareí+-+SP!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr"
-          style="border:0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Localização Frois Xavier Construtora">
-        </iframe>
-        <!-- Overlay dourado nas bordas -->
-        <div class="absolute top-0 left-0 w-10 h-10 border-t border-l border-gold pointer-events-none"></div>
-        <div class="absolute bottom-0 right-0 w-10 h-10 border-b border-r border-gold pointer-events-none"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     RODAPÉ
-════════════════════════════════════════════ -->
-<footer class="bg-g900 border-t border-gold/20 pt-14 pb-10">
-  <div class="max-w-site mx-auto px-6 md:px-10">
-    <div class="flex flex-wrap justify-between items-center gap-6">
-      <div class="flex items-center gap-3">
-        <img src="assets/logo.png" alt="Frois Xavier" class="h-10 w-auto object-contain opacity-90"/>
-      </div>
-      <p class="font-mono text-[11px] text-cream-dim tracking-[.1em] text-center order-last w-full md:w-auto md:order-none">
-        © 2025 Frois Xavier Construtora · froisxavier@gmail.com
-      </p>
-      <div class="flex flex-wrap gap-5">
-        <a href="#sobre"    class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Sobre</a>
-        <a href="#servicos" class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Serviços</a>
-        <a href="#obras"    class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Obras</a>
-        <a href="#contato"  class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Contato</a>
-        <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Instagram</a>
+        <!-- Mapa -->
+        <div class="fade-in" data-d="3" style="border:1px solid #e8e4dc;overflow:hidden;aspect-ratio:4/5;min-height:380px">
+          <iframe class="w-full h-full" style="filter:grayscale(.25) contrast(1.05);border:0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.2!2d-45.9661!3d-23.3055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Cap.+Jo%C3%A3o+Jos%C3%A9+de+Macedo%2C+237%2C+Jacareí!5e0!3m2!1spt-BR!2sbr!4v1680000000000"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Frois Xavier — Localização">
+          </iframe>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </main>
+</div>
 
-
-<!-- Botão WhatsApp flutuante -->
+<!-- WhatsApp flutuante -->
 <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-   target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
-   class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gold text-g800 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:bg-gold-pale hover:scale-105 transition-all duration-200">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+   target="_blank" rel="noopener" aria-label="WhatsApp"
+   style="position:fixed;bottom:24px;right:24px;z-index:50;width:50px;height:50px;border-radius:50%;background:#0a2a1e;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform 200ms"
+   onmouseenter="this.style.transform='scale(1.08)'" onmouseleave="this.style.transform='scale(1)'">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#e8d5a8"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
 </a>
 
-
-<!-- ═══════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════════ -->
 <script>
-/* ── Nav scroll ── */
-const nav = document.getElementById('site-nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
-
-/* ── Mobile drawer ── */
-const hamburger = document.getElementById('hamburger');
-const drawer    = document.getElementById('mobile-drawer');
-const closeDrawer = () => {
-  drawer.classList.remove('open');
-  hamburger.classList.remove('open');
-  hamburger.setAttribute('aria-expanded','false');
-  document.body.style.overflow = '';
-};
-hamburger.addEventListener('click', () => {
-  const open = drawer.classList.toggle('open');
-  hamburger.classList.toggle('open', open);
-  hamburger.setAttribute('aria-expanded', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-});
-drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
-
-/* ── Scroll reveal ── */
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    setTimeout(() => el.classList.add('visible'), parseInt(el.dataset.delay||0));
-    obs.unobserve(el);
-  });
-}, { threshold: 0.10 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-/* ── Portfolio filter ── */
-const filterBtns = document.querySelectorAll('.filter-btn');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
+let currentPage = 'home';
+function showPage(id){
+  if(id===currentPage)return;
+  const old=document.getElementById('page-'+currentPage);
+  const next=document.getElementById('page-'+id);
+  if(!next)return;
+  old.classList.add('out');
+  setTimeout(()=>{old.classList.remove('active','out');},320);
+  next.classList.add('active');
+  currentPage=id;
+  next.scrollTop=0;
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active-link',l.dataset.page===id));
+  setTimeout(()=>triggerFadeIns(next),60);
+  const mn=document.getElementById('mobile-nav');
+  if(mn.classList.contains('open'))toggleMobileNav();
+}
+function triggerFadeIns(c){
+  c.querySelectorAll('.fade-in').forEach(el=>el.classList.remove('shown'));
+  requestAnimationFrame(()=>c.querySelectorAll('.fade-in').forEach(el=>el.classList.add('shown')));
+}
+setTimeout(()=>triggerFadeIns(document.getElementById('page-home')),120);
+function toggleMobileNav(){
+  const btn=document.getElementById('hbg-btn');
+  const nav=document.getElementById('mobile-nav');
+  const open=nav.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    const cat = btn.dataset.filter;
-    document.querySelectorAll('.obra-item').forEach(item => {
-      item.style.display = (cat === 'all' || item.dataset.category === cat) ? '' : 'none';
+    const cat=btn.dataset.filter;
+    document.querySelectorAll('.obra-item').forEach(item=>{
+      item.style.display=(cat==='all'||item.dataset.category===cat)?'':'none';
     });
   });
 });
-
-/* ── Carregamento dinâmico de obras (obras/dados.json) ──
-   Quando você criar o arquivo obras/dados.json, as obras
-   aparecerão automaticamente no grid.
-   Enquanto não existir, os placeholders ficam visíveis.
-*/
-async function carregarObras() {
-  try {
-    const res = await fetch('obras/dados.json');
-    if (!res.ok) return; // sem arquivo → mantém placeholders
-    const obras = await res.json();
-    if (!obras || obras.length === 0) return;
-
-    const grid = document.getElementById('obras-grid');
-    const placeholder = document.getElementById('obras-placeholder');
-    placeholder.style.display = 'none';
-    grid.innerHTML = '';
-
-    obras.forEach((obra, i) => {
-      const delay = [0,100,200][i % 3];
-      const ratios = ['4/3','3/4','4/3'];
-      const ratio  = obra.ratio || ratios[i % 3];
-
-      const div = document.createElement('div');
-      div.className = 'obra-item reveal group cursor-pointer';
-      div.dataset.category = obra.categoria || 'construcao';
-      div.dataset.delay = delay;
-
-      div.innerHTML = `
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:${ratio}">
-          <img src="obras/${obra.foto}"
-               alt="${obra.nome}"
-               class="absolute inset-0 w-full h-full object-cover"
-               loading="lazy" />
-          <div class="obra-overlay absolute inset-0 flex items-end p-6"
-               style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span>
-          </div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">${obra.tipo}</p>
-            <h4 class="font-serif text-[22px] text-cream font-medium">${obra.nome}</h4>
-            <p class="font-mono text-[11px] text-cream-dim mt-1">${obra.cidade} · ${obra.tamanho || ''}</p>
-          </div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">${obra.ano}</span>
-        </div>`;
-
+async function carregarObras(){
+  try{
+    const res=await fetch('obras/dados.json');
+    if(!res.ok)return;
+    const obras=await res.json();
+    if(!obras||obras.length===0)return;
+    document.getElementById('obras-placeholder').style.display='none';
+    const grid=document.getElementById('obras-grid');
+    grid.innerHTML='';
+    obras.forEach((obra,i)=>{
+      const d=['','1','2'][i%3];
+      const ratio=obra.ratio||'4/3';
+      const div=document.createElement('div');
+      div.className='obra-item fade-in';
+      div.dataset.category=obra.categoria||'construcao';
+      if(d)div.dataset.d=d;
+      div.innerHTML=`<div class="obra-img mb-4"><img src="obras/${obra.foto}" alt="${obra.nome}" class="w-full object-cover" style="aspect-ratio:${ratio}" loading="lazy"/><div class="obra-overlay"><span class="font-mono text-[11px] tracking-[.15em] uppercase text-white">Ver obra →</span></div></div><span class="sec-label">${obra.tipo}</span><h4 class="font-serif text-[22px] text-ink mt-1">${obra.nome}</h4><p class="font-mono text-[11px] text-ink-light mt-1">${obra.cidade} · ${obra.ano}</p>`;
       grid.appendChild(div);
-      // reobserve para reveal
-      setTimeout(() => obs.observe(div), 50);
     });
-
-  } catch(e) {
-    // arquivo não existe ou erro — placeholders continuam visíveis
-  }
+  }catch(e){}
 }
 carregarObras();
 </script>
-
 </body>
 </html>
