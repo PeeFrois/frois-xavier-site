@@ -4,66 +4,258 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Frois Xavier Construtora</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#0a2a1e',
+            'forest-mid': '#134030',
+            'forest-dark': '#051811',
+            gold: '#a07830',
+            'gold-light': '#c09848',
+            stone: '#f4f2ed',
+            ink: '#111111',
+            'ink-light': '#444444',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: { site: '1280px' },
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #f4f2ed;
+      color: #111111;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .page-section {
+      display: none;
+    }
+    .page-section.active {
+      display: block;
+      animation: sectionFade 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
+    }
+    @keyframes sectionFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .menu-item {
+      position: relative;
+    }
+    .menu-item::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #a07830;
+      transition: width 0.3s ease;
+    }
+    .menu-item.active-menu::after, .menu-item:hover::after {
+      width: 100%;
+    }
+  </style>
 </head>
-<body class="bg-[#0a2a1e] text-white">
+<body class="flex flex-col min-h-screen overflow-x-hidden">
 
-  <header class="w-full bg-[#0a2a1e] border-b-2 border-orange-500 py-4 px-6">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a2a1e]/90 backdrop-blur-md border-b border-white/10 h-[90px] flex items-center shadow-lg">
+    <div class="max-w-site mx-auto px-6 w-full flex items-center justify-between">
       
-      <div class="w-32">
-        <img src="Logo Instagram.jpeg" alt="Frois Xavier Construtora" class="w-full h-auto">
+      <div class="flex items-center">
+        <a href="#home" onclick="changePage('home', event)" class="focus:outline-none block">
+          <img src="Logo Instagram.jpeg" alt="Frois Xavier Construtora" class="h-16 w-auto object-contain rounded-sm">
+        </a>
       </div>
 
-      <nav class="flex gap-8">
-        <a href="#home" class="font-bold uppercase text-sm hover:text-orange-400 transition">Home</a>
-        <a href="#sobre" class="font-bold uppercase text-sm hover:text-orange-400 transition">Sobre Nós</a>
-        <a href="#servicos" class="font-bold uppercase text-sm hover:text-orange-400 transition">Serviços</a>
-        <a href="#obras" class="font-bold uppercase text-sm hover:text-orange-400 transition">Obras</a>
-        <a href="#contato" class="font-bold uppercase text-sm hover:text-orange-400 transition">Contato</a>
-      </nav>
+      <div class="flex items-center gap-8">
+        <nav class="hidden md:flex items-center gap-8">
+          <button onclick="changePage('home', event)" id="nav-home" class="menu-item active-menu text-white text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-gold">Home</button>
+          <button onclick="changePage('sobre', event)" id="nav-sobre" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Sobre Nós</button>
+          <button onclick="changePage('servicos', event)" id="nav-servicos" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Serviços</button>
+          <button onclick="changePage('obras', event)" id="nav-obras" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Obras</button>
+          <button onclick="changePage('contato', event)" id="nav-contato" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Contato</button>
+        </nav>
 
-      <a href="https://wa.me/5512988667973" target="_blank" class="bg-orange-600 px-6 py-2 font-bold uppercase text-sm hover:bg-orange-700 transition">
-        Solicitar Orçamento
-      </a>
+        <a href="https://wa.me/5512988667973" target="_blank" class="hidden sm:inline-flex bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-widest font-bold px-6 py-3.5 transition-colors duration-300">
+          Solicitar Orçamento
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none z-50">
+          <span id="m-line1" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span id="m-line2" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span id="m-line3" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        </button>
+      </div>
+
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto p-10">
-    <section id="home" class="py-20">
-      <h1 class="text-6xl font-bold mb-4">Construindo sonhos,<br>projetando futuros.</h1>
-      <p class="text-xl opacity-90">Engenharia civil e alto padrão com responsabilidade técnica.</p>
-      
-      <div class="flex gap-4 mt-8">
-        <a href="https://wa.me/5512988667973" class="bg-orange-600 px-8 py-4 font-bold uppercase text-sm">Falar no WhatsApp</a>
-        <a href="#servicos" class="border border-white px-8 py-4 font-bold uppercase text-sm">Nossos Serviços</a>
+  <div id="mobile-menu-box" class="fixed inset-0 bg-[#0a2a1e] z-40 flex flex-col justify-center px-8 translate-x-full transition-transform duration-300 md:hidden">
+    <nav class="flex flex-col gap-8 text-left">
+      <button onclick="changePage('home'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Home</button>
+      <button onclick="changePage('sobre'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Sobre Nós</button>
+      <button onclick="changePage('servicos'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Serviços</button>
+      <button onclick="changePage('obras'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Obras</button>
+      <button onclick="changePage('contato'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Contato</button>
+    </nav>
+    <div class="mt-12 pt-6 border-t border-white/10">
+      <a href="https://wa.me/5512988667973" target="_blank" class="block text-center bg-gold text-white text-xs uppercase tracking-widest font-bold py-4">Falar no WhatsApp</a>
+    </div>
+  </div>
+
+  <main class="flex-1 pt-[90px]">
+
+    <section id="sec-home" class="page-section active min-h-[calc(100vh-90px)] bg-gradient-to-br from-forest-dark via-forest to-forest-mid flex items-center px-6 py-16">
+      <div class="max-w-site mx-auto w-full">
+        <div class="max-w-4xl">
+          <span class="text-gold font-sans text-xs uppercase tracking-[0.3em] font-bold block mb-4">
+            Frois Xavier Construtora
+          </span>
+          
+          <h1 class="font-serif text-white text-5xl sm:text-7xl lg:text-8xl font-light leading-[1.1] mb-8 tracking-tight">
+            Construindo sonhos,<br>
+            <span class="italic text-gold-light font-normal">projetando futuros.</span>
+          </h1>
+          
+          <div class="w-20 h-[2px] bg-gold mb-8"></div>
+          
+          <p class="text-stone/90 font-sans text-base sm:text-lg max-w-xl mb-12 leading-relaxed font-light">
+            Do projeto à chave na mão — com responsabilidade técnica total, cumprimento estrito de prazos e emissão rigorosa de ART/CREA em cada etapa.
+          </p>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="https://wa.me/5512988667973" target="_blank" class="bg-gold hover:bg-gold-light text-white text-xs uppercase tracking-widest font-bold px-8 py-4.5 transition-colors shadow-lg block text-center">
+              Falar no WhatsApp
+            </a>
+            <button onclick="changePage('servicos')" class="border-2 border-white text-white text-xs uppercase tracking-widest font-bold px-8 py-4.5 hover:bg-white hover:text-forest transition-all bg-transparent">
+              Nossos Serviços →
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="sobre" class="py-20 border-t border-white/10">
-      <h2 class="text-4xl font-bold mb-6">Sobre Nós</h2>
-      <p class="text-lg opacity-80">Conteúdo institucional da construtora.</p>
+    <section id="sec-sobre" class="page-section bg-stone py-24 px-6">
+      <div class="max-w-site mx-auto">
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// QUEM SOMOS</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Sobre a Construtora</h2>
+        <p class="text-ink-light max-w-2xl font-light">Espaço reservado para a sua apresentação institucional.</p>
+      </div>
     </section>
 
-    <section id="servicos" class="py-20 border-t border-white/10">
-      <h2 class="text-4xl font-bold mb-6">Serviços</h2>
-      <p class="text-lg opacity-80">Lista de serviços oferecidos.</p>
+    <section id="sec-servicos" class="page-section bg-white py-24 px-6">
+      <div class="max-w-site mx-auto">
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// O QUE FAZEMOS</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Nossos Serviços</h2>
+        <p class="text-ink-light max-w-2xl font-light">Espaço reservado para a descrição das suas soluções técnicas e de engenharia.</p>
+      </div>
     </section>
 
-    <section id="obras" class="py-20 border-t border-white/10">
-      <h2 class="text-4xl font-bold mb-6">Obras</h2>
-      <p class="text-lg opacity-80">Portfólio de obras executadas.</p>
+    <section id="sec-obras" class="page-section bg-stone py-24 px-6">
+      <div class="max-w-site mx-auto">
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// PORTFÓLIO</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Ativos & Obras</h2>
+        <p class="text-ink-light max-w-2xl font-light">Espaço reservado para fotos e lista de obras executadas.</p>
+      </div>
     </section>
 
-    <section id="contato" class="py-20 border-t border-white/10">
-      <h2 class="text-4xl font-bold mb-6">Contato</h2>
-      <p class="text-lg opacity-80">Informações de contato e localização.</p>
+    <section id="sec-contato" class="page-section bg-white py-24 px-6">
+      <div class="max-w-site mx-auto">
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// CANAL DIRETO</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Contato</h2>
+        <p class="text-ink-light max-w-2xl font-light">Espaço reservado para informações de endereço, e-mail e localização.</p>
+      </div>
     </section>
+
   </main>
 
-  <footer class="py-10 text-center border-t border-white/10 opacity-60 text-sm">
-    <p>© 2026 Frois Xavier Construtora. Todos os direitos reservados.</p>
+  <footer class="bg-[#051811] py-12 px-6 border-t border-white/10">
+    <div class="max-w-site mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex flex-wrap justify-center gap-8 md:gap-12 text-[11px] font-bold uppercase tracking-widest text-white/90">
+        <div>10+ Anos de Experiência</div>
+        <div>50+ Obras Entregues</div>
+        <div>100% ART & CREA</div>
+        <div>SP — Vale do Paraíba</div>
+      </div>
+      <div class="text-[11px] font-semibold uppercase tracking-wider text-white/40 text-center md:text-right">
+        © 2026 Frois Xavier Construtora.
+      </div>
+    </div>
   </footer>
+
+  <script>
+    function changePage(pageId, event) {
+      if (event) event.preventDefault();
+      
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      document.querySelectorAll('.menu-item').forEach(link => {
+        link.classList.remove('active-menu');
+      });
+      
+      const targetSec = document.getElementById(`sec-${pageId}`);
+      if (targetSec) {
+        targetSec.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+      
+      const targetNav = document.getElementById(`nav-${pageId}`);
+      if (targetNav) {
+        targetNav.classList.add('active-menu');
+      }
+      
+      history.pushState(null, null, `#${pageId}`);
+    }
+
+    function toggleMobileMenu() {
+      const menuBox = document.getElementById('mobile-menu-box');
+      const line1 = document.getElementById('m-line1');
+      const line2 = document.getElementById('m-line2');
+      const line3 = document.getElementById('m-line3');
+      
+      if (menuBox.classList.contains('translate-x-full')) {
+        menuBox.classList.remove('translate-x-full');
+        line1.style.transform = 'translateY(8px) rotate(45deg)';
+        line2.style.opacity = '0';
+        line3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        menuBox.classList.add('translate-x-full');
+        line1.style.transform = 'none';
+        line2.style.opacity = '1';
+        line3.style.transform = 'none';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlHash = window.location.hash.replace('#', '');
+      const availablePages = ['home', 'sobre', 'servicos', 'obras', 'contato'];
+      
+      if (urlHash && availablePages.includes(urlHash)) {
+        changePage(urlHash);
+      } else {
+        changePage('home');
+      }
+    });
+  </script>
 
 </body>
 </html>
