@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Frois Xavier Construtora — Engenharia Global & Alto Padrão</title>
-  <meta name="description" content="Construção residencial de alto padrão, engenharia de infraestrutura e reformas corporativas de alta performance."/>
+  <title>Frois Xavier Construtora</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -44,20 +43,18 @@
       -webkit-font-smoothing: antialiased;
     }
     
-    /* Sistema de Navegação - Esconde/Mostra Seções */
     .page-section {
       display: none;
     }
     .page-section.active {
       display: block;
-      animation: sectionFade 0.5s cubic-bezier(0.25, 1, 0.5, 1) both;
+      animation: sectionFade 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
     }
     @keyframes sectionFade {
-      from { opacity: 0; transform: translateY(12px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
-    /* Indicador ativo do Menu Superior */
     .menu-item {
       position: relative;
     }
@@ -78,25 +75,25 @@
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
-  <header class="fixed top-0 left-0 right-0 z-50 bg-forest border-b border-forest-mid/60 h-[85px] flex items-center shadow-md">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0c0d] border-b border-white/10 h-[85px] flex items-center shadow-lg">
     <div class="max-w-site mx-auto px-6 w-full flex items-center justify-between">
       
       <div class="flex items-center">
         <a href="#home" onclick="changePage('home', event)" class="focus:outline-none block">
-          <img src="logo.png" alt="Frois Xavier Construtora" class="h-12 w-auto object-contain">
+          <img src="logo.png" alt="Frois Xavier Construtora" class="h-14 w-auto object-contain">
         </a>
       </div>
 
       <div class="flex items-center gap-8">
         <nav class="hidden md:flex items-center gap-8">
-          <button onclick="changePage('home', event)" id="nav-home" class="menu-item active-menu text-white/90 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Home</button>
+          <button onclick="changePage('home', event)" id="nav-home" class="menu-item active-menu text-white text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-gold">Home</button>
           <button onclick="changePage('sobre', event)" id="nav-sobre" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Sobre Nós</button>
-          <button onclick="changePage('servicos', event)" id="nav-servicos" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Soluções Técnicas</button>
-          <button onclick="changePage('obras', event)" id="nav-obras" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Ativos & Obras</button>
+          <button onclick="changePage('servicos', event)" id="nav-servicos" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Serviços</button>
+          <button onclick="changePage('obras', event)" id="nav-obras" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Obras</button>
           <button onclick="changePage('contato', event)" id="nav-contato" class="menu-item text-white/80 text-xs uppercase tracking-[0.2em] font-semibold transition-colors hover:text-white">Contato</button>
         </nav>
 
-        <a href="https://wa.me/5512988667973" target="_blank" class="hidden sm:inline-flex bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-widest font-bold px-6 py-3.5 transition-colors duration-300 shadow-sm">
+        <a href="https://wa.me/5512988667973" target="_blank" class="hidden sm:inline-flex bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-widest font-bold px-6 py-3.5 transition-colors duration-300">
           Solicitar Orçamento
         </a>
 
@@ -110,29 +107,26 @@
     </div>
   </header>
 
-  <div id="mobile-menu-box" class="fixed inset-0 bg-forest-dark z-40 flex flex-col justify-center px-8 translate-x-full transition-transform duration-300 md:hidden">
+  <div id="mobile-menu-box" class="fixed inset-0 bg-[#0b0c0d] z-40 flex flex-col justify-center px-8 translate-x-full transition-transform duration-300 md:hidden">
     <nav class="flex flex-col gap-8 text-left">
       <button onclick="changePage('home'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Home</button>
       <button onclick="changePage('sobre'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Sobre Nós</button>
-      <button onclick="changePage('servicos'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Soluções Técnicas</button>
-      <button onclick="changePage('obras'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Ativos & Obras</button>
+      <button onclick="changePage('servicos'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Serviços</button>
+      <button onclick="changePage('obras'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Obras</button>
       <button onclick="changePage('contato'); toggleMobileMenu()" class="font-serif text-white text-3xl text-left hover:text-gold transition-colors">Contato</button>
     </nav>
-    <div class="mt-12 pt-6 border-t border-forest-mid/40">
-      <a href="https://wa.me/5512988667973" target="_blank" class="block text-center bg-gold text-white text-xs uppercase tracking-widest font-bold py-4">Iniciar Canal Direto</a>
+    <div class="mt-12 pt-6 border-t border-white/10">
+      <a href="https://wa.me/5512988667973" target="_blank" class="block text-center bg-gold text-white text-xs uppercase tracking-widest font-bold py-4">Falar no WhatsApp</a>
     </div>
   </div>
 
-
   <main class="flex-1 pt-[85px]">
 
-    <section id="sec-home" class="page-section active min-h-[calc(100vh-85px)] bg-gradient-to-br from-forest-dark via-forest to-forest-mid flex items-center px-6 py-16 relative">
-      <div class="absolute inset-0 bg-[radial-gradient(#a07830_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03]"></div>
-      
-      <div class="max-w-site mx-auto w-full z-10">
+    <section id="sec-home" class="page-section active min-h-[calc(100vh-85px)] bg-gradient-to-br from-forest-dark via-forest to-forest-mid flex items-center px-6 py-16">
+      <div class="max-w-site mx-auto w-full">
         <div class="max-w-4xl">
-          <span class="text-gold font-sans text-xs uppercase tracking-[0.3em] font-bold block mb-4 animate-pulse">
-            FROIS XAVIER CONSTRUTORA & ENGENHARIA
+          <span class="text-gold font-sans text-xs uppercase tracking-[0.3em] font-bold block mb-4">
+            Frois Xavier Construtora
           </span>
           <h1 class="font-serif text-white text-5xl sm:text-7xl lg:text-8xl font-light leading-[1.1] mb-8 tracking-tight">
             Construindo Sonhos,<br>
@@ -140,14 +134,14 @@
           </h1>
           <div class="w-20 h-[2px] bg-gold mb-8"></div>
           <p class="text-stone/90 font-sans text-base sm:text-lg max-w-xl mb-12 leading-relaxed font-light">
-            Soluções corporativas e residenciais sob severos critérios de engenharia de valor, previsibilidade financeira integral e conformidade legal técnica (ART/CREA).
+            Do projeto à chave na mão — com responsabilidade técnica total, cumprimento estrito de prazos e emissão rigorosa de ART/CREA em cada etapa.
           </p>
           <div class="flex flex-wrap gap-4">
-            <a href="https://wa.me/5512988667973" target="_blank" class="bg-gold hover:bg-gold-light text-white text-xs uppercase tracking-widest font-bold px-8 py-4.5 transition-colors shadow-lg">
-              Conexão Engenharia Comercial
+            <a href="https://wa.me/5512988667973" target="_blank" class="bg-gold hover:bg-gold-light text-white text-xs uppercase tracking-widest font-bold px-8 py-4.5 transition-colors shadow-lg block text-center">
+              Falar no WhatsApp
             </a>
-            <button onclick="changePage('servicos')" class="border border-white/20 text-white text-xs uppercase tracking-widest font-semibold px-8 py-4.5 hover:bg-white hover:text-forest transition-all">
-              Ver Portfólio de Soluções
+            <button onclick="changePage('servicos')" class="border-2 border-white text-white text-xs uppercase tracking-widest font-bold px-8 py-4.5 hover:bg-white hover:text-forest transition-all bg-transparent">
+              Nossos Serviços →
             </button>
           </div>
         </div>
@@ -156,113 +150,42 @@
 
     <section id="sec-sobre" class="page-section bg-stone py-24 px-6">
       <div class="max-w-site mx-auto">
-        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// POSICIONAMENTO E GOVERNANÇA</span>
-        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-12 max-w-4xl">Alinhamento rigoroso de inteligência construtiva e processos ágeis.</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-ink-light font-light leading-relaxed text-base md:text-lg">
-          <p>
-            A <strong class="font-semibold text-ink">Frois Xavier Construtora</strong> consolida-se como referência no Vale do Paraíba por sua capacidade de anular as assimetrias tradicionais e atrasos da construção civil. A parceria societária estratégica traz de um lado <strong class="font-semibold text-ink">Pedro Frois</strong>, liderando a inteligência de suprimentos, logística avançada e mitigação de riscos financeiros estruturados.
-          </p>
-          <p>
-            Do outro lado, a excelência operacional em campo é comandada por <strong class="font-semibold text-ink">Andrei Xavier</strong>, engenheiro responsável pelo monitoramento de prazos, análises estruturais rigorosas e segurança jurídica por meio de ART/CREA ativo. Atuamos fortemente em obras residenciais corporativas e laudos periciais de alta complexidade.
-          </p>
-        </div>
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// QUEM SOMOS</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Aguardando seu conteúdo...</h2>
+        <p class="text-ink-light max-w-2xl font-light">Mande o texto ou os tópicos que deseja incluir aqui para começarmos a personalização.</p>
       </div>
     </section>
 
     <section id="sec-servicos" class="page-section bg-white py-24 px-6">
       <div class="max-w-site mx-auto">
-        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// LINHAS DE NEGÓCIO</span>
-        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-16">Capabilidades Estruturadas</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="border border-black/5 p-10 bg-stone/20 hover:border-gold transition-colors duration-300">
-            <span class="text-xs font-mono text-gold block mb-8">[ DIRETRIZ 01 ]</span>
-            <h3 class="font-serif text-2xl text-ink mb-4 font-normal">Edificações e Alto Padrão</h3>
-            <p class="text-ink-light text-sm font-light leading-relaxed">
-              Desenvolvimento completo de obras residenciais premium em condomínios fechados. Do estudo geotécnico avançado ao cronograma físico-financeiro travado e acabamentos de altíssimo luxo.
-            </p>
-          </div>
-          <div class="border border-black/5 p-10 bg-stone/20 hover:border-gold transition-colors duration-300">
-            <span class="text-xs font-mono text-gold block mb-8">[ DIRETRIZ 02 ]</span>
-            <h3 class="font-serif text-2xl text-ink mb-4 font-normal">Retrofits e Reformas Corporativas</h3>
-            <p class="text-ink-light text-sm font-light leading-relaxed">
-              Readequação estrutural de plantas comerciais e industriais em pleno funcionamento. Engenharia ágil com foco em velocidade de execução, segurança do trabalho e zero desperdício.
-            </p>
-          </div>
-          <div class="border border-black/5 p-10 bg-stone/20 hover:border-gold transition-colors duration-300">
-            <span class="text-xs font-mono text-gold block mb-8">[ DIRETRIZ 03 ]</span>
-            <h3 class="font-serif text-2xl text-ink mb-4 font-normal">Laudos, Vistorias & Legalização</h3>
-            <p class="text-ink-light text-sm font-light leading-relaxed">
-              Produção de laudos técnicos de engenharia pericial, vistorias cautelares de vizinhança, desmembramentos e assessoria completa de compliance para regularizações municipais.
-            </p>
-          </div>
-        </div>
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// O QUE FAZEMOS</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Aguardando seu conteúdo...</h2>
+        <p class="text-ink-light max-w-2xl font-light">Mande a lista de serviços oferecidos pela construtora para montarmos os blocos explicativos.</p>
       </div>
     </section>
 
     <section id="sec-obras" class="page-section bg-stone py-24 px-6">
       <div class="max-w-site mx-auto">
-        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// PORTFÓLIO OPERACIONAL</span>
-        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-12">Ativos em Desenvolvimento técnico</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white p-10 border border-black/5 shadow-sm transition-transform duration-300 hover:-translate-y-1">
-            <div class="w-16 h-0.5 bg-forest mb-6"></div>
-            <span class="text-xs text-gold uppercase tracking-wider block mb-1">Engenharia Civil Residencial</span>
-            <h4 class="font-serif text-2xl text-ink font-normal mb-2">Complexo Habitacional Jacareí</h4>
-            <p class="text-[11px] text-ink-light uppercase tracking-widest font-medium">Gestão Plena de Obras · Ciclo 2025/2026</p>
-          </div>
-          <div class="bg-white p-10 border border-black/5 shadow-sm transition-transform duration-300 hover:-translate-y-1">
-            <div class="w-16 h-0.5 bg-gold mb-6"></div>
-            <span class="text-xs text-gold uppercase tracking-wider block mb-1">Engenharia Estrutural / Retrofit</span>
-            <h4 class="font-serif text-2xl text-ink font-normal mb-2">Modernização de Planta Industrial SJC</h4>
-            <p class="text-[11px] text-ink-light uppercase tracking-widest font-medium">Responsabilidade Técnica Certificada via ART</p>
-          </div>
-        </div>
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// PORTFÓLIO</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Aguardando seu conteúdo...</h2>
+        <p class="text-ink-light max-w-2xl font-light">Mande o nome ou fotos das principais obras executadas para expor nesta seção.</p>
       </div>
     </section>
 
     <section id="sec-contato" class="page-section bg-white py-24 px-6">
-      <div class="max-w-site mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
-        <div class="lg:col-span-5">
-          <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// CANAL INSTITUCIONAL</span>
-          <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-6">Conecte sua demanda à nossa Engenharia Comercial.</h2>
-          <p class="text-ink-light font-light mb-8 leading-relaxed">Estruturação preliminar de escopo, dimensionamento orçamentário inicial e alinhamento de projetos corporativos em até 24h úteis.</p>
-          <a href="https://wa.me/5512988667973" target="_blank" class="inline-block bg-forest hover:bg-forest-mid text-white text-xs uppercase tracking-widest font-bold px-8 py-4.5 transition-colors shadow-md">
-            Abrir Chamado Técnico Comercial
-          </a>
-        </div>
-        <div class="lg:col-span-7 lg:pl-12 border-t lg:border-t-0 lg:border-l border-black/10 pt-10 lg:pt-0 grid grid-cols-1 sm:grid-cols-2 gap-10">
-          <div>
-            <h4 class="text-xs font-bold text-gold uppercase tracking-wider mb-2">// Diretoria de Processos e Suprimentos</h4>
-            <p class="font-medium text-xl text-ink">Pedro Frois</p>
-            <a href="tel:+5512988667973" class="text-forest hover:underline text-sm font-semibold block mt-1">(12) 98866-7973</a>
-          </div>
-          <div>
-            <h4 class="text-xs font-bold text-gold uppercase tracking-wider mb-2">// Corpo Técnico Responsável</h4>
-            <p class="font-medium text-xl text-ink">Andrei Xavier</p>
-            <p class="text-xs text-ink-light font-light mb-1">Engenheiro Civil / CREA Ativo</p>
-            <a href="tel:+5512996599313" class="text-forest hover:underline text-sm font-semibold block">(12) 99659-9313</a>
-          </div>
-          <div class="sm:col-span-2 pt-8 border-t border-black/10 text-sm text-ink-light font-light">
-            <h4 class="text-xs font-bold text-gold uppercase tracking-wider mb-2">// Sede Corporativa Administrativa</h4>
-            <p class="text-base text-ink leading-relaxed">Rua Capitão João José de Macedo, 237 · Sala 1<br>Centro · Jacareí – SP · CEP 12308-040</p>
-            <p class="text-xs font-mono mt-4 text-ink-light">Comunicação Unificada: froisxavier@gmail.com</p>
-          </div>
-        </div>
+      <div class="max-w-site mx-auto">
+        <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-2">// CANAL DIRETO</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink font-light mb-8">Aguardando seu conteúdo...</h2>
+        <p class="text-ink-light max-w-2xl font-light">Mande as informações de telefone, e-mail e endereço oficial para fecharmos os dados de contato.</p>
       </div>
     </section>
 
   </main>
 
-  <footer class="bg-forest py-8 px-6 border-t border-forest-mid">
-    <div class="max-w-site mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-semibold uppercase tracking-wider text-stone/40">
-      <div>© 2026 Frois Xavier Construtora. Todos os direitos reservados.</div>
-      <div class="flex gap-4">
-        <a href="https://instagram.com/froisxavier" target="_blank" class="hover:text-gold transition-colors">Instagram</a>
-        <span>·</span>
-        <span>Jacareí — SP</span>
-      </div>
+  <footer class="bg-[#0b0c0d] py-8 px-6 border-t border-white/10">
+    <div class="max-w-site mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-semibold uppercase tracking-wider text-white/40">
+      <div>© 2026 Frois Xavier Construtora.</div>
+      <div>Jacareí — SP</div>
     </div>
   </footer>
 
@@ -270,30 +193,25 @@
     function changePage(pageId, event) {
       if (event) event.preventDefault();
       
-      // Oculta todas as seções por completo
       document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
       });
       
-      // Remove a borda/classe ativa do menu superior
       document.querySelectorAll('.menu-item').forEach(link => {
         link.classList.remove('active-menu');
       });
       
-      // Ativa e renderiza a seção clicada
       const targetSec = document.getElementById(`sec-${pageId}`);
       if (targetSec) {
         targetSec.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
       
-      // Marca o link como ativo no menu desktop
       const targetNav = document.getElementById(`nav-${pageId}`);
       if (targetNav) {
         targetNav.classList.add('active-menu');
       }
       
-      // Altera a rota na URL de forma limpa
       history.pushState(null, null, `#${pageId}`);
     }
 
@@ -316,7 +234,6 @@
       }
     }
 
-    // Gerenciador de rotas para acessos diretos via link
     window.addEventListener('DOMContentLoaded', () => {
       const urlHash = window.location.hash.replace('#', '');
       const availablePages = ['home', 'sobre', 'servicos', 'obras', 'contato'];
