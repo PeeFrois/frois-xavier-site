@@ -3,904 +3,648 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frois Xavier Construtora</title>
-  <meta name="description" content="[EDITAR: descrição da empresa para SEO]" />
+  <title>Frois Xavier Construtora — Jacareí e Vale do Paraíba</title>
+  <meta name="description" content="Construção residencial, reformas com orçamento fechado e Minha Casa Minha Vida no Vale do Paraíba. Engenheiro responsável em todas as obras." />
   <link rel="canonical" href="https://froisxavier.com.br/" />
 
-  <!-- Tailwind CSS (CDN — troque pela build local antes do deploy em produção) -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind Config + Custom tokens -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'g900': '#061410',
-            'g800': '#0a1f1a',
-            'g700': '#0e2a23',
-            'g600': '#14352c',
-            'g500': '#1c463a',
-            'gold':      '#b48a4a',
-            'gold-soft': '#c9a25e',
-            'gold-pale': '#d8b97e',
-            'cream':     '#f0e9da',
-            'cream-dim': '#c9c0aa',
+            g900:'#061410', g800:'#0a1f1a', g700:'#0e2a23', g600:'#14352c', g500:'#1c463a',
+            gold:'#b48a4a', 'gold-soft':'#c9a25e', 'gold-pale':'#d8b97e',
+            cream:'#f0e9da', 'cream-dim':'#c9c0aa',
           },
           fontFamily: {
-            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans:  ['Manrope', 'system-ui', 'sans-serif'],
-            mono:  ['"JetBrains Mono"', 'monospace'],
+            serif:['"Cormorant Garamond"','Georgia','serif'],
+            sans:['Manrope','system-ui','sans-serif'],
+            mono:['"JetBrains Mono"','monospace'],
           },
-          maxWidth: { site: '1320px' },
+          maxWidth:{ site:'1320px' },
         }
       }
     }
   </script>
 
   <style>
-    /* ── Base ── */
-    body {
-      background-color: #0e2a23;
-      color: #f0e9da;
-      font-family: 'Manrope', system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+    body { background:#0e2a23; color:#f0e9da; font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; background-image:radial-gradient(circle at 20% 10%,rgba(180,138,74,.06),transparent 50%),radial-gradient(circle at 80% 80%,rgba(180,138,74,.04),transparent 60%); z-index:0; }
+    ::selection { background:#b48a4a; color:#0a1f1a; }
 
-    /* Subtle ambient glow on body */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle at 20% 10%, rgba(180,138,74,0.06), transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(180,138,74,0.04), transparent 60%);
-      z-index: 0;
-    }
+    /* reveal */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 900ms cubic-bezier(.2,.7,.2,1), transform 900ms cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal[data-delay="100"]{transition-delay:100ms}
+    .reveal[data-delay="200"]{transition-delay:200ms}
+    .reveal[data-delay="300"]{transition-delay:300ms}
+    .reveal[data-delay="400"]{transition-delay:400ms}
+    .reveal[data-delay="500"]{transition-delay:500ms}
 
-    /* ── Reveal animation ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 900ms cubic-bezier(0.2,0.7,0.2,1),
-                  transform 900ms cubic-bezier(0.2,0.7,0.2,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal[data-delay="100"] { transition-delay: 100ms; }
-    .reveal[data-delay="200"] { transition-delay: 200ms; }
-    .reveal[data-delay="300"] { transition-delay: 300ms; }
-    .reveal[data-delay="400"] { transition-delay: 400ms; }
+    /* stripe bg */
+    .stripe-bg { background-image:repeating-linear-gradient(135deg,rgba(180,138,74,.06) 0 2px,transparent 2px 20px); }
 
-    /* ── Stripe pattern (placeholder backgrounds) ── */
-    .stripe-bg {
-      background-image: repeating-linear-gradient(
-        135deg,
-        rgba(180,138,74,0.06) 0px 2px,
-        transparent 2px 20px
-      );
-    }
+    /* gold rule */
+    .gold-rule { width:64px; height:1px; background:#b48a4a; border:none; margin:20px 0 28px; }
 
-    /* ── Gold divider line ── */
-    .gold-rule {
-      width: 64px;
-      height: 1px;
-      background: #b48a4a;
-      border: none;
-      margin: 20px 0 28px;
-    }
+    /* eyebrow */
+    .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#b48a4a; }
 
-    /* ── Eyebrow label ── */
-    .eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #b48a4a;
-    }
+    /* buttons */
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border:1px solid #b48a4a; background:transparent; color:#f0e9da; font-family:'Manrope',sans-serif; font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; transition:background 250ms,color 250ms,border-color 250ms; cursor:pointer; white-space:nowrap; }
+    .btn:hover { background:#b48a4a; color:#0a1f1a; }
+    .btn-solid { background:#b48a4a; color:#0a1f1a; }
+    .btn-solid:hover { background:#d8b97e; border-color:#d8b97e; }
+    .btn .arrow { transition:transform 250ms; display:inline-block; }
+    .btn:hover .arrow { transform:translateX(4px); }
 
-    /* ── Button base ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border: 1px solid #b48a4a;
-      background: transparent;
-      color: #f0e9da;
-      font-family: 'Manrope', sans-serif;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 500;
-      transition: background 250ms, color 250ms;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn:hover { background: #b48a4a; color: #0a1f1a; }
-    .btn-solid { background: #b48a4a; color: #0a1f1a; }
-    .btn-solid:hover { background: #d8b97e; border-color: #d8b97e; }
-    .btn .arrow { transition: transform 250ms; display: inline-block; }
-    .btn:hover .arrow { transform: translateX(4px); }
+    /* nav */
+    #site-nav { transition:background 300ms,backdrop-filter 300ms,padding 300ms; }
+    #site-nav.scrolled { background:rgba(6,20,16,.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(180,138,74,.15); padding-top:12px!important; padding-bottom:12px!important; }
+    .nav-link { opacity:.8; transition:opacity 200ms; }
+    .nav-link:hover { opacity:1; }
 
-    /* ── Nav scrolled state ── */
-    #site-nav.scrolled {
-      background: rgba(6,20,16,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(180,138,74,0.15);
-      padding-top: 14px;
-      padding-bottom: 14px;
-    }
+    /* hamburger */
+    .hamburger span { display:block; width:18px; height:1px; background:#f0e9da; transition:transform 300ms,opacity 200ms; transform-origin:center; }
+    .hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);background:#b48a4a}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:#b48a4a}
 
-    /* ── Hamburger ── */
-    .hamburger span {
-      display: block;
-      width: 18px;
-      height: 1px;
-      background: #f0e9da;
-      transition: transform 300ms, opacity 200ms;
-      transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); background: #b48a4a; }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); background: #b48a4a; }
+    /* drawer */
+    #mobile-drawer { opacity:0; pointer-events:none; transition:opacity 350ms; }
+    #mobile-drawer.open { opacity:1; pointer-events:auto; }
+    #mobile-drawer .drawer-link { opacity:0; transform:translateY(12px); transition:opacity 400ms,transform 400ms; }
+    #mobile-drawer.open .drawer-link { opacity:1; transform:translateY(0); }
 
-    /* ── Mobile drawer ── */
-    #mobile-drawer {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 350ms;
-    }
-    #mobile-drawer.open { opacity: 1; pointer-events: auto; }
-    #mobile-drawer .drawer-link {
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 400ms, transform 400ms, border-color 200ms;
-    }
-    #mobile-drawer.open .drawer-link { opacity: 1; transform: translateY(0); }
+    /* service card hover */
+    .service-card { transition:border-color 300ms; }
 
-    /* ── Portfolio filter ── */
-    .filter-btn.active { background: #b48a4a; color: #0a1f1a; }
+    /* filter */
+    .filter-btn { font-family:'Manrope',sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; padding:10px 18px; background:transparent; color:#f0e9da; border:none; cursor:pointer; transition:background 200ms,color 200ms; }
+    .filter-btn.active { background:#b48a4a; color:#0a1f1a; }
+    .filter-btn:not(.active):hover { background:rgba(180,138,74,.12); }
 
-    /* ── Diagonal SVG lines on hero ── */
-    .hero-diagonals { mix-blend-mode: screen; }
+    /* obra item hover overlay */
+    .obra-overlay { opacity:0; transition:opacity 300ms; }
+    .obra-item:hover .obra-overlay { opacity:1; }
 
-    /* ── Selection colour ── */
-    ::selection { background: #b48a4a; color: #0a1f1a; }
-
-    /* ── Smooth hover on nav links ── */
-    .nav-link { transition: opacity 200ms; }
-    .nav-link:hover { opacity: 1 !important; }
+    /* map */
+    .map-frame { filter:saturate(.7) contrast(1.1); }
   </style>
 </head>
-
 <body class="relative">
 
-<!-- ============================================================
-     NAVIGATION
-     ============================================================ -->
-<nav id="site-nav"
-     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-[22px] px-10"
-     aria-label="Navegação principal">
+<!-- ═══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 py-5 px-8 md:px-10">
   <div class="max-w-site mx-auto flex items-center justify-between gap-6">
 
-    <!-- Brand -->
+    <!-- Logo -->
     <a href="#topo" class="flex items-center gap-3 flex-shrink-0">
-      <!-- [EDITAR] Substitua o bloco abaixo pelo seu <img src="logo.png"> -->
-      <div class="w-11 h-11 border border-gold/40 flex items-center justify-center">
-        <span class="font-mono text-[10px] text-gold tracking-widest">FX</span>
-      </div>
-      <div class="leading-tight">
-        <span class="block text-[15px] tracking-[0.18em] font-semibold text-cream">
-          <!-- [EDITAR] Nome da empresa -->
-          FROIS XAVIER
-        </span>
-        <span class="font-mono text-[9px] tracking-[0.3em] text-gold">CONSTRUTORA</span>
-      </div>
+      <img src="assets/logo.png" alt="Frois Xavier Construtora"
+           class="h-12 w-auto object-contain drop-shadow-lg" />
     </a>
 
     <!-- Desktop links -->
     <div class="hidden md:flex items-center gap-9">
-      <a href="#sobre"     class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Sobre</a>
-      <a href="#servicos"  class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Serviços</a>
-      <a href="#obras"     class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Obras</a>
-      <a href="#contato"   class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Contato</a>
+      <a href="#sobre"    class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Sobre</a>
+      <a href="#servicos" class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Serviços</a>
+      <a href="#obras"    class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Obras</a>
+      <a href="#contato"  class="nav-link text-[13px] tracking-[.12em] uppercase text-cream">Contato</a>
     </div>
 
-    <!-- Desktop CTA -->
-    <a href="#contato" class="btn btn-solid hidden md:inline-flex !py-[10px] !px-[18px] !text-[12px]">
-      <!-- [EDITAR] Texto do botão CTA -->
+    <!-- CTA desktop -->
+    <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+       target="_blank" rel="noopener"
+       class="btn btn-solid hidden md:inline-flex !py-[10px] !px-5 !text-[12px]">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
       Solicitar Orçamento
     </a>
 
-    <!-- Hamburger (mobile) -->
-    <button id="hamburger" aria-label="Abrir menu" aria-expanded="false"
-            class="hamburger md:hidden flex flex-col items-center justify-center gap-[5px]
-                   w-11 h-11 border border-gold/30 hover:border-gold transition-colors">
+    <!-- Hamburger -->
+    <button id="hamburger" aria-label="Menu" aria-expanded="false"
+            class="hamburger md:hidden flex flex-col items-center justify-center gap-[5px] w-11 h-11 border border-gold/30 hover:border-gold transition-colors">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- Mobile Drawer -->
-<div id="mobile-drawer"
-     class="fixed inset-0 z-40 bg-g900 flex flex-col overflow-y-auto">
-  <!-- ambient glow -->
-  <div class="absolute inset-0 pointer-events-none"
-       style="background: radial-gradient(circle at 80% 0%, rgba(180,138,74,0.08), transparent 50%), radial-gradient(circle at 0% 100%, rgba(180,138,74,0.05), transparent 60%)">
-  </div>
+<div id="mobile-drawer" class="fixed inset-0 z-40 bg-g900 flex flex-col overflow-y-auto">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(circle at 80% 0%,rgba(180,138,74,.08),transparent 50%)"></div>
   <div class="relative flex-1 flex flex-col justify-between px-7 pt-28 pb-10 max-w-lg mx-auto w-full">
     <nav class="flex flex-col">
-      <a href="#sobre"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:120ms">
-        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">01</span>
-        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Sobre</span>
-        <span class="ml-auto text-cream-dim text-lg">→</span>
-      </a>
-      <a href="#servicos" class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:180ms">
-        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">02</span>
-        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Serviços</span>
-        <span class="ml-auto text-cream-dim text-lg">→</span>
-      </a>
-      <a href="#obras"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:240ms">
-        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">03</span>
-        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Obras</span>
-        <span class="ml-auto text-cream-dim text-lg">→</span>
-      </a>
-      <a href="#contato"  class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:300ms">
-        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">04</span>
-        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Contato</span>
-        <span class="ml-auto text-cream-dim text-lg">→</span>
-      </a>
+      <a href="#sobre"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:100ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">01</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Sobre</span><span class="ml-auto text-cream-dim">→</span></a>
+      <a href="#servicos" class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:160ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">02</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Serviços</span><span class="ml-auto text-cream-dim">→</span></a>
+      <a href="#obras"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:220ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">03</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Obras</span><span class="ml-auto text-cream-dim">→</span></a>
+      <a href="#contato"  class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8" style="transition-delay:280ms"><span class="font-mono text-[11px] text-gold tracking-[.2em]">04</span><span class="font-serif text-[clamp(28px,9vw,40px)] leading-none">Contato</span><span class="ml-auto text-cream-dim">→</span></a>
     </nav>
     <div class="pt-8 border-t border-gold/25 flex flex-col gap-5">
-      <a href="#contato" class="btn btn-solid w-full justify-center !py-4">
-        Solicitar orçamento
-      </a>
+      <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-solid w-full justify-center !py-4">Solicitar orçamento</a>
       <div>
-        <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">Contato direto</span>
-        <!-- [EDITAR] Telefone -->
-        <p class="mt-2 text-base text-cream">Seu Telefone aqui</p>
-        <!-- [EDITAR] Cidade / região -->
-        <p class="mt-1 text-[13px] text-cream-dim">Sua Cidade · Estado</p>
+        <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Contato direto</span>
+        <p class="mt-2 text-base text-cream">(12) 98866-7973</p>
+        <p class="mt-1 text-[13px] text-cream-dim">Jacareí · Vale do Paraíba</p>
       </div>
     </div>
   </div>
 </div>
 
 
-<!-- ============================================================
-     HERO — INÍCIO
-     ============================================================ -->
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
 <section id="topo" class="relative bg-g900 pt-[120px] overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 80% 20%,rgba(180,138,74,.07),transparent 55%),radial-gradient(ellipse at 0% 80%,rgba(20,53,44,.6),transparent 60%)"></div>
 
-  <!-- Background radial glow -->
-  <div class="absolute inset-0 pointer-events-none"
-       style="background: radial-gradient(ellipse at 80% 20%, rgba(180,138,74,0.06), transparent 55%), radial-gradient(ellipse at 0% 80%, rgba(20,53,44,0.5), transparent 60%)">
-  </div>
+  <div class="relative z-10 max-w-site mx-auto px-6 md:px-10">
 
-  <div class="relative z-10 max-w-site mx-auto px-10">
-
-    <!-- Eyebrow row -->
+    <!-- Eyebrow -->
     <div class="reveal flex items-center gap-4 mb-6 flex-wrap">
-      <!-- [EDITAR] Slogan curto ou categoria -->
-      <span class="eyebrow">Construtora · Eng. Civil</span>
+      <span class="eyebrow">Construtora · Engenharia Civil</span>
       <span class="w-7 h-px bg-gold block"></span>
-      <!-- [EDITAR] Credenciais / ano de fundação -->
-      <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em]">CREA · ART · Desde XXXX</span>
+      <span class="font-mono text-[11px] text-cream-dim tracking-[.12em]">CREA · ART · Jacareí – SP</span>
     </div>
 
-    <!-- Hero image block -->
-    <div class="reveal relative w-full border border-gold/25 overflow-hidden"
-         style="aspect-ratio: 21/9;">
-      <!-- ── [EDITAR] Substitua este bloco pela tag <img> da foto principal ── -->
-      <div class="absolute inset-0 stripe-bg"></div>
-      <div class="absolute inset-0"
-           style="background: radial-gradient(ellipse at 65% 35%, rgba(180,138,74,0.22), transparent 55%), radial-gradient(ellipse at 15% 80%, rgba(180,138,74,0.10), transparent 50%)">
-      </div>
-      <!-- Placeholder label -->
-      <div class="absolute top-5 left-5 flex items-center gap-2 opacity-70">
-        <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-        <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">
-          Espaço para Foto Principal da Obra / Empresa
-        </span>
-      </div>
-      <!-- Bottom gradient overlay -->
-      <div class="absolute inset-0"
-           style="background: linear-gradient(180deg, transparent 50%, rgba(6,20,16,0.65) 100%)">
-      </div>
-      <!-- Architectural diagonal lines (decorative SVG) -->
-      <svg class="hero-diagonals absolute inset-0 w-full h-full opacity-30 pointer-events-none"
-           preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#b48a4a" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#b48a4a" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
+    <!-- Hero image area -->
+    <div class="reveal relative w-full border border-gold/25 overflow-hidden" style="aspect-ratio:21/9">
+      <!-- SUBSTITUA ESTE BLOCO POR: <img src="assets/hero.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
+      <div class="absolute inset-0 stripe-bg" style="background-color:#0e2a23"></div>
+      <div class="absolute inset-0" style="background:radial-gradient(ellipse at 65% 35%,rgba(180,138,74,.2),transparent 55%),radial-gradient(ellipse at 15% 80%,rgba(180,138,74,.08),transparent 50%)"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 50%,rgba(6,20,16,.7) 100%)"></div>
+      <!-- Linhas diagonais decorativas -->
+      <svg class="absolute inset-0 w-full h-full opacity-25 pointer-events-none" preserveAspectRatio="none">
+        <defs><linearGradient id="gf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b48a4a" stop-opacity=".6"/><stop offset="100%" stop-color="#b48a4a" stop-opacity="0"/></linearGradient></defs>
         <line x1="20%" y1="100%" x2="38%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-        <line x1="35%" y1="100%" x2="53%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-        <line x1="50%" y1="100%" x2="68%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
-        <line x1="65%" y1="100%" x2="83%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+        <line x1="37%" y1="100%" x2="55%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+        <line x1="54%" y1="100%" x2="72%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+        <line x1="71%" y1="100%" x2="89%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
       </svg>
-      <!-- Gold corner brackets -->
+      <!-- Cantos dourados -->
       <div class="absolute top-0 left-0 w-14 h-14 border-t border-l border-gold pointer-events-none"></div>
       <div class="absolute top-0 right-0 w-14 h-14 border-t border-r border-gold pointer-events-none"></div>
       <div class="absolute bottom-0 left-0 w-14 h-14 border-b border-l border-gold pointer-events-none"></div>
       <div class="absolute bottom-0 right-0 w-14 h-14 border-b border-r border-gold pointer-events-none"></div>
-      <!-- Image caption -->
+      <!-- Caption -->
       <div class="absolute bottom-6 left-7 flex items-center gap-3">
-        <!-- [EDITAR] Legenda da foto principal -->
-        <span class="font-mono text-[11px] text-gold tracking-[0.2em] uppercase">Legenda da Obra · Cidade-UF</span>
+        <span class="font-mono text-[11px] text-gold tracking-[.2em] uppercase">Adicione sua foto principal aqui</span>
         <span class="w-5 h-px bg-gold block"></span>
-        <!-- [EDITAR] Ano da obra -->
-        <span class="font-mono text-[11px] text-cream tracking-[0.15em]">XXXX</span>
+        <span class="font-mono text-[11px] text-cream tracking-[.15em]">assets/hero.jpg</span>
       </div>
     </div>
 
-    <!-- Headline + body copy grid -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-12 md:gap-20 pt-16 pb-20 items-start">
-
-      <!-- Headline -->
-      <h1 class="font-serif font-normal leading-none tracking-[-0.015em] text-cream"
-          style="font-size: clamp(38px,5.8vw,84px)">
-        <!-- [EDITAR] Headline principal -->
-        Seu slogan principal<br>
-        <em class="text-gold-soft not-italic">aqui</em>.
+    <!-- Headline + copy -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-10 md:gap-20 pt-16 pb-20 items-start">
+      <h1 class="font-serif font-normal leading-none tracking-[-0.015em] text-cream" style="font-size:clamp(38px,5.8vw,84px)">
+        Construímos com<br>
+        <em class="text-gold-soft not-italic">engenharia</em>.<br>
+        Entregamos com<br>
+        <em class="text-gold-soft not-italic">palavra</em>.
       </h1>
-
-      <!-- Body copy + CTAs -->
       <div>
-        <hr class="gold-rule" />
-        <!-- [EDITAR] Descrição curta dos serviços -->
+        <hr class="gold-rule"/>
         <p class="text-[17px] leading-[1.7] text-cream-dim">
-          Clique aqui para inserir uma breve descrição dos serviços da empresa — construção, reforma, financiamento habitacional. Destaque o diferencial competitivo em duas ou três linhas.
+          Construção residencial, reformas e assessoria no Minha Casa Minha Vida — com ART assinada, engenheiro responsável e orçamento fechado do início ao fim da obra.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 mt-9 flex-wrap">
-          <!-- [EDITAR] Link do botão principal (WhatsApp ou página de contato) -->
-          <a href="#contato" class="btn btn-solid">
-            Solicitar Orçamento
+          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-solid">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Falar no WhatsApp
           </a>
-          <a href="#servicos" class="btn">
-            Conhecer Serviços <span class="arrow">→</span>
-          </a>
+          <a href="#servicos" class="btn">Nossos Serviços <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Stats bar -->
-  <div class="relative border-t border-b border-gold/25 bg-g800">
-    <div class="max-w-site mx-auto px-10 py-6 flex flex-wrap items-center justify-between gap-6">
-      <!-- [EDITAR] Substitua os números e legendas abaixo pelos dados reais da empresa -->
-      <div class="flex items-baseline gap-4">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">XX</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">Anos de experiência</span>
+  <div class="border-t border-b border-gold/20 bg-g800">
+    <div class="max-w-site mx-auto px-6 md:px-10 py-6 flex flex-wrap items-center justify-between gap-6">
+      <div class="flex items-baseline gap-3">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">10+</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">Anos de experiência</span>
       </div>
-      <div class="flex items-baseline gap-4">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">XX+</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">Obras entregues</span>
+      <div class="flex items-baseline gap-3">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">50+</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">Obras entregues</span>
       </div>
-      <div class="flex items-baseline gap-4">
+      <div class="flex items-baseline gap-3">
         <span class="font-serif font-medium text-gold-soft" style="font-size:36px">100%</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">ART e CREA assinados</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">ART e CREA assinados</span>
       </div>
-      <div class="flex items-baseline gap-4">
-        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">UF</span>
-        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">E região metropolitana</span>
+      <div class="flex items-baseline gap-3">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">SP</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[.12em] uppercase">Vale do Paraíba</span>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════
      SOBRE
-     ============================================================ -->
+════════════════════════════════════════════ -->
 <section id="sobre" class="relative bg-g800 py-36 border-t border-b border-white/5">
-  <div class="max-w-site mx-auto px-10">
-    <div class="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-24 items-center">
+  <div class="max-w-site mx-auto px-6 md:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-16 md:gap-24 items-center">
 
-      <!-- Image column -->
+      <!-- Imagem -->
       <div class="reveal relative">
-        <!-- [EDITAR] Substitua pelo <img> da foto da equipe ou canteiro -->
-        <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/5">
-          <div class="absolute inset-0"
-               style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)">
-          </div>
-          <!-- Placeholder label -->
+        <!-- SUBSTITUA POR: <img src="assets/sobre.jpg" class="w-full object-cover border border-gold/25" style="aspect-ratio:4/5"> -->
+        <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/5; background:#0e2a23">
+          <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
           <div class="absolute top-3 left-3 flex items-center gap-2">
             <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Equipe / Canteiro</span>
+            <span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">Adicionar foto: assets/sobre.jpg</span>
           </div>
         </div>
-
-        <!-- Badge flutuante -->
-        <div class="hidden md:block absolute top-8 -right-8 bg-g700 border border-gold p-5 max-w-[220px] z-10">
-          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase block">
-            <!-- [EDITAR] Cargo do responsável técnico -->
-            Responsável Técnico
-          </span>
-          <!-- [EDITAR] Texto do badge (ex: "Engenheiro Civil presente em todas as obras") -->
-          <p class="font-serif text-[22px] leading-[1.2] mt-2 text-cream">
-            Clique para editar este texto do badge
-          </p>
+        <!-- Badge -->
+        <div class="hidden md:block absolute top-8 -right-7 bg-g700 border border-gold p-5 max-w-[210px] z-10">
+          <span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase block">Responsável Técnico</span>
+          <p class="font-serif text-[20px] leading-[1.25] mt-2 text-cream">Engenheiro presente em todas as obras</p>
         </div>
       </div>
 
-      <!-- Text column -->
+      <!-- Texto -->
       <div class="reveal" data-delay="200">
         <span class="eyebrow">Quem somos</span>
-        <hr class="gold-rule" />
-
-        <!-- [EDITAR] Headline da seção Sobre -->
-        <h2 class="font-serif font-normal text-cream mb-8"
-            style="font-size: clamp(34px,4.2vw,56px); line-height:1.05">
-          Clique para editar o <em class="text-gold-soft not-italic">título sobre a empresa</em> aqui.
+        <hr class="gold-rule"/>
+        <h2 class="font-serif font-normal text-cream mb-8" style="font-size:clamp(34px,4.2vw,54px);line-height:1.06">
+          Uma construtora feita por quem<br>
+          <em class="text-gold-soft not-italic">põe a mão na obra</em>.
         </h2>
-
-        <!-- [EDITAR] Texto principal da seção Sobre -->
-        <p class="text-[17px] leading-[1.7] text-cream-dim">
-          Clique para editar o texto sobre a empresa aqui. Descreva a história, os valores e o diferencial da construtora. Este parágrafo deve contar a essência do negócio em três a cinco linhas, transmitindo confiança ao cliente.
+        <p class="text-[17px] leading-[1.75] text-cream-dim mb-6">
+          A Frois Xavier nasceu da parceria entre Pedro Frois, especialista em gestão de obras e processos, e Andrei Xavier, engenheiro civil com experiência em execução técnica. Juntos, atendem famílias e empresas que querem construir, reformar ou regularizar — sempre com responsável técnico presente, ART assinada e orçamento fechado antes de começar.
+        </p>
+        <p class="text-[16px] leading-[1.7] text-cream-dim">
+          Atuamos em Jacareí, São José dos Campos e toda a região do Vale do Paraíba, levando engenharia séria para quem precisa de resultado, não de promessa.
         </p>
 
-        <!-- Pilares -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-7 mt-11">
-          <!-- [EDITAR] Preencha os 4 pilares com os diferenciais reais da empresa -->
+        <!-- Diferenciais -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-11">
           <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 1</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do primeiro diferencial da empresa.</p>
+            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Orçamento fechado</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Você sabe o valor final antes de começar. Sem cobranças surpresa no meio da obra.</p>
           </div>
           <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 2</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do segundo diferencial da empresa.</p>
+            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Engenheiro na obra</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Responsável técnico presente. ART assinada, execução supervisionada do início ao fim.</p>
           </div>
           <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 3</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do terceiro diferencial da empresa.</p>
+            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Prazo real</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Cronograma combinado e cumprido. A entrega na data marcada é parte do contrato.</p>
           </div>
           <div class="border-l border-gold pl-4">
-            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 4</h4>
-            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do quarto diferencial da empresa.</p>
+            <h4 class="text-[15px] font-semibold text-cream tracking-[.02em]">Respaldo jurídico</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Documentação completa, CREA e ART em todas as etapas — segurança para você e para o imóvel.</p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════
      SERVIÇOS
-     ============================================================ -->
+════════════════════════════════════════════ -->
 <section id="servicos" class="py-36 bg-g700">
-  <div class="max-w-site mx-auto px-10">
+  <div class="max-w-site mx-auto px-6 md:px-10">
 
-    <!-- Section header -->
-    <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 mb-16 items-end">
+    <!-- Header -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 items-end">
       <div>
         <span class="eyebrow">O que fazemos</span>
-        <hr class="gold-rule" />
-        <!-- [EDITAR] Headline da seção Serviços -->
-        <h2 class="font-serif font-normal text-cream"
-            style="font-size: clamp(40px,5vw,68px); line-height:1.02">
-          Clique para editar o<br>
-          <em class="text-gold-soft not-italic">título dos serviços</em>.
+        <hr class="gold-rule"/>
+        <h2 class="font-serif font-normal text-cream" style="font-size:clamp(40px,5vw,68px);line-height:1.02">
+          Do projeto<br>
+          <em class="text-gold-soft not-italic">à entrega das chaves</em>.
         </h2>
       </div>
-      <!-- [EDITAR] Texto introdutório dos serviços -->
-      <p class="text-[17px] leading-[1.7] text-cream-dim md:justify-self-end">
-        Clique para editar o texto introdutório da seção de serviços. Descreva brevemente os serviços oferecidos e o compromisso da empresa com qualidade e prazo.
+      <p class="text-[17px] leading-[1.7] text-cream-dim md:self-end">
+        Construção, reforma e engenharia técnica — com responsável presente em cada etapa, orçamento fechado e ART garantida.
       </p>
     </div>
 
-    <!-- ── Serviço 1 ── -->
-    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16
-                    border-b border-white/5">
+    <!-- ── Serviço 1: Construção Residencial ── -->
+    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16 border-b border-white/5">
       <div>
-        <div class="flex items-baseline gap-5 mb-4 flex-wrap">
-          <span class="font-mono text-[13px] text-gold tracking-[0.15em]">01 /</span>
-          <!-- [EDITAR] Sub-label do serviço 1 -->
-          <span class="font-mono text-[11px] text-cream-dim tracking-[0.2em] uppercase">Sub-label do serviço 1</span>
+        <div class="flex items-baseline gap-4 mb-5 flex-wrap">
+          <span class="font-mono text-[13px] text-gold tracking-[.15em]">01 /</span>
+          <span class="font-mono text-[11px] text-cream-dim tracking-[.2em] uppercase">Do alicerce à chave na mão</span>
         </div>
-        <!-- [EDITAR] Nome do serviço 1 -->
-        <h3 class="font-serif font-normal text-cream mb-6"
-            style="font-size: clamp(40px,4.5vw,64px); line-height:1">
-          Nome do Serviço 1
-        </h3>
-        <!-- [EDITAR] Descrição do serviço 1 -->
-        <p class="text-[16px] leading-[1.7] text-cream-dim max-w-[480px]">
-          Clique para editar a descrição do Serviço 1. Explique o que está incluído, como funciona o processo e o diferencial desta oferta.
+        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(36px,4.5vw,58px);line-height:1.05">Construção<br>Residencial</h3>
+        <p class="text-[16px] leading-[1.75] text-cream-dim max-w-[480px] mb-8">
+          Projetos residenciais completos, do zero até a entrega — com engenheiro responsável acompanhando cada etapa, documentação em dia e padrão de qualidade definido antes da primeira pedra.
         </p>
-        <!-- [EDITAR] Pontos do serviço 1 -->
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-8 list-none p-0">
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 1 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 2 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 3 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 4 do serviço</li>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mb-9 list-none p-0">
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Projeto + Execução completa</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>MCMV & Financiamento</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Engenheiro responsável in loco</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>ART & Documentação legal</li>
         </ul>
-        <a href="#contato" class="btn mt-9">Falar sobre este serviço <span class="arrow">→</span></a>
+        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20constru%C3%A7%C3%A3o%20residencial." target="_blank" rel="noopener" class="btn">Quero construir minha casa <span class="arrow">→</span></a>
       </div>
-      <!-- [EDITAR] Substitua pelo <img> do serviço 1 -->
-      <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/3">
-        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)"></div>
-        <div class="absolute top-3 left-3 flex items-center gap-2">
-          <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto do Serviço 1</span>
-        </div>
-        <div class="absolute bottom-3.5 left-3.5 right-3.5 flex justify-between items-end">
-          <span class="font-mono text-[11px] text-cream-dim">legenda do serviço 1</span>
-          <span class="font-mono text-[10px] text-gold opacity-70">4/3</span>
-        </div>
+      <div class="relative w-full border border-gold/20 overflow-hidden stripe-bg" style="aspect-ratio:4/3;background:#0e2a23">
+        <!-- SUBSTITUA POR: <img src="assets/servico-construcao.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
+        <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">assets/servico-construcao.jpg</span></div>
       </div>
     </article>
 
-    <!-- ── Serviço 2 ── -->
-    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16
-                    border-b border-white/5">
-      <!-- Imagem vem antes do texto no layout (reversed) -->
-      <!-- [EDITAR] Substitua pelo <img> do serviço 2 -->
-      <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg order-last md:order-first"
-           style="aspect-ratio:4/3; background: linear-gradient(135deg,#1c463a,#0e2a23)">
-        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)"></div>
-        <div class="absolute top-3 left-3 flex items-center gap-2">
-          <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto do Serviço 2</span>
-        </div>
-        <div class="absolute bottom-3.5 left-3.5 right-3.5 flex justify-between items-end">
-          <span class="font-mono text-[11px] text-cream-dim">legenda do serviço 2</span>
-          <span class="font-mono text-[10px] text-gold opacity-70">4/3</span>
-        </div>
+    <!-- ── Serviço 2: Reformas ── -->
+    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16 border-b border-white/5">
+      <div class="relative w-full border border-gold/20 overflow-hidden order-last md:order-first" style="aspect-ratio:4/3;background:linear-gradient(135deg,#1c463a,#0e2a23)">
+        <!-- SUBSTITUA POR: <img src="assets/servico-reforma.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
+        <div class="absolute inset-0 stripe-bg"></div>
+        <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">assets/servico-reforma.jpg</span></div>
       </div>
       <div>
-        <div class="flex items-baseline gap-5 mb-4 flex-wrap">
-          <span class="font-mono text-[13px] text-gold tracking-[0.15em]">02 /</span>
-          <!-- [EDITAR] Sub-label do serviço 2 -->
-          <span class="font-mono text-[11px] text-cream-dim tracking-[0.2em] uppercase">Sub-label do serviço 2</span>
+        <div class="flex items-baseline gap-4 mb-5 flex-wrap">
+          <span class="font-mono text-[13px] text-gold tracking-[.15em]">02 /</span>
+          <span class="font-mono text-[11px] text-cream-dim tracking-[.2em] uppercase">Com ART e orçamento fechado</span>
         </div>
-        <!-- [EDITAR] Nome do serviço 2 -->
-        <h3 class="font-serif font-normal text-cream mb-6"
-            style="font-size: clamp(40px,4.5vw,64px); line-height:1">
-          Nome do Serviço 2
-        </h3>
-        <!-- [EDITAR] Descrição do serviço 2 -->
-        <p class="text-[16px] leading-[1.7] text-cream-dim max-w-[480px]">
-          Clique para editar a descrição do Serviço 2. Explique o que está incluído, como funciona o processo e o diferencial desta oferta.
+        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(36px,4.5vw,58px);line-height:1.05">Reformas com<br>qualidade</h3>
+        <p class="text-[16px] leading-[1.75] text-cream-dim max-w-[480px] mb-8">
+          Engenheiro, ART e orçamento fechado — sem surpresa no meio da obra. Do banheiro ao telhado, cada serviço executado com técnica, prazo e acabamento que valorizam o imóvel.
         </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-8 list-none p-0">
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 1 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 2 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 3 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 4 do serviço</li>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mb-9 list-none p-0">
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Banheiro e fachada</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Telhado e estrutura</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Hidráulica e elétrica</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Alvenaria e acabamentos</li>
         </ul>
-        <a href="#contato" class="btn mt-9">Falar sobre este serviço <span class="arrow">→</span></a>
+        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20quero%20fazer%20uma%20reforma." target="_blank" rel="noopener" class="btn">Quero reformar meu imóvel <span class="arrow">→</span></a>
       </div>
     </article>
 
-    <!-- ── Serviço 3 ── -->
-    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16">
+    <!-- ── Serviço 3: MCMV ── -->
+    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16 border-b border-white/5">
       <div>
-        <div class="flex items-baseline gap-5 mb-4 flex-wrap">
-          <span class="font-mono text-[13px] text-gold tracking-[0.15em]">03 /</span>
-          <!-- [EDITAR] Sub-label do serviço 3 -->
-          <span class="font-mono text-[11px] text-cream-dim tracking-[0.2em] uppercase">Sub-label do serviço 3</span>
+        <div class="flex items-baseline gap-4 mb-5 flex-wrap">
+          <span class="font-mono text-[13px] text-gold tracking-[.15em]">03 /</span>
+          <span class="font-mono text-[11px] text-cream-dim tracking-[.2em] uppercase">Programa habitacional federal</span>
         </div>
-        <!-- [EDITAR] Nome do serviço 3 -->
-        <h3 class="font-serif font-normal text-cream mb-6"
-            style="font-size: clamp(40px,4.5vw,64px); line-height:1">
-          Nome do Serviço 3
-        </h3>
-        <!-- [EDITAR] Descrição do serviço 3 -->
-        <p class="text-[16px] leading-[1.7] text-cream-dim max-w-[480px]">
-          Clique para editar a descrição do Serviço 3. Explique o que está incluído, como funciona o processo e o diferencial desta oferta.
+        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(36px,4.5vw,58px);line-height:1.05">Minha Casa<br>Minha Vida</h3>
+        <p class="text-[16px] leading-[1.75] text-cream-dim max-w-[480px] mb-8">
+          Sua casa própria está mais perto do que você imagina. Cuidamos de todo o processo — do perfil ao cadastro, da documentação à entrega das chaves — com subsídio do governo e taxas que o mercado não oferece.
         </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-8 list-none p-0">
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 1 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 2 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 3 do serviço</li>
-          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 4 do serviço</li>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mb-3 list-none p-0">
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Perfil verificado sem custo</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Juros muito abaixo do mercado</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Subsídio direto do governo</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span>Todo o processo acompanhado</li>
         </ul>
-        <a href="#contato" class="btn mt-9">Falar sobre este serviço <span class="arrow">→</span></a>
+        <p class="font-mono text-[11px] text-gold/70 tracking-[.08em] mb-9">As condições mudam — consulte-nos hoje.</p>
+        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20Minha%20Casa%20Minha%20Vida." target="_blank" rel="noopener" class="btn">Quero minha casa própria <span class="arrow">→</span></a>
       </div>
-      <!-- [EDITAR] Substitua pelo <img> do serviço 3 -->
-      <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/3">
-        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)"></div>
-        <div class="absolute top-3 left-3 flex items-center gap-2">
-          <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto do Serviço 3</span>
-        </div>
-        <div class="absolute bottom-3.5 left-3.5 right-3.5 flex justify-between items-end">
-          <span class="font-mono text-[11px] text-cream-dim">legenda do serviço 3</span>
-          <span class="font-mono text-[10px] text-gold opacity-70">4/3</span>
-        </div>
+      <div class="relative w-full border border-gold/20 overflow-hidden" style="aspect-ratio:4/3;background:linear-gradient(135deg,#061410,#0a1f1a)">
+        <!-- SUBSTITUA POR: <img src="assets/servico-mcmv.jpg" class="absolute inset-0 w-full h-full object-cover"> -->
+        <div class="absolute inset-0 stripe-bg"></div>
+        <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.10),transparent 60%)"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">assets/servico-mcmv.jpg</span></div>
       </div>
     </article>
+
+    <!-- ── Serviço 4: Engenharia / Projetos / Vistoria (grade compacta) ── -->
+    <div class="reveal pt-16">
+      <div class="mb-10">
+        <span class="eyebrow">Também fazemos</span>
+        <hr class="gold-rule"/>
+        <h3 class="font-serif font-normal text-cream" style="font-size:clamp(28px,3.5vw,44px);line-height:1.1">Engenharia técnica completa.</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gold/10">
+
+        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
+          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h4 class="font-semibold text-[15px] text-cream mb-2">ART & Laudos Técnicos</h4>
+          <p class="text-[13px] leading-[1.6] text-cream-dim">ART em todas as obras, laudos de vistoria para compra, venda, seguro e ações judiciais.</p>
+        </div>
+
+        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
+          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h4 class="font-semibold text-[15px] text-cream mb-2">Plantas & Regularização</h4>
+          <p class="text-[13px] leading-[1.6] text-cream-dim">Usucapião, desmembramento, regularização urbana e aprovação na prefeitura com documentação completa.</p>
+        </div>
+
+        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
+          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h4 class="font-semibold text-[15px] text-cream mb-2">Vistoria Imobiliária</h4>
+          <p class="text-[13px] leading-[1.6] text-cream-dim">Laudos de entrada/saída, cautelar de vizinhança e vícios construtivos — com fotos, vídeo e ART.</p>
+        </div>
+
+        <div class="bg-g700 p-7 hover:bg-g600 transition-colors group">
+          <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-5 group-hover:border-gold transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b48a4a" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4 class="font-semibold text-[15px] text-cream mb-2">Bombeiro & PPCI</h4>
+          <p class="text-[13px] leading-[1.6] text-cream-dim">Projeto, execução e AVCB — segurança contra incêndio em conformidade com o Corpo de Bombeiros.</p>
+        </div>
+
+      </div>
+      <div class="mt-8 flex justify-end">
+        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" class="btn">Tenho dúvidas, quero conversar <span class="arrow">→</span></a>
+      </div>
+    </div>
 
   </div>
 </section>
 
 
-<!-- ============================================================
-     OBRAS (PORTFÓLIO)
-     ============================================================ -->
+<!-- ═══════════════════════════════════════════
+     OBRAS
+════════════════════════════════════════════ -->
 <section id="obras" class="py-36 bg-g800 border-t border-white/5">
-  <div class="max-w-site mx-auto px-10">
+  <div class="max-w-site mx-auto px-6 md:px-10">
 
-    <!-- Header + Filters -->
+    <!-- Header -->
     <div class="reveal flex flex-wrap justify-between items-end gap-10 mb-16">
       <div>
-        <span class="eyebrow">Obras realizadas</span>
-        <hr class="gold-rule" />
-        <!-- [EDITAR] Headline da seção Obras -->
-        <h2 class="font-serif font-normal text-cream"
-            style="font-size: clamp(40px,5vw,68px); line-height:1.02">
-          Cada obra,<br>
-          uma <em class="text-gold-soft not-italic">história</em>.
+        <span class="eyebrow">Portfólio</span>
+        <hr class="gold-rule"/>
+        <h2 class="font-serif font-normal text-cream" style="font-size:clamp(40px,5vw,68px);line-height:1.02">
+          Cada obra,<br>uma <em class="text-gold-soft not-italic">história</em>.
         </h2>
       </div>
-
-      <!-- Category filters -->
       <div class="flex gap-1 border border-gold/25 p-1 flex-wrap">
-        <!-- [EDITAR] Ajuste os filtros para as categorias reais das obras -->
-        <button class="filter-btn active font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors" data-filter="all">Todas</button>
-        <button class="filter-btn font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors hover:bg-gold/10" data-filter="construcao">Construção</button>
-        <button class="filter-btn font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors hover:bg-gold/10" data-filter="reforma">Reforma</button>
-        <button class="filter-btn font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors hover:bg-gold/10" data-filter="outro">Outra Categoria</button>
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="construcao">Construção</button>
+        <button class="filter-btn" data-filter="reforma">Reforma</button>
+        <button class="filter-btn" data-filter="mcmv">MCMV</button>
       </div>
     </div>
 
-    <!-- Portfolio Grid (6 placeholders) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- GRADE DE OBRAS — gerada via JavaScript a partir da pasta obras/ -->
+    <div id="obras-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- As obras são carregadas pelo script abaixo.
+           Para adicionar uma obra, crie um arquivo obras/dados.json
+           e adicione as fotos na pasta obras/
+           Exemplo de dados.json está descrito no README -->
+    </div>
 
-      <!-- [EDITAR] Repita este bloco para cada obra. Troque data-category pelo filtro correto.
-           Para adicionar foto: substitua o <div class="portfolio-placeholder..."> por <img src="foto.jpg" class="w-full h-full object-cover"> -->
+    <!-- Mensagem enquanto carrega / fallback -->
+    <div id="obras-empty" class="text-center py-20 hidden">
+      <p class="font-mono text-[12px] text-gold/60 tracking-[.2em] uppercase mb-4">Em breve</p>
+      <p class="font-serif text-[28px] text-cream-dim">As obras serão publicadas em breve.</p>
+    </div>
 
-      <!-- Obra 1 -->
-      <div class="portfolio-item reveal group cursor-pointer" data-category="construcao">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:3/4">
-          <div class="absolute inset-0 stripe-bg bg-g700"></div>
-          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 1</span>
-          </div>
-          <!-- Hover overlay -->
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
-          </div>
+    <!-- Placeholder visual enquanto não há fotos ainda -->
+    <div id="obras-placeholder" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="obra-item reveal group cursor-pointer" data-category="construcao">
+        <div class="relative overflow-hidden border border-gold/20 stripe-bg" style="aspect-ratio:4/3;background:#0e2a23">
+          <div class="absolute inset-0" style="background:radial-gradient(circle at 30% 30%,rgba(180,138,74,.08),transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">obras/foto-01.jpg</span></div>
+          <div class="obra-overlay absolute inset-0 flex items-end p-6" style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))"><span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span></div>
         </div>
         <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <!-- [EDITAR] Tipo da obra 1 -->
-            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 1</p>
-            <!-- [EDITAR] Nome da obra 1 -->
-            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 1</h4>
-            <!-- [EDITAR] Cidade e metragem -->
-            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
-          </div>
-          <!-- [EDITAR] Ano da obra 1 -->
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+          <div><p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">Construção</p><h4 class="font-serif text-[22px] text-cream font-medium">Nome da Obra</h4><p class="font-mono text-[11px] text-cream-dim mt-1">Jacareí · SP</p></div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">2025</span>
         </div>
       </div>
-
-      <!-- Obra 2 -->
-      <div class="portfolio-item reveal group cursor-pointer" data-category="reforma" data-delay="100">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#1c463a,#0e2a23)">
+      <div class="obra-item reveal group cursor-pointer" data-category="reforma" data-delay="100">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:3/4;background:linear-gradient(135deg,#1c463a,#0e2a23)">
           <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 2</span>
-          </div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
-          </div>
+          <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">obras/foto-02.jpg</span></div>
+          <div class="obra-overlay absolute inset-0 flex items-end p-6" style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))"><span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span></div>
         </div>
         <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 2</p>
-            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 2</h4>
-            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
-          </div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+          <div><p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">Reforma</p><h4 class="font-serif text-[22px] text-cream font-medium">Nome da Obra</h4><p class="font-mono text-[11px] text-cream-dim mt-1">São José dos Campos · SP</p></div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">2025</span>
         </div>
       </div>
-
-      <!-- Obra 3 -->
-      <div class="portfolio-item reveal group cursor-pointer" data-category="outro" data-delay="200">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#061410,#0a1f1a)">
+      <div class="obra-item reveal group cursor-pointer" data-category="mcmv" data-delay="200">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3;background:linear-gradient(135deg,#061410,#0a1f1a)">
           <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 3</span>
-          </div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
-          </div>
+          <div class="absolute top-3 left-3 flex items-center gap-2"><div class="w-1.5 h-1.5 border border-gold rotate-45"></div><span class="font-mono text-[10px] text-gold tracking-[.2em] uppercase">obras/foto-03.jpg</span></div>
+          <div class="obra-overlay absolute inset-0 flex items-end p-6" style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))"><span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span></div>
         </div>
         <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 3</p>
-            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 3</h4>
-            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
-          </div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+          <div><p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">MCMV</p><h4 class="font-serif text-[22px] text-cream font-medium">Nome da Obra</h4><p class="font-mono text-[11't] text-cream-dim mt-1">Vale do Paraíba · SP</p></div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">2024</span>
         </div>
       </div>
+    </div>
 
-      <!-- Obra 4 -->
-      <div class="portfolio-item reveal group cursor-pointer" data-category="construcao" data-delay="100">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:3/4; background: linear-gradient(135deg,#0e2a23,#14352c)">
-          <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 4</span>
-          </div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
-          </div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 4</p>
-            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 4</h4>
-            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
-          </div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
-        </div>
-      </div>
-
-      <!-- Obra 5 -->
-      <div class="portfolio-item reveal group cursor-pointer" data-category="construcao" data-delay="200">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#1c463a,#0e2a23)">
-          <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 5</span>
-          </div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
-          </div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 5</p>
-            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 5</h4>
-            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
-          </div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
-        </div>
-      </div>
-
-      <!-- Obra 6 -->
-      <div class="portfolio-item reveal group cursor-pointer" data-category="reforma" data-delay="300">
-        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#061410,#0a1f1a)">
-          <div class="absolute inset-0 stripe-bg"></div>
-          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
-          <div class="absolute top-3 left-3 flex items-center gap-2">
-            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 6</span>
-          </div>
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
-               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
-            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
-          </div>
-        </div>
-        <div class="pt-4 flex justify-between items-start gap-4">
-          <div>
-            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 6</p>
-            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 6</h4>
-            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
-          </div>
-          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
-        </div>
-      </div>
-
-    </div><!-- /portfolio grid -->
   </div>
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════
      CONTATO
-     ============================================================ -->
+════════════════════════════════════════════ -->
 <section id="contato" class="relative bg-g900 py-40 overflow-hidden">
-
-  <!-- Decorative concentric circles -->
-  <svg class="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] opacity-[0.07] pointer-events-none"
-       viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <svg class="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] opacity-[0.06] pointer-events-none" viewBox="0 0 600 600">
     <circle cx="300" cy="300" r="280" fill="none" stroke="#b48a4a" stroke-width="1"/>
-    <circle cx="300" cy="300" r="240" fill="none" stroke="#b48a4a" stroke-width="1"/>
-    <circle cx="300" cy="300" r="200" fill="none" stroke="#b48a4a" stroke-width="1"/>
-    <circle cx="300" cy="300" r="160" fill="none" stroke="#b48a4a" stroke-width="1"/>
+    <circle cx="300" cy="300" r="230" fill="none" stroke="#b48a4a" stroke-width="1"/>
+    <circle cx="300" cy="300" r="180" fill="none" stroke="#b48a4a" stroke-width="1"/>
   </svg>
 
-  <div class="relative z-10 max-w-site mx-auto px-10">
-    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-20 items-center">
+  <div class="relative z-10 max-w-site mx-auto px-6 md:px-10">
 
-      <!-- Left: headline + CTA -->
+    <!-- Topo: headline + contatos diretos -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-16 md:gap-20 items-start mb-20">
+
       <div>
         <span class="eyebrow">Vamos conversar</span>
-        <hr class="gold-rule" />
-
-        <!-- [EDITAR] Headline da seção Contato -->
-        <h2 class="font-serif font-normal text-cream mb-8"
-            style="font-size: clamp(44px,5.5vw,80px); line-height:1.0">
-          Clique para editar<br>
-          <em class="text-gold-soft not-italic">o título</em> do contato<br>
-          aqui.
+        <hr class="gold-rule"/>
+        <h2 class="font-serif font-normal text-cream mb-7" style="font-size:clamp(44px,5.5vw,80px);line-height:1.0">
+          Fale com<br>
+          <em class="text-gold-soft not-italic">a gente</em>.
         </h2>
-
-        <!-- [EDITAR] Texto introdutório do contato -->
-        <p class="text-[17px] leading-[1.7] text-cream-dim max-w-[520px]">
-          Clique para editar o texto de chamada para ação do contato. Incentive o visitante a enviar uma mensagem ou ligar, e informe o tempo de resposta esperado.
+        <p class="text-[17px] leading-[1.75] text-cream-dim max-w-[520px] mb-11">
+          Estamos prontos para ouvir seu projeto e encontrar o melhor caminho para você. Atendimento direto, sem burocracia — resposta rápida no mesmo dia.
         </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 mt-11 flex-wrap">
-          <!-- [EDITAR] Link do WhatsApp — substitua XXXXXXXXXXX pelo número real (somente dígitos, com DDI) -->
-          <a href="https://wa.me/XXXXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-             target="_blank" rel="noopener"
-             class="btn btn-solid">
-            <!-- WhatsApp icon -->
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-            </svg>
-            <!-- [EDITAR] Texto do botão WhatsApp -->
+        <div class="flex flex-col sm:flex-row gap-4 flex-wrap">
+          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-solid">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
             Chamar no WhatsApp
           </a>
-          <!-- [EDITAR] Substitua XXXXXXXXXXX pelo número com DDI -->
-          <a href="tel:+XXXXXXXXXXX" class="btn">
-            Ligar agora <span class="arrow">→</span>
-          </a>
+          <a href="mailto:froisxavier@gmail.com" class="btn">Enviar e-mail <span class="arrow">→</span></a>
         </div>
       </div>
 
-      <!-- Right: contact info -->
-      <div class="border-t md:border-t-0 md:border-l border-gold/25 pt-10 md:pt-0 md:pl-10">
-        <div class="grid gap-7">
+      <!-- Equipe + dados -->
+      <div class="border-t md:border-t-0 md:border-l border-gold/25 pt-10 md:pt-2 md:pl-10 flex flex-col gap-8">
 
-          <!-- WhatsApp -->
-          <div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">WhatsApp</span>
-            <!-- [EDITAR] Seu número de WhatsApp -->
-            <p class="text-[20px] font-medium text-cream mt-2 mb-1">Seu Telefone aqui</p>
-            <!-- [EDITAR] Tempo de resposta -->
-            <p class="text-[13px] text-cream-dim">Clique para editar o tempo de resposta</p>
-          </div>
-
-          <!-- E-mail -->
-          <div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">E-mail</span>
-            <!-- [EDITAR] Seu e-mail de contato -->
-            <p class="text-[20px] font-medium text-cream mt-2 mb-1">seuemail@dominio.com.br</p>
-            <!-- [EDITAR] Quando usar o e-mail -->
-            <p class="text-[13px] text-cream-dim">Clique para editar a descrição do e-mail</p>
-          </div>
-
-          <!-- Atendimento -->
-          <div>
-            <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">Atendimento</span>
-            <!-- [EDITAR] Cidade e região de atuação -->
-            <p class="text-[20px] font-medium text-cream mt-2 mb-1">Sua Cidade · UF</p>
-            <!-- [EDITAR] Cobertura de atendimento -->
-            <p class="text-[13px] text-cream-dim">Clique para editar a área de atendimento</p>
-          </div>
-
+        <div>
+          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Pedro Frois</span>
+          <p class="text-[13px] text-cream-dim mt-0.5 mb-2">Gestão de Obras & Processos</p>
+          <a href="tel:+5512988667973" class="text-[20px] font-medium text-cream hover:text-gold-soft transition-colors block">(12) 98866-7973</a>
         </div>
+
+        <div>
+          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Andrei Xavier</span>
+          <p class="text-[13px] text-cream-dim mt-0.5 mb-2">Engenharia & Execução</p>
+          <a href="tel:+5512996599313" class="text-[20px] font-medium text-cream hover:text-gold-soft transition-colors block">(12) 99659-9313</a>
+        </div>
+
+        <div>
+          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">E-mail</span>
+          <a href="mailto:froisxavier@gmail.com" class="text-[18px] font-medium text-cream hover:text-gold-soft transition-colors block mt-2">froisxavier@gmail.com</a>
+        </div>
+
+        <div>
+          <span class="font-mono text-[10px] text-gold tracking-[.22em] uppercase">Instagram</span>
+          <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="text-[18px] font-medium text-cream hover:text-gold-soft transition-colors block mt-2">@froisxavier</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mapa + Endereço -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 items-start border-t border-gold/15 pt-16">
+
+      <!-- Endereço -->
+      <div>
+        <span class="eyebrow mb-4 block">Onde nos encontrar</span>
+        <h3 class="font-serif font-normal text-cream mb-6" style="font-size:clamp(28px,3.2vw,42px);line-height:1.1">
+          Jacareí e toda a região do<br>
+          <em class="text-gold-soft not-italic">Vale do Paraíba</em>.
+        </h3>
+        <div class="space-y-4">
+          <div class="flex gap-3 items-start">
+            <svg class="w-4 h-4 text-gold mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            <div>
+              <p class="text-[16px] text-cream leading-[1.6]">R. Cap. João José de Macedo, 237<br>Sala 1 · Centro · Jacareí – SP<br>CEP 12327-030</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <svg class="w-4 h-4 text-gold mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+            <a href="https://froisxavier.com.br" class="text-[16px] text-cream hover:text-gold-soft transition-colors">www.froisxavier.com.br</a>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=R.+Cap.+João+José+de+Macedo,+237,+Jacareí+SP" target="_blank" rel="noopener" class="btn mt-8">
+          Abrir no Google Maps <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Google Maps embed -->
+      <div class="relative border border-gold/20 overflow-hidden" style="aspect-ratio:16/10;min-height:300px">
+        <iframe
+          class="map-frame absolute inset-0 w-full h-full"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.88!2d-45.9661!3d-23.3055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4a3f8b1b1b1b%3A0x0!2sR.+Cap.+Jo%C3%A3o+Jos%C3%A9+de+Macedo%2C+237%2C+Jacareí+-+SP!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr"
+          style="border:0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização Frois Xavier Construtora">
+        </iframe>
+        <!-- Overlay dourado nas bordas -->
+        <div class="absolute top-0 left-0 w-10 h-10 border-t border-l border-gold pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-10 h-10 border-b border-r border-gold pointer-events-none"></div>
       </div>
 
     </div>
@@ -908,130 +652,145 @@
 </section>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════
      RODAPÉ
-     ============================================================ -->
-<footer class="bg-g900 border-t border-gold/25 pt-16 pb-10">
-  <div class="max-w-site mx-auto px-10">
+════════════════════════════════════════════ -->
+<footer class="bg-g900 border-t border-gold/20 pt-14 pb-10">
+  <div class="max-w-site mx-auto px-6 md:px-10">
     <div class="flex flex-wrap justify-between items-center gap-6">
-
-      <!-- Brand -->
-      <div class="flex items-center gap-4">
-        <!-- [EDITAR] Substitua pelo <img src="logo.png"> -->
-        <div class="w-9 h-9 border border-gold/40 flex items-center justify-center flex-shrink-0">
-          <span class="font-mono text-[9px] text-gold tracking-widest">FX</span>
-        </div>
-        <div class="leading-[1.1]">
-          <!-- [EDITAR] Nome da empresa no rodapé -->
-          <div class="text-[13px] tracking-[0.18em] font-semibold">FROIS XAVIER</div>
-          <div class="font-mono text-[9px] tracking-[0.3em] text-gold">CONSTRUTORA</div>
-        </div>
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Frois Xavier" class="h-10 w-auto object-contain opacity-90"/>
       </div>
-
-      <!-- Copyright -->
-      <!-- [EDITAR] Ajuste o ano e os dados jurídicos (CNPJ, CREA) -->
-      <p class="font-mono text-[11px] text-cream-dim tracking-[0.1em] text-center order-last w-full md:w-auto md:order-none">
-        © 2025 Frois Xavier Construtora · CNPJ XX.XXX.XXX/0001-XX · CREA-UF XXXXXX
+      <p class="font-mono text-[11px] text-cream-dim tracking-[.1em] text-center order-last w-full md:w-auto md:order-none">
+        © 2025 Frois Xavier Construtora · froisxavier@gmail.com
       </p>
-
-      <!-- Nav links -->
       <div class="flex flex-wrap gap-5">
-        <a href="#sobre"    class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Sobre</a>
-        <a href="#servicos" class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Serviços</a>
-        <a href="#obras"    class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Obras</a>
-        <a href="#contato"  class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Contato</a>
+        <a href="#sobre"    class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Sobre</a>
+        <a href="#servicos" class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Serviços</a>
+        <a href="#obras"    class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Obras</a>
+        <a href="#contato"  class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Contato</a>
+        <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="font-mono text-[11px] tracking-[.15em] text-cream-dim uppercase hover:text-gold transition-colors">Instagram</a>
       </div>
-
     </div>
   </div>
 </footer>
 
 
-<!-- ============================================================
-     BOTÃO FLUTUANTE WHATSAPP
-     ============================================================ -->
-<!-- [EDITAR] Substitua XXXXXXXXXXX pelo número real com DDI -->
-<a href="https://wa.me/XXXXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-   target="_blank" rel="noopener"
-   aria-label="Falar no WhatsApp"
-   class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gold text-g800
-          flex items-center justify-center
-          shadow-[0_10px_30px_rgba(0,0,0,0.5)]
-          hover:bg-gold-pale hover:scale-105 transition-all duration-200">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-  </svg>
+<!-- Botão WhatsApp flutuante -->
+<a href="https://wa.me/5512988667973?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+   target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
+   class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gold text-g800 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:bg-gold-pale hover:scale-105 transition-all duration-200">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
 </a>
 
 
-<!-- ============================================================
+<!-- ═══════════════════════════════════════════
      JAVASCRIPT
-     ============================================================ -->
+════════════════════════════════════════════ -->
 <script>
-  /* ── Nav scroll ── */
-  const nav = document.getElementById('site-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
+/* ── Nav scroll ── */
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
 
-  /* ── Mobile drawer ── */
-  const hamburger = document.getElementById('hamburger');
-  const drawer    = document.getElementById('mobile-drawer');
+/* ── Mobile drawer ── */
+const hamburger = document.getElementById('hamburger');
+const drawer    = document.getElementById('mobile-drawer');
+const closeDrawer = () => {
+  drawer.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+};
+hamburger.addEventListener('click', () => {
+  const open = drawer.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
 
-  hamburger.addEventListener('click', () => {
-    const open = drawer.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    setTimeout(() => el.classList.add('visible'), parseInt(el.dataset.delay||0));
+    obs.unobserve(el);
   });
+}, { threshold: 0.10 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  drawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+/* ── Portfolio filter ── */
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.filter;
+    document.querySelectorAll('.obra-item').forEach(item => {
+      item.style.display = (cat === 'all' || item.dataset.category === cat) ? '' : 'none';
     });
   });
+});
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) {
-      drawer.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-  });
+/* ── Carregamento dinâmico de obras (obras/dados.json) ──
+   Quando você criar o arquivo obras/dados.json, as obras
+   aparecerão automaticamente no grid.
+   Enquanto não existir, os placeholders ficam visíveis.
+*/
+async function carregarObras() {
+  try {
+    const res = await fetch('obras/dados.json');
+    if (!res.ok) return; // sem arquivo → mantém placeholders
+    const obras = await res.json();
+    if (!obras || obras.length === 0) return;
 
-  /* ── Scroll reveal ── */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el    = entry.target;
-      const delay = parseInt(el.dataset.delay || '0', 10);
-      setTimeout(() => el.classList.add('visible'), delay);
-      observer.unobserve(el);
+    const grid = document.getElementById('obras-grid');
+    const placeholder = document.getElementById('obras-placeholder');
+    placeholder.style.display = 'none';
+    grid.innerHTML = '';
+
+    obras.forEach((obra, i) => {
+      const delay = [0,100,200][i % 3];
+      const ratios = ['4/3','3/4','4/3'];
+      const ratio  = obra.ratio || ratios[i % 3];
+
+      const div = document.createElement('div');
+      div.className = 'obra-item reveal group cursor-pointer';
+      div.dataset.category = obra.categoria || 'construcao';
+      div.dataset.delay = delay;
+
+      div.innerHTML = `
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:${ratio}">
+          <img src="obras/${obra.foto}"
+               alt="${obra.nome}"
+               class="absolute inset-0 w-full h-full object-cover"
+               loading="lazy" />
+          <div class="obra-overlay absolute inset-0 flex items-end p-6"
+               style="background:linear-gradient(180deg,transparent 40%,rgba(6,20,16,.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <p class="font-mono text-[10px] text-gold tracking-[.2em] uppercase mb-1">${obra.tipo}</p>
+            <h4 class="font-serif text-[22px] text-cream font-medium">${obra.nome}</h4>
+            <p class="font-mono text-[11px] text-cream-dim mt-1">${obra.cidade} · ${obra.tamanho || ''}</p>
+          </div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">${obra.ano}</span>
+        </div>`;
+
+      grid.appendChild(div);
+      // reobserve para reveal
+      setTimeout(() => obs.observe(div), 50);
     });
-  }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  /* ── Portfolio filter ── */
-  const filterBtns     = document.querySelectorAll('.filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const cat = btn.dataset.filter;
-      portfolioItems.forEach(item => {
-        const show = cat === 'all' || item.dataset.category === cat;
-        item.style.display = show ? '' : 'none';
-      });
-    });
-  });
+  } catch(e) {
+    // arquivo não existe ou erro — placeholders continuam visíveis
+  }
+}
+carregarObras();
 </script>
 
 </body>
