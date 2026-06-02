@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frois Xavier Construtora</title>
+  <meta name="description" content="[EDITAR: descrição da empresa para SEO]" />
+  <link rel="canonical" href="https://froisxavier.com.br/" />
+
+  <!-- Tailwind CSS (CDN — troque pela build local antes do deploy em produção) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Config + Custom tokens -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'g900': '#061410',
+            'g800': '#0a1f1a',
+            'g700': '#0e2a23',
+            'g600': '#14352c',
+            'g500': '#1c463a',
+            'gold':      '#b48a4a',
+            'gold-soft': '#c9a25e',
+            'gold-pale': '#d8b97e',
+            'cream':     '#f0e9da',
+            'cream-dim': '#c9c0aa',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:  ['Manrope', 'system-ui', 'sans-serif'],
+            mono:  ['"JetBrains Mono"', 'monospace'],
+          },
+          maxWidth: { site: '1320px' },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ── */
+    body {
+      background-color: #0e2a23;
+      color: #f0e9da;
+      font-family: 'Manrope', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Subtle ambient glow on body */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(180,138,74,0.06), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(180,138,74,0.04), transparent 60%);
+      z-index: 0;
+    }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 900ms cubic-bezier(0.2,0.7,0.2,1),
+                  transform 900ms cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal[data-delay="100"] { transition-delay: 100ms; }
+    .reveal[data-delay="200"] { transition-delay: 200ms; }
+    .reveal[data-delay="300"] { transition-delay: 300ms; }
+    .reveal[data-delay="400"] { transition-delay: 400ms; }
+
+    /* ── Stripe pattern (placeholder backgrounds) ── */
+    .stripe-bg {
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(180,138,74,0.06) 0px 2px,
+        transparent 2px 20px
+      );
+    }
+
+    /* ── Gold divider line ── */
+    .gold-rule {
+      width: 64px;
+      height: 1px;
+      background: #b48a4a;
+      border: none;
+      margin: 20px 0 28px;
+    }
+
+    /* ── Eyebrow label ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #b48a4a;
+    }
+
+    /* ── Button base ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border: 1px solid #b48a4a;
+      background: transparent;
+      color: #f0e9da;
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 250ms, color 250ms;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover { background: #b48a4a; color: #0a1f1a; }
+    .btn-solid { background: #b48a4a; color: #0a1f1a; }
+    .btn-solid:hover { background: #d8b97e; border-color: #d8b97e; }
+    .btn .arrow { transition: transform 250ms; display: inline-block; }
+    .btn:hover .arrow { transform: translateX(4px); }
+
+    /* ── Nav scrolled state ── */
+    #site-nav.scrolled {
+      background: rgba(6,20,16,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(180,138,74,0.15);
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    /* ── Hamburger ── */
+    .hamburger span {
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: #f0e9da;
+      transition: transform 300ms, opacity 200ms;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); background: #b48a4a; }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); background: #b48a4a; }
+
+    /* ── Mobile drawer ── */
+    #mobile-drawer {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 350ms;
+    }
+    #mobile-drawer.open { opacity: 1; pointer-events: auto; }
+    #mobile-drawer .drawer-link {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 400ms, transform 400ms, border-color 200ms;
+    }
+    #mobile-drawer.open .drawer-link { opacity: 1; transform: translateY(0); }
+
+    /* ── Portfolio filter ── */
+    .filter-btn.active { background: #b48a4a; color: #0a1f1a; }
+
+    /* ── Diagonal SVG lines on hero ── */
+    .hero-diagonals { mix-blend-mode: screen; }
+
+    /* ── Selection colour ── */
+    ::selection { background: #b48a4a; color: #0a1f1a; }
+
+    /* ── Smooth hover on nav links ── */
+    .nav-link { transition: opacity 200ms; }
+    .nav-link:hover { opacity: 1 !important; }
+  </style>
+</head>
+
+<body class="relative">
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="site-nav"
+     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-[22px] px-10"
+     aria-label="Navegação principal">
+  <div class="max-w-site mx-auto flex items-center justify-between gap-6">
+
+    <!-- Brand -->
+    <a href="#topo" class="flex items-center gap-3 flex-shrink-0">
+      <!-- [EDITAR] Substitua o bloco abaixo pelo seu <img src="logo.png"> -->
+      <div class="w-11 h-11 border border-gold/40 flex items-center justify-center">
+        <span class="font-mono text-[10px] text-gold tracking-widest">FX</span>
+      </div>
+      <div class="leading-tight">
+        <span class="block text-[15px] tracking-[0.18em] font-semibold text-cream">
+          <!-- [EDITAR] Nome da empresa -->
+          FROIS XAVIER
+        </span>
+        <span class="font-mono text-[9px] tracking-[0.3em] text-gold">CONSTRUTORA</span>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-9">
+      <a href="#sobre"     class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Sobre</a>
+      <a href="#servicos"  class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Serviços</a>
+      <a href="#obras"     class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Obras</a>
+      <a href="#contato"   class="nav-link text-[13px] tracking-[0.12em] uppercase text-cream opacity-80">Contato</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <a href="#contato" class="btn btn-solid hidden md:inline-flex !py-[10px] !px-[18px] !text-[12px]">
+      <!-- [EDITAR] Texto do botão CTA -->
+      Solicitar Orçamento
+    </a>
+
+    <!-- Hamburger (mobile) -->
+    <button id="hamburger" aria-label="Abrir menu" aria-expanded="false"
+            class="hamburger md:hidden flex flex-col items-center justify-center gap-[5px]
+                   w-11 h-11 border border-gold/30 hover:border-gold transition-colors">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="mobile-drawer"
+     class="fixed inset-0 z-40 bg-g900 flex flex-col overflow-y-auto">
+  <!-- ambient glow -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background: radial-gradient(circle at 80% 0%, rgba(180,138,74,0.08), transparent 50%), radial-gradient(circle at 0% 100%, rgba(180,138,74,0.05), transparent 60%)">
+  </div>
+  <div class="relative flex-1 flex flex-col justify-between px-7 pt-28 pb-10 max-w-lg mx-auto w-full">
+    <nav class="flex flex-col">
+      <a href="#sobre"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:120ms">
+        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">01</span>
+        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Sobre</span>
+        <span class="ml-auto text-cream-dim text-lg">→</span>
+      </a>
+      <a href="#servicos" class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:180ms">
+        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">02</span>
+        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Serviços</span>
+        <span class="ml-auto text-cream-dim text-lg">→</span>
+      </a>
+      <a href="#obras"    class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:240ms">
+        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">03</span>
+        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Obras</span>
+        <span class="ml-auto text-cream-dim text-lg">→</span>
+      </a>
+      <a href="#contato"  class="drawer-link flex items-baseline gap-5 py-5 border-b border-white/8 hover:border-gold/40 transition-colors" style="transition-delay:300ms">
+        <span class="font-mono text-[11px] text-gold tracking-[0.2em]">04</span>
+        <span class="font-serif text-[clamp(28px,9vw,40px)] leading-none font-medium">Contato</span>
+        <span class="ml-auto text-cream-dim text-lg">→</span>
+      </a>
+    </nav>
+    <div class="pt-8 border-t border-gold/25 flex flex-col gap-5">
+      <a href="#contato" class="btn btn-solid w-full justify-center !py-4">
+        Solicitar orçamento
+      </a>
+      <div>
+        <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">Contato direto</span>
+        <!-- [EDITAR] Telefone -->
+        <p class="mt-2 text-base text-cream">Seu Telefone aqui</p>
+        <!-- [EDITAR] Cidade / região -->
+        <p class="mt-1 text-[13px] text-cream-dim">Sua Cidade · Estado</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HERO — INÍCIO
+     ============================================================ -->
+<section id="topo" class="relative bg-g900 pt-[120px] overflow-hidden">
+
+  <!-- Background radial glow -->
+  <div class="absolute inset-0 pointer-events-none"
+       style="background: radial-gradient(ellipse at 80% 20%, rgba(180,138,74,0.06), transparent 55%), radial-gradient(ellipse at 0% 80%, rgba(20,53,44,0.5), transparent 60%)">
+  </div>
+
+  <div class="relative z-10 max-w-site mx-auto px-10">
+
+    <!-- Eyebrow row -->
+    <div class="reveal flex items-center gap-4 mb-6 flex-wrap">
+      <!-- [EDITAR] Slogan curto ou categoria -->
+      <span class="eyebrow">Construtora · Eng. Civil</span>
+      <span class="w-7 h-px bg-gold block"></span>
+      <!-- [EDITAR] Credenciais / ano de fundação -->
+      <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em]">CREA · ART · Desde XXXX</span>
+    </div>
+
+    <!-- Hero image block -->
+    <div class="reveal relative w-full border border-gold/25 overflow-hidden"
+         style="aspect-ratio: 21/9;">
+      <!-- ── [EDITAR] Substitua este bloco pela tag <img> da foto principal ── -->
+      <div class="absolute inset-0 stripe-bg"></div>
+      <div class="absolute inset-0"
+           style="background: radial-gradient(ellipse at 65% 35%, rgba(180,138,74,0.22), transparent 55%), radial-gradient(ellipse at 15% 80%, rgba(180,138,74,0.10), transparent 50%)">
+      </div>
+      <!-- Placeholder label -->
+      <div class="absolute top-5 left-5 flex items-center gap-2 opacity-70">
+        <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+        <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">
+          Espaço para Foto Principal da Obra / Empresa
+        </span>
+      </div>
+      <!-- Bottom gradient overlay -->
+      <div class="absolute inset-0"
+           style="background: linear-gradient(180deg, transparent 50%, rgba(6,20,16,0.65) 100%)">
+      </div>
+      <!-- Architectural diagonal lines (decorative SVG) -->
+      <svg class="hero-diagonals absolute inset-0 w-full h-full opacity-30 pointer-events-none"
+           preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#b48a4a" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#b48a4a" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="20%" y1="100%" x2="38%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+        <line x1="35%" y1="100%" x2="53%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+        <line x1="50%" y1="100%" x2="68%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+        <line x1="65%" y1="100%" x2="83%" y2="0%" stroke="url(#gf)" stroke-width="1"/>
+      </svg>
+      <!-- Gold corner brackets -->
+      <div class="absolute top-0 left-0 w-14 h-14 border-t border-l border-gold pointer-events-none"></div>
+      <div class="absolute top-0 right-0 w-14 h-14 border-t border-r border-gold pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-14 h-14 border-b border-l border-gold pointer-events-none"></div>
+      <div class="absolute bottom-0 right-0 w-14 h-14 border-b border-r border-gold pointer-events-none"></div>
+      <!-- Image caption -->
+      <div class="absolute bottom-6 left-7 flex items-center gap-3">
+        <!-- [EDITAR] Legenda da foto principal -->
+        <span class="font-mono text-[11px] text-gold tracking-[0.2em] uppercase">Legenda da Obra · Cidade-UF</span>
+        <span class="w-5 h-px bg-gold block"></span>
+        <!-- [EDITAR] Ano da obra -->
+        <span class="font-mono text-[11px] text-cream tracking-[0.15em]">XXXX</span>
+      </div>
+    </div>
+
+    <!-- Headline + body copy grid -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-12 md:gap-20 pt-16 pb-20 items-start">
+
+      <!-- Headline -->
+      <h1 class="font-serif font-normal leading-none tracking-[-0.015em] text-cream"
+          style="font-size: clamp(38px,5.8vw,84px)">
+        <!-- [EDITAR] Headline principal -->
+        Seu slogan principal<br>
+        <em class="text-gold-soft not-italic">aqui</em>.
+      </h1>
+
+      <!-- Body copy + CTAs -->
+      <div>
+        <hr class="gold-rule" />
+        <!-- [EDITAR] Descrição curta dos serviços -->
+        <p class="text-[17px] leading-[1.7] text-cream-dim">
+          Clique aqui para inserir uma breve descrição dos serviços da empresa — construção, reforma, financiamento habitacional. Destaque o diferencial competitivo em duas ou três linhas.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 mt-9 flex-wrap">
+          <!-- [EDITAR] Link do botão principal (WhatsApp ou página de contato) -->
+          <a href="#contato" class="btn btn-solid">
+            Solicitar Orçamento
+          </a>
+          <a href="#servicos" class="btn">
+            Conhecer Serviços <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="relative border-t border-b border-gold/25 bg-g800">
+    <div class="max-w-site mx-auto px-10 py-6 flex flex-wrap items-center justify-between gap-6">
+      <!-- [EDITAR] Substitua os números e legendas abaixo pelos dados reais da empresa -->
+      <div class="flex items-baseline gap-4">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">XX</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">Anos de experiência</span>
+      </div>
+      <div class="flex items-baseline gap-4">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">XX+</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">Obras entregues</span>
+      </div>
+      <div class="flex items-baseline gap-4">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">100%</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">ART e CREA assinados</span>
+      </div>
+      <div class="flex items-baseline gap-4">
+        <span class="font-serif font-medium text-gold-soft" style="font-size:36px">UF</span>
+        <span class="font-mono text-[11px] text-cream-dim tracking-[0.12em] uppercase">E região metropolitana</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SOBRE
+     ============================================================ -->
+<section id="sobre" class="relative bg-g800 py-36 border-t border-b border-white/5">
+  <div class="max-w-site mx-auto px-10">
+    <div class="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-24 items-center">
+
+      <!-- Image column -->
+      <div class="reveal relative">
+        <!-- [EDITAR] Substitua pelo <img> da foto da equipe ou canteiro -->
+        <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/5">
+          <div class="absolute inset-0"
+               style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)">
+          </div>
+          <!-- Placeholder label -->
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Equipe / Canteiro</span>
+          </div>
+        </div>
+
+        <!-- Badge flutuante -->
+        <div class="hidden md:block absolute top-8 -right-8 bg-g700 border border-gold p-5 max-w-[220px] z-10">
+          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase block">
+            <!-- [EDITAR] Cargo do responsável técnico -->
+            Responsável Técnico
+          </span>
+          <!-- [EDITAR] Texto do badge (ex: "Engenheiro Civil presente em todas as obras") -->
+          <p class="font-serif text-[22px] leading-[1.2] mt-2 text-cream">
+            Clique para editar este texto do badge
+          </p>
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div class="reveal" data-delay="200">
+        <span class="eyebrow">Quem somos</span>
+        <hr class="gold-rule" />
+
+        <!-- [EDITAR] Headline da seção Sobre -->
+        <h2 class="font-serif font-normal text-cream mb-8"
+            style="font-size: clamp(34px,4.2vw,56px); line-height:1.05">
+          Clique para editar o <em class="text-gold-soft not-italic">título sobre a empresa</em> aqui.
+        </h2>
+
+        <!-- [EDITAR] Texto principal da seção Sobre -->
+        <p class="text-[17px] leading-[1.7] text-cream-dim">
+          Clique para editar o texto sobre a empresa aqui. Descreva a história, os valores e o diferencial da construtora. Este parágrafo deve contar a essência do negócio em três a cinco linhas, transmitindo confiança ao cliente.
+        </p>
+
+        <!-- Pilares -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-7 mt-11">
+          <!-- [EDITAR] Preencha os 4 pilares com os diferenciais reais da empresa -->
+          <div class="border-l border-gold pl-4">
+            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 1</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do primeiro diferencial da empresa.</p>
+          </div>
+          <div class="border-l border-gold pl-4">
+            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 2</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do segundo diferencial da empresa.</p>
+          </div>
+          <div class="border-l border-gold pl-4">
+            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 3</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do terceiro diferencial da empresa.</p>
+          </div>
+          <div class="border-l border-gold pl-4">
+            <h4 class="text-[15px] font-semibold text-cream tracking-[0.02em]">Diferencial 4</h4>
+            <p class="mt-2 text-[14px] leading-[1.55] text-cream-dim">Clique para editar a descrição do quarto diferencial da empresa.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SERVIÇOS
+     ============================================================ -->
+<section id="servicos" class="py-36 bg-g700">
+  <div class="max-w-site mx-auto px-10">
+
+    <!-- Section header -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 mb-16 items-end">
+      <div>
+        <span class="eyebrow">O que fazemos</span>
+        <hr class="gold-rule" />
+        <!-- [EDITAR] Headline da seção Serviços -->
+        <h2 class="font-serif font-normal text-cream"
+            style="font-size: clamp(40px,5vw,68px); line-height:1.02">
+          Clique para editar o<br>
+          <em class="text-gold-soft not-italic">título dos serviços</em>.
+        </h2>
+      </div>
+      <!-- [EDITAR] Texto introdutório dos serviços -->
+      <p class="text-[17px] leading-[1.7] text-cream-dim md:justify-self-end">
+        Clique para editar o texto introdutório da seção de serviços. Descreva brevemente os serviços oferecidos e o compromisso da empresa com qualidade e prazo.
+      </p>
+    </div>
+
+    <!-- ── Serviço 1 ── -->
+    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16
+                    border-b border-white/5">
+      <div>
+        <div class="flex items-baseline gap-5 mb-4 flex-wrap">
+          <span class="font-mono text-[13px] text-gold tracking-[0.15em]">01 /</span>
+          <!-- [EDITAR] Sub-label do serviço 1 -->
+          <span class="font-mono text-[11px] text-cream-dim tracking-[0.2em] uppercase">Sub-label do serviço 1</span>
+        </div>
+        <!-- [EDITAR] Nome do serviço 1 -->
+        <h3 class="font-serif font-normal text-cream mb-6"
+            style="font-size: clamp(40px,4.5vw,64px); line-height:1">
+          Nome do Serviço 1
+        </h3>
+        <!-- [EDITAR] Descrição do serviço 1 -->
+        <p class="text-[16px] leading-[1.7] text-cream-dim max-w-[480px]">
+          Clique para editar a descrição do Serviço 1. Explique o que está incluído, como funciona o processo e o diferencial desta oferta.
+        </p>
+        <!-- [EDITAR] Pontos do serviço 1 -->
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-8 list-none p-0">
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 1 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 2 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 3 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 4 do serviço</li>
+        </ul>
+        <a href="#contato" class="btn mt-9">Falar sobre este serviço <span class="arrow">→</span></a>
+      </div>
+      <!-- [EDITAR] Substitua pelo <img> do serviço 1 -->
+      <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/3">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2">
+          <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto do Serviço 1</span>
+        </div>
+        <div class="absolute bottom-3.5 left-3.5 right-3.5 flex justify-between items-end">
+          <span class="font-mono text-[11px] text-cream-dim">legenda do serviço 1</span>
+          <span class="font-mono text-[10px] text-gold opacity-70">4/3</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Serviço 2 ── -->
+    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16
+                    border-b border-white/5">
+      <!-- Imagem vem antes do texto no layout (reversed) -->
+      <!-- [EDITAR] Substitua pelo <img> do serviço 2 -->
+      <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg order-last md:order-first"
+           style="aspect-ratio:4/3; background: linear-gradient(135deg,#1c463a,#0e2a23)">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2">
+          <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto do Serviço 2</span>
+        </div>
+        <div class="absolute bottom-3.5 left-3.5 right-3.5 flex justify-between items-end">
+          <span class="font-mono text-[11px] text-cream-dim">legenda do serviço 2</span>
+          <span class="font-mono text-[10px] text-gold opacity-70">4/3</span>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-baseline gap-5 mb-4 flex-wrap">
+          <span class="font-mono text-[13px] text-gold tracking-[0.15em]">02 /</span>
+          <!-- [EDITAR] Sub-label do serviço 2 -->
+          <span class="font-mono text-[11px] text-cream-dim tracking-[0.2em] uppercase">Sub-label do serviço 2</span>
+        </div>
+        <!-- [EDITAR] Nome do serviço 2 -->
+        <h3 class="font-serif font-normal text-cream mb-6"
+            style="font-size: clamp(40px,4.5vw,64px); line-height:1">
+          Nome do Serviço 2
+        </h3>
+        <!-- [EDITAR] Descrição do serviço 2 -->
+        <p class="text-[16px] leading-[1.7] text-cream-dim max-w-[480px]">
+          Clique para editar a descrição do Serviço 2. Explique o que está incluído, como funciona o processo e o diferencial desta oferta.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-8 list-none p-0">
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 1 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 2 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 3 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 4 do serviço</li>
+        </ul>
+        <a href="#contato" class="btn mt-9">Falar sobre este serviço <span class="arrow">→</span></a>
+      </div>
+    </article>
+
+    <!-- ── Serviço 3 ── -->
+    <article class="reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16">
+      <div>
+        <div class="flex items-baseline gap-5 mb-4 flex-wrap">
+          <span class="font-mono text-[13px] text-gold tracking-[0.15em]">03 /</span>
+          <!-- [EDITAR] Sub-label do serviço 3 -->
+          <span class="font-mono text-[11px] text-cream-dim tracking-[0.2em] uppercase">Sub-label do serviço 3</span>
+        </div>
+        <!-- [EDITAR] Nome do serviço 3 -->
+        <h3 class="font-serif font-normal text-cream mb-6"
+            style="font-size: clamp(40px,4.5vw,64px); line-height:1">
+          Nome do Serviço 3
+        </h3>
+        <!-- [EDITAR] Descrição do serviço 3 -->
+        <p class="text-[16px] leading-[1.7] text-cream-dim max-w-[480px]">
+          Clique para editar a descrição do Serviço 3. Explique o que está incluído, como funciona o processo e o diferencial desta oferta.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-8 list-none p-0">
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 1 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 2 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 3 do serviço</li>
+          <li class="flex gap-2 items-start text-[14px] text-cream"><span class="text-gold mt-0.5 flex-shrink-0">—</span> Ponto 4 do serviço</li>
+        </ul>
+        <a href="#contato" class="btn mt-9">Falar sobre este serviço <span class="arrow">→</span></a>
+      </div>
+      <!-- [EDITAR] Substitua pelo <img> do serviço 3 -->
+      <div class="relative w-full border border-gold/25 overflow-hidden stripe-bg" style="aspect-ratio:4/3">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.10), transparent 60%)"></div>
+        <div class="absolute top-3 left-3 flex items-center gap-2">
+          <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+          <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto do Serviço 3</span>
+        </div>
+        <div class="absolute bottom-3.5 left-3.5 right-3.5 flex justify-between items-end">
+          <span class="font-mono text-[11px] text-cream-dim">legenda do serviço 3</span>
+          <span class="font-mono text-[10px] text-gold opacity-70">4/3</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     OBRAS (PORTFÓLIO)
+     ============================================================ -->
+<section id="obras" class="py-36 bg-g800 border-t border-white/5">
+  <div class="max-w-site mx-auto px-10">
+
+    <!-- Header + Filters -->
+    <div class="reveal flex flex-wrap justify-between items-end gap-10 mb-16">
+      <div>
+        <span class="eyebrow">Obras realizadas</span>
+        <hr class="gold-rule" />
+        <!-- [EDITAR] Headline da seção Obras -->
+        <h2 class="font-serif font-normal text-cream"
+            style="font-size: clamp(40px,5vw,68px); line-height:1.02">
+          Cada obra,<br>
+          uma <em class="text-gold-soft not-italic">história</em>.
+        </h2>
+      </div>
+
+      <!-- Category filters -->
+      <div class="flex gap-1 border border-gold/25 p-1 flex-wrap">
+        <!-- [EDITAR] Ajuste os filtros para as categorias reais das obras -->
+        <button class="filter-btn active font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors" data-filter="all">Todas</button>
+        <button class="filter-btn font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors hover:bg-gold/10" data-filter="construcao">Construção</button>
+        <button class="filter-btn font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors hover:bg-gold/10" data-filter="reforma">Reforma</button>
+        <button class="filter-btn font-sans text-[12px] tracking-[0.14em] uppercase px-4 py-2 transition-colors hover:bg-gold/10" data-filter="outro">Outra Categoria</button>
+      </div>
+    </div>
+
+    <!-- Portfolio Grid (6 placeholders) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- [EDITAR] Repita este bloco para cada obra. Troque data-category pelo filtro correto.
+           Para adicionar foto: substitua o <div class="portfolio-placeholder..."> por <img src="foto.jpg" class="w-full h-full object-cover"> -->
+
+      <!-- Obra 1 -->
+      <div class="portfolio-item reveal group cursor-pointer" data-category="construcao">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:3/4">
+          <div class="absolute inset-0 stripe-bg bg-g700"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 1</span>
+          </div>
+          <!-- Hover overlay -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <!-- [EDITAR] Tipo da obra 1 -->
+            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 1</p>
+            <!-- [EDITAR] Nome da obra 1 -->
+            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 1</h4>
+            <!-- [EDITAR] Cidade e metragem -->
+            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
+          </div>
+          <!-- [EDITAR] Ano da obra 1 -->
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+        </div>
+      </div>
+
+      <!-- Obra 2 -->
+      <div class="portfolio-item reveal group cursor-pointer" data-category="reforma" data-delay="100">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#1c463a,#0e2a23)">
+          <div class="absolute inset-0 stripe-bg"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 2</span>
+          </div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 2</p>
+            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 2</h4>
+            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
+          </div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+        </div>
+      </div>
+
+      <!-- Obra 3 -->
+      <div class="portfolio-item reveal group cursor-pointer" data-category="outro" data-delay="200">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#061410,#0a1f1a)">
+          <div class="absolute inset-0 stripe-bg"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 3</span>
+          </div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 3</p>
+            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 3</h4>
+            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
+          </div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+        </div>
+      </div>
+
+      <!-- Obra 4 -->
+      <div class="portfolio-item reveal group cursor-pointer" data-category="construcao" data-delay="100">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:3/4; background: linear-gradient(135deg,#0e2a23,#14352c)">
+          <div class="absolute inset-0 stripe-bg"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 4</span>
+          </div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 4</p>
+            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 4</h4>
+            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
+          </div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+        </div>
+      </div>
+
+      <!-- Obra 5 -->
+      <div class="portfolio-item reveal group cursor-pointer" data-category="construcao" data-delay="200">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#1c463a,#0e2a23)">
+          <div class="absolute inset-0 stripe-bg"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 5</span>
+          </div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 5</p>
+            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 5</h4>
+            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
+          </div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+        </div>
+      </div>
+
+      <!-- Obra 6 -->
+      <div class="portfolio-item reveal group cursor-pointer" data-category="reforma" data-delay="300">
+        <div class="relative overflow-hidden border border-gold/20" style="aspect-ratio:4/3; background: linear-gradient(135deg,#061410,#0a1f1a)">
+          <div class="absolute inset-0 stripe-bg"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 30%, rgba(180,138,74,0.08), transparent 60%)"></div>
+          <div class="absolute top-3 left-3 flex items-center gap-2">
+            <div class="w-1.5 h-1.5 border border-gold rotate-45"></div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase">Espaço para Foto da Obra 6</span>
+          </div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+               style="background: linear-gradient(180deg, transparent 40%, rgba(6,20,16,0.85))">
+            <span class="font-mono text-[11px] text-gold tracking-[0.15em]">VER OBRA →</span>
+          </div>
+        </div>
+        <div class="pt-4 flex justify-between items-start gap-4">
+          <div>
+            <p class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">Tipo da Obra 6</p>
+            <h4 class="font-serif text-[24px] text-cream font-medium">Nome da Obra 6</h4>
+            <p class="font-mono text-[11px] text-cream-dim mt-1">Cidade · UF · XX m²</p>
+          </div>
+          <span class="font-mono text-[11px] text-cream-dim shrink-0">XXXX</span>
+        </div>
+      </div>
+
+    </div><!-- /portfolio grid -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTATO
+     ============================================================ -->
+<section id="contato" class="relative bg-g900 py-40 overflow-hidden">
+
+  <!-- Decorative concentric circles -->
+  <svg class="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] opacity-[0.07] pointer-events-none"
+       viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="300" cy="300" r="280" fill="none" stroke="#b48a4a" stroke-width="1"/>
+    <circle cx="300" cy="300" r="240" fill="none" stroke="#b48a4a" stroke-width="1"/>
+    <circle cx="300" cy="300" r="200" fill="none" stroke="#b48a4a" stroke-width="1"/>
+    <circle cx="300" cy="300" r="160" fill="none" stroke="#b48a4a" stroke-width="1"/>
+  </svg>
+
+  <div class="relative z-10 max-w-site mx-auto px-10">
+    <div class="reveal grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-20 items-center">
+
+      <!-- Left: headline + CTA -->
+      <div>
+        <span class="eyebrow">Vamos conversar</span>
+        <hr class="gold-rule" />
+
+        <!-- [EDITAR] Headline da seção Contato -->
+        <h2 class="font-serif font-normal text-cream mb-8"
+            style="font-size: clamp(44px,5.5vw,80px); line-height:1.0">
+          Clique para editar<br>
+          <em class="text-gold-soft not-italic">o título</em> do contato<br>
+          aqui.
+        </h2>
+
+        <!-- [EDITAR] Texto introdutório do contato -->
+        <p class="text-[17px] leading-[1.7] text-cream-dim max-w-[520px]">
+          Clique para editar o texto de chamada para ação do contato. Incentive o visitante a enviar uma mensagem ou ligar, e informe o tempo de resposta esperado.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-11 flex-wrap">
+          <!-- [EDITAR] Link do WhatsApp — substitua XXXXXXXXXXX pelo número real (somente dígitos, com DDI) -->
+          <a href="https://wa.me/XXXXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+             target="_blank" rel="noopener"
+             class="btn btn-solid">
+            <!-- WhatsApp icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+            </svg>
+            <!-- [EDITAR] Texto do botão WhatsApp -->
+            Chamar no WhatsApp
+          </a>
+          <!-- [EDITAR] Substitua XXXXXXXXXXX pelo número com DDI -->
+          <a href="tel:+XXXXXXXXXXX" class="btn">
+            Ligar agora <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: contact info -->
+      <div class="border-t md:border-t-0 md:border-l border-gold/25 pt-10 md:pt-0 md:pl-10">
+        <div class="grid gap-7">
+
+          <!-- WhatsApp -->
+          <div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">WhatsApp</span>
+            <!-- [EDITAR] Seu número de WhatsApp -->
+            <p class="text-[20px] font-medium text-cream mt-2 mb-1">Seu Telefone aqui</p>
+            <!-- [EDITAR] Tempo de resposta -->
+            <p class="text-[13px] text-cream-dim">Clique para editar o tempo de resposta</p>
+          </div>
+
+          <!-- E-mail -->
+          <div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">E-mail</span>
+            <!-- [EDITAR] Seu e-mail de contato -->
+            <p class="text-[20px] font-medium text-cream mt-2 mb-1">seuemail@dominio.com.br</p>
+            <!-- [EDITAR] Quando usar o e-mail -->
+            <p class="text-[13px] text-cream-dim">Clique para editar a descrição do e-mail</p>
+          </div>
+
+          <!-- Atendimento -->
+          <div>
+            <span class="font-mono text-[10px] text-gold tracking-[0.22em] uppercase">Atendimento</span>
+            <!-- [EDITAR] Cidade e região de atuação -->
+            <p class="text-[20px] font-medium text-cream mt-2 mb-1">Sua Cidade · UF</p>
+            <!-- [EDITAR] Cobertura de atendimento -->
+            <p class="text-[13px] text-cream-dim">Clique para editar a área de atendimento</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RODAPÉ
+     ============================================================ -->
+<footer class="bg-g900 border-t border-gold/25 pt-16 pb-10">
+  <div class="max-w-site mx-auto px-10">
+    <div class="flex flex-wrap justify-between items-center gap-6">
+
+      <!-- Brand -->
+      <div class="flex items-center gap-4">
+        <!-- [EDITAR] Substitua pelo <img src="logo.png"> -->
+        <div class="w-9 h-9 border border-gold/40 flex items-center justify-center flex-shrink-0">
+          <span class="font-mono text-[9px] text-gold tracking-widest">FX</span>
+        </div>
+        <div class="leading-[1.1]">
+          <!-- [EDITAR] Nome da empresa no rodapé -->
+          <div class="text-[13px] tracking-[0.18em] font-semibold">FROIS XAVIER</div>
+          <div class="font-mono text-[9px] tracking-[0.3em] text-gold">CONSTRUTORA</div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <!-- [EDITAR] Ajuste o ano e os dados jurídicos (CNPJ, CREA) -->
+      <p class="font-mono text-[11px] text-cream-dim tracking-[0.1em] text-center order-last w-full md:w-auto md:order-none">
+        © 2025 Frois Xavier Construtora · CNPJ XX.XXX.XXX/0001-XX · CREA-UF XXXXXX
+      </p>
+
+      <!-- Nav links -->
+      <div class="flex flex-wrap gap-5">
+        <a href="#sobre"    class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Sobre</a>
+        <a href="#servicos" class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Serviços</a>
+        <a href="#obras"    class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Obras</a>
+        <a href="#contato"  class="font-mono text-[11px] tracking-[0.15em] text-cream-dim uppercase hover:text-gold transition-colors">Contato</a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     BOTÃO FLUTUANTE WHATSAPP
+     ============================================================ -->
+<!-- [EDITAR] Substitua XXXXXXXXXXX pelo número real com DDI -->
+<a href="https://wa.me/XXXXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+   target="_blank" rel="noopener"
+   aria-label="Falar no WhatsApp"
+   class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gold text-g800
+          flex items-center justify-center
+          shadow-[0_10px_30px_rgba(0,0,0,0.5)]
+          hover:bg-gold-pale hover:scale-105 transition-all duration-200">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+  </svg>
+</a>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Mobile drawer ── */
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('mobile-drawer');
+
+  hamburger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  /* ── Scroll reveal ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el    = entry.target;
+      const delay = parseInt(el.dataset.delay || '0', 10);
+      setTimeout(() => el.classList.add('visible'), delay);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── Portfolio filter ── */
+  const filterBtns     = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.dataset.filter;
+      portfolioItems.forEach(item => {
+        const show = cat === 'all' || item.dataset.category === cat;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
