@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Residência Família Silva",
+    "tipo": "Construção",
+    "categoria": "construcao",
+    "cidade": "Jacareí · SP",
+    "tamanho": "142 m²",
+    "ano": "2025",
+    "foto": "foto-01.jpg",
+    "ratio": "4/3"
+  },
+  {
+    "nome": "Reforma Completa — Apto Centro",
+    "tipo": "Reforma",
+    "categoria": "reforma",
+    "cidade": "São José dos Campos · SP",
+    "tamanho": "78 m²",
+    "ano": "2025",
+    "foto": "foto-02.jpg",
+    "ratio": "3/4"
+  },
+  {
+    "nome": "Casa MCMV — Família Rodrigues",
+    "tipo": "MCMV",
+    "categoria": "mcmv",
+    "cidade": "Jacareí · SP",
+    "tamanho": "65 m²",
+    "ano": "2024",
+    "foto": "foto-03.jpg",
+    "ratio": "4/3"
+  }
+]
