@@ -767,6 +767,20 @@
        }
     */
     const OBRAS = [
+      {
+        nome: "Casa Parque dos Sinos",
+        tipo: "Construção Residencial",
+        status: "andamento",
+        cidade: "Jacareí · SP",
+        tamanho: "",
+        ano: "2025",
+        fotos: [
+          "Obras/parque-dos-sinos/foto-01.jpg",
+          "Obras/parque-dos-sinos/foto-02.jpg",
+          "Obras/parque-dos-sinos/foto-03.jpg"
+        ],
+        foto: "Obras/parque-dos-sinos/foto-01.jpg"
+      },
       // Adicione suas obras reais aqui seguindo o modelo acima.
     ];
 
@@ -801,27 +815,71 @@
       }
       empty.classList.add('hidden');
 
-      grid.innerHTML = list.map(o => `
-        <article class="obra-card group bg-white border border-stone-dark overflow-hidden cursor-default">
-          <div class="relative aspect-[4/3] overflow-hidden bg-forest">
-            ${o.foto
-              ? `<img src="${o.foto}" alt="${o.nome}" class="obra-img absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/><div style="display:none" class="absolute inset-0 items-center justify-center bg-gradient-to-br from-forest to-forest-mid"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#c09848" stroke-width="1" opacity="0.5"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>`
-              : placeholderSVG(o.tipo)}
-            <span class="absolute top-4 left-4 text-[10px] uppercase tracking-[0.14em] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${statusClass(o.status)}">${statusLabel(o.status)}</span>
-          </div>
-          <div class="p-6 lg:p-7">
-            <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${o.tipo}</span>
-            <h3 class="font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
-            <div class="flex items-center gap-5 text-ink-soft text-sm font-light pt-4 border-t border-ink/10">
-              <span>${o.cidade}</span>
-              <span class="w-1 h-1 rounded-full bg-ink/20"></span>
-              <span>${o.tamanho}</span>
-              <span class="w-1 h-1 rounded-full bg-ink/20"></span>
-              <span>${o.ano}</span>
+      grid.innerHTML = list.map((o, idx) => {
+        // Normalise: if obra has array 'fotos', use it; otherwise wrap 'foto' in array
+        const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
+        const hasGallery = fotos.length > 1;
+        const cardId = `obra-${idx}`;
+
+        const imageArea = fotos.length > 0
+          ? `
+            <div id="${cardId}-gallery" class="obra-gallery absolute inset-0">
+              ${fotos.map((f, fi) => `
+                <img
+                  src="${f}"
+                  data-index="${fi}"
+                  alt="${o.nome} — foto ${fi + 1}"
+                  class="obra-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${fi === 0 ? 'opacity-100' : 'opacity-0'}"
+                  onerror="this.style.display='none';"
+                />
+              `).join('')}
             </div>
-          </div>
-        </article>
-      `).join('');
+            ${hasGallery ? `
+              <!-- prev / next arrows -->
+              <button onclick="galleryNav('${cardId}', ${fotos.length}, -1, event)"
+                class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button onclick="galleryNav('${cardId}', ${fotos.length}, 1, event)"
+                class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              <!-- dots -->
+              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+                ${fotos.map((_, fi) => `
+                  <button onclick="galleryGoto('${cardId}', ${fotos.length}, ${fi}, event)"
+                    id="${cardId}-dot-${fi}"
+                    class="w-1.5 h-1.5 rounded-full transition-all ${fi === 0 ? 'bg-white scale-125' : 'bg-white/40'}">
+                  </button>
+                `).join('')}
+              </div>
+            ` : ''}
+          `
+          : placeholderSVG(o.tipo);
+
+        const metaParts = [o.cidade, o.tamanho, o.ano].filter(Boolean);
+
+        return `
+          <article id="${cardId}" class="obra-card group bg-white border border-stone-dark overflow-hidden cursor-default" data-current="0">
+            <div class="relative aspect-[4/3] overflow-hidden bg-forest">
+              ${imageArea}
+              <span class="absolute top-4 left-4 z-10 text-[10px] uppercase tracking-[0.14em] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${statusClass(o.status)}">${statusLabel(o.status)}</span>
+            </div>
+            <div class="p-6 lg:p-7">
+              <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${o.tipo}</span>
+              <h3 class="font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
+              ${metaParts.length ? `
+                <div class="flex flex-wrap items-center gap-3 text-ink-soft text-sm font-light pt-4 border-t border-ink/10">
+                  ${metaParts.map((p, pi) => `
+                    <span>${p}</span>
+                    ${pi < metaParts.length - 1 ? '<span class="w-1 h-1 rounded-full bg-ink/20"></span>' : ''}
+                  `).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </article>
+        `;
+      }).join('');
 
       // re-trigger reveals on freshly rendered cards
       grid.querySelectorAll('.obra-card').forEach((c,i) => {
@@ -830,6 +888,38 @@
         if (i % 3 === 2) c.classList.add('reveal-delay-2');
       });
       observeReveals();
+    }
+
+    /* ---- Gallery navigation helpers ---- */
+    function galleryGoto(cardId, total, target, event) {
+      if (event) event.stopPropagation();
+      const card = document.getElementById(cardId);
+      const current = parseInt(card.dataset.current || '0');
+      if (target === current) return;
+
+      const gallery = document.getElementById(`${cardId}-gallery`);
+      gallery.querySelectorAll('img').forEach((img, i) => {
+        img.classList.toggle('opacity-100', i === target);
+        img.classList.toggle('opacity-0', i !== target);
+      });
+      // update dots
+      for (let i = 0; i < total; i++) {
+        const dot = document.getElementById(`${cardId}-dot-${i}`);
+        if (dot) {
+          dot.classList.toggle('bg-white', i === target);
+          dot.classList.toggle('scale-125', i === target);
+          dot.classList.toggle('bg-white/40', i !== target);
+        }
+      }
+      card.dataset.current = target;
+    }
+
+    function galleryNav(cardId, total, dir, event) {
+      if (event) event.stopPropagation();
+      const card = document.getElementById(cardId);
+      const current = parseInt(card.dataset.current || '0');
+      const next = (current + dir + total) % total;
+      galleryGoto(cardId, total, next, null);
     }
 
     function filterObras(f, btn) {
