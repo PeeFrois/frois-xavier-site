@@ -738,6 +738,30 @@
     </div>
   </footer>
 
+  <!-- ============ LIGHTBOX (foto ampliada) ============ -->
+  <div id="lightbox" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/92 backdrop-blur-sm" onclick="closeLightbox()">
+    <!-- close -->
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <!-- prev -->
+    <button onclick="lightboxNav(-1, event)" class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <!-- image -->
+    <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain select-none" onclick="event.stopPropagation()"/>
+
+    <!-- next -->
+    <button onclick="lightboxNav(1, event)" class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <!-- counter -->
+    <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm font-light tracking-wider bg-black/40 px-4 py-1.5 rounded-full">1 / 1</div>
+  </div>
+
   <script>
     /* ============ OBRAS DATA ============
        COMO ADICIONAR UMA OBRA:
@@ -858,7 +882,7 @@
 
         const imageArea = fotos.length > 0
           ? `
-            <div id="${cardId}-gallery" class="obra-gallery absolute inset-0">
+            <div id="${cardId}-gallery" class="obra-gallery absolute inset-0 cursor-pointer" onclick="openLightbox(${idx})">
               ${fotos.map((f, fi) => `
                 <img
                   src="${f}"
@@ -956,6 +980,53 @@
       const next = (current + dir + total) % total;
       galleryGoto(cardId, total, next, null);
     }
+
+    /* ---- Lightbox (clicar para ver foto grande) ---- */
+    let lightboxFotos = [];
+    let lightboxIndex = 0;
+
+    function openLightbox(obraIdx) {
+      const obra = OBRAS[obraIdx];
+      lightboxFotos = (obra.fotos && obra.fotos.length) ? obra.fotos : (obra.foto ? [obra.foto] : []);
+      if (!lightboxFotos.length) return;
+      // start from the photo currently shown in the card
+      const card = document.getElementById(`obra-${obraIdx}`);
+      lightboxIndex = parseInt(card?.dataset.current || '0');
+      renderLightbox();
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function lightboxNav(dir, event) {
+      if (event) event.stopPropagation();
+      lightboxIndex = (lightboxIndex + dir + lightboxFotos.length) % lightboxFotos.length;
+      renderLightbox();
+    }
+
+    function renderLightbox() {
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+      img.src = lightboxFotos[lightboxIndex];
+      counter.textContent = `${lightboxIndex + 1} / ${lightboxFotos.length}`;
+    }
+
+    // keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb || lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') lightboxNav(1);
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+    });
 
     function filterObras(f, btn) {
       currentFilter = f;
