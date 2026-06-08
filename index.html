@@ -138,6 +138,9 @@
     .accordion-item.open .accordion-body { max-height: 1600px; }
     .accordion-item.open .accordion-icon { transform: rotate(45deg); }
     .accordion-icon { transition: transform 0.4s ease; }
+    /* botão flutuante: pulso sutil */
+    #wa-float::after{content:"";position:absolute;inset:0;border-radius:9999px;box-shadow:0 0 0 0 rgba(160,120,48,.5);animation:waPulse 2.6s ease-out infinite;pointer-events:none;}
+    @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(160,120,48,.5)}70%{box-shadow:0 0 0 14px rgba(160,120,48,0)}100%{box-shadow:0 0 0 0 rgba(160,120,48,0)}}
   </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
@@ -163,9 +166,7 @@
           <button onclick="changePage('contato', event)" id="nav-contato" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Contato</button>
         </nav>
 
-        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-6 py-3.5 transition-colors duration-300">
-          Solicitar Orçamento
-        </a>
+        
 
         <button onclick="toggleMobileMenu()" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none z-50" aria-label="Menu">
           <span id="m-line1" class="block w-6 h-0.5 bg-current transition-all duration-300 nav-burger"></span>
@@ -186,7 +187,7 @@
       <button onclick="changePage('contato'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Contato</button>
     </nav>
     <div class="mt-12 pt-7 border-t border-white/10 relative z-10">
-      <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="block text-center bg-gold text-white text-xs uppercase tracking-[0.18em] font-bold py-4">Solicitar Orçamento</a>
+      
       <p class="text-white/40 text-xs mt-5 tracking-wide">Jacareí · Vale do Paraíba — SP</p>
     </div>
   </div>
@@ -218,14 +219,11 @@
             </p>
 
             <div class="flex flex-wrap gap-4">
-              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 transition-colors shadow-lg">
-                Solicitar Orçamento
-              </a>
+              
               <button onclick="changePage('servicos')" class="border border-white/40 text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 hover:bg-white hover:text-forest transition-all bg-transparent">
                 Nossos Serviços →
               </button>
             </div>
-            <p class="text-stone/55 text-xs font-light mt-5 tracking-wide">Orçamento sem compromisso · resposta no mesmo dia.</p>
           </div>
         </div>
 
@@ -334,10 +332,9 @@
             Seu projeto merece começar do jeito certo. <span class="italic text-gold">Fale com a gente.</span>
           </h2>
           <div class="flex flex-wrap gap-4 justify-center">
-            <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
+            
             <button onclick="changePage('contato')" class="border border-ink/25 text-ink text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 hover:bg-ink hover:text-white transition-all">Ver Contatos</button>
           </div>
-          <p class="text-ink-soft text-xs font-light mt-5 tracking-wide">Orçamento sem compromisso · atendimento direto com quem toca a obra.</p>
         </div>
       </div>
     </section>
@@ -384,6 +381,52 @@
             <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Quem conduz</span>
             <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Uma dupla à frente de cada obra.</h2>
           </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal">
+              <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
+              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Gestão de Obras &amp; Processos</p>
+              <p class="text-ink-soft font-light leading-relaxed mt-4 text-sm">Cuida do planejamento, dos prazos e da organização de cada etapa, para que a obra ande sem improviso e você sempre saiba em que pé está.</p>
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 98866-7973 →</a>
+            </div>
+            <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal reveal-delay-1">
+              <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
+              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Engenharia &amp; Execução</p>
+              <p class="text-ink-soft font-light leading-relaxed mt-4 text-sm">Responde tecnicamente pela obra, do projeto à entrega, garantindo execução conforme as normas e a qualidade que valoriza o seu imóvel.</p>
+              <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 99659-9313 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
+        <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+          <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Vamos conversar sobre o seu projeto?</h2>
+          
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- ====================== SERVIÇOS ============================ -->
+    <!-- ============================================================ -->
+    <section id="sec-servicos" class="page-section">
+      <!-- hero -->
+      <div class="bg-forest grain pt-[140px] pb-20 lg:pb-28 px-6 lg:px-10">
+        <div class="max-w-site mx-auto">
+          <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">O que fazemos por você</span>
+          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">
+            Construção e reforma<br><span class="italic text-gold-light">do projeto à entrega.</span>
+          </h1>
+          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">
+            Nosso forte é erguer e reformar com engenheiro responsável presente em cada etapa. Precisou de laudo ou regularização? A parte de engenharia também é nossa.
+          </p>
+        </div>
+      </div>
+
+      <!-- SUMÁRIO / ÍNDICE DE PILARES -->
+      <div class="bg-white border-b border-stone-dark px-6 lg:px-10 py-16 lg:py-20">
+        <div class="max-w-site mx-auto">
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <a href="#svc-construcao" onclick="scrollToSvc('svc-construcao', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
@@ -404,23 +447,36 @@
               <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
             </a>
           </div>
-          <a href="#svc-engenharia" onclick="scrollToSvc('svc-engenharia', event)" class="group flex items-center justify-between gap-4 mt-6 bg-forest/5 border border-stone-dark border-l-4 border-l-forest-mid px-7 py-6 hover:bg-forest/10 hover:border-l-gold transition-all reveal reveal-delay-2">
-            <div class="flex items-center gap-4">
-              <span class="text-forest-mid shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
-              <div>
-                <h3 class="font-sans text-ink font-bold text-base tracking-tight">Engenharia &amp; Regularização</h3>
-                <p class="text-ink-light text-sm font-light mt-0.5">Laudos, plantas, regularização e segurança contra incêndio — serviços complementares.</p>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-6">
+            <a href="#svc-mcmv" onclick="scrollToSvc('svc-mcmv', event)" class="group flex items-center justify-between gap-4 bg-forest/5 border border-stone-dark border-l-4 border-l-gold px-7 py-6 hover:bg-forest/10 transition-all reveal">
+              <div class="flex items-center gap-4">
+                <span class="text-gold shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10"/></svg></span>
+                <div>
+                  <h3 class="font-sans text-ink font-bold text-base tracking-tight">Minha Casa Minha Vida</h3>
+                  <p class="text-ink-light text-sm font-light mt-0.5">Construímos pelo programa do Governo Federal.</p>
+                </div>
               </div>
-            </div>
-            <span class="shrink-0 text-forest-mid text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold transition-colors">Ver →</span>
-          </a>
+              <span class="shrink-0 text-gold text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold-light transition-colors">Ver →</span>
+            </a>
+            <a href="#svc-engenharia" onclick="scrollToSvc('svc-engenharia', event)" class="group flex items-center justify-between gap-4 bg-forest/5 border border-stone-dark border-l-4 border-l-forest-mid px-7 py-6 hover:bg-forest/10 hover:border-l-gold transition-all reveal reveal-delay-1">
+              <div class="flex items-center gap-4">
+                <span class="text-forest-mid shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
+                <div>
+                  <h3 class="font-sans text-ink font-bold text-base tracking-tight">Engenharia &amp; Regularização</h3>
+                  <p class="text-ink-light text-sm font-light mt-0.5">Laudos, plantas, regularização e segurança contra incêndio — serviços complementares.</p>
+                </div>
+              </div>
+              <span class="shrink-0 text-forest-mid text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold transition-colors">Ver →</span>
+            </a>
+          </div>
         </div>
       </div>
 
       <!-- DETALHES -->
       <div class="bg-stone">
 
-        <!-- Construção -->
+        <!-- Construção Residencial -->
         <div id="svc-construcao" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
@@ -431,12 +487,51 @@
               <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Projeto + Fundação</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Tudo começa pelo que não se vê: estudo do terreno, projeto e fundação dimensionada conforme as normas da ABNT. É essa base, calculada e bem executada, que sustenta a obra por décadas e protege o seu investimento desde o primeiro dia.</p></div>
               <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Execução com Engenheiro Responsável</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Estrutura, alvenaria, instalações e acabamento avançam na sequência certa, com um engenheiro acompanhando pessoalmente cada etapa. Controle de materiais e prazos no lugar de improviso — qualidade que você sente no resultado e que valoriza o imóvel na hora de avaliar ou revender.</p></div>
               <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Documentação e Responsabilidade Técnica</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Obra registrada e dentro da lei em todas as fases, com ART do engenheiro e toda a documentação em dia até o Habite-se. É a segurança jurídica que permite financiar, escriturar e vender o imóvel sem entraves no futuro.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Minha Casa Minha Vida</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Construímos dentro das regras do programa e orientamos você em cada passo, da análise de enquadramento à liberação. Você aproveita juros menores e descontos a que tem direito, com quem cuida da parte técnica por você.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acabamento e Entrega</h3><p class="text-ink-soft font-light text-sm leading-relaxed">A reta final que define a percepção de qualidade: revestimentos, pintura e detalhes executados com capricho, seguidos de vistoria e documentação de entrega para você conferir cada item antes de receber as chaves.</p></div>
             </div>
           </div>
+        </div>
 
-          <!-- Painel MCMV -->
-          <div class="max-w-4xl mx-auto mt-16 reveal reveal-delay-2">
+        <!-- Reformas Residenciais -->
+        <div id="svc-reformas" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
+          <div class="max-w-3xl mx-auto text-center">
+            <div class="reveal">
+              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Reformas Residenciais</h2>
+              <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Reformar com previsibilidade: orçamento fechado, acompanhamento técnico e prazo combinado. Seguimos a ordem que toda reforma bem-feita exige — primeiro resolvemos o que sustenta e protege o imóvel, depois entregamos o acabamento que valoriza o seu patrimônio. Da estrutura ao detalhe final.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Telhado e Estrutura</h3><p class="text-ink-soft font-light text-sm leading-relaxed">O ponto de partida de toda reforma séria. Avaliamos lajes, vigas e telhado e corrigimos o que compromete a segurança antes de seguir adiante, conforme as normas técnicas. Resolver a base primeiro é o que evita retrabalho, infiltração e gasto dobrado mais tarde.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Hidráulica e Elétrica</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Instalações novas ou refeitas, dimensionadas e executadas atendendo às normas da ABNT. É a etapa que fica escondida dentro da parede: feita corretamente agora, significa zero surpresa, proteção contra curto e vazamento e um imóvel pronto para o uso real do dia a dia.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Alvenaria e Revestimentos</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Com a estrutura e as instalações resolvidas, partimos para paredes, contrapisos, pisos e revestimentos. Cada camada na sequência e no nível certos — é isso que garante esquadro, caimento correto e o acabamento final assentando sem defeito.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Interior, Fachada e Acabamento</h3><p class="text-ink-soft font-light text-sm leading-relaxed">A etapa que transforma a obra em um imóvel valorizado: pintura, fachada e acabamento alinhados ao seu gosto e ao padrão do projeto. É o que mais pesa na avaliação na hora de morar, alugar ou vender — e só fica impecável porque cada etapa anterior foi executada da forma correta.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Obras Comerciais -->
+        <div id="svc-comercial" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
+          <div class="max-w-3xl mx-auto text-center">
+            <div class="reveal">
+              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
+              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
+              <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Loja, escritório, clínica, restaurante ou galpão: construímos e reformamos o seu ponto comercial com uma lógica clara — cada dia de obra a mais é faturamento parado. Unimos rigor técnico a um cronograma pensado para o seu negócio voltar a operar o quanto antes.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Planejamento Orientado ao Negócio</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Antes de começar, definimos escopo, etapas e cronograma com uma meta clara: reduzir ao máximo o tempo de portas fechadas. Você sabe desde o início o que será feito, em quanto tempo e por qual valor — sem o prejuízo invisível de uma obra que se arrasta.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Estrutura e Instalações para Uso Intenso</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Ambiente comercial exige mais: maior carga elétrica, pontos de água e esgoto bem distribuídos, climatização e previsão para equipamentos. Dimensionamos tudo conforme as normas técnicas e o uso real do espaço, evitando sobrecarga, parada e adaptação às pressas depois de inaugurado.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acessibilidade e Liberação para Funcionar</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Comércio só abre as portas com a documentação em ordem. Cuidamos das exigências de acessibilidade e da regularização junto ao Corpo de Bombeiros (AVCB/CLCB) e à prefeitura, conduzindo as adequações e a documentação técnica até a liberação final do seu espaço.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acabamento que Comunica a Marca</h3><p class="text-ink-soft font-light text-sm leading-relaxed">O ponto é a primeira impressão do seu cliente. Executamos o acabamento alinhado à identidade visual e ao padrão do negócio — fachada, iluminação e revestimentos que transformam o espaço em um ativo de imagem, não só em metro quadrado construído.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MINHA CASA MINHA VIDA (caixa verde, acima da engenharia) -->
+        <div id="svc-mcmv" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
+          <div class="max-w-3xl mx-auto text-center reveal mb-10">
+            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Para a casa própria</span>
+            <h2 class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight">Construímos pelo Minha Casa Minha Vida.</h2>
+          </div>
+          <div class="max-w-4xl mx-auto reveal reveal-delay-1">
             <div class="bg-forest grain rounded-md overflow-hidden shadow-[0_30px_70px_-40px_rgba(10,42,30,0.7)]">
               <div class="grid md:grid-cols-[1fr_1.6fr]">
                 <div class="bg-forest-mid/40 border-b md:border-b-0 md:border-r border-white/10 px-8 py-9 lg:px-10 lg:py-11 flex flex-col justify-center items-center text-center">
@@ -452,52 +547,6 @@
               </div>
             </div>
           </div>
-
-          <div class="text-center mt-14 reveal reveal-delay-2">
-            <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20constru%C3%A7%C3%A3o%20%28residencial%20ou%20comercial%29." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors shadow-lg">Solicitar Orçamento</a>
-            <p class="text-ink-soft text-xs font-light mt-4">Orçamento fechado e sem compromisso.</p>
-          </div>
-        </div>
-
-        <!-- Reformas -->
-        <div id="svc-reformas" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
-          <div class="max-w-3xl mx-auto text-center">
-            <div class="reveal">
-              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Reformas Residenciais</h2>
-              <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Reformar com previsibilidade: orçamento fechado, acompanhamento técnico e prazo combinado. Seguimos a ordem que toda reforma bem-feita exige — primeiro resolvemos o que sustenta e protege o imóvel, depois entregamos o acabamento que valoriza o seu patrimônio. Da estrutura ao detalhe final.</p>
-            </div>
-            <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Telhado e Estrutura</h3><p class="text-ink-soft font-light text-sm leading-relaxed">O ponto de partida de toda reforma séria. Avaliamos lajes, vigas e telhado e corrigimos o que compromete a segurança antes de seguir adiante, conforme as normas técnicas. Resolver a base primeiro é o que evita retrabalho, infiltração e gasto dobrado mais tarde.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Hidráulica e Elétrica</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Instalações novas ou refeitas, dimensionadas e executadas atendendo às normas da ABNT. É a etapa que fica escondida dentro da parede: feita corretamente agora, significa zero surpresa, proteção contra curto e vazamento e um imóvel pronto para o uso real do dia a dia.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Alvenaria e Revestimentos</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Com a estrutura e as instalações resolvidas, partimos para paredes, contrapisos, pisos e revestimentos. Cada camada na sequência e no nível certos — é isso que garante esquadro, caimento correto e o acabamento final assentando sem defeito.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Interior, Fachada e Acabamento</h3><p class="text-ink-soft font-light text-sm leading-relaxed">A etapa que transforma a obra em um imóvel valorizado: pintura, fachada e acabamento alinhados ao seu gosto e ao padrão do projeto. É o que mais pesa na avaliação na hora de morar, alugar ou vender — e só fica impecável porque cada etapa anterior foi executada da forma correta.</p></div>
-            </div>
-            <div class="text-center mt-14 reveal reveal-delay-2">
-              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20uma%20reforma." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors shadow-lg">Solicitar Orçamento</a>
-              <p class="text-ink-soft text-xs font-light mt-4">Orçamento fechado e sem compromisso.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Obras Comerciais (mesma tela dos demais — sem fundo verde) -->
-        <div id="svc-comercial" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
-          <div class="max-w-3xl mx-auto text-center">
-            <div class="reveal">
-              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
-              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
-              <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Loja, escritório, clínica, restaurante ou galpão: o ponto comercial é uma ferramenta de trabalho — e cada dia de obra a mais é faturamento parado. Tratamos a sua obra com essa lógica, unindo rigor técnico a um cronograma pensado para o seu negócio voltar a operar o quanto antes.</p>
-            </div>
-            <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Planejamento Orientado ao Negócio</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Antes de começar, definimos escopo, etapas e cronograma com uma meta clara: reduzir ao máximo o tempo de portas fechadas. Você sabe desde o início o que será feito, em quanto tempo e por qual valor — sem o prejuízo invisível de uma obra que se arrasta.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Estrutura e Instalações para Uso Intenso</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Ambiente comercial exige mais: maior carga elétrica, pontos de água e esgoto bem distribuídos, climatização e previsão para equipamentos. Dimensionamos tudo conforme as normas técnicas e o uso real do espaço, evitando sobrecarga, parada e adaptação às pressas depois de inaugurado.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acessibilidade e Liberação para Funcionar</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Comércio só abre as portas com a documentação em ordem. Cuidamos das exigências de acessibilidade e da regularização junto ao Corpo de Bombeiros (AVCB/CLCB) e à prefeitura, conduzindo as adequações e a documentação técnica até a liberação final do seu espaço.</p></div>
-              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acabamento que Comunica a Marca</h3><p class="text-ink-soft font-light text-sm leading-relaxed">O ponto é a primeira impressão do seu cliente. Executamos o acabamento alinhado à identidade visual e ao padrão do negócio — fachada, iluminação e revestimentos que transformam o espaço em um ativo de imagem, não só em metro quadrado construído.</p></div>
-            </div>
-            <div class="text-center mt-14 reveal reveal-delay-2">
-              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20uma%20obra%20comercial." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors shadow-lg">Solicitar Orçamento</a>
-              <p class="text-ink-soft text-xs font-light mt-4">Conte o seu projeto e montamos a proposta sob medida.</p>
-            </div>
-          </div>
         </div>
 
         <!-- Engenharia (secundário, em acordeão) -->
@@ -510,7 +559,6 @@
             </div>
 
             <div class="max-w-3xl mx-auto mt-10 space-y-3 reveal reveal-delay-1">
-              <!-- Laudos -->
               <div class="accordion-item border border-stone-dark bg-white open">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
                   <span class="font-serif text-ink text-2xl font-normal">Laudos e Vistorias</span>
@@ -527,7 +575,6 @@
                   </div>
                 </div>
               </div>
-              <!-- Plantas -->
               <div class="accordion-item border border-stone-dark bg-white">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
                   <span class="font-serif text-ink text-2xl font-normal">Plantas e Regularização</span>
@@ -543,7 +590,6 @@
                   </div>
                 </div>
               </div>
-              <!-- Incêndio -->
               <div class="accordion-item border border-stone-dark bg-white">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
                   <span class="font-serif text-ink text-2xl font-normal">Segurança contra Incêndio</span>
@@ -558,22 +604,9 @@
                 </div>
               </div>
             </div>
-
-            <div class="text-center mt-12 reveal reveal-delay-2">
-              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20um%20servi%C3%A7o%20de%20engenharia%20%28laudo%2C%20planta%20ou%20regulariza%C3%A7%C3%A3o%29." target="_blank" rel="noopener" class="inline-block border border-forest/30 text-forest hover:bg-forest hover:text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-all">Solicitar Orçamento</a>
-            </div>
           </div>
         </div>
 
-      </div>
-
-      <!-- services CTA -->
-      <div class="bg-forest-dark grain py-20 lg:py-28 px-6 lg:px-10">
-        <div class="max-w-site mx-auto text-center reveal">
-          <h2 class="font-serif text-white text-3xl lg:text-5xl font-light mb-8 max-w-2xl mx-auto">Tem uma demanda específica? Conte o seu projeto para a gente.</h2>
-          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
-          <p class="text-white/45 text-xs font-light mt-5 tracking-wide">Orçamento sem compromisso · resposta no mesmo dia.</p>
-        </div>
       </div>
     </section>
 
@@ -613,7 +646,7 @@
               <p class="text-ink-soft font-light text-lg max-w-md mx-auto mb-8">Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.</p>
               <div class="flex flex-wrap gap-4 justify-center">
                 <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 transition-colors">Ver no Instagram</a>
-                <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="border border-ink/25 text-ink text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 hover:bg-ink hover:text-white transition-all">Solicitar Orçamento</a>
+                
               </div>
             </div>
           </div>
@@ -713,7 +746,7 @@
       <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Toda boa obra começa com uma conversa.</h2>
-          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
+          
         </div>
       </div>
     </section>
@@ -1101,12 +1134,8 @@
     /* ============ ACCORDION (engenharia) ============ */
     function toggleAccordion(btn){ btn.closest('.accordion-item').classList.toggle('open'); }
 
-    /* ============ SCROLL ATÉ O SERVIÇO (índice de pilares) ============ */
-    function scrollToSvc(id, event){
-      if (event) event.preventDefault();
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    /* ============ SCROLL ATÉ O SERVIÇO ============ */
+    function scrollToSvc(id, event){ if(event) event.preventDefault(); const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
 
     /* ============ PAGE SWITCHING ============ */
     function changePage(pageId, event) {
@@ -1202,11 +1231,9 @@
       changePage(pages.includes(hash) ? hash : 'home');
     });
   </script>
-  <!-- ====== BOTÃO WHATSAPP FIXO (somente mobile) ====== -->
-  <a id="wa-float" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener"
-     class="lg:hidden fixed left-4 right-4 bottom-4 z-40 flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-white text-[12px] uppercase tracking-[0.16em] font-bold py-4 rounded-md shadow-[0_12px_34px_-8px_rgba(0,0,0,0.55)] transition-colors">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg>
-    Solicitar Orçamento
+  <!-- ===== BOTÃO FLUTUANTE WHATSAPP (todas as abas) ===== -->
+  <a id="wa-float" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp" class="fixed bottom-5 right-5 z-50 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold hover:bg-gold-light text-white flex items-center justify-center shadow-[0_14px_34px_-8px_rgba(0,0,0,0.55)] transition-colors">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="relative z-10"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
   </a>
 </body>
 </html>
