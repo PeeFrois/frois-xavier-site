@@ -431,28 +431,28 @@
       <div class="bg-white border-b border-stone-dark px-6 lg:px-10 py-16 lg:py-20">
         <div class="max-w-site mx-auto">
           <div class="grid md:grid-cols-2 gap-6">
-            <a href="#svc-construcao" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-9 lg:p-11 reveal">
+            <a href="#svc-construcao" onclick="scrollToSvc('svc-construcao', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-9 lg:p-11 reveal">
               <div class="text-gold mb-5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
               <h2 class="font-serif text-ink text-3xl font-normal mb-2">Construção</h2>
-              <p class="text-ink-soft font-light leading-relaxed">Residencial e comercial, da fundação à chave na mão — inclusive Minha Casa Minha Vida.</p>
+              <p class="text-ink-soft font-light leading-relaxed">Residencial e comercial, da fundação à chave na mão. Também executamos obras pelo programa Minha Casa Minha Vida.</p>
               <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
             </a>
-            <a href="#svc-reformas" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-9 lg:p-11 reveal reveal-delay-1">
+            <a href="#svc-reformas" onclick="scrollToSvc('svc-reformas', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-9 lg:p-11 reveal reveal-delay-1">
               <div class="text-gold mb-5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z"/></svg></div>
               <h2 class="font-serif text-ink text-3xl font-normal mb-2">Reformas</h2>
               <p class="text-ink-soft font-light leading-relaxed">Da estrutura ao acabamento, com orçamento fechado e prazo combinado. Residencial e comercial.</p>
               <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
             </a>
           </div>
-          <a href="#svc-engenharia" class="group flex items-center justify-between gap-4 mt-6 bg-white border border-stone-dark px-7 py-5 hover:border-gold/40 transition-colors reveal reveal-delay-2">
+          <a href="#svc-engenharia" onclick="scrollToSvc('svc-engenharia', event)" class="group flex items-center justify-between gap-4 mt-6 bg-forest/5 border border-stone-dark border-l-4 border-l-forest-mid px-7 py-6 hover:bg-forest/10 hover:border-l-gold transition-all reveal reveal-delay-2">
             <div class="flex items-center gap-4">
-              <span class="text-ink-soft shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
+              <span class="text-forest-mid shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
               <div>
-                <h3 class="font-sans text-ink font-bold text-sm tracking-tight">Engenharia &amp; Regularização <span class="text-ink-soft font-normal">— serviços complementares</span></h3>
-                <p class="text-ink-soft text-sm font-light">Laudos, plantas, regularização e segurança contra incêndio.</p>
+                <h3 class="font-sans text-ink font-bold text-base tracking-tight">Engenharia &amp; Regularização</h3>
+                <p class="text-ink-light text-sm font-light mt-0.5">Laudos, plantas, regularização e segurança contra incêndio — serviços complementares.</p>
               </div>
             </div>
-            <span class="shrink-0 text-ink-soft text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold transition-colors">Ver →</span>
+            <span class="shrink-0 text-forest-mid text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold transition-colors">Ver →</span>
           </a>
         </div>
       </div>
@@ -1142,6 +1142,13 @@
 
     /* ============ ACCORDION (engenharia) ============ */
     function toggleAccordion(btn){ btn.closest('.accordion-item').classList.toggle('open'); }
+
+    /* ============ SCROLL ATÉ O SERVIÇO (índice de pilares) ============ */
+    function scrollToSvc(id, event){
+      if (event) event.preventDefault();
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     /* ============ PAGE SWITCHING ============ */
     function changePage(pageId, event) {
