@@ -135,7 +135,7 @@
     }
 
     .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1); }
-    .accordion-item.open .accordion-body { max-height: 320px; }
+    .accordion-item.open .accordion-body { max-height: 1600px; }
     .accordion-item.open .accordion-icon { transform: rotate(45deg); }
     .accordion-icon { transition: transform 0.4s ease; }
   </style>
@@ -163,7 +163,7 @@
           <button onclick="changePage('contato', event)" id="nav-contato" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Contato</button>
         </nav>
 
-        <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-6 py-3.5 transition-colors duration-300">
+        <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-6 py-3.5 transition-colors duration-300">
           Solicitar Orçamento
         </a>
 
@@ -186,7 +186,7 @@
       <button onclick="changePage('contato'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Contato</button>
     </nav>
     <div class="mt-12 pt-7 border-t border-white/10 relative z-10">
-      <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="block text-center bg-gold text-white text-xs uppercase tracking-[0.18em] font-bold py-4">Falar no WhatsApp</a>
+      <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="block text-center bg-gold text-white text-xs uppercase tracking-[0.18em] font-bold py-4">Solicitar Orçamento</a>
       <p class="text-white/40 text-xs mt-5 tracking-wide">Jacareí · Vale do Paraíba — SP</p>
     </div>
   </div>
@@ -218,13 +218,14 @@
             </p>
 
             <div class="flex flex-wrap gap-4">
-              <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 transition-colors shadow-lg">
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 transition-colors shadow-lg">
                 Solicitar Orçamento
               </a>
               <button onclick="changePage('servicos')" class="border border-white/40 text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 hover:bg-white hover:text-forest transition-all bg-transparent">
                 Nossos Serviços →
               </button>
             </div>
+            <p class="text-stone/55 text-xs font-light mt-5 tracking-wide">Orçamento sem compromisso · resposta no mesmo dia.</p>
           </div>
         </div>
 
@@ -333,9 +334,10 @@
             Seu projeto merece começar do jeito certo. <span class="italic text-gold">Fale com a gente.</span>
           </h2>
           <div class="flex flex-wrap gap-4 justify-center">
-            <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Falar no WhatsApp</a>
+            <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
             <button onclick="changePage('contato')" class="border border-ink/25 text-ink text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 hover:bg-ink hover:text-white transition-all">Ver Contatos</button>
           </div>
+          <p class="text-ink-soft text-xs font-light mt-5 tracking-wide">Orçamento sem compromisso · atendimento direto com quem toca a obra.</p>
         </div>
       </div>
     </section>
@@ -344,25 +346,69 @@
     <!-- ====================== SOBRE (placeholder) ================= -->
     <!-- ============================================================ -->
     <section id="sec-sobre" class="page-section">
-      <div class="bg-forest grain pt-[140px] pb-24 lg:pb-32 px-6 lg:px-10">
+      <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Quem Somos</span>
-          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-tight max-w-3xl reveal reveal-delay-1">Sobre a Frois Xavier Construtora.</h1>
+          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-3xl reveal reveal-delay-1">Obra séria não admite <span class="italic text-gold-light">improviso.</span></h1>
+          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">A Frois Xavier nasceu desse princípio: técnica, transparência e responsabilidade em cada etapa — construção e reforma em Jacareí e no Vale do Paraíba.</p>
         </div>
       </div>
+
       <div class="bg-stone py-24 lg:py-32 px-6 lg:px-10">
-        <div class="max-w-site mx-auto max-w-3xl">
-          <div class="border-l-2 border-gold/40 pl-8 reveal">
-            <p class="text-ink-light text-lg font-light leading-relaxed">
-              Mais do que construir, a Frois Xavier existe para entregar tranquilidade. Em breve, esta página vai contar nossa história, os valores que guiam cada obra e as pessoas por trás do trabalho.
-            </p>
-            <p class="text-ink-soft font-light mt-4">
-              <span class="text-gold font-medium">Em breve:</span> nossa trajetória, missão e equipe. Enquanto isso, conheça <button onclick="changePage('servicos')" class="text-forest font-medium underline decoration-gold/40 underline-offset-4 hover:decoration-forest transition-colors">o que fazemos</button>.
-            </p>
+        <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          <div class="lg:col-span-4 reveal">
+            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A nossa forma de trabalhar</span>
+            <div class="w-12 h-px bg-gold/50"></div>
+          </div>
+          <div class="lg:col-span-8 reveal reveal-delay-1">
+            <h2 class="font-serif text-ink text-3xl sm:text-4xl font-light leading-[1.2] mb-8">Antes de erguer paredes, construímos confiança.</h2>
+            <p class="text-ink-light text-lg font-light leading-relaxed">A Frois Xavier é uma construtora de Jacareí especializada em construção e reforma — residencial e comercial. Trabalhamos com um princípio que orienta tudo: cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito antes de começar e documentação técnica que protege você durante e depois da entrega.</p>
+            <p class="text-ink-soft font-light leading-relaxed mt-4">Mais do que erguer paredes, queremos entregar tranquilidade. Por isso toda obra é conduzida conforme as normas técnicas e registrada com respaldo no CREA — a segurança de quem leva a própria obra a sério, sem surpresa de preço no meio do caminho nem prazo que só existe no papel.</p>
           </div>
         </div>
       </div>
+
+      <div class="bg-white py-20 lg:py-28 px-6 lg:px-10 border-t border-stone-dark">
+        <div class="max-w-site mx-auto">
+          <div class="grid md:grid-cols-3 gap-px bg-stone-dark border border-stone-dark">
+            <div class="bg-white p-9 lg:p-11 reveal"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Técnica em primeiro lugar</h3><p class="text-ink-soft font-light leading-relaxed">Um engenheiro responde por cada obra, do projeto à entrega. Decisão técnica no lugar de improviso.</p></div>
+            <div class="bg-white p-9 lg:p-11 reveal reveal-delay-1"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Transparência no orçamento</h3><p class="text-ink-soft font-light leading-relaxed">Preço definido por escrito antes de começar. O que combinamos é o que você paga.</p></div>
+            <div class="bg-white p-9 lg:p-11 reveal reveal-delay-2"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Respaldo documental</h3><p class="text-ink-soft font-light leading-relaxed">Obra registrada e dentro da lei, com respaldo no CREA — proteção do seu patrimônio no presente e no futuro.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-stone py-20 lg:py-28 px-6 lg:px-10">
+        <div class="max-w-site mx-auto">
+          <div class="max-w-2xl mb-12 reveal">
+            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Quem conduz</span>
+            <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Uma dupla à frente de cada obra.</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal">
+              <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
+              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Gestão de Obras &amp; Processos</p>
+              <p class="text-ink-soft font-light leading-relaxed mt-4 text-sm">Cuida do planejamento, dos prazos e da organização de cada etapa, para que a obra ande sem improviso e você sempre saiba em que pé está.</p>
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 98866-7973 →</a>
+            </div>
+            <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal reveal-delay-1">
+              <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
+              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Engenharia &amp; Execução</p>
+              <p class="text-ink-soft font-light leading-relaxed mt-4 text-sm">Responde tecnicamente pela obra, do projeto à entrega, garantindo execução conforme as normas e a qualidade que valoriza o seu imóvel.</p>
+              <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 99659-9313 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
+        <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+          <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Vamos conversar sobre o seu projeto?</h2>
+          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
+        </div>
+      </div>
     </section>
+
 
     <!-- ============================================================ -->
     <!-- ====================== SERVIÇOS ============================ -->
@@ -373,25 +419,52 @@
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">O que fazemos por você</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">
-            Construção, reforma e<br><span class="italic text-gold-light">engenharia técnica.</span>
+            Construção e reforma<br><span class="italic text-gold-light">do projeto à entrega.</span>
           </h1>
           <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">
-            Do projeto à entrega, conduzimos cada serviço com responsável técnico presente e documentação que protege o seu investimento. Conheça todas as nossas frentes de atuação.
+            Nosso forte é erguer e reformar — residencial e comercial — com engenheiro responsável presente em cada etapa. Precisou de laudo ou regularização? A parte de engenharia também é nossa.
           </p>
         </div>
       </div>
 
-      <!-- service detail blocks -->
+      <!-- INDICE DE PILARES (hierarquia: construir/reformar primario, engenharia secundario) -->
+      <div class="bg-white border-b border-stone-dark px-6 lg:px-10 py-16 lg:py-20">
+        <div class="max-w-site mx-auto">
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="#svc-construcao" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-9 lg:p-11 reveal">
+              <div class="text-gold mb-5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+              <h2 class="font-serif text-ink text-3xl font-normal mb-2">Construção</h2>
+              <p class="text-ink-soft font-light leading-relaxed">Residencial e comercial, da fundação à chave na mão — inclusive Minha Casa Minha Vida.</p>
+              <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
+            </a>
+            <a href="#svc-reformas" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-9 lg:p-11 reveal reveal-delay-1">
+              <div class="text-gold mb-5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z"/></svg></div>
+              <h2 class="font-serif text-ink text-3xl font-normal mb-2">Reformas</h2>
+              <p class="text-ink-soft font-light leading-relaxed">Da estrutura ao acabamento, com orçamento fechado e prazo combinado. Residencial e comercial.</p>
+              <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
+            </a>
+          </div>
+          <a href="#svc-engenharia" class="group flex items-center justify-between gap-4 mt-6 bg-white border border-stone-dark px-7 py-5 hover:border-gold/40 transition-colors reveal reveal-delay-2">
+            <div class="flex items-center gap-4">
+              <span class="text-ink-soft shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
+              <div>
+                <h3 class="font-sans text-ink font-bold text-sm tracking-tight">Engenharia &amp; Regularização <span class="text-ink-soft font-normal">— serviços complementares</span></h3>
+                <p class="text-ink-soft text-sm font-light">Laudos, plantas, regularização e segurança contra incêndio.</p>
+              </div>
+            </div>
+            <span class="shrink-0 text-ink-soft text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold transition-colors">Ver →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- DETALHES -->
       <div class="bg-stone">
 
-        <!-- =============================================== -->
-        <!-- FOCO PRINCIPAL: CONSTRUIR & REFORMAR            -->
-        <!-- =============================================== -->
-
-        <!-- Construção Residencial -->
-        <div class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
+        <!-- Construção -->
+        <div id="svc-construcao" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
+              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviço principal</span>
               <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Construção Residencial e Comercial</h2>
               <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Da fundação à chave na mão, na ordem em que a obra realmente acontece. Erguemos residências, salas e pontos comerciais com um engenheiro responsável que planeja, executa e responde tecnicamente por cada fase — do estudo do terreno e da fundação ao acabamento final.</p>
             </div>
@@ -403,35 +476,35 @@
             </div>
           </div>
 
-          <!-- Painel MCMV — destaque integrado -->
+          <!-- Painel MCMV -->
           <div class="max-w-4xl mx-auto mt-16 reveal reveal-delay-2">
             <div class="bg-forest grain rounded-md overflow-hidden shadow-[0_30px_70px_-40px_rgba(10,42,30,0.7)]">
               <div class="grid md:grid-cols-[1fr_1.6fr]">
-                <!-- coluna selo -->
                 <div class="bg-forest-mid/40 border-b md:border-b-0 md:border-r border-white/10 px-8 py-9 lg:px-10 lg:py-11 flex flex-col justify-center items-center text-center">
                   <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.3" class="mb-4"><path d="M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10"/></svg>
                   <span class="font-serif text-gold-pale text-2xl lg:text-3xl font-light leading-tight">Minha Casa<br>Minha Vida</span>
                   <span class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-semibold mt-3">Programa do Governo Federal</span>
                 </div>
-                <!-- coluna conteúdo -->
                 <div class="px-8 py-9 lg:px-10 lg:py-11 text-left">
-                  <p class="text-white/75 font-light text-sm lg:text-[15px] leading-relaxed">
-                    O Minha Casa Minha Vida é o programa habitacional do Governo Federal que torna a casa própria possível para milhares de famílias — com <span class="text-gold-pale">juros reduzidos</span>, <span class="text-gold-pale">subsídio no valor do imóvel</span> e parcelas que cabem no orçamento de quem se enquadra.
-                  </p>
-                  <p class="text-white/75 font-light text-sm lg:text-[15px] leading-relaxed mt-3.5">
-                    Construímos a sua casa seguindo à risca as exigências técnicas do programa e traduzimos a burocracia para você: avaliamos o seu enquadramento, explicamos as faixas de renda e conduzimos os próximos passos. Como as regras e os valores são revisados periodicamente, vale uma conversa para saber as condições de hoje.
-                  </p>
-                  <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gold-pale text-sm font-semibold mt-5 border-b border-gold-pale/40 hover:border-gold-pale transition-colors pb-0.5">Tirar minhas dúvidas no WhatsApp →</a>
+                  <p class="text-white/75 font-light text-sm lg:text-[15px] leading-relaxed">O Minha Casa Minha Vida é o programa habitacional do Governo Federal que torna a casa própria possível para milhares de famílias — com <span class="text-gold-pale">juros reduzidos</span>, <span class="text-gold-pale">subsídio no valor do imóvel</span> e parcelas que cabem no orçamento de quem se enquadra.</p>
+                  <p class="text-white/75 font-light text-sm lg:text-[15px] leading-relaxed mt-3.5">Construímos a sua casa seguindo à risca as exigências técnicas do programa e traduzimos a burocracia para você: avaliamos o seu enquadramento, explicamos as faixas de renda e conduzimos os próximos passos. Como as regras e os valores são revisados periodicamente, vale uma conversa para saber as condições de hoje.</p>
+                  <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20o%20Minha%20Casa%20Minha%20Vida." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gold-pale text-sm font-semibold mt-5 border-b border-gold-pale/40 hover:border-gold-pale transition-colors pb-0.5">Tirar minhas dúvidas no WhatsApp →</a>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="text-center mt-14 reveal reveal-delay-2">
+            <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20constru%C3%A7%C3%A3o%20%28residencial%20ou%20comercial%29." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors shadow-lg">Solicitar Orçamento</a>
+            <p class="text-ink-soft text-xs font-light mt-4">Orçamento fechado e sem compromisso.</p>
+          </div>
         </div>
 
-        <!-- Reformas Residenciais -->
-        <div class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
+        <!-- Reformas -->
+        <div id="svc-reformas" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
+              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviço principal</span>
               <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Reformas Residenciais e Comerciais</h2>
               <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Reformar com previsibilidade: orçamento fechado, acompanhamento técnico e prazo combinado. Seguimos a ordem que toda reforma bem-feita exige — primeiro resolvemos o que sustenta e protege o imóvel, depois entregamos o acabamento que valoriza o seu patrimônio. Da estrutura ao detalhe final.</p>
             </div>
@@ -441,84 +514,96 @@
               <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Alvenaria e Revestimentos</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Com a estrutura e as instalações resolvidas, partimos para paredes, contrapisos, pisos e revestimentos. Cada camada na sequência e no nível certos — é isso que garante esquadro, caimento correto e o acabamento final assentando sem defeito.</p></div>
               <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Interior, Fachada e Acabamento</h3><p class="text-ink-soft font-light text-sm leading-relaxed">A etapa que transforma a obra em um imóvel valorizado: pintura, fachada e acabamento alinhados ao seu gosto e ao padrão do projeto. É o que mais pesa na avaliação na hora de morar, alugar ou vender — e só fica impecável porque cada etapa anterior foi executada da forma correta.</p></div>
             </div>
+            <div class="text-center mt-14 reveal reveal-delay-2">
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20uma%20reforma." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors shadow-lg">Solicitar Orçamento</a>
+              <p class="text-ink-soft text-xs font-light mt-4">Orçamento fechado e sem compromisso.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Obras Comerciais -->
-        <div class="border-b border-stone-dark bg-forest grain px-6 lg:px-10 py-20 lg:py-28">
+        <!-- Obras Comerciais (mesma tela dos demais — sem fundo verde) -->
+        <div id="svc-comercial" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
-              <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
-              <h2 class="font-serif text-gold-pale text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
-              <p class="text-white/70 font-light leading-relaxed max-w-2xl mx-auto">Loja, escritório, clínica, restaurante ou galpão: o ponto comercial é uma ferramenta de trabalho — e cada dia de obra a mais é faturamento parado. Tratamos a sua obra com essa lógica, unindo rigor técnico a um cronograma pensado para o seu negócio voltar a operar o quanto antes.</p>
+              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
+              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
+              <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Loja, escritório, clínica, restaurante ou galpão: o ponto comercial é uma ferramenta de trabalho — e cada dia de obra a mais é faturamento parado. Tratamos a sua obra com essa lógica, unindo rigor técnico a um cronograma pensado para o seu negócio voltar a operar o quanto antes.</p>
             </div>
             <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
-              <div class="border-t border-white/15 pt-5"><h3 class="font-bold text-white mb-1.5">Planejamento Orientado ao Negócio</h3><p class="text-white/65 font-light text-sm leading-relaxed">Antes de começar, definimos escopo, etapas e cronograma com uma meta clara: reduzir ao máximo o tempo de portas fechadas. Você sabe desde o início o que será feito, em quanto tempo e por qual valor — sem o prejuízo invisível de uma obra que se arrasta.</p></div>
-              <div class="border-t border-white/15 pt-5"><h3 class="font-bold text-white mb-1.5">Estrutura e Instalações para Uso Intenso</h3><p class="text-white/65 font-light text-sm leading-relaxed">Ambiente comercial exige mais: maior carga elétrica, pontos de água e esgoto bem distribuídos, climatização e previsão para equipamentos. Dimensionamos tudo conforme as normas técnicas e o uso real do espaço, evitando sobrecarga, parada e adaptação às pressas depois de inaugurado.</p></div>
-              <div class="border-t border-white/15 pt-5"><h3 class="font-bold text-white mb-1.5">Acessibilidade e Liberação para Funcionar</h3><p class="text-white/65 font-light text-sm leading-relaxed">Comércio só abre as portas com a documentação em ordem. Cuidamos das exigências de acessibilidade e da regularização junto ao Corpo de Bombeiros (AVCB/CLCB) e à prefeitura, conduzindo as adequações e a documentação técnica até a liberação final do seu espaço.</p></div>
-              <div class="border-t border-white/15 pt-5"><h3 class="font-bold text-white mb-1.5">Acabamento que Comunica a Marca</h3><p class="text-white/65 font-light text-sm leading-relaxed">O ponto é a primeira impressão do seu cliente. Executamos o acabamento alinhado à identidade visual e ao padrão do negócio — fachada, iluminação e revestimentos que transformam o espaço em um ativo de imagem, não só em metro quadrado construído.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Planejamento Orientado ao Negócio</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Antes de começar, definimos escopo, etapas e cronograma com uma meta clara: reduzir ao máximo o tempo de portas fechadas. Você sabe desde o início o que será feito, em quanto tempo e por qual valor — sem o prejuízo invisível de uma obra que se arrasta.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Estrutura e Instalações para Uso Intenso</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Ambiente comercial exige mais: maior carga elétrica, pontos de água e esgoto bem distribuídos, climatização e previsão para equipamentos. Dimensionamos tudo conforme as normas técnicas e o uso real do espaço, evitando sobrecarga, parada e adaptação às pressas depois de inaugurado.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acessibilidade e Liberação para Funcionar</h3><p class="text-ink-soft font-light text-sm leading-relaxed">Comércio só abre as portas com a documentação em ordem. Cuidamos das exigências de acessibilidade e da regularização junto ao Corpo de Bombeiros (AVCB/CLCB) e à prefeitura, conduzindo as adequações e a documentação técnica até a liberação final do seu espaço.</p></div>
+              <div class="border-t border-ink/10 pt-5"><h3 class="font-bold text-ink mb-1.5">Acabamento que Comunica a Marca</h3><p class="text-ink-soft font-light text-sm leading-relaxed">O ponto é a primeira impressão do seu cliente. Executamos o acabamento alinhado à identidade visual e ao padrão do negócio — fachada, iluminação e revestimentos que transformam o espaço em um ativo de imagem, não só em metro quadrado construído.</p></div>
             </div>
-            <p class="text-white/45 font-light text-xs mt-10 max-w-xl mx-auto leading-relaxed reveal reveal-delay-2">Conduzimos cada obra comercial com engenheiro responsável e respaldo documental em todas as etapas. Conte o seu projeto e montamos a proposta sob medida.</p>
+            <div class="text-center mt-14 reveal reveal-delay-2">
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20uma%20obra%20comercial." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors shadow-lg">Solicitar Orçamento</a>
+              <p class="text-ink-soft text-xs font-light mt-4">Conte o seu projeto e montamos a proposta sob medida.</p>
+            </div>
           </div>
         </div>
 
-
-        <!-- =============================================== -->
-        <!-- SECUNDÁRIO: SERVIÇOS DE ENGENHARIA              -->
-        <!-- =============================================== -->
-        <div class="px-6 lg:px-10 py-20 lg:py-28">
+        <!-- Engenharia (secundário, em acordeão) -->
+        <div id="svc-engenharia" style="scroll-margin-top:96px;" class="px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-site mx-auto">
-
-            <!-- header do bloco -->
             <div class="max-w-3xl mx-auto text-center reveal">
-              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Serviços de Engenharia</h2>
-              <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">O mesmo engenheiro que conduz as nossas obras também resolve a parte técnica e documental do seu imóvel — sem você precisar contratar um profissional diferente a cada etapa. Laudos com responsabilidade técnica, regularização junto à prefeitura e ao cartório e liberação no Corpo de Bombeiros, sempre conforme as normas vigentes e com respaldo documental do início ao fim.</p>
+              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviços complementares</span>
+              <h2 class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight mb-4">Engenharia &amp; Regularização</h2>
+              <p class="text-ink-soft font-light leading-relaxed max-w-2xl mx-auto text-sm">O mesmo engenheiro que conduz as nossas obras resolve a parte técnica e documental do seu imóvel — sem você precisar contratar um profissional diferente a cada etapa. Toque em cada frente para ver o que fazemos.</p>
             </div>
 
-            <!-- Grupo: Laudos & Vistorias -->
-            <div class="mt-20 lg:mt-24 reveal reveal-delay-1">
-              <div class="max-w-3xl mx-auto text-center mb-12">
-                <span class="block w-12 h-px bg-gold/50 mx-auto mb-6"></span>
-                <h3 class="font-serif text-ink text-3xl lg:text-4xl font-light">Laudos e Vistorias</h3>
-                <p class="text-ink-soft font-light text-sm mt-3 max-w-xl mx-auto leading-relaxed">Relatórios técnicos assinados por engenheiro registrado no CREA, úteis para comprar, vender, alugar ou resolver questões na Justiça.</p>
+            <div class="max-w-3xl mx-auto mt-10 space-y-3 reveal reveal-delay-1">
+              <!-- Laudos -->
+              <div class="accordion-item border border-stone-dark bg-white open">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
+                  <span class="font-serif text-ink text-2xl font-normal">Laudos e Vistorias</span>
+                  <span class="accordion-icon text-gold text-3xl font-light leading-none">+</span>
+                </button>
+                <div class="accordion-body px-6">
+                  <p class="text-ink-soft font-light text-sm mb-6 max-w-2xl">Relatórios técnicos assinados por engenheiro registrado no CREA, úteis para comprar, vender, alugar ou resolver questões na Justiça.</p>
+                  <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6 pb-6">
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Responsabilidade Técnica (ART)</h4><p class="text-ink-soft font-light text-sm leading-relaxed">O documento que registra oficialmente um engenheiro como responsável pela obra ou serviço. É o que dá validade legal ao trabalho e protege você caso algo seja questionado no futuro.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Vistoria de Entrada e Saída</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Registramos por escrito e em fotos o estado do imóvel antes e depois da locação. Um documento simples que evita discussões sobre danos e protege proprietário e inquilino na devolução das chaves.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Laudo Cautelar de Vizinhança</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Antes de uma obra ou demolição, documentamos o estado dos imóveis vizinhos. É a sua proteção contra cobranças indevidas por trincas ou danos que já existiam antes de você começar.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Laudo de Vícios Construtivos</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Identificamos e documentamos tecnicamente defeitos como infiltração, trinca e descolamento de revestimento. Serve para acionar construtora, negociar reparo ou embasar uma ação na Justiça com respaldo técnico.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Relatório Fotográfico Completo</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Fotos, registro em vídeo e descrição técnica reunidos em um único documento assinado. O respaldo que sustenta a sua posição em qualquer negociação, perícia ou processo.</p></div>
+                  </div>
+                </div>
               </div>
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-9 text-left max-w-4xl mx-auto">
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Responsabilidade Técnica (ART)</h4><p class="text-ink-soft font-light text-sm leading-relaxed">O documento que registra oficialmente um engenheiro como responsável pela obra ou serviço. É o que dá validade legal ao trabalho e protege você caso algo seja questionado no futuro.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Vistoria de Entrada e Saída</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Registramos por escrito e em fotos o estado do imóvel antes e depois da locação. Um documento simples que evita discussões sobre danos e protege proprietário e inquilino na devolução das chaves.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Laudo Cautelar de Vizinhança</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Antes de uma obra ou demolição, documentamos o estado dos imóveis vizinhos. É a sua proteção contra cobranças indevidas por trincas ou danos que já existiam antes de você começar.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Laudo de Vícios Construtivos</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Identificamos e documentamos tecnicamente defeitos como infiltração, trinca e descolamento de revestimento. Serve para acionar construtora, negociar reparo ou embasar uma ação na Justiça com respaldo técnico.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Relatório Fotográfico Completo</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Fotos, registro em vídeo e descrição técnica reunidos em um único documento assinado. O respaldo que sustenta a sua posição em qualquer negociação, perícia ou processo.</p></div>
+              <!-- Plantas -->
+              <div class="accordion-item border border-stone-dark bg-white">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
+                  <span class="font-serif text-ink text-2xl font-normal">Plantas e Regularização</span>
+                  <span class="accordion-icon text-gold text-3xl font-light leading-none">+</span>
+                </button>
+                <div class="accordion-body px-6">
+                  <p class="text-ink-soft font-light text-sm mb-6 max-w-2xl">A documentação técnica que coloca o seu imóvel em ordem perante a prefeitura e o cartório — em área urbana ou rural.</p>
+                  <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6 pb-6">
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Habite-se</h4><p class="text-ink-soft font-light text-sm leading-relaxed">O documento da prefeitura que atesta que a construção está pronta e apta a ser habitada. É exigido para financiar, escriturar e vender o imóvel — e cuidamos de todo o processo até a sua liberação.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Usucapião</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Elaboramos a planta e o memorial descritivo com respaldo técnico para quem ocupa um imóvel há anos e quer torná-lo legalmente seu. A base documental que dá segurança ao processo na Justiça ou no cartório.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Desmembramento e Unificação</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Dividir um terreno em lotes ou juntar lotes em um só, com planta aprovada e documentação para o cartório. Essencial para vender parte de uma área, partilhar herança ou viabilizar uma nova construção.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">Regularização de Imóveis</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Colocamos construções e terrenos de acordo com as regras da prefeitura e a legislação vigente. Imóvel regular vale mais, pode ser financiado e negociado com liberdade — e deixa de ser um risco para o seu patrimônio.</p></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Incêndio -->
+              <div class="accordion-item border border-stone-dark bg-white">
+                <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
+                  <span class="font-serif text-ink text-2xl font-normal">Segurança contra Incêndio</span>
+                  <span class="accordion-icon text-gold text-3xl font-light leading-none">+</span>
+                </button>
+                <div class="accordion-body px-6">
+                  <p class="text-ink-soft font-light text-sm mb-6 max-w-2xl">Regularizamos o seu imóvel junto ao Corpo de Bombeiros, do projeto à liberação final.</p>
+                  <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6 pb-6">
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">AVCB — Auto de Vistoria do Corpo de Bombeiros</h4><p class="text-ink-soft font-light text-sm leading-relaxed">É a liberação exigida para imóveis maiores, como comércios, prédios e empresas. Cuidamos do projeto, das adequações necessárias e da vistoria que autoriza o funcionamento.</p></div>
+                    <div class="border-t border-ink/10 pt-4"><h4 class="font-bold text-ink mb-1.5 text-sm">CLCB — Certificado de Licença do Corpo de Bombeiros</h4><p class="text-ink-soft font-light text-sm leading-relaxed">É a versão mais simples, para imóveis menores e de menor risco. Avaliamos o seu caso, preparamos os documentos e cuidamos de toda a regularização até a liberação.</p></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Grupo: Plantas & Regularização -->
-            <div class="mt-20 lg:mt-24 reveal reveal-delay-1">
-              <div class="max-w-3xl mx-auto text-center mb-12">
-                <span class="block w-12 h-px bg-gold/50 mx-auto mb-6"></span>
-                <h3 class="font-serif text-ink text-3xl lg:text-4xl font-light">Plantas e Regularização</h3>
-                <p class="text-ink-soft font-light text-sm mt-3 max-w-xl mx-auto leading-relaxed">A documentação técnica que coloca o seu imóvel em ordem perante a prefeitura e o cartório — em área urbana ou rural.</p>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-x-10 gap-y-9 text-left max-w-3xl mx-auto">
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Habite-se</h4><p class="text-ink-soft font-light text-sm leading-relaxed">O documento da prefeitura que atesta que a construção está pronta e apta a ser habitada. É exigido para financiar, escriturar e vender o imóvel — e cuidamos de todo o processo até a sua liberação.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Usucapião</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Elaboramos a planta e o memorial descritivo com respaldo técnico para quem ocupa um imóvel há anos e quer torná-lo legalmente seu. A base documental que dá segurança ao processo na Justiça ou no cartório.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Desmembramento e Unificação</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Dividir um terreno em lotes ou juntar lotes em um só, com planta aprovada e documentação para o cartório. Essencial para vender parte de uma área, partilhar herança ou viabilizar uma nova construção.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">Regularização de Imóveis</h4><p class="text-ink-soft font-light text-sm leading-relaxed">Colocamos construções e terrenos de acordo com as regras da prefeitura e a legislação vigente. Imóvel regular vale mais, pode ser financiado e negociado com liberdade — e deixa de ser um risco para o seu patrimônio.</p></div>
-              </div>
+            <div class="text-center mt-12 reveal reveal-delay-2">
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20um%20servi%C3%A7o%20de%20engenharia%20%28laudo%2C%20planta%20ou%20regulariza%C3%A7%C3%A3o%29." target="_blank" rel="noopener" class="inline-block border border-forest/30 text-forest hover:bg-forest hover:text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-all">Solicitar Orçamento</a>
             </div>
-
-            <!-- Grupo: Segurança contra Incêndio -->
-            <div class="mt-20 lg:mt-24 reveal reveal-delay-1">
-              <div class="max-w-3xl mx-auto text-center mb-12">
-                <span class="block w-12 h-px bg-gold/50 mx-auto mb-6"></span>
-                <h3 class="font-serif text-ink text-3xl lg:text-4xl font-light">Segurança contra Incêndio</h3>
-                <p class="text-ink-soft font-light text-sm mt-3 max-w-xl mx-auto leading-relaxed">Regularizamos o seu imóvel junto ao Corpo de Bombeiros, do projeto à liberação final.</p>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-x-10 gap-y-9 text-left max-w-3xl mx-auto">
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">AVCB — Auto de Vistoria do Corpo de Bombeiros</h4><p class="text-ink-soft font-light text-sm leading-relaxed">É a liberação exigida para imóveis maiores, como comércios, prédios e empresas. Cuidamos do projeto, das adequações necessárias e da vistoria que autoriza o funcionamento.</p></div>
-                <div class="border-t border-ink/10 pt-5"><h4 class="font-bold text-ink mb-1.5 text-sm">CLCB — Certificado de Licença do Corpo de Bombeiros</h4><p class="text-ink-soft font-light text-sm leading-relaxed">É a versão mais simples, para imóveis menores e de menor risco. Avaliamos o seu caso, preparamos os documentos e cuidamos de toda a regularização até a liberação.</p></div>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -528,10 +613,12 @@
       <div class="bg-forest-dark grain py-20 lg:py-28 px-6 lg:px-10">
         <div class="max-w-site mx-auto text-center reveal">
           <h2 class="font-serif text-white text-3xl lg:text-5xl font-light mb-8 max-w-2xl mx-auto">Tem uma demanda específica? Conte o seu projeto para a gente.</h2>
-          <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Falar no WhatsApp</a>
+          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
+          <p class="text-white/45 text-xs font-light mt-5 tracking-wide">Orçamento sem compromisso · resposta no mesmo dia.</p>
         </div>
       </div>
     </section>
+
 
     <!-- ============================================================ -->
     <!-- ====================== OBRAS =============================== -->
@@ -568,7 +655,7 @@
               <p class="text-ink-soft font-light text-lg max-w-md mx-auto mb-8">Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.</p>
               <div class="flex flex-wrap gap-4 justify-center">
                 <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 transition-colors">Ver no Instagram</a>
-                <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="border border-ink/25 text-ink text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 hover:bg-ink hover:text-white transition-all">Solicitar Orçamento</a>
+                <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="border border-ink/25 text-ink text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 hover:bg-ink hover:text-white transition-all">Solicitar Orçamento</a>
               </div>
             </div>
           </div>
@@ -602,14 +689,14 @@
                     <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
                     <p class="text-ink-soft text-sm font-light mt-0.5">Gestão de Obras &amp; Processos</p>
                   </div>
-                  <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 98866-7973</a>
+                  <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 98866-7973</a>
                 </div>
                 <div class="flex items-start justify-between gap-4 border-b border-ink/10 pb-7">
                   <div>
                     <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
                     <p class="text-ink-soft text-sm font-light mt-0.5">Engenharia &amp; Execução</p>
                   </div>
-                  <a href="https://wa.me/5512996599313" target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 99659-9313</a>
+                  <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 99659-9313</a>
                 </div>
               </div>
             </div>
@@ -668,7 +755,7 @@
       <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Toda boa obra começa com uma conversa.</h2>
-          <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="shrink-0 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Falar no WhatsApp</a>
+          <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Solicitar Orçamento</a>
         </div>
       </div>
     </section>
@@ -703,13 +790,13 @@
           <h3 class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Contato</h3>
           <ul class="space-y-3.5 text-sm">
             <li>
-              <a href="https://wa.me/5512988667973" target="_blank" rel="noopener" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
+              <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 opacity-70"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
                 <span>Pedro Frois — (12) 98866-7973</span>
               </a>
             </li>
             <li>
-              <a href="https://wa.me/5512996599313" target="_blank" rel="noopener" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
+              <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 opacity-70"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
                 <span>Andrei Xavier — (12) 99659-9313</span>
               </a>
@@ -1053,6 +1140,9 @@
       renderObras();
     }
 
+    /* ============ ACCORDION (engenharia) ============ */
+    function toggleAccordion(btn){ btn.closest('.accordion-item').classList.toggle('open'); }
+
     /* ============ PAGE SWITCHING ============ */
     function changePage(pageId, event) {
       if (event) event.preventDefault();
@@ -1075,14 +1165,17 @@
     function toggleMobileMenu() {
       const box = document.getElementById('mobile-menu-box');
       const [l1,l2,l3] = ['m-line1','m-line2','m-line3'].map(id => document.getElementById(id));
+      const waf = document.getElementById('wa-float');
       if (box.classList.contains('translate-x-full')) {
         box.classList.remove('translate-x-full');
         l1.style.transform = 'translateY(8px) rotate(45deg)';
         l2.style.opacity = '0';
         l3.style.transform = 'translateY(-8px) rotate(-45deg)';
+        if (waf) waf.style.display = 'none';
       } else {
         box.classList.add('translate-x-full');
         l1.style.transform = 'none'; l2.style.opacity = '1'; l3.style.transform = 'none';
+        if (waf) waf.style.display = '';
       }
     }
 
@@ -1144,5 +1237,11 @@
       changePage(pages.includes(hash) ? hash : 'home');
     });
   </script>
+  <!-- ====== BOTÃO WHATSAPP FIXO (somente mobile) ====== -->
+  <a id="wa-float" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener"
+     class="lg:hidden fixed left-4 right-4 bottom-4 z-40 flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-white text-[12px] uppercase tracking-[0.16em] font-bold py-4 rounded-md shadow-[0_12px_34px_-8px_rgba(0,0,0,0.55)] transition-colors">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg>
+    Solicitar Orçamento
+  </a>
 </body>
 </html>
