@@ -3,8 +3,45 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Frois Xavier Construtora — Construção, Reforma e Engenharia | Jacareí e Vale do Paraíba</title>
-  <meta name="description" content="Construtora em Jacareí e Vale do Paraíba. Construção residencial, reformas com orçamento fechado, Minha Casa Minha Vida, laudos e engenharia técnica — com engenheiro acompanhando cada etapa e total respaldo documental."/>
+  <title>Frois Xavier Construtora — Construção e Reforma em São José dos Campos e Jacareí</title>
+  <link rel="canonical" href="https://www.froisxavier.com.br/"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Frois Xavier Construtora",
+  "url": "https://www.froisxavier.com.br/",
+  "telephone": "+5512988667973",
+  "email": "froisxavier@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "R. Cap. João José de Macedo, 237 - Sala 1",
+    "addressLocality": "Jacareí",
+    "addressRegion": "SP",
+    "postalCode": "12327-030",
+    "addressCountry": "BR"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "São José dos Campos"
+    },
+    {
+      "@type": "City",
+      "name": "Jacareí"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Vale do Paraíba"
+    }
+  ],
+  "sameAs": [
+    "https://instagram.com/froisxavier"
+  ],
+  "description": "Construtora no Vale do Paraíba especializada em construção e reforma residencial e comercial, com engenheiro responsável e respaldo documental."
+}
+  </script>
+  <meta name="description" content="Construtora em São José dos Campos, Jacareí e Vale do Paraíba. Construção residencial, reformas com orçamento fechado, Minha Casa Minha Vida, laudos e engenharia técnica — com engenheiro acompanhando cada etapa e total respaldo documental."/>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -188,7 +225,7 @@
     </nav>
     <div class="mt-12 pt-7 border-t border-white/10 relative z-10">
       
-      <p class="text-white/40 text-xs mt-5 tracking-wide">Jacareí · Vale do Paraíba — SP</p>
+      <p class="text-white/40 text-xs mt-5 tracking-wide">Vale do Paraíba — SP</p>
     </div>
   </div>
 
@@ -291,7 +328,7 @@
           <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 reveal">
             <div class="max-w-2xl">
               <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">O que fazemos</span>
-              <h2 class="font-serif text-white text-4xl lg:text-5xl font-light leading-tight">Da fundação à regularização.</h2>
+              <h2 class="font-serif text-white text-4xl lg:text-5xl font-light leading-tight">Da fundação à chave na mão.</h2>
             </div>
             <button onclick="changePage('servicos')" class="shrink-0 text-gold-light text-xs uppercase tracking-[0.18em] font-bold border-b border-gold-light/40 pb-1 hover:border-gold-light transition-colors self-start">
               Ver todos os serviços →
@@ -299,26 +336,29 @@
           </div>
 
           <div class="grid md:grid-cols-3 gap-6">
-            <div class="reveal bg-forest-mid/40 border border-white/10 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="changePage('servicos')">
+            <div class="reveal bg-forest-mid/40 border border-white/10 border-t-2 border-t-gold/70 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="goToService('svc-construcao')">
               <div class="text-gold-light mb-6">
                 <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
               </div>
               <h3 class="font-serif text-white text-2xl font-normal mb-3">Construção Residencial</h3>
-              <p class="text-white/60 font-light leading-relaxed">Da fundação à entrega das chaves, com um engenheiro respondendo tecnicamente por cada etapa. Residências, salas e pontos comerciais.</p>
+              <p class="text-white/60 font-light leading-relaxed">Sua casa erguida do zero, com responsabilidade técnica em cada etapa — inclusive pelo Minha Casa Minha Vida.</p>
+              <span class="inline-block mt-5 text-gold-light text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
             </div>
-            <div class="reveal reveal-delay-1 bg-forest-mid/40 border border-white/10 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="changePage('servicos')">
+            <div class="reveal reveal-delay-1 bg-forest-mid/40 border border-white/10 border-t-2 border-t-gold/70 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="goToService('svc-reformas')">
               <div class="text-gold-light mb-6">
                 <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z"/></svg>
               </div>
-              <h3 class="font-serif text-white text-2xl font-normal mb-3">Reformas</h3>
-              <p class="text-white/60 font-light leading-relaxed">Da estrutura ao acabamento, com orçamento fechado e acompanhamento técnico. Cada etapa na ordem certa — em residências e espaços comerciais.</p>
+              <h3 class="font-serif text-white text-2xl font-normal mb-3">Reformas Residenciais</h3>
+              <p class="text-white/60 font-light leading-relaxed">Renove com previsibilidade: orçamento fechado, prazo combinado e cada etapa na ordem certa.</p>
+              <span class="inline-block mt-5 text-gold-light text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
             </div>
-            <div class="reveal reveal-delay-2 bg-forest-mid/40 border border-white/10 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="changePage('servicos')">
+            <div class="reveal reveal-delay-2 bg-forest-mid/40 border border-white/10 border-t-2 border-t-gold/70 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="goToService('svc-comercial')">
               <div class="text-gold-light mb-6">
-                <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+                <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
               </div>
-              <h3 class="font-serif text-white text-2xl font-normal mb-3">Serviços de Engenharia</h3>
-              <p class="text-white/60 font-light leading-relaxed">Laudos, regularização e segurança contra incêndio: a parte técnica que deixa o seu imóvel seguro e em dia com a lei.</p>
+              <h3 class="font-serif text-white text-2xl font-normal mb-3">Obras Comerciais</h3>
+              <p class="text-white/60 font-light leading-relaxed">Seu ponto pronto para operar — construção e reforma com foco em reabrir rápido.</p>
+              <span class="inline-block mt-5 text-gold-light text-xs uppercase tracking-[0.16em] font-bold">Ver serviço →</span>
             </div>
           </div>
         </div>
@@ -347,7 +387,7 @@
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Quem Somos</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-3xl reveal reveal-delay-1">Obra séria não admite <span class="italic text-gold-light">improviso.</span></h1>
-          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">A Frois Xavier nasceu desse princípio: técnica, transparência e responsabilidade em cada etapa — construção e reforma em Jacareí e no Vale do Paraíba.</p>
+          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">A Frois Xavier nasceu desse princípio: técnica, transparência e responsabilidade em cada etapa — construção e reforma em todo o Vale do Paraíba.</p>
         </div>
       </div>
 
@@ -359,7 +399,7 @@
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
             <h2 class="font-serif text-ink text-3xl sm:text-4xl font-light leading-[1.2] mb-8">Antes de erguer paredes, construímos confiança.</h2>
-            <p class="text-ink-light text-lg font-light leading-relaxed">A Frois Xavier é uma construtora de Jacareí especializada em construção e reforma — residencial e comercial. Trabalhamos com um princípio que orienta tudo: cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito antes de começar e documentação técnica que protege você durante e depois da entrega.</p>
+            <p class="text-ink-light text-lg font-light leading-relaxed">A Frois Xavier é uma construtora especializada em construção e reforma — residencial e comercial — presente em todo o Vale do Paraíba. Trabalhamos com um princípio que orienta tudo: cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito antes de começar e documentação técnica que protege você durante e depois da entrega.</p>
             <p class="text-ink-soft font-light leading-relaxed mt-4">Mais do que erguer paredes, queremos entregar tranquilidade. Por isso toda obra é conduzida conforme as normas técnicas e registrada com respaldo no CREA — a segurança de quem leva a própria obra a sério, sem surpresa de preço no meio do caminho nem prazo que só existe no papel.</p>
           </div>
         </div>
@@ -371,6 +411,19 @@
             <div class="bg-white p-9 lg:p-11 reveal"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Técnica em primeiro lugar</h3><p class="text-ink-soft font-light leading-relaxed">Um engenheiro responde por cada obra, do projeto à entrega. Decisão técnica no lugar de improviso.</p></div>
             <div class="bg-white p-9 lg:p-11 reveal reveal-delay-1"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Transparência no orçamento</h3><p class="text-ink-soft font-light leading-relaxed">Preço definido por escrito antes de começar. O que combinamos é o que você paga.</p></div>
             <div class="bg-white p-9 lg:p-11 reveal reveal-delay-2"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Respaldo documental</h3><p class="text-ink-soft font-light leading-relaxed">Obra registrada e dentro da lei, com respaldo no CREA — proteção do seu patrimônio no presente e no futuro.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-stone py-20 lg:py-28 px-6 lg:px-10 border-t border-stone-dark">
+        <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          <div class="lg:col-span-4 reveal">
+            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Responsabilidade em cada etapa</span>
+            <div class="w-12 h-px bg-gold/50"></div>
+          </div>
+          <div class="lg:col-span-8 reveal reveal-delay-1">
+            <p class="text-ink-light text-lg font-light leading-relaxed">Cada serviço que assumimos é conduzido com responsabilidade técnica de verdade: um engenheiro responde pela obra do projeto à entrega, tudo é executado conforme as normas da ABNT e registrado com respaldo no CREA. Não é só erguer rápido — é fazer certo, com segurança no canteiro e qualidade que se sustenta com o tempo.</p>
+            <p class="text-ink-soft font-light leading-relaxed mt-4">Trabalhamos com escopo e prazo definidos por escrito, materiais controlados e comunicação aberta em cada fase. Você acompanha o andamento, entende cada decisão e recebe a obra com a documentação em ordem, do contrato à vistoria final. É assim que tratamos o patrimônio de quem confia na gente: com o mesmo cuidado que teríamos com o nosso.</p>
           </div>
         </div>
       </div>
@@ -401,7 +454,7 @@
       <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Vamos conversar sobre o seu projeto?</h2>
-          
+          <button onclick="changePage('contato')" class="shrink-0 border border-gold-light/50 text-gold-light hover:bg-gold-light hover:text-forest text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 transition-all">Ver Contatos →</button>
         </div>
       </div>
     </section>
@@ -559,7 +612,7 @@
             </div>
 
             <div class="max-w-3xl mx-auto mt-10 space-y-3 reveal reveal-delay-1">
-              <div class="accordion-item border border-stone-dark bg-white open">
+              <div class="accordion-item border border-stone-dark bg-white">
                 <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between text-left px-6 py-5">
                   <span class="font-serif text-ink text-2xl font-normal">Laudos e Vistorias</span>
                   <span class="accordion-icon text-gold text-3xl font-light leading-none">+</span>
@@ -662,7 +715,7 @@
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Canal direto</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Fale com a gente.</h1>
-          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">Conte o que você tem em mente e mostramos o melhor caminho. Atendimento direto e sem rodeios em Jacareí, São José dos Campos e todo o Vale do Paraíba.</p>
+          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">Conte o que você tem em mente e mostramos o melhor caminho. Atendimento direto e sem rodeios em todo o Vale do Paraíba.</p>
         </div>
       </div>
 
@@ -679,6 +732,7 @@
                   <div>
                     <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
                     <p class="text-ink-soft text-sm font-light mt-0.5">Gestão de Obras &amp; Processos</p>
+                    <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Pedro." target="_blank" rel="noopener" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Pedro no WhatsApp →</a>
                   </div>
                   <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 98866-7973</a>
                 </div>
@@ -686,6 +740,7 @@
                   <div>
                     <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
                     <p class="text-ink-soft text-sm font-light mt-0.5">Engenharia &amp; Execução</p>
+                    <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Andrei." target="_blank" rel="noopener" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Andrei no WhatsApp →</a>
                   </div>
                   <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 99659-9313</a>
                 </div>
@@ -727,7 +782,7 @@
                 R. Cap. João José de Macedo, 237 — Sala 1<br>
                 Centro · Jacareí — SP · CEP 12327-030
               </p>
-              <p class="text-ink-soft text-sm font-light mt-4">Atendemos Jacareí, São José dos Campos e toda a região do Vale do Paraíba.</p>
+              <p class="text-ink-soft text-sm font-light mt-4">Atendemos São José dos Campos, Jacareí e toda a região do Vale do Paraíba.</p>
               <a href="https://www.google.com/maps/search/?api=1&query=R.+Cap.+João+José+de+Macedo,+237+-+Centro,+Jacareí+-+SP,+12327-030" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-forest font-semibold text-sm border-b border-forest/30 pb-1 hover:border-forest transition-colors">
                 Abrir no Google Maps →
               </a>
@@ -765,7 +820,7 @@
               <span class="font-sans text-gold-light text-[11px] font-medium tracking-[0.42em] mt-1">CONSTRUTORA</span>
             </span>
           </a>
-          <p class="text-white/50 font-light leading-relaxed max-w-xs text-sm">Construção, reforma e engenharia com a tranquilidade de quem acompanha cada etapa. Jacareí e Vale do Paraíba.</p>
+          <p class="text-white/50 font-light leading-relaxed max-w-xs text-sm">Construção, reforma e engenharia com a tranquilidade de quem acompanha cada etapa. Vale do Paraíba.</p>
         </div>
         <div class="md:col-span-3">
           <h3 class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Navegação</h3>
@@ -1136,6 +1191,7 @@
 
     /* ============ SCROLL ATÉ O SERVIÇO ============ */
     function scrollToSvc(id, event){ if(event) event.preventDefault(); const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+    function goToService(id){ changePage('servicos'); setTimeout(function(){ scrollToSvc(id); }, 90); }
 
     /* ============ PAGE SWITCHING ============ */
     function changePage(pageId, event) {
