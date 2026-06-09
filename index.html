@@ -60,6 +60,7 @@
             gold: '#a07830',
             'gold-light': '#c09848',
             'gold-pale': '#d8b878',
+            'gold-deep': '#856420',
             stone: '#f4f2ed',
             'stone-dark': '#e8e4da',
             ink: '#111111',
@@ -175,9 +176,17 @@
     .accordion-item.open .accordion-body { max-height: 1600px; }
     .accordion-item.open .accordion-icon { transform: rotate(45deg); }
     .accordion-icon { transition: transform 0.4s ease; }
-    /* botão flutuante: pulso sutil */
-    #wa-float::after{content:"";position:absolute;inset:0;border-radius:9999px;box-shadow:0 0 0 0 rgba(160,120,48,.5);animation:waPulse 2.6s ease-out infinite;pointer-events:none;}
-    @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(160,120,48,.5)}70%{box-shadow:0 0 0 14px rgba(160,120,48,0)}100%{box-shadow:0 0 0 0 rgba(160,120,48,0)}}
+    /* === Responsividade: telas estreitas (dobráveis, celulares pequenos) === */
+    @media (max-width: 380px){
+      #sec-home h1 { font-size: 2.5rem !important; line-height: 1.12 !important; }
+      .sec-hero h1 { font-size: 2.6rem !important; line-height: 1.14 !important; }
+    }
+    /* === Responsividade: paisagem em celular / telas baixas === */
+    @media (max-height: 560px) and (orientation: landscape){
+      #hero-home { min-height: auto !important; padding-top: 104px !important; padding-bottom: 48px !important; }
+      #hero-home h1 { font-size: 2.6rem !important; line-height: 1.08 !important; margin-bottom: 0.9rem !important; }
+      .sec-hero { padding-top: 100px !important; padding-bottom: 36px !important; }
+    }
   </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
@@ -215,7 +224,8 @@
   </header>
 
   <!-- ============ MOBILE MENU ============ -->
-  <div id="mobile-menu-box" class="fixed inset-0 bg-forest grain z-40 flex flex-col justify-center px-8 translate-x-full transition-transform duration-500 lg:hidden">
+  <div id="mobile-menu-box" class="fixed inset-0 bg-forest grain z-40 overflow-y-auto translate-x-full transition-transform duration-500 lg:hidden">
+    <div class="min-h-full flex flex-col justify-center px-8 py-16">
     <nav class="flex flex-col gap-7 text-left relative z-10">
       <button onclick="changePage('home'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Início</button>
       <button onclick="changePage('sobre'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Sobre Nós</button>
@@ -225,7 +235,8 @@
     </nav>
     <div class="mt-12 pt-7 border-t border-white/10 relative z-10">
       
-      <p class="text-white/40 text-xs mt-5 tracking-wide">Vale do Paraíba — SP</p>
+      <p class="text-white/60 text-xs mt-5 tracking-wide">Vale do Paraíba — SP</p>
+    </div>
     </div>
   </div>
 
@@ -237,7 +248,7 @@
     <section id="sec-home" class="page-section active">
 
       <!-- HERO -->
-      <div class="relative min-h-screen bg-gradient-to-br from-forest-dark via-forest to-forest-mid grain flex items-center px-6 lg:px-10 pt-[88px] overflow-hidden">
+      <div id="hero-home" class="relative min-h-screen bg-gradient-to-br from-forest-dark via-forest to-forest-mid grain flex items-center px-6 lg:px-10 pt-[88px] overflow-hidden">
         <!-- decorative oversized serif watermark -->
         <span class="hidden md:block absolute -right-10 bottom-0 font-serif text-[28vw] leading-none text-white/[0.025] select-none pointer-events-none">FX</span>
 
@@ -274,7 +285,7 @@
       <div class="bg-stone py-24 lg:py-36 px-6 lg:px-10">
         <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div class="lg:col-span-4 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A Frois Xavier</span>
+            <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A Frois Xavier</span>
             <div class="w-12 h-px bg-gold/50"></div>
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
@@ -292,7 +303,7 @@
       <div class="bg-white py-24 lg:py-32 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <div class="max-w-2xl mb-16 lg:mb-20 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Por que a Frois Xavier</span>
+            <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Por que a Frois Xavier</span>
             <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Quatro compromissos, uma obra sem surpresas.</h2>
           </div>
 
@@ -367,7 +378,7 @@
       <!-- FINAL CTA -->
       <div class="bg-stone py-24 lg:py-32 px-6 lg:px-10">
         <div class="max-w-site mx-auto text-center reveal">
-          <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-6">Vamos conversar</span>
+          <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-6">Vamos conversar</span>
           <h2 class="font-serif text-ink text-4xl sm:text-5xl lg:text-6xl font-light leading-tight max-w-3xl mx-auto mb-10">
             Seu projeto merece começar do jeito certo.
           </h2>
@@ -383,7 +394,7 @@
     <!-- ====================== SOBRE (placeholder) ================= -->
     <!-- ============================================================ -->
     <section id="sec-sobre" class="page-section">
-      <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
+      <div class="sec-hero bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Quem Somos</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-3xl reveal reveal-delay-1">Obra séria não admite <span class="italic text-gold-light">improviso.</span></h1>
@@ -394,7 +405,7 @@
       <div class="bg-stone py-24 lg:py-32 px-6 lg:px-10">
         <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div class="lg:col-span-4 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A nossa forma de trabalhar</span>
+            <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A nossa forma de trabalhar</span>
             <div class="w-12 h-px bg-gold/50"></div>
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
@@ -418,7 +429,7 @@
       <div class="bg-stone py-20 lg:py-28 px-6 lg:px-10 border-t border-stone-dark">
         <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div class="lg:col-span-4 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Responsabilidade em cada etapa</span>
+            <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Responsabilidade em cada etapa</span>
             <div class="w-12 h-px bg-gold/50"></div>
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
@@ -431,19 +442,19 @@
       <div class="bg-stone py-20 lg:py-28 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <div class="max-w-2xl mb-12 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Quem conduz</span>
+            <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Quem conduz</span>
             <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Uma dupla à frente de cada obra.</h2>
           </div>
           <div class="grid md:grid-cols-2 gap-6">
             <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal">
               <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
-              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Gestão de Obras &amp; Processos</p>
+              <p class="text-gold-deep text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Gestão de Obras &amp; Processos</p>
               <p class="text-ink-soft font-normal leading-relaxed mt-4 text-base">Cuida do planejamento, dos prazos e da organização de cada etapa, para que a obra ande sem improviso e você sempre saiba em que pé está.</p>
               <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 98866-7973 →</a>
             </div>
             <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal reveal-delay-1">
               <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
-              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Engenharia &amp; Execução</p>
+              <p class="text-gold-deep text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Engenharia &amp; Execução</p>
               <p class="text-ink-soft font-normal leading-relaxed mt-4 text-base">Responde tecnicamente pela obra, do projeto à entrega, garantindo execução conforme as normas e a qualidade que valoriza o seu imóvel.</p>
               <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 99659-9313 →</a>
             </div>
@@ -465,7 +476,7 @@
     <!-- ============================================================ -->
     <section id="sec-servicos" class="page-section">
       <!-- hero -->
-      <div class="bg-forest grain pt-[140px] pb-20 lg:pb-28 px-6 lg:px-10">
+      <div class="sec-hero bg-forest grain pt-[140px] pb-20 lg:pb-28 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">O que fazemos por você</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">
@@ -481,28 +492,28 @@
       <div class="bg-white border-b border-stone-dark px-6 lg:px-10 py-16 lg:py-20">
         <div class="max-w-site mx-auto">
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a href="#svc-construcao" onclick="scrollToSvc('svc-construcao', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal">
+            <a href="#svc-construcao" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
               <h2 class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Construção Residencial</h2>
               <p class="text-ink-soft font-normal leading-relaxed text-base">Da fundação à chave na mão, com engenheiro responsável. Inclui obras pelo programa Minha Casa Minha Vida.</p>
-              <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
+              <span class="inline-block mt-5 text-gold-deep text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </a>
-            <a href="#svc-reformas" onclick="scrollToSvc('svc-reformas', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal reveal-delay-1">
+            <a href="#svc-reformas" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal reveal-delay-1">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z"/></svg></div>
               <h2 class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Reformas Residenciais</h2>
               <p class="text-ink-soft font-normal leading-relaxed text-base">Da estrutura ao acabamento, com orçamento fechado e prazo combinado.</p>
-              <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
+              <span class="inline-block mt-5 text-gold-deep text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </a>
-            <a href="#svc-comercial" onclick="scrollToSvc('svc-comercial', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal reveal-delay-2">
+            <a href="#svc-comercial" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal reveal-delay-2">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
               <h2 class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Obras Comerciais</h2>
               <p class="text-ink-soft font-normal leading-relaxed text-base">Loja, escritório, clínica ou galpão: construção e reforma do seu ponto, pensadas para reabrir rápido.</p>
-              <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
+              <span class="inline-block mt-5 text-gold-deep text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </a>
           </div>
 
           <div class="grid md:grid-cols-2 gap-4 mt-6">
-            <a href="#svc-mcmv" onclick="scrollToSvc('svc-mcmv', event)" class="group flex items-center justify-between gap-4 bg-forest/5 border border-stone-dark border-l-4 border-l-gold px-7 py-6 hover:bg-forest/10 transition-all reveal">
+            <a href="#svc-mcmv" class="group flex items-center justify-between gap-4 bg-forest/5 border border-stone-dark border-l-4 border-l-gold px-7 py-6 hover:bg-forest/10 transition-all reveal">
               <div class="flex items-center gap-4">
                 <span class="text-gold shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10"/></svg></span>
                 <div>
@@ -510,9 +521,9 @@
                   <p class="text-ink-light text-base font-normal mt-0.5">Construímos pelo programa do Governo Federal.</p>
                 </div>
               </div>
-              <span class="shrink-0 text-gold text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold-light transition-colors">Ver →</span>
+              <span class="shrink-0 text-gold-deep text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold-light transition-colors">Ver →</span>
             </a>
-            <a href="#svc-engenharia" onclick="scrollToSvc('svc-engenharia', event)" class="group flex items-center justify-between gap-4 bg-forest/5 border border-stone-dark border-l-4 border-l-forest-mid px-7 py-6 hover:bg-forest/10 hover:border-l-gold transition-all reveal reveal-delay-1">
+            <a href="#svc-engenharia" class="group flex items-center justify-between gap-4 bg-forest/5 border border-stone-dark border-l-4 border-l-forest-mid px-7 py-6 hover:bg-forest/10 hover:border-l-gold transition-all reveal reveal-delay-1">
               <div class="flex items-center gap-4">
                 <span class="text-forest-mid shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
                 <div>
@@ -565,7 +576,7 @@
         <div id="svc-comercial" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
-              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
+              <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
               <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
               <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Loja, escritório, clínica, restaurante ou galpão: construímos e reformamos o seu ponto comercial com uma lógica clara — cada dia de obra a mais é faturamento parado. Unimos rigor técnico a um cronograma pensado para o seu negócio voltar a operar o quanto antes.</p>
             </div>
@@ -581,7 +592,7 @@
         <!-- MINHA CASA MINHA VIDA (caixa verde, acima da engenharia) -->
         <div id="svc-mcmv" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center reveal mb-10">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Para a casa própria</span>
+            <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Para a casa própria</span>
             <h2 class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight">Construímos pelo Minha Casa Minha Vida.</h2>
           </div>
           <div class="max-w-4xl mx-auto reveal reveal-delay-1">
@@ -590,7 +601,7 @@
                 <div class="bg-forest-mid/40 border-b md:border-b-0 md:border-r border-white/10 px-8 py-9 lg:px-10 lg:py-11 flex flex-col justify-center items-center text-center">
                   <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.3" class="mb-4"><path d="M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10"/></svg>
                   <span class="font-serif text-gold-pale text-2xl lg:text-3xl font-light leading-tight">Minha Casa<br>Minha Vida</span>
-                  <span class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-semibold mt-3">Programa do Governo Federal</span>
+                  <span class="text-white/60 text-[10px] uppercase tracking-[0.22em] font-semibold mt-3">Programa do Governo Federal</span>
                 </div>
                 <div class="px-8 py-9 lg:px-10 lg:py-11 text-left">
                   <p class="text-white/75 font-normal text-base lg:text-base leading-relaxed">O Minha Casa Minha Vida é o programa habitacional do Governo Federal que torna a casa própria possível para milhares de famílias — com <span class="text-gold-pale">juros reduzidos</span>, <span class="text-gold-pale">subsídio no valor do imóvel</span> e parcelas que cabem no orçamento de quem se enquadra.</p>
@@ -606,7 +617,7 @@
         <div id="svc-engenharia" style="scroll-margin-top:96px;" class="px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-site mx-auto">
             <div class="max-w-3xl mx-auto text-center reveal">
-              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviços complementares</span>
+              <span class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviços complementares</span>
               <h2 class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight mb-4">Engenharia &amp; Regularização</h2>
               <p class="text-ink-soft font-normal leading-relaxed max-w-2xl mx-auto text-base">O mesmo engenheiro que conduz as nossas obras resolve a parte técnica e documental do seu imóvel — sem você precisar contratar um profissional diferente a cada etapa. Toque em cada frente para ver o que fazemos.</p>
             </div>
@@ -668,7 +679,7 @@
     <!-- ====================== OBRAS =============================== -->
     <!-- ============================================================ -->
     <section id="sec-obras" class="page-section">
-      <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
+      <div class="sec-hero bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Portfólio</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Obras que falam <span class="italic text-gold-light">por nós.</span></h1>
@@ -711,7 +722,7 @@
     <!-- ====================== CONTATO ============================= -->
     <!-- ============================================================ -->
     <section id="sec-contato" class="page-section">
-      <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
+      <div class="sec-hero bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Canal direto</span>
           <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Fale com a gente.</h1>
@@ -726,7 +737,7 @@
           <div class="lg:col-span-5 space-y-12">
             <!-- people -->
             <div class="reveal">
-              <h2 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Atendimento Direto</h2>
+              <h2 class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Atendimento Direto</h2>
               <div class="space-y-8">
                 <div class="flex items-start justify-between gap-4 border-b border-ink/10 pb-7">
                   <div>
@@ -749,7 +760,7 @@
 
             <!-- channels -->
             <div class="reveal reveal-delay-1">
-              <h2 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Canais</h2>
+              <h2 class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Canais</h2>
               <div class="space-y-5">
                 <a href="mailto:froisxavier@gmail.com" class="flex items-center gap-4 group">
                   <span class="w-11 h-11 rounded-full bg-forest/5 group-hover:bg-forest group-hover:text-white text-forest flex items-center justify-center transition-colors">
@@ -769,7 +780,7 @@
 
           <!-- right: address + map -->
           <div class="lg:col-span-7 reveal reveal-delay-2">
-            <h2 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Onde nos encontrar</h2>
+            <h2 class="text-gold-deep text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Onde nos encontrar</h2>
             <div class="bg-white border border-stone-dark p-8 lg:p-10 mb-6">
               <p class="font-serif text-ink text-2xl font-normal mb-2">Edifício Parthenon · Centro</p>
               <p class="text-ink-light font-light leading-relaxed">
@@ -817,7 +828,7 @@
           <p class="text-white/50 font-normal leading-relaxed max-w-xs text-base">Construção, reforma e engenharia com a tranquilidade de quem acompanha cada etapa. Vale do Paraíba.</p>
         </div>
         <div class="md:col-span-3">
-          <h3 class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Navegação</h3>
+          <h3 class="text-white/60 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Navegação</h3>
           <ul class="space-y-3">
             <li><button onclick="changePage('home')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Início</button></li>
             <li><button onclick="changePage('sobre')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Sobre Nós</button></li>
@@ -827,7 +838,7 @@
           </ul>
         </div>
         <div class="md:col-span-4">
-          <h3 class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Contato</h3>
+          <h3 class="text-white/60 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Contato</h3>
           <ul class="space-y-3.5 text-sm">
             <li>
               <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
@@ -858,11 +869,11 @@
       </div>
 
       <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8">
-        <div class="flex items-center gap-2.5 text-[11px] font-medium tracking-[0.08em] text-white/45 text-center md:text-left">
+        <div class="flex items-center gap-2.5 text-[11px] font-medium tracking-[0.08em] text-white/60 text-center md:text-left">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="shrink-0 text-gold-light/70"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>R. Cap. João José de Macedo, 237 — Sala 1 · Centro · Jacareí — SP · CEP 12327-030</span>
         </div>
-        <div class="text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 text-center md:text-right shrink-0">© 2026 Frois Xavier Construtora.</div>
+        <div class="text-[10px] font-medium uppercase tracking-[0.15em] text-white/55 text-center md:text-right shrink-0">© 2026 Frois Xavier Construtora.</div>
       </div>
     </div>
   </footer>
@@ -1070,7 +1081,7 @@
               <span class="absolute top-4 left-4 z-10 text-[10px] uppercase tracking-[0.14em] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${statusClass(o.status)}">${statusLabel(o.status)}</span>
             </div>
             <div class="p-6 lg:p-7">
-              <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${o.tipo}</span>
+              <span class="text-gold-deep text-[10px] uppercase tracking-[0.2em] font-bold">${o.tipo}</span>
               <h3 class="font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
               ${metaParts.length ? `
                 <div class="flex flex-wrap items-center gap-3 text-ink-soft text-sm font-light pt-4 border-t border-ink/10">
@@ -1185,11 +1196,12 @@
 
     /* ============ SCROLL ATÉ O SERVIÇO ============ */
     function scrollToSvc(id, event){ if(event) event.preventDefault(); const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
-    function goToService(id){ changePage('servicos'); setTimeout(function(){ scrollToSvc(id); }, 90); }
+    function goToService(id){ changePage('servicos'); setTimeout(function(){ scrollToSvc(id); }, 160); }
 
     /* ============ PAGE SWITCHING ============ */
     function changePage(pageId, event) {
       if (event) event.preventDefault();
+      document.body.style.overflow = '';
       document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.menu-item').forEach(l => l.classList.remove('active-menu'));
 
@@ -1271,14 +1283,16 @@
       const hash = window.location.hash.replace('#','');
       const pages = ['home','sobre','servicos','obras','contato'];
       renderObras();
-      changePage(pages.includes(hash) ? hash : 'home');
+      if (hash.indexOf('svc-') === 0) { changePage('servicos'); setTimeout(function(){ scrollToSvc(hash); }, 140); }
+      else changePage(pages.includes(hash) ? hash : 'home');
       updateHeaderTheme();
       observeReveals();
     });
     window.addEventListener('popstate', () => {
       const hash = window.location.hash.replace('#','') || 'home';
       const pages = ['home','sobre','servicos','obras','contato'];
-      changePage(pages.includes(hash) ? hash : 'home');
+      if (hash.indexOf('svc-') === 0) { changePage('servicos'); setTimeout(function(){ scrollToSvc(hash); }, 140); }
+      else changePage(pages.includes(hash) ? hash : 'home');
     });
   </script>
   <!-- ===== BOTÃO FLUTUANTE WHATSAPP (todas as abas) ===== -->
