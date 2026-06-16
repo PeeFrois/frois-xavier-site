@@ -741,7 +741,6 @@
           <!-- filter bar -->
           <div id="obras-filter" class="flex flex-wrap items-center gap-3 mb-12 reveal">
             <span class="text-ink-soft text-xs uppercase tracking-[0.18em] font-semibold mr-2 hidden sm:block">Filtrar:</span>
-            <button onclick="filterObras('todas', this)" class="filter-pill active-filter text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
             <button onclick="filterObras('andamento', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
             <button onclick="filterObras('embreve', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
             <button onclick="filterObras('concluida', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
@@ -1022,7 +1021,7 @@
         status: "andamento",
         cidade: "Jacareí · SP",
         tamanho: "",
-        ano: "",
+        ano: "2026",
         fotos: [
           "parque-dos-sinos/1.jpg",
           "parque-dos-sinos/2.jpg",
@@ -1149,11 +1148,12 @@
       grid.innerHTML = list.map((o, idx) => {
         const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
         const hasGallery = fotos.length > 1;
-        const cardId = `obra-${idx}`;
+        const obraRealIdx = OBRAS.indexOf(o);
+        const cardId = `obra-${obraRealIdx}`;
 
         const imageArea = fotos.length > 0
           ? `
-            <div id="${cardId}-gallery" class="obra-gallery absolute inset-0 cursor-pointer" onclick="openLightbox(${idx})">
+            <div id="${cardId}-gallery" class="obra-gallery absolute inset-0 cursor-pointer" onclick="openLightbox(${obraRealIdx})">
               ${fotos.map((f, fi) => `
                 <img
                   src="${f}"
@@ -1234,7 +1234,7 @@
       list.forEach((o, idx) => {
         const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
         if (fotos.length <= 1) return;
-        const cardId = `obra-${idx}`;
+        const cardId = `obra-${OBRAS.indexOf(o)}`;
         const gallery = document.getElementById(`${cardId}-gallery`);
         if (!gallery) return;
         let touchStartX = 0;
@@ -1398,9 +1398,15 @@
     });
 
     function filterObras(f, btn) {
-      currentFilter = f;
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active-filter'));
-      btn.classList.add('active-filter');
+      if (currentFilter === f) {
+        // clicou no filtro já ativo → volta a mostrar todas
+        currentFilter = 'todas';
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active-filter'));
+      } else {
+        currentFilter = f;
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active-filter'));
+        if (btn) btn.classList.add('active-filter');
+      }
       renderObras();
     }
 
