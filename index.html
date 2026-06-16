@@ -179,6 +179,13 @@
       backdrop-filter: blur(6px);
       letter-spacing: 0.18em;
     }
+    .badge-embreve {
+      background: rgba(10,42,30,0.82);
+      color: #b8a0d8;
+      border: 1px solid rgba(184,160,216,0.45);
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.18em;
+    }
     .badge-dot-andamento {
       width: 6px; height: 6px; border-radius: 50%;
       background: #c09848;
@@ -190,6 +197,13 @@
     .badge-dot-concluida {
       width: 6px; height: 6px; border-radius: 50%;
       background: #a8c5b2;
+      display: inline-block;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    .badge-dot-embreve {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #b8a0d8;
       display: inline-block;
       margin-right: 6px;
       flex-shrink: 0;
@@ -729,6 +743,7 @@
             <span class="text-ink-soft text-xs uppercase tracking-[0.18em] font-semibold mr-2 hidden sm:block">Filtrar:</span>
             <button onclick="filterObras('todas', this)" class="filter-pill active-filter text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
             <button onclick="filterObras('andamento', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
+            <button onclick="filterObras('embreve', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
             <button onclick="filterObras('concluida', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
           </div>
 
@@ -1058,19 +1073,55 @@
         ],
         foto: "parque-dos-sinos/1.jpg"
       },
+      {
+        nome: "Casa Novo Amanhecer",
+        tipo: "Construção Residencial",
+        status: "andamento",
+        cidade: "Jacareí · SP",
+        tamanho: "",
+        ano: "2026",
+        fotos: [
+          "novo-amanhecer/1.jpg",
+          "novo-amanhecer/2.jpg",
+          "novo-amanhecer/3.jpg",
+          "novo-amanhecer/4.jpg",
+          "novo-amanhecer/5.jpg"
+        ],
+        foto: "novo-amanhecer/1.jpg"
+      },
+      {
+        nome: "Casa Jardim do Marquês",
+        tipo: "Construção Residencial",
+        status: "embreve",
+        cidade: "Jacareí · SP",
+        tamanho: "",
+        ano: "2026",
+        fotos: [
+          "jardim-marques/1.jpg",
+          "jardim-marques/2.jpg",
+          "jardim-marques/3.jpg"
+        ],
+        foto: "jardim-marques/1.jpg"
+      },
       // Adicione suas obras reais aqui seguindo o modelo acima.
     ];
 
     let currentFilter = 'todas';
 
     function statusLabel(s) {
-      return s === 'andamento' ? 'Em Andamento' : 'Concluída';
+      if (s === 'andamento') return 'Em Andamento';
+      if (s === 'embreve') return 'Em Breve';
+      return 'Concluída';
     }
     function statusClass(s) {
-      return s === 'andamento' ? 'badge-andamento' : 'badge-concluida';
+      if (s === 'andamento') return 'badge-andamento';
+      if (s === 'embreve') return 'badge-embreve';
+      return 'badge-concluida';
     }
     function statusDotClass(s) {
-      return s === 'andamento' ? 'badge-dot-andamento' : 'badge-dot-concluida';
+      if (s === 'andamento') return 'badge-dot-andamento';
+      if (s === 'embreve') return 'badge-dot-embreve';
+      return 'badge-dot-concluida';
     }
 
     function placeholderSVG(tipo) {
