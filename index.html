@@ -1353,6 +1353,18 @@
     ];
 
     let currentFilter = 'todas';
+    const OBRAS_VALID_FOTOS = {}; // cache: obraRealIdx → [caminhos válidos]
+
+    // Testa quais imagens existem de verdade (retorna só as que carregam)
+    function probeObraFotos(fotos) {
+      if (!fotos || !fotos.length) return Promise.resolve([]);
+      return Promise.all(fotos.map(src => new Promise(resolve => {
+        const img = new Image();
+        img.onload  = () => resolve(src);
+        img.onerror = () => resolve(null);
+        img.src = src;
+      }))).then(res => res.filter(Boolean));
+    }
 
     function statusLabel(s) {
       if (s === 'andamento') return 'Em Andamento';
@@ -1376,13 +1388,12 @@
       </div>`;
     }
 
-    function renderObras() {
+    async function renderObras() {
       const grid = document.getElementById('obras-grid');
       const empty = document.getElementById('obras-empty');
       const filter = document.getElementById('obras-filter');
       const list = OBRAS.filter(o => currentFilter === 'todas' ? true : o.status === currentFilter);
 
-      // Hide the filter bar completely until there is at least one obra
       if (filter) filter.style.display = OBRAS.length === 0 ? 'none' : '';
 
       if (list.length === 0) {
@@ -1392,10 +1403,18 @@
       }
       empty.classList.add('hidden');
 
+      // Probe imagens para cada obra (usa cache se já testado)
+      await Promise.all(list.map(o => {
+        const realIdx = OBRAS.indexOf(o);
+        if (OBRAS_VALID_FOTOS[realIdx] !== undefined) return Promise.resolve();
+        const raw = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
+        return probeObraFotos(raw).then(valid => { OBRAS_VALID_FOTOS[realIdx] = valid; });
+      }));
+
       grid.innerHTML = list.map((o, idx) => {
-        const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
-        const hasGallery = fotos.length > 1;
         const obraRealIdx = OBRAS.indexOf(o);
+        const fotos = OBRAS_VALID_FOTOS[obraRealIdx] || [];
+        const hasGallery = fotos.length > 1;
         const cardId = `obra-${obraRealIdx}`;
 
         const imageArea = fotos.length > 0
@@ -1478,10 +1497,11 @@
       observeReveals();
 
       // swipe touch support para cada card
-      list.forEach((o, idx) => {
-        const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
+      list.forEach((o) => {
+        const realIdx = OBRAS.indexOf(o);
+        const fotos = OBRAS_VALID_FOTOS[realIdx] || [];
         if (fotos.length <= 1) return;
-        const cardId = `obra-${OBRAS.indexOf(o)}`;
+        const cardId = `obra-${realIdx}`;
         const gallery = document.getElementById(`${cardId}-gallery`);
         if (!gallery) return;
         let touchStartX = 0;
@@ -1538,8 +1558,7 @@
     let lbTouchStartX = 0;
 
     function openLightbox(obraIdx) {
-      const obra = OBRAS[obraIdx];
-      lightboxFotos = (obra.fotos && obra.fotos.length) ? obra.fotos : (obra.foto ? [obra.foto] : []);
+      lightboxFotos = OBRAS_VALID_FOTOS[obraIdx] || [];
       if (!lightboxFotos.length) return;
 
       // começa na foto que está visível no card
