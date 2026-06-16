@@ -165,14 +165,56 @@
     }
 
     /* ---- Status badges ---- */
-    .badge-andamento { background: rgba(192,152,72,0.16); color: #8a6420; border: 1px solid rgba(192,152,72,0.4); }
-    .badge-concluida { background: rgba(19,64,48,0.12); color: #134030; border: 1px solid rgba(19,64,48,0.3); }
+    .badge-andamento {
+      background: rgba(10,42,30,0.82);
+      color: #c09848;
+      border: 1px solid rgba(192,152,72,0.5);
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.18em;
+    }
+    .badge-concluida {
+      background: rgba(10,42,30,0.82);
+      color: #a8c5b2;
+      border: 1px solid rgba(168,197,178,0.45);
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.18em;
+    }
+    .badge-dot-andamento {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #c09848;
+      display: inline-block;
+      margin-right: 6px;
+      animation: badgePulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .badge-dot-concluida {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #a8c5b2;
+      display: inline-block;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    @keyframes badgePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
 
     /* subtle grain / texture on dark sections */
     .grain { position: relative; }
     .grain::before {
       content:''; position:absolute; inset:0; pointer-events:none; opacity:0.04;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ---- Carrossel: setas sempre visíveis no mobile, hover no desktop ---- */
+    .gallery-arrow {
+      opacity: 1;
+      transition: background 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+    }
+    .gallery-arrow:active { transform: translateY(-50%) scale(0.9); }
+    @media (min-width: 1024px) {
+      .gallery-arrow { opacity: 0; }
+      .obra-card:hover .gallery-arrow { opacity: 1; }
     }
 
     .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1); }
@@ -948,46 +990,54 @@
         tamanho: "",
         ano: "",
         fotos: [
-          "parque-dos-sinos/IMG-20251112-WA0040.jpg",
-          "parque-dos-sinos/IMG-20251204-WA0196.jpg",
-          "parque-dos-sinos/IMG-20251218-WA0043.jpg",
-          "parque-dos-sinos/IMG-20251223-WA0048.jpg",
-          "parque-dos-sinos/IMG-20260122-WA0008.jpg",
-          "parque-dos-sinos/IMG-20260122-WA0012.jpg",
-          "parque-dos-sinos/IMG-20260122-WA0014.jpg",
-          "parque-dos-sinos/IMG-20260122-WA0070.jpg",
-          "parque-dos-sinos/IMG-20260208-WA0029.jpg",
-          "parque-dos-sinos/IMG-20260208-WA0031.jpg",
-          "parque-dos-sinos/IMG-20260208-WA0039.jpg",
-          "parque-dos-sinos/IMG-20260304-WA0097.jpg",
-          "parque-dos-sinos/IMG-20260304-WA0103.jpg",
-          "parque-dos-sinos/IMG-20260314-WA0348.jpg",
-          "parque-dos-sinos/IMG-20260314-WA0358.jpg",
-          "parque-dos-sinos/IMG-20260314-WA0360.jpg",
-          "parque-dos-sinos/IMG-20260314-WA0362.jpg",
-          "parque-dos-sinos/IMG-20260314-WA0364.jpg",
-          "parque-dos-sinos/IMG-20260320-WA0057.jpg",
-          "parque-dos-sinos/IMG-20260325-WA0095.jpg",
-          "parque-dos-sinos/IMG-20260331-WA0037.jpg",
-          "parque-dos-sinos/IMG-20260331-WA0072.jpg",
-          "parque-dos-sinos/IMG-20260401-WA0133.jpg",
-          "parque-dos-sinos/IMG-20260404-WA0044.jpg",
-          "parque-dos-sinos/IMG-20260404-WA0046.jpg",
-          "parque-dos-sinos/IMG-20260414-WA0237.jpg",
-          "parque-dos-sinos/IMG-20260414-WA0247.jpg",
-          "parque-dos-sinos/IMG-20260414-WA0251.jpg",
-          "parque-dos-sinos/IMG-20260414-WA0257.jpg",
-          "parque-dos-sinos/IMG-20260414-WA0267.jpg",
-          "parque-dos-sinos/IMG-20260414-WA0269.jpg",
-          "parque-dos-sinos/IMG-20260512-WA0196.jpg",
-          "parque-dos-sinos/IMG-20260515-WA0146.jpg",
-          "parque-dos-sinos/IMG-20260515-WA0148.jpg",
-          "parque-dos-sinos/IMG-20260515-WA0154.jpg",
-          "parque-dos-sinos/IMG-20260524-WA0094.jpg",
-          "parque-dos-sinos/IMG-20260527-WA0255.jpg",
-          "parque-dos-sinos/IMG-20260527-WA0262.jpg"
+          "parque-dos-sinos/1.jpg",
+          "parque-dos-sinos/2.jpg",
+          "parque-dos-sinos/3.jpg",
+          "parque-dos-sinos/4.jpg",
+          "parque-dos-sinos/5.jpg",
+          "parque-dos-sinos/6.jpg",
+          "parque-dos-sinos/7.jpg",
+          "parque-dos-sinos/8.jpg",
+          "parque-dos-sinos/9.jpg",
+          "parque-dos-sinos/10.jpg",
+          "parque-dos-sinos/11.jpg",
+          "parque-dos-sinos/12.jpg",
+          "parque-dos-sinos/13.jpg",
+          "parque-dos-sinos/14.jpg",
+          "parque-dos-sinos/15.jpg",
+          "parque-dos-sinos/16.jpg",
+          "parque-dos-sinos/17.jpg",
+          "parque-dos-sinos/18.jpg",
+          "parque-dos-sinos/19.jpg",
+          "parque-dos-sinos/20.jpg",
+          "parque-dos-sinos/21.jpg",
+          "parque-dos-sinos/22.jpg",
+          "parque-dos-sinos/23.jpg",
+          "parque-dos-sinos/24.jpg",
+          "parque-dos-sinos/25.jpg",
+          "parque-dos-sinos/26.jpg",
+          "parque-dos-sinos/27.jpg",
+          "parque-dos-sinos/28.jpg",
+          "parque-dos-sinos/29.jpg",
+          "parque-dos-sinos/30.jpg",
+          "parque-dos-sinos/31.jpg",
+          "parque-dos-sinos/32.jpg",
+          "parque-dos-sinos/33.jpg",
+          "parque-dos-sinos/34.jpg",
+          "parque-dos-sinos/35.jpg",
+          "parque-dos-sinos/36.HEIC",
+          "parque-dos-sinos/37.HEIC",
+          "parque-dos-sinos/38.HEIC",
+          "parque-dos-sinos/39.HEIC",
+          "parque-dos-sinos/40.HEIC",
+          "parque-dos-sinos/41.HEIC",
+          "parque-dos-sinos/42.HEIC",
+          "parque-dos-sinos/43.HEIC",
+          "parque-dos-sinos/44.HEIC",
+          "parque-dos-sinos/45.HEIC",
+          "parque-dos-sinos/46.HEIC"
         ],
-        foto: "parque-dos-sinos/IMG-20251112-WA0040.jpg"
+        foto: "parque-dos-sinos/1.jpg"
       },
       // Adicione suas obras reais aqui seguindo o modelo acima.
     ];
@@ -999,6 +1049,9 @@
     }
     function statusClass(s) {
       return s === 'andamento' ? 'badge-andamento' : 'badge-concluida';
+    }
+    function statusDotClass(s) {
+      return s === 'andamento' ? 'badge-dot-andamento' : 'badge-dot-concluida';
     }
 
     function placeholderSVG(tipo) {
@@ -1024,7 +1077,6 @@
       empty.classList.add('hidden');
 
       grid.innerHTML = list.map((o, idx) => {
-        // Normalise: if obra has array 'fotos', use it; otherwise wrap 'foto' in array
         const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
         const hasGallery = fotos.length > 1;
         const cardId = `obra-${idx}`;
@@ -1043,24 +1095,32 @@
               `).join('')}
             </div>
             ${hasGallery ? `
-              <!-- prev / next arrows -->
+              <!-- setas: sempre visíveis no mobile, hover no desktop -->
               <button onclick="galleryNav('${cardId}', ${fotos.length}, -1, event)"
-                class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                aria-label="Foto anterior"
+                class="gallery-arrow absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/55 hover:bg-black/75 active:bg-black/90 text-white flex items-center justify-center transition-all shadow-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
               </button>
               <button onclick="galleryNav('${cardId}', ${fotos.length}, 1, event)"
-                class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                aria-label="Próxima foto"
+                class="gallery-arrow absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/55 hover:bg-black/75 active:bg-black/90 text-white flex items-center justify-center transition-all shadow-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
               </button>
-              <!-- dots -->
+              <!-- contador de fotos -->
+              <div id="${cardId}-counter" class="absolute bottom-3 right-3 z-10 bg-black/60 text-white/90 text-[11px] font-medium px-2.5 py-1 rounded-full tracking-wide backdrop-blur-sm pointer-events-none">
+                1 / ${fotos.length}
+              </div>
+              <!-- dots (apenas até 8 fotos para não poluir) -->
+              ${fotos.length <= 8 ? `
               <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
                 ${fotos.map((_, fi) => `
                   <button onclick="galleryGoto('${cardId}', ${fotos.length}, ${fi}, event)"
                     id="${cardId}-dot-${fi}"
+                    aria-label="Foto ${fi+1}"
                     class="w-1.5 h-1.5 rounded-full transition-all ${fi === 0 ? 'bg-white scale-125' : 'bg-white/40'}">
                   </button>
                 `).join('')}
-              </div>
+              </div>` : ''}
             ` : ''}
           `
           : placeholderSVG(o.tipo);
@@ -1071,7 +1131,10 @@
           <article id="${cardId}" class="obra-card group bg-white border border-stone-dark overflow-hidden cursor-default" data-current="0">
             <div class="relative aspect-[4/3] overflow-hidden bg-forest">
               ${imageArea}
-              <span class="absolute top-4 left-4 z-10 text-[10px] uppercase tracking-[0.14em] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm ${statusClass(o.status)}">${statusLabel(o.status)}</span>
+              <!-- badge redesenhado: escuro semitransparente com ponto animado -->
+              <span class="absolute top-3 left-3 z-10 flex items-center text-[10px] uppercase font-bold px-3 py-1.5 rounded-full ${statusClass(o.status)}">
+                <span class="${statusDotClass(o.status)}"></span>${statusLabel(o.status)}
+              </span>
             </div>
             <div class="p-6 lg:p-7">
               <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${o.tipo}</span>
@@ -1096,6 +1159,21 @@
         if (i % 3 === 2) c.classList.add('reveal-delay-2');
       });
       observeReveals();
+
+      // swipe touch support para cada card
+      list.forEach((o, idx) => {
+        const fotos = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
+        if (fotos.length <= 1) return;
+        const cardId = `obra-${idx}`;
+        const gallery = document.getElementById(`${cardId}-gallery`);
+        if (!gallery) return;
+        let touchStartX = 0;
+        gallery.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+        gallery.addEventListener('touchend', e => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) galleryNav(cardId, fotos.length, dx < 0 ? 1 : -1, e);
+        }, { passive: true });
+      });
     }
 
     /* ---- Gallery navigation helpers ---- */
@@ -1110,7 +1188,7 @@
         img.classList.toggle('opacity-100', i === target);
         img.classList.toggle('opacity-0', i !== target);
       });
-      // update dots
+      // update dots (only if they exist — cards with >8 photos skip them)
       for (let i = 0; i < total; i++) {
         const dot = document.getElementById(`${cardId}-dot-${i}`);
         if (dot) {
@@ -1119,6 +1197,10 @@
           dot.classList.toggle('bg-white/40', i !== target);
         }
       }
+      // update counter
+      const counter = document.getElementById(`${cardId}-counter`);
+      if (counter) counter.textContent = `${target + 1} / ${total}`;
+
       card.dataset.current = target;
     }
 
