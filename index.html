@@ -1356,12 +1356,22 @@
     const OBRAS_VALID_FOTOS = {}; // cache: obraRealIdx → [caminhos válidos]
 
     // Testa quais imagens existem de verdade (retorna só as que carregam)
+    // Se .jpg não existir, tenta .jpeg automaticamente (e vice-versa)
     function probeObraFotos(fotos) {
       if (!fotos || !fotos.length) return Promise.resolve([]);
       return Promise.all(fotos.map(src => new Promise(resolve => {
         const img = new Image();
         img.onload  = () => resolve(src);
-        img.onerror = () => resolve(null);
+        img.onerror = () => {
+          const alt = src.endsWith('.jpg')  ? src.slice(0,-4)+'.jpeg'
+                    : src.endsWith('.jpeg') ? src.slice(0,-5)+'.jpg'
+                    : null;
+          if (!alt) return resolve(null);
+          const img2 = new Image();
+          img2.onload  = () => resolve(alt);
+          img2.onerror = () => resolve(null);
+          img2.src = alt;
+        };
         img.src = src;
       }))).then(res => res.filter(Boolean));
     }
