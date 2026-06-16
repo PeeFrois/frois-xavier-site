@@ -236,6 +236,51 @@
     .accordion-item.open .accordion-icon { transform: rotate(45deg); }
     .accordion-icon { transition: transform 0.4s ease; }
     /* botão flutuante: pulso sutil */
+
+    /* ─── Mobile overflow fix ──────────────────────── */
+    html { overflow-x: hidden; }
+    body { max-width: 100vw; }
+
+    /* ─── Language Toggle ──────────────────────────── */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px; padding: 3px;
+      flex-shrink: 0;
+    }
+    .lang-opt {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 8px; border-radius: 4px;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: all 0.22s ease; user-select: none;
+      border: none; background: transparent;
+    }
+    .lang-opt.active-lang {
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+    }
+    .mobile-lang-opt {
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 8px 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.22s ease;
+    }
+    .mobile-lang-opt.active-lang {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+
     #wa-float::after{content:"";position:absolute;inset:0;border-radius:9999px;box-shadow:0 0 0 0 rgba(160,120,48,.5);animation:waPulse 2.6s ease-out infinite;pointer-events:none;}
     @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(160,120,48,.5)}70%{box-shadow:0 0 0 14px rgba(160,120,48,0)}100%{box-shadow:0 0 0 0 rgba(160,120,48,0)}}
   </style>
@@ -250,21 +295,26 @@
         <img src="data:image/png;base64,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" alt="" class="h-10 w-auto object-contain"/>
         <span class="flex flex-col leading-none">
           <span class="font-sans text-white text-2xl sm:text-3xl font-bold tracking-[0.08em]">FROIS XAVIER</span>
-          <span class="font-sans text-gold-light text-[11px] sm:text-[13px] font-medium tracking-[0.42em] mt-1">CONSTRUTORA</span>
+          <span class="font-sans text-gold-light text-[11px] sm:text-[13px] font-medium tracking-[0.42em] mt-1" data-t="company.tagline">CONSTRUTORA</span>
         </span>
       </a>
 
       <div class="flex items-center gap-8">
         <nav class="hidden lg:flex items-center gap-9">
-          <button onclick="changePage('home', event)" id="nav-home" class="menu-item nav-link active-menu text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Início</button>
-          <button onclick="changePage('sobre', event)" id="nav-sobre" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Sobre Nós</button>
-          <button onclick="changePage('servicos', event)" id="nav-servicos" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Serviços</button>
-          <button onclick="changePage('obras', event)" id="nav-obras" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Obras</button>
-          <button onclick="changePage('contato', event)" id="nav-contato" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Contato</button>
+          <button onclick="changePage('home', event)" id="nav-home" data-t="nav.home" class="menu-item nav-link active-menu text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Início</button>
+          <button onclick="changePage('sobre', event)" id="nav-sobre" data-t="nav.about" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Sobre Nós</button>
+          <button onclick="changePage('servicos', event)" id="nav-servicos" data-t="nav.services" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Serviços</button>
+          <button onclick="changePage('obras', event)" id="nav-obras" data-t="nav.works" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Obras</button>
+          <button onclick="changePage('contato', event)" id="nav-contato" data-t="nav.contact" class="menu-item nav-link text-xs uppercase tracking-[0.22em] font-semibold transition-colors">Contato</button>
         </nav>
 
         
 
+
+        <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+          <button class="lang-opt active-lang" data-lang="pt" onclick="setLang('pt')">PT</button>
+          <button class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
         <button onclick="toggleMobileMenu()" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none z-50" aria-label="Menu">
           <span id="m-line1" class="block w-6 h-0.5 bg-current transition-all duration-300 nav-burger"></span>
           <span id="m-line2" class="block w-6 h-0.5 bg-current transition-all duration-300 nav-burger"></span>
@@ -277,14 +327,18 @@
   <!-- ============ MOBILE MENU ============ -->
   <div id="mobile-menu-box" class="fixed inset-0 bg-forest grain z-40 flex flex-col justify-center px-8 translate-x-full transition-transform duration-500 lg:hidden">
     <nav class="flex flex-col gap-7 text-left relative z-10">
-      <button onclick="changePage('home'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Início</button>
-      <button onclick="changePage('sobre'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Sobre Nós</button>
-      <button onclick="changePage('servicos'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Serviços</button>
-      <button onclick="changePage('obras'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Obras</button>
-      <button onclick="changePage('contato'); toggleMobileMenu()" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Contato</button>
+      <button onclick="changePage('home'); toggleMobileMenu()" data-t="nav.home" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Início</button>
+      <button onclick="changePage('sobre'); toggleMobileMenu()" data-t="nav.about" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Sobre Nós</button>
+      <button onclick="changePage('servicos'); toggleMobileMenu()" data-t="nav.services" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Serviços</button>
+      <button onclick="changePage('obras'); toggleMobileMenu()" data-t="nav.works" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Obras</button>
+      <button onclick="changePage('contato'); toggleMobileMenu()" data-t="nav.contact" class="font-serif text-white text-4xl text-left hover:text-gold-light transition-colors">Contato</button>
     </nav>
     <div class="mt-12 pt-7 border-t border-white/10 relative z-10">
       
+      <div class="flex items-center gap-3 mt-2">
+        <button class="mobile-lang-opt active-lang" data-lang="pt" onclick="setLang('pt'); toggleMobileMenu()">PT</button>
+        <button class="mobile-lang-opt" data-lang="en" onclick="setLang('en'); toggleMobileMenu()">EN</button>
+      </div>
       <p class="text-white/40 text-xs mt-5 tracking-wide">Vale do Paraíba — SP</p>
     </div>
   </div>
@@ -305,19 +359,19 @@
           <div class="max-w-4xl">
             <span class="block h-px w-20 bg-gold mb-8" style="animation: lineGrow 1.2s cubic-bezier(0.22,1,0.36,1) 0.2s both;"></span>
 
-            <h1 class="font-serif text-white text-5xl sm:text-7xl lg:text-[5.5rem] font-light leading-[1.05] mb-8 tracking-tight">
+            <h1 data-t-html="home.hero.h1" class="font-serif text-white text-5xl sm:text-7xl lg:text-[5.5rem] font-light leading-[1.05] mb-8 tracking-tight">
               Construímos com<br>
               <span class="italic text-gold-light font-normal">responsabilidade técnica</span><br>
               do projeto à entrega.
             </h1>
 
-            <p class="text-stone/80 font-sans text-base sm:text-lg max-w-xl mb-11 leading-relaxed font-light">
+            <p data-t="home.hero.p" class="text-stone/80 font-sans text-base sm:text-lg max-w-xl mb-11 leading-relaxed font-light">
               Acompanhamento técnico em cada etapa, orçamento fechado antes de começar e obra registrada com respaldo legal. Construção, reforma e engenharia para quem leva a própria obra a sério.
             </p>
 
             <div class="flex flex-wrap gap-4">
               
-              <button onclick="changePage('servicos')" class="border border-white/40 text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 hover:bg-white hover:text-forest transition-all bg-transparent">
+              <button onclick="changePage('servicos')" data-t="home.hero.cta" class="border border-white/40 text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 hover:bg-white hover:text-forest transition-all bg-transparent">
                 Nossos Serviços →
               </button>
             </div>
@@ -334,14 +388,14 @@
       <div class="bg-stone py-24 lg:py-36 px-6 lg:px-10">
         <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div class="lg:col-span-4 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A Frois Xavier</span>
+            <span data-t="home.intro.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A Frois Xavier</span>
             <div class="w-12 h-px bg-gold/50"></div>
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
-            <h2 class="font-serif text-ink text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.18] mb-8">
+            <h2 data-t-html="home.intro.h2" class="font-serif text-ink text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.18] mb-8">
               Antes de erguer paredes, construímos confiança. Cada projeto começa com clareza no escopo, no prazo e no preço — <span class="italic text-gold">e com a transparência</span> de aceitar apenas o que entregamos bem.
             </h2>
-            <p class="text-ink-light text-lg font-light leading-relaxed max-w-2xl">
+            <p data-t="home.intro.p" class="text-ink-light text-lg font-light leading-relaxed max-w-2xl">
               A Frois Xavier nasceu de um princípio simples: obra séria não admite improviso. Por isso, cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito e a segurança de documentação técnica que protege você durante e depois da entrega.
             </p>
           </div>
@@ -352,31 +406,31 @@
       <div class="bg-white py-24 lg:py-32 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <div class="max-w-2xl mb-16 lg:mb-20 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Por que a Frois Xavier</span>
-            <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Quatro compromissos, uma obra sem surpresas.</h2>
+            <span data-t="home.diff.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Por que a Frois Xavier</span>
+            <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight" data-t="home.diff.h2">Quatro compromissos, uma obra sem surpresas.</h2>
           </div>
 
           <div class="grid md:grid-cols-2 gap-px bg-stone-dark border border-stone-dark">
             <!-- item -->
             <div class="bg-white p-9 lg:p-12 reveal">
               <span class="block w-10 h-0.5 bg-gold/70 mb-6"></span>
-              <h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Responsável técnico na obra</h3>
-              <p class="text-ink-soft font-light leading-relaxed">Quem assina o projeto acompanha a execução, do primeiro traço à entrega. A responsabilidade técnica é nossa — e não sai do canteiro.</p>
+              <h3 data-t="home.diff.c1h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Responsável técnico na obra</h3>
+              <p data-t="home.diff.c1p" class="text-ink-soft font-light leading-relaxed">Quem assina o projeto acompanha a execução, do primeiro traço à entrega. A responsabilidade técnica é nossa — e não sai do canteiro.</p>
             </div>
             <div class="bg-white p-9 lg:p-12 reveal reveal-delay-1">
               <span class="block w-10 h-0.5 bg-gold/70 mb-6"></span>
-              <h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Orçamento fechado de verdade</h3>
-              <p class="text-ink-soft font-light leading-relaxed">O valor é definido por escrito antes de qualquer tijolo. O que combinamos é o que você paga — sem cobrança surpresa no meio do caminho.</p>
+              <h3 data-t="home.diff.c2h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Orçamento fechado de verdade</h3>
+              <p data-t="home.diff.c2p" class="text-ink-soft font-light leading-relaxed">O valor é definido por escrito antes de qualquer tijolo. O que combinamos é o que você paga — sem cobrança surpresa no meio do caminho.</p>
             </div>
             <div class="bg-white p-9 lg:p-12 reveal reveal-delay-1">
               <span class="block w-10 h-0.5 bg-gold/70 mb-6"></span>
-              <h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Sua obra com respaldo legal</h3>
-              <p class="text-ink-soft font-light leading-relaxed">Toda obra é registrada junto ao CREA — a garantia documental que protege o seu patrimônio durante e depois da entrega.</p>
+              <h3 data-t="home.diff.c3h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Sua obra com respaldo legal</h3>
+              <p data-t="home.diff.c3p" class="text-ink-soft font-light leading-relaxed">Toda obra é registrada junto ao CREA — a garantia documental que protege o seu patrimônio durante e depois da entrega.</p>
             </div>
             <div class="bg-white p-9 lg:p-12 reveal reveal-delay-2">
               <span class="block w-10 h-0.5 bg-gold/70 mb-6"></span>
-              <h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Prazo que cabe na realidade</h3>
-              <p class="text-ink-soft font-light leading-relaxed">Cronograma feito com base na obra, não em promessas. E ao final, vistoria e documentação de entrega para você conferir cada detalhe.</p>
+              <h3 data-t="home.diff.c4h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Prazo que cabe na realidade</h3>
+              <p data-t="home.diff.c4p" class="text-ink-soft font-light leading-relaxed">Cronograma feito com base na obra, não em promessas. E ao final, vistoria e documentação de entrega para você conferir cada detalhe.</p>
             </div>
           </div>
         </div>
@@ -387,10 +441,10 @@
         <div class="max-w-site mx-auto">
           <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 reveal">
             <div class="max-w-2xl">
-              <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">O que fazemos</span>
-              <h2 class="font-serif text-white text-4xl lg:text-5xl font-light leading-tight">Da fundação à chave na mão.</h2>
+              <span data-t="home.services.overline" class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">O que fazemos</span>
+              <h2 data-t="home.services.h2" class="font-serif text-white text-4xl lg:text-5xl font-light leading-tight">Da fundação à chave na mão.</h2>
             </div>
-            <button onclick="changePage('servicos')" class="shrink-0 text-gold-light text-xs uppercase tracking-[0.18em] font-bold border-b border-gold-light/40 pb-1 hover:border-gold-light transition-colors self-start">
+            <button onclick="changePage('servicos')" data-t="home.services.cta" class="shrink-0 text-gold-light text-xs uppercase tracking-[0.18em] font-bold border-b border-gold-light/40 pb-1 hover:border-gold-light transition-colors self-start">
               Ver todos os serviços →
             </button>
           </div>
@@ -400,24 +454,24 @@
               <div class="text-gold-light mb-6">
                 <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
               </div>
-              <h3 class="font-serif text-white text-2xl font-normal mb-3">Construção Residencial</h3>
-              <p class="text-white/60 font-light leading-relaxed">Sua casa erguida do zero, com responsabilidade técnica em cada etapa — inclusive pelo Minha Casa Minha Vida.</p>
+              <h3 data-t="home.services.s1h" class="font-serif text-white text-2xl font-normal mb-3">Construção Residencial</h3>
+              <p data-t="home.services.s1p" class="text-white/60 font-light leading-relaxed">Sua casa erguida do zero, com responsabilidade técnica em cada etapa — inclusive pelo Minha Casa Minha Vida.</p>
               <span class="inline-block mt-5 text-gold-light text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </div>
             <div class="reveal reveal-delay-1 bg-forest-mid/40 border border-white/10 border-t-2 border-t-gold/70 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="goToService('svc-reformas')">
               <div class="text-gold-light mb-6">
                 <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z"/></svg>
               </div>
-              <h3 class="font-serif text-white text-2xl font-normal mb-3">Reformas Residenciais</h3>
-              <p class="text-white/60 font-light leading-relaxed">Renove com previsibilidade: orçamento fechado, prazo combinado e cada etapa na ordem certa.</p>
+              <h3 data-t="home.services.s2h" class="font-serif text-white text-2xl font-normal mb-3">Reformas Residenciais</h3>
+              <p data-t="home.services.s2p" class="text-white/60 font-light leading-relaxed">Renove com previsibilidade: orçamento fechado, prazo combinado e cada etapa na ordem certa.</p>
               <span class="inline-block mt-5 text-gold-light text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </div>
             <div class="reveal reveal-delay-2 bg-forest-mid/40 border border-white/10 border-t-2 border-t-gold/70 p-8 lg:p-10 hover:border-gold/40 transition-colors cursor-pointer" onclick="goToService('svc-comercial')">
               <div class="text-gold-light mb-6">
                 <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
               </div>
-              <h3 class="font-serif text-white text-2xl font-normal mb-3">Obras Comerciais</h3>
-              <p class="text-white/60 font-light leading-relaxed">Seu ponto pronto para operar — construção e reforma com foco em reabrir rápido.</p>
+              <h3 data-t="home.services.s3h" class="font-serif text-white text-2xl font-normal mb-3">Obras Comerciais</h3>
+              <p data-t="home.services.s3p" class="text-white/60 font-light leading-relaxed">Seu ponto pronto para operar — construção e reforma com foco em reabrir rápido.</p>
               <span class="inline-block mt-5 text-gold-light text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </div>
           </div>
@@ -427,13 +481,13 @@
       <!-- FINAL CTA -->
       <div class="bg-stone py-24 lg:py-32 px-6 lg:px-10">
         <div class="max-w-site mx-auto text-center reveal">
-          <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-6">Vamos conversar</span>
-          <h2 class="font-serif text-ink text-4xl sm:text-5xl lg:text-6xl font-light leading-tight max-w-3xl mx-auto mb-10">
+          <span data-t="home.cta.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-6">Vamos conversar</span>
+          <h2 data-t="home.cta.h2" class="font-serif text-ink text-4xl sm:text-5xl lg:text-6xl font-light leading-tight max-w-3xl mx-auto mb-10">
             Seu projeto merece começar do jeito certo.
           </h2>
           <div class="flex flex-wrap gap-4 justify-center">
             
-            <button onclick="changePage('contato')" class="bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Fale conosco</button>
+            <button onclick="changePage('contato')" data-t="home.cta.btn" class="bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-10 py-4 transition-colors">Fale conosco</button>
           </div>
         </div>
       </div>
@@ -445,22 +499,22 @@
     <section id="sec-sobre" class="page-section">
       <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
-          <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Quem Somos</span>
-          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-3xl reveal reveal-delay-1">Obra séria não admite <span class="italic text-gold-light">improviso.</span></h1>
-          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">A Frois Xavier nasceu desse princípio: técnica, transparência e responsabilidade em cada etapa — construção e reforma em todo o Vale do Paraíba.</p>
+          <span data-t="about.overline" class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Quem Somos</span>
+          <h1 data-t-html="about.h1" class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-3xl reveal reveal-delay-1">Obra séria não admite <span class="italic text-gold-light">improviso.</span></h1>
+          <p data-t="about.p" class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">A Frois Xavier nasceu desse princípio: técnica, transparência e responsabilidade em cada etapa — construção e reforma em todo o Vale do Paraíba.</p>
         </div>
       </div>
 
       <div class="bg-stone py-24 lg:py-32 px-6 lg:px-10">
         <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div class="lg:col-span-4 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A nossa forma de trabalhar</span>
+            <span data-t="about.work.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">A nossa forma de trabalhar</span>
             <div class="w-12 h-px bg-gold/50"></div>
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
-            <h2 class="font-serif text-ink text-3xl sm:text-4xl font-light leading-[1.2] mb-8">Antes de erguer paredes, construímos confiança.</h2>
-            <p class="text-ink-light text-lg font-light leading-relaxed">A Frois Xavier é uma construtora especializada em construção e reforma — residencial e comercial — presente em todo o Vale do Paraíba. Trabalhamos com um princípio que orienta tudo: cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito antes de começar e documentação técnica que protege você durante e depois da entrega.</p>
-            <p class="text-ink-soft font-light leading-relaxed mt-4">Mais do que erguer paredes, queremos entregar tranquilidade. Por isso toda obra é conduzida conforme as normas técnicas e registrada com respaldo no CREA — a segurança de quem leva a própria obra a sério, sem surpresa de preço no meio do caminho nem prazo que só existe no papel.</p>
+            <h2 data-t="about.work.h2" class="font-serif text-ink text-3xl sm:text-4xl font-light leading-[1.2] mb-8">Antes de erguer paredes, construímos confiança.</h2>
+            <p data-t="about.work.p1" class="text-ink-light text-lg font-light leading-relaxed">A Frois Xavier é uma construtora especializada em construção e reforma — residencial e comercial — presente em todo o Vale do Paraíba. Trabalhamos com um princípio que orienta tudo: cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito antes de começar e documentação técnica que protege você durante e depois da entrega.</p>
+            <p data-t="about.work.p2" class="text-ink-soft font-light leading-relaxed mt-4">Mais do que erguer paredes, queremos entregar tranquilidade. Por isso toda obra é conduzida conforme as normas técnicas e registrada com respaldo no CREA — a segurança de quem leva a própria obra a sério, sem surpresa de preço no meio do caminho nem prazo que só existe no papel.</p>
           </div>
         </div>
       </div>
@@ -468,9 +522,9 @@
       <div class="bg-white py-20 lg:py-28 px-6 lg:px-10 border-t border-stone-dark">
         <div class="max-w-site mx-auto">
           <div class="grid md:grid-cols-3 gap-px bg-stone-dark border border-stone-dark">
-            <div class="bg-white p-9 lg:p-11 reveal"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Técnica em primeiro lugar</h3><p class="text-ink-soft font-light leading-relaxed">Um engenheiro responde por cada obra, do projeto à entrega. Decisão técnica no lugar de improviso.</p></div>
-            <div class="bg-white p-9 lg:p-11 reveal reveal-delay-1"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Transparência no orçamento</h3><p class="text-ink-soft font-light leading-relaxed">Preço definido por escrito antes de começar. O que combinamos é o que você paga.</p></div>
-            <div class="bg-white p-9 lg:p-11 reveal reveal-delay-2"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Respaldo documental</h3><p class="text-ink-soft font-light leading-relaxed">Obra registrada e dentro da lei, com respaldo no CREA — proteção do seu patrimônio no presente e no futuro.</p></div>
+            <div class="bg-white p-9 lg:p-11 reveal"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 data-t="about.pillars.c1h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Técnica em primeiro lugar</h3><p data-t="about.pillars.c1p" class="text-ink-soft font-light leading-relaxed">Um engenheiro responde por cada obra, do projeto à entrega. Decisão técnica no lugar de improviso.</p></div>
+            <div class="bg-white p-9 lg:p-11 reveal reveal-delay-1"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 data-t="about.pillars.c2h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Transparência no orçamento</h3><p data-t="about.pillars.c2p" class="text-ink-soft font-light leading-relaxed">Preço definido por escrito antes de começar. O que combinamos é o que você paga.</p></div>
+            <div class="bg-white p-9 lg:p-11 reveal reveal-delay-2"><span class="block w-10 h-0.5 bg-gold/70 mb-6"></span><h3 data-t="about.pillars.c3h" class="font-sans text-ink text-xl font-bold mb-3 tracking-tight">Respaldo documental</h3><p data-t="about.pillars.c3p" class="text-ink-soft font-light leading-relaxed">Obra registrada e dentro da lei, com respaldo no CREA — proteção do seu patrimônio no presente e no futuro.</p></div>
           </div>
         </div>
       </div>
@@ -478,12 +532,12 @@
       <div class="bg-stone py-20 lg:py-28 px-6 lg:px-10 border-t border-stone-dark">
         <div class="max-w-site mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div class="lg:col-span-4 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Responsabilidade em cada etapa</span>
+            <span data-t="about.resp.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Responsabilidade em cada etapa</span>
             <div class="w-12 h-px bg-gold/50"></div>
           </div>
           <div class="lg:col-span-8 reveal reveal-delay-1">
-            <p class="text-ink-light text-lg font-light leading-relaxed">Cada serviço que assumimos é conduzido com responsabilidade técnica de verdade: um engenheiro responde pela obra do projeto à entrega, tudo é executado conforme as normas da ABNT e registrado com respaldo no CREA. Não é só erguer rápido — é fazer certo, com segurança no canteiro e qualidade que se sustenta com o tempo.</p>
-            <p class="text-ink-soft font-light leading-relaxed mt-4">Trabalhamos com escopo e prazo definidos por escrito, materiais controlados e comunicação aberta em cada fase. Você acompanha o andamento, entende cada decisão e recebe a obra com a documentação em ordem, do contrato à vistoria final. É assim que tratamos o patrimônio de quem confia na gente: com o mesmo cuidado que teríamos com o nosso.</p>
+            <p data-t="about.resp.p1" class="text-ink-light text-lg font-light leading-relaxed">Cada serviço que assumimos é conduzido com responsabilidade técnica de verdade: um engenheiro responde pela obra do projeto à entrega, tudo é executado conforme as normas da ABNT e registrado com respaldo no CREA. Não é só erguer rápido — é fazer certo, com segurança no canteiro e qualidade que se sustenta com o tempo.</p>
+            <p data-t="about.resp.p2" class="text-ink-soft font-light leading-relaxed mt-4">Trabalhamos com escopo e prazo definidos por escrito, materiais controlados e comunicação aberta em cada fase. Você acompanha o andamento, entende cada decisão e recebe a obra com a documentação em ordem, do contrato à vistoria final. É assim que tratamos o patrimônio de quem confia na gente: com o mesmo cuidado que teríamos com o nosso.</p>
           </div>
         </div>
       </div>
@@ -491,20 +545,20 @@
       <div class="bg-stone py-20 lg:py-28 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
           <div class="max-w-2xl mb-12 reveal">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Quem conduz</span>
-            <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Uma dupla à frente de cada obra.</h2>
+            <span data-t="about.team.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Quem conduz</span>
+            <h2 data-t="about.team.h2" class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight">Uma dupla à frente de cada obra.</h2>
           </div>
           <div class="grid md:grid-cols-2 gap-6">
             <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal">
               <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
-              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Gestão de Obras &amp; Processos</p>
-              <p class="text-ink-soft font-normal leading-relaxed mt-4 text-base">Cuida do planejamento, dos prazos e da organização de cada etapa, para que a obra ande sem improviso e você sempre saiba em que pé está.</p>
+              <p data-t="about.team.p1role" class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Gestão de Obras &amp; Processos</p>
+              <p data-t="about.team.p1desc" class="text-ink-soft font-normal leading-relaxed mt-4 text-base">Cuida do planejamento, dos prazos e da organização de cada etapa, para que a obra ande sem improviso e você sempre saiba em que pé está.</p>
               <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 98866-7973 →</a>
             </div>
             <div class="bg-white border border-stone-dark p-8 lg:p-10 reveal reveal-delay-1">
               <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
-              <p class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Engenharia &amp; Execução</p>
-              <p class="text-ink-soft font-normal leading-relaxed mt-4 text-base">Responde tecnicamente pela obra, do projeto à entrega, garantindo execução conforme as normas e a qualidade que valoriza o seu imóvel.</p>
+              <p data-t="about.team.p2role" class="text-gold text-[11px] uppercase tracking-[0.18em] font-bold mt-1.5">Engenharia &amp; Execução</p>
+              <p data-t="about.team.p2desc" class="text-ink-soft font-normal leading-relaxed mt-4 text-base">Responde tecnicamente pela obra, do projeto à entrega, garantindo execução conforme as normas e a qualidade que valoriza o seu imóvel.</p>
               <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="inline-block mt-5 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">(12) 99659-9313 →</a>
             </div>
           </div>
@@ -513,8 +567,8 @@
 
       <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
-          <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Vamos conversar sobre o seu projeto?</h2>
-          <button onclick="changePage('contato')" class="shrink-0 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 transition-colors">Fale conosco</button>
+          <h2 data-t="about.cta_h2" class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Vamos conversar sobre o seu projeto?</h2>
+          <button onclick="changePage('contato')" data-t="about.cta_btn" class="shrink-0 bg-gold hover:bg-gold-light text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 transition-colors">Fale conosco</button>
         </div>
       </div>
     </section>
@@ -527,11 +581,11 @@
       <!-- hero -->
       <div class="bg-forest grain pt-[140px] pb-20 lg:pb-28 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
-          <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">O que fazemos por você</span>
-          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">
+          <span data-t="services.overline" class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">O que fazemos por você</span>
+          <h1 data-t-html="services.h1" class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">
             Construção e reforma<br><span class="italic text-gold-light">do projeto à entrega.</span>
           </h1>
-          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">
+          <p data-t="services.p" class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">
             Nosso forte é erguer e reformar com engenheiro responsável presente em cada etapa. Precisou de laudo ou regularização? A parte de engenharia também é nossa.
           </p>
         </div>
@@ -543,20 +597,20 @@
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <a href="#svc-construcao" onclick="scrollToSvc('svc-construcao', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
-              <h2 class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Construção Residencial</h2>
-              <p class="text-ink-soft font-normal leading-relaxed text-base">Da fundação à chave na mão, com engenheiro responsável. Inclui obras pelo programa Minha Casa Minha Vida.</p>
+              <h2 data-t="services.index.c1h" class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Construção Residencial</h2>
+              <p data-t="services.index.c1p" class="text-ink-soft font-normal leading-relaxed text-base">Da fundação à chave na mão, com engenheiro responsável. Inclui obras pelo programa Minha Casa Minha Vida.</p>
               <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </a>
             <a href="#svc-reformas" onclick="scrollToSvc('svc-reformas', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal reveal-delay-1">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-2.1z"/></svg></div>
-              <h2 class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Reformas Residenciais</h2>
-              <p class="text-ink-soft font-normal leading-relaxed text-base">Da estrutura ao acabamento, com orçamento fechado e prazo combinado.</p>
+              <h2 data-t="services.index.c2h" class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Reformas Residenciais</h2>
+              <p data-t="services.index.c2p" class="text-ink-soft font-normal leading-relaxed text-base">Da estrutura ao acabamento, com orçamento fechado e prazo combinado.</p>
               <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </a>
             <a href="#svc-comercial" onclick="scrollToSvc('svc-comercial', event)" class="svc-card group block bg-stone border border-stone-dark border-t-2 border-t-gold p-8 lg:p-10 reveal reveal-delay-2">
               <div class="text-gold mb-5"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-              <h2 class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Obras Comerciais</h2>
-              <p class="text-ink-soft font-normal leading-relaxed text-base">Loja, escritório, clínica ou galpão: construção e reforma do seu ponto, pensadas para reabrir rápido.</p>
+              <h2 data-t="services.index.c3h" class="font-serif text-ink text-2xl lg:text-3xl font-normal mb-2">Obras Comerciais</h2>
+              <p data-t="services.index.c3p" class="text-ink-soft font-normal leading-relaxed text-base">Loja, escritório, clínica ou galpão: construção e reforma do seu ponto, pensadas para reabrir rápido.</p>
               <span class="inline-block mt-5 text-gold text-xs uppercase tracking-[0.16em] font-bold">Ver →</span>
             </a>
           </div>
@@ -566,8 +620,8 @@
               <div class="flex items-center gap-4">
                 <span class="text-gold shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10"/></svg></span>
                 <div>
-                  <h3 class="font-sans text-ink font-bold text-base tracking-tight">Minha Casa Minha Vida</h3>
-                  <p class="text-ink-light text-base font-normal mt-0.5">Construímos pelo programa do Governo Federal.</p>
+                  <h3 data-t="services.index.m1h" class="font-sans text-ink font-bold text-base tracking-tight">Minha Casa Minha Vida</h3>
+                  <p data-t="services.index.m1p" class="text-ink-light text-base font-normal mt-0.5">Construímos pelo programa do Governo Federal.</p>
                 </div>
               </div>
               <span class="shrink-0 text-gold text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold-light transition-colors">Ver →</span>
@@ -576,8 +630,8 @@
               <div class="flex items-center gap-4">
                 <span class="text-forest-mid shrink-0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
                 <div>
-                  <h3 class="font-sans text-ink font-bold text-base tracking-tight">Engenharia &amp; Regularização</h3>
-                  <p class="text-ink-light text-base font-normal mt-0.5">Laudos, plantas, regularização e segurança contra incêndio — serviços complementares.</p>
+                  <h3 data-t="services.index.m2h" class="font-sans text-ink font-bold text-base tracking-tight">Engenharia &amp; Regularização</h3>
+                  <p data-t="services.index.m2p" class="text-ink-light text-base font-normal mt-0.5">Laudos, plantas, regularização e segurança contra incêndio — serviços complementares.</p>
                 </div>
               </div>
               <span class="shrink-0 text-forest-mid text-xs uppercase tracking-[0.16em] font-bold group-hover:text-gold transition-colors">Ver →</span>
@@ -593,7 +647,7 @@
         <div id="svc-construcao" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
-              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Construção Residencial</h2>
+              <h2 data-t="services.construcao.h2" class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Construção Residencial</h2>
               <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Da fundação à chave na mão, na ordem em que a obra realmente acontece. Erguemos a sua casa com um engenheiro responsável que planeja, executa e responde tecnicamente por cada fase — do estudo do terreno e da fundação ao acabamento final.</p>
             </div>
             <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
@@ -609,7 +663,7 @@
         <div id="svc-reformas" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
-              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Reformas Residenciais</h2>
+              <h2 data-t="services.reformas.h2" class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Reformas Residenciais</h2>
               <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Reformar com previsibilidade: orçamento fechado, acompanhamento técnico e prazo combinado. Seguimos a ordem que toda reforma bem-feita exige — primeiro resolvemos o que sustenta e protege o imóvel, depois entregamos o acabamento que valoriza o seu patrimônio. Da estrutura ao detalhe final.</p>
             </div>
             <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
@@ -625,8 +679,8 @@
         <div id="svc-comercial" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center">
             <div class="reveal">
-              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
-              <h2 class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
+              <span data-t="services.comercial.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Para o seu negócio</span>
+              <h2 data-t="services.comercial.h2" class="font-serif text-gold text-4xl lg:text-5xl font-light leading-tight mb-5">Obras Comerciais</h2>
               <p class="text-ink-light font-light leading-relaxed max-w-2xl mx-auto">Loja, escritório, clínica, restaurante ou galpão: construímos e reformamos o seu ponto comercial com uma lógica clara — cada dia de obra a mais é faturamento parado. Unimos rigor técnico a um cronograma pensado para o seu negócio voltar a operar o quanto antes.</p>
             </div>
             <div class="grid sm:grid-cols-2 gap-x-10 gap-y-8 mt-12 text-left reveal reveal-delay-1">
@@ -641,8 +695,8 @@
         <!-- MINHA CASA MINHA VIDA (caixa verde, acima da engenharia) -->
         <div id="svc-mcmv" style="scroll-margin-top:96px;" class="border-b border-stone-dark px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-3xl mx-auto text-center reveal mb-10">
-            <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Para a casa própria</span>
-            <h2 class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight">Construímos pelo Minha Casa Minha Vida.</h2>
+            <span data-t="services.mcmv.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Para a casa própria</span>
+            <h2 data-t="services.mcmv.h2" class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight">Construímos pelo Minha Casa Minha Vida.</h2>
           </div>
           <div class="max-w-4xl mx-auto reveal reveal-delay-1">
             <div class="bg-forest grain rounded-md overflow-hidden shadow-[0_30px_70px_-40px_rgba(10,42,30,0.7)]">
@@ -666,9 +720,9 @@
         <div id="svc-engenharia" style="scroll-margin-top:96px;" class="px-6 lg:px-10 py-20 lg:py-28">
           <div class="max-w-site mx-auto">
             <div class="max-w-3xl mx-auto text-center reveal">
-              <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviços complementares</span>
-              <h2 class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight mb-4">Engenharia &amp; Regularização</h2>
-              <p class="text-ink-soft font-normal leading-relaxed max-w-2xl mx-auto text-base">O mesmo engenheiro que conduz as nossas obras resolve a parte técnica e documental do seu imóvel — sem você precisar contratar um profissional diferente a cada etapa. Toque em cada frente para ver o que fazemos.</p>
+              <span data-t="services.engenharia.overline" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-4">Serviços complementares</span>
+              <h2 data-t="services.engenharia.h2" class="font-serif text-ink text-3xl lg:text-4xl font-light leading-tight mb-4">Engenharia &amp; Regularização</h2>
+              <p data-t="services.engenharia.p" class="text-ink-soft font-normal leading-relaxed max-w-2xl mx-auto text-base">O mesmo engenheiro que conduz as nossas obras resolve a parte técnica e documental do seu imóvel — sem você precisar contratar um profissional diferente a cada etapa. Toque em cada frente para ver o que fazemos.</p>
             </div>
 
             <div class="max-w-3xl mx-auto mt-10 space-y-3 reveal reveal-delay-1">
@@ -730,9 +784,9 @@
     <section id="sec-obras" class="page-section">
       <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
-          <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Portfólio</span>
-          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Obras que falam <span class="italic text-gold-light">por nós.</span></h1>
-          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">Cada projeto é conduzido com responsável técnico presente e documentação completa. Acompanhe aqui o que está em andamento e o que já entregamos.</p>
+          <span data-t="obras.overline" class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Portfólio</span>
+          <h1 data-t-html="obras.h1" class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Obras que falam <span class="italic text-gold-light">por nós.</span></h1>
+          <p data-t="obras.p" class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">Cada projeto é conduzido com responsável técnico presente e documentação completa. Acompanhe aqui o que está em andamento e o que já entregamos.</p>
         </div>
       </div>
 
@@ -740,11 +794,11 @@
         <div class="max-w-site mx-auto">
           <!-- filter bar -->
           <div id="obras-filter" class="flex flex-wrap items-center gap-3 mb-12 reveal">
-            <span class="text-ink-soft text-xs uppercase tracking-[0.18em] font-semibold mr-2 hidden sm:block">Filtrar:</span>
-            <button onclick="filterObras('todas', this)" class="filter-pill active-filter text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
-            <button onclick="filterObras('andamento', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
-            <button onclick="filterObras('embreve', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
-            <button onclick="filterObras('concluida', this)" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
+            <span data-t="obras.filter_label" class="text-ink-soft text-xs uppercase tracking-[0.18em] font-semibold mr-2 hidden sm:block">Filtrar:</span>
+            <button onclick="filterObras('todas', this)" data-t="obras.filter_all" class="filter-pill active-filter text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
+            <button onclick="filterObras('andamento', this)" data-t="obras.filter_andamento" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
+            <button onclick="filterObras('embreve', this)" data-t="obras.filter_embreve" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
+            <button onclick="filterObras('concluida', this)" data-t="obras.filter_concluida" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
           </div>
 
           <!-- obras grid (rendered by JS) -->
@@ -756,10 +810,10 @@
               <div class="text-gold/50 flex justify-center mb-6">
                 <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
               </div>
-              <h3 class="font-serif text-ink text-3xl font-light mb-3">Nosso portfólio está crescendo.</h3>
-              <p class="text-ink-soft font-light text-lg max-w-md mx-auto mb-8">Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.</p>
+              <h3 data-t="obras.empty_h3" class="font-serif text-ink text-3xl font-light mb-3">Nosso portfólio está crescendo.</h3>
+              <p data-t="obras.empty_p" class="text-ink-soft font-light text-lg max-w-md mx-auto mb-8">Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.</p>
               <div class="flex flex-wrap gap-4 justify-center">
-                <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 transition-colors">Ver no Instagram</a>
+                <a href="https://instagram.com/froisxavier" target="_blank" rel="noopener" data-t="obras.instagram" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-8 py-3.5 transition-colors">Ver no Instagram</a>
                 
               </div>
             </div>
@@ -774,9 +828,9 @@
     <section id="sec-contato" class="page-section">
       <div class="bg-forest grain pt-[140px] pb-20 lg:pb-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
-          <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Canal direto</span>
-          <h1 class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Fale com a gente.</h1>
-          <p class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">Conte o que você tem em mente e mostramos o melhor caminho. Atendimento direto e sem rodeios em todo o Vale do Paraíba.</p>
+          <span data-t="contact.overline" class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-6 reveal">Canal direto</span>
+          <h1 data-t="contact.h1" class="font-serif text-white text-5xl lg:text-7xl font-light leading-[1.08] max-w-4xl reveal reveal-delay-1">Fale com a gente.</h1>
+          <p data-t="contact.p" class="text-white/60 text-lg font-light max-w-2xl mt-8 reveal reveal-delay-2">Conte o que você tem em mente e mostramos o melhor caminho. Atendimento direto e sem rodeios em todo o Vale do Paraíba.</p>
         </div>
       </div>
 
@@ -787,21 +841,21 @@
           <div class="lg:col-span-5 space-y-12">
             <!-- people -->
             <div class="reveal">
-              <h2 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Atendimento Direto</h2>
+              <h2 data-t="contact.direct" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Atendimento Direto</h2>
               <div class="space-y-8">
                 <div class="flex items-start justify-between gap-4 border-b border-ink/10 pb-7">
                   <div>
                     <p class="font-serif text-ink text-2xl font-normal">Pedro Frois</p>
-                    <p class="text-ink-soft text-base font-normal mt-0.5">Gestão de Obras &amp; Processos</p>
-                    <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Pedro." target="_blank" rel="noopener" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Pedro no WhatsApp →</a>
+                    <p data-t="contact.p1_role" class="text-ink-soft text-base font-normal mt-0.5">Gestão de Obras &amp; Processos</p>
+                    <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Pedro." target="_blank" rel="noopener" data-t="contact.p1_wa" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Pedro no WhatsApp →</a>
                   </div>
                   <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 98866-7973</a>
                 </div>
                 <div class="flex items-start justify-between gap-4 border-b border-ink/10 pb-7">
                   <div>
                     <p class="font-serif text-ink text-2xl font-normal">Andrei Xavier</p>
-                    <p class="text-ink-soft text-base font-normal mt-0.5">Engenharia &amp; Execução</p>
-                    <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Andrei." target="_blank" rel="noopener" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Andrei no WhatsApp →</a>
+                    <p data-t="contact.p2_role" class="text-ink-soft text-base font-normal mt-0.5">Engenharia &amp; Execução</p>
+                    <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Andrei." target="_blank" rel="noopener" data-t="contact.p2_wa" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Andrei no WhatsApp →</a>
                   </div>
                   <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 99659-9313</a>
                 </div>
@@ -810,7 +864,7 @@
 
             <!-- channels -->
             <div class="reveal reveal-delay-1">
-              <h2 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Canais</h2>
+              <h2 data-t="contact.channels" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Canais</h2>
               <div class="space-y-5">
                 <a href="mailto:froisxavier@gmail.com" class="flex items-center gap-4 group">
                   <span class="w-11 h-11 rounded-full bg-forest/5 group-hover:bg-forest group-hover:text-white text-forest flex items-center justify-center transition-colors">
@@ -830,15 +884,15 @@
 
           <!-- right: address + map -->
           <div class="lg:col-span-7 reveal reveal-delay-2">
-            <h2 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Onde nos encontrar</h2>
+            <h2 data-t="contact.address_title" class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-7">Onde nos encontrar</h2>
             <div class="bg-white border border-stone-dark p-8 lg:p-10 mb-6">
-              <p class="font-serif text-ink text-2xl font-normal mb-2">Edifício Parthenon · Centro</p>
+              <p data-t="contact.address_building" class="font-serif text-ink text-2xl font-normal mb-2">Edifício Parthenon · Centro</p>
               <p class="text-ink-light font-light leading-relaxed">
                 R. Cap. João José de Macedo, 237 — Sala 1<br>
                 Centro · Jacareí — SP · CEP 12327-030
               </p>
-              <p class="text-ink-soft text-base font-normal mt-4">Atendemos São José dos Campos, Jacareí e toda a região do Vale do Paraíba.</p>
-              <a href="https://www.google.com/maps/search/?api=1&query=R.+Cap.+João+José+de+Macedo,+237+-+Centro,+Jacareí+-+SP,+12327-030" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-forest font-semibold text-sm border-b border-forest/30 pb-1 hover:border-forest transition-colors">
+              <p data-t="contact.address_area" class="text-ink-soft text-base font-normal mt-4">Atendemos São José dos Campos, Jacareí e toda a região do Vale do Paraíba.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=R.+Cap.+João+José+de+Macedo,+237+-+Centro,+Jacareí+-+SP,+12327-030" target="_blank" rel="noopener" data-t="contact.maps" class="inline-flex items-center gap-2 mt-6 text-forest font-semibold text-sm border-b border-forest/30 pb-1 hover:border-forest transition-colors">
                 Abrir no Google Maps →
               </a>
             </div>
@@ -855,7 +909,7 @@
       <!-- contato CTA -->
       <div class="bg-forest grain py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
-          <h2 class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Toda boa obra começa com uma conversa.</h2>
+          <h2 data-t="contact.cta_h2" class="font-serif text-white text-3xl lg:text-4xl font-light text-center md:text-left">Toda boa obra começa com uma conversa.</h2>
           
         </div>
       </div>
@@ -872,23 +926,23 @@
             <img src="data:image/png;base64,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" alt="" class="h-11 w-auto object-contain"/>
             <span class="flex flex-col leading-none">
               <span class="font-sans text-white text-lg font-bold tracking-[0.12em]">FROIS XAVIER</span>
-              <span class="font-sans text-gold-light text-[11px] font-medium tracking-[0.42em] mt-1">CONSTRUTORA</span>
+              <span class="font-sans text-gold-light text-[11px] font-medium tracking-[0.42em] mt-1" data-t="company.tagline">CONSTRUTORA</span>
             </span>
           </a>
-          <p class="text-white/50 font-normal leading-relaxed max-w-xs text-base">Construção, reforma e engenharia com a tranquilidade de quem acompanha cada etapa. Vale do Paraíba.</p>
+          <p data-t="footer.desc" class="text-white/50 font-normal leading-relaxed max-w-xs text-base">Construção, reforma e engenharia com a tranquilidade de quem acompanha cada etapa. Vale do Paraíba.</p>
         </div>
         <div class="md:col-span-3">
-          <h3 class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Navegação</h3>
+          <h3 data-t="footer.nav" class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Navegação</h3>
           <ul class="space-y-3">
-            <li><button onclick="changePage('home')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Início</button></li>
-            <li><button onclick="changePage('sobre')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Sobre Nós</button></li>
-            <li><button onclick="changePage('servicos')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Serviços</button></li>
-            <li><button onclick="changePage('obras')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Obras</button></li>
-            <li><button onclick="changePage('contato')" class="text-white/70 hover:text-gold-light transition-colors text-sm">Contato</button></li>
+            <li><button onclick="changePage('home')" data-t="nav.home" class="text-white/70 hover:text-gold-light transition-colors text-sm">Início</button></li>
+            <li><button onclick="changePage('sobre')" data-t="nav.about" class="text-white/70 hover:text-gold-light transition-colors text-sm">Sobre Nós</button></li>
+            <li><button onclick="changePage('servicos')" data-t="nav.services" class="text-white/70 hover:text-gold-light transition-colors text-sm">Serviços</button></li>
+            <li><button onclick="changePage('obras')" data-t="nav.works" class="text-white/70 hover:text-gold-light transition-colors text-sm">Obras</button></li>
+            <li><button onclick="changePage('contato')" data-t="nav.contact" class="text-white/70 hover:text-gold-light transition-colors text-sm">Contato</button></li>
           </ul>
         </div>
         <div class="md:col-span-4">
-          <h3 class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Contato</h3>
+          <h3 data-t="footer.contact" class="text-white/40 text-[10px] uppercase tracking-[0.22em] font-bold mb-5">Contato</h3>
           <ul class="space-y-3.5 text-sm">
             <li>
               <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
@@ -923,7 +977,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="shrink-0 text-gold-light/70"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>R. Cap. João José de Macedo, 237 — Sala 1 · Centro · Jacareí — SP · CEP 12327-030</span>
         </div>
-        <div class="text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 text-center md:text-right shrink-0">© 2026 Frois Xavier Construtora.</div>
+        <div data-t="footer.copyright" class="text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 text-center md:text-right shrink-0">© 2026 Frois Xavier Construtora.</div>
       </div>
     </div>
   </footer>
@@ -936,7 +990,7 @@
       <!-- botão voltar para grade (só visível no modo individual) -->
       <button id="lb-back-btn" onclick="lbShowGrid()" class="hidden items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        Todas as fotos
+        <span data-t="lightbox.back">Todas as fotos</span>
       </button>
       <div id="lb-grid-label" class="text-white/50 text-sm font-light tracking-wide"></div>
 
@@ -1377,9 +1431,10 @@
     }
 
     function statusLabel(s) {
-      if (s === 'andamento') return 'Em Andamento';
-      if (s === 'embreve') return 'Em Breve';
-      return 'Concluída';
+      const L = LANG[currentLang].status;
+      if (s === 'andamento') return L.andamento;
+      if (s === 'embreve') return L.embreve;
+      return L.concluida;
     }
     function statusClass(s) {
       if (s === 'andamento') return 'badge-andamento';
@@ -1483,7 +1538,7 @@
               </span>
             </div>
             <div class="p-6 lg:p-7">
-              <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${o.tipo}</span>
+              <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${LANG[currentLang].tipos[o.tipo] || o.tipo}</span>
               <h3 class="font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
               ${metaParts.length ? `
                 <div class="flex flex-wrap items-center gap-3 text-ink-soft text-sm font-light pt-4 border-t border-ink/10">
@@ -1611,8 +1666,9 @@
       document.getElementById('lb-back-btn').classList.add('hidden');
       document.getElementById('lb-back-btn').classList.remove('flex');
       document.getElementById('lb-counter').classList.add('hidden');
-      document.getElementById('lb-grid-label').textContent =
-        `${lightboxFotos.length} foto${lightboxFotos.length !== 1 ? 's' : ''} — clique para ampliar`;
+      document.getElementById('lb-grid-label').textContent = currentLang === 'pt'
+        ? `${lightboxFotos.length} foto${lightboxFotos.length !== 1 ? 's' : ''} — clique para ampliar`
+        : `${lightboxFotos.length} photo${lightboxFotos.length !== 1 ? 's' : ''} — click to enlarge`;
       // rola para a miniatura da foto atual
       setTimeout(() => {
         const thumb = document.getElementById('lb-grid-inner')?.children[lightboxIndex];
@@ -1774,12 +1830,293 @@
       changePage(pages.includes(hash) ? hash : 'home');
       updateHeaderTheme();
       observeReveals();
+      setLang(currentLang);
     });
     window.addEventListener('popstate', () => {
       const hash = window.location.hash.replace('#','') || 'home';
       const pages = ['home','sobre','servicos','obras','contato'];
       changePage(pages.includes(hash) ? hash : 'home');
     });
+
+    /* =================== TRANSLATIONS =================== */
+    const LANG = {
+      pt: {
+        nav: { home: 'Início', about: 'Sobre Nós', services: 'Serviços', works: 'Obras', contact: 'Contato' },
+        company: { tagline: 'CONSTRUTORA' },
+        status: { andamento: 'Em Andamento', embreve: 'Em Breve', concluida: 'Concluída' },
+        tipos: { 'Construção Residencial': 'Construção Residencial', 'Reforma Residencial': 'Reforma Residencial', 'Obra Comercial': 'Obra Comercial' },
+        lightbox: { back: 'Todas as fotos' },
+        home: {
+          hero: {
+            h1: 'Construímos com<br><span class="italic text-gold-light font-normal">responsabilidade técnica</span><br>do projeto à entrega.',
+            p: 'Acompanhamento técnico em cada etapa, orçamento fechado antes de começar e obra registrada com respaldo legal. Construção, reforma e engenharia para quem leva a própria obra a sério.',
+            cta: 'Nossos Serviços →',
+          },
+          intro: {
+            overline: 'A Frois Xavier',
+            h2: 'Antes de erguer paredes, construímos confiança. Cada projeto começa com clareza no escopo, no prazo e no preço — <span class="italic text-gold">e com a transparência</span> de aceitar apenas o que entregamos bem.',
+            p: 'A Frois Xavier nasceu de um princípio simples: obra séria não admite improviso. Por isso, cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito e a segurança de documentação técnica que protege você durante e depois da entrega.',
+          },
+          diff: {
+            overline: 'Por que a Frois Xavier',
+            h2: 'Quatro compromissos, uma obra sem surpresas.',
+            c1h: 'Responsável técnico na obra', c1p: 'Quem assina o projeto acompanha a execução, do primeiro traço à entrega. A responsabilidade técnica é nossa — e não sai do canteiro.',
+            c2h: 'Orçamento fechado de verdade', c2p: 'O valor é definido por escrito antes de qualquer tijolo. O que combinamos é o que você paga — sem cobrança surpresa no meio do caminho.',
+            c3h: 'Sua obra com respaldo legal', c3p: 'Toda obra é registrada junto ao CREA — a garantia documental que protege o seu patrimônio durante e depois da entrega.',
+            c4h: 'Prazo que cabe na realidade', c4p: 'Cronograma feito com base na obra, não em promessas. E ao final, vistoria e documentação de entrega para você conferir cada detalhe.',
+          },
+          services: {
+            overline: 'O que fazemos',
+            h2: 'Da fundação à chave na mão.',
+            cta: 'Ver todos os serviços →',
+            s1h: 'Construção Residencial', s1p: 'Sua casa erguida do zero, com responsabilidade técnica em cada etapa — inclusive pelo Minha Casa Minha Vida.',
+            s2h: 'Reformas Residenciais', s2p: 'Renove com previsibilidade: orçamento fechado, prazo combinado e cada etapa na ordem certa.',
+            s3h: 'Obras Comerciais', s3p: 'Seu ponto pronto para operar — construção e reforma com foco em reabrir rápido.',
+          },
+          cta: { overline: 'Vamos conversar', h2: 'Seu projeto merece começar do jeito certo.', btn: 'Fale conosco' },
+        },
+        about: {
+          overline: 'Quem Somos',
+          h1: 'Obra séria não admite <span class="italic text-gold-light">improviso.</span>',
+          p: 'A Frois Xavier nasceu desse princípio: técnica, transparência e responsabilidade em cada etapa — construção e reforma em todo o Vale do Paraíba.',
+          work: {
+            overline: 'A nossa forma de trabalhar',
+            h2: 'Antes de erguer paredes, construímos confiança.',
+            p1: 'A Frois Xavier é uma construtora especializada em construção e reforma — residencial e comercial — presente em todo o Vale do Paraíba. Trabalhamos com um princípio que orienta tudo: cada contrato tem um engenheiro responsável do início ao fim, orçamento detalhado por escrito antes de começar e documentação técnica que protege você durante e depois da entrega.',
+            p2: 'Mais do que erguer paredes, queremos entregar tranquilidade. Por isso toda obra é conduzida conforme as normas técnicas e registrada com respaldo no CREA — a segurança de quem leva a própria obra a sério, sem surpresa de preço no meio do caminho nem prazo que só existe no papel.',
+          },
+          pillars: {
+            c1h: 'Técnica em primeiro lugar', c1p: 'Um engenheiro responde por cada obra, do projeto à entrega. Decisão técnica no lugar de improviso.',
+            c2h: 'Transparência no orçamento', c2p: 'Preço definido por escrito antes de começar. O que combinamos é o que você paga.',
+            c3h: 'Respaldo documental', c3p: 'Obra registrada e dentro da lei, com respaldo no CREA — proteção do seu patrimônio no presente e no futuro.',
+          },
+          resp: {
+            overline: 'Responsabilidade em cada etapa',
+            p1: 'Cada serviço que assumimos é conduzido com responsabilidade técnica de verdade: um engenheiro responde pela obra do projeto à entrega, tudo é executado conforme as normas da ABNT e registrado com respaldo no CREA. Não é só erguer rápido — é fazer certo, com segurança no canteiro e qualidade que se sustenta com o tempo.',
+            p2: 'Trabalhamos com escopo e prazo definidos por escrito, materiais controlados e comunicação aberta em cada fase. Você acompanha o andamento, entende cada decisão e recebe a obra com a documentação em ordem, do contrato à vistoria final. É assim que tratamos o patrimônio de quem confia na gente: com o mesmo cuidado que teríamos com o nosso.',
+          },
+          team: {
+            overline: 'Quem conduz',
+            h2: 'Uma dupla à frente de cada obra.',
+            p1role: 'Gestão de Obras & Processos',
+            p1desc: 'Cuida do planejamento, dos prazos e da organização de cada etapa, para que a obra ande sem improviso e você sempre saiba em que pé está.',
+            p2role: 'Engenharia & Execução',
+            p2desc: 'Responde tecnicamente pela obra, do projeto à entrega, garantindo execução conforme as normas e a qualidade que valoriza o seu imóvel.',
+          },
+          cta_h2: 'Vamos conversar sobre o seu projeto?',
+          cta_btn: 'Fale conosco',
+        },
+        services: {
+          overline: 'O que fazemos por você',
+          h1: 'Construção e reforma<br><span class="italic text-gold-light">do projeto à entrega.</span>',
+          p: 'Nosso forte é erguer e reformar com engenheiro responsável presente em cada etapa. Precisou de laudo ou regularização? A parte de engenharia também é nossa.',
+          index: {
+            c1h: 'Construção Residencial', c1p: 'Da fundação à chave na mão, com engenheiro responsável. Inclui obras pelo programa Minha Casa Minha Vida.',
+            c2h: 'Reformas Residenciais', c2p: 'Da estrutura ao acabamento, com orçamento fechado e prazo combinado.',
+            c3h: 'Obras Comerciais', c3p: 'Loja, escritório, clínica ou galpão: construção e reforma do seu ponto, pensadas para reabrir rápido.',
+            m1h: 'Minha Casa Minha Vida', m1p: 'Construímos pelo programa do Governo Federal.',
+            m2h: 'Engenharia & Regularização', m2p: 'Laudos, plantas, regularização e segurança contra incêndio — serviços complementares.',
+          },
+          construcao: { h2: 'Construção Residencial' },
+          reformas: { h2: 'Reformas Residenciais' },
+          comercial: { overline: 'Para o seu negócio', h2: 'Obras Comerciais' },
+          mcmv: { overline: 'Para a casa própria', h2: 'Construímos pelo Minha Casa Minha Vida.' },
+          engenharia: {
+            overline: 'Serviços complementares',
+            h2: 'Engenharia & Regularização',
+            p: 'O mesmo engenheiro que conduz as nossas obras resolve a parte técnica e documental do seu imóvel — sem você precisar contratar um profissional diferente a cada etapa. Toque em cada frente para ver o que fazemos.',
+          },
+        },
+        obras: {
+          overline: 'Portfólio',
+          h1: 'Obras que falam <span class="italic text-gold-light">por nós.</span>',
+          p: 'Cada projeto é conduzido com responsável técnico presente e documentação completa. Acompanhe aqui o que está em andamento e o que já entregamos.',
+          filter_label: 'Filtrar:',
+          filter_all: 'Todas', filter_andamento: 'Em Andamento', filter_embreve: 'Em Breve', filter_concluida: 'Concluídas',
+          empty_h3: 'Nosso portfólio está crescendo.',
+          empty_p: 'Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.',
+          instagram: 'Ver no Instagram',
+        },
+        contact: {
+          overline: 'Canal direto',
+          h1: 'Fale com a gente.',
+          p: 'Conte o que você tem em mente e mostramos o melhor caminho. Atendimento direto e sem rodeios em todo o Vale do Paraíba.',
+          direct: 'Atendimento Direto',
+          p1_role: 'Gestão de Obras & Processos',
+          p1_wa: 'Falar com Pedro no WhatsApp →',
+          p2_role: 'Engenharia & Execução',
+          p2_wa: 'Falar com Andrei no WhatsApp →',
+          channels: 'Canais',
+          address_title: 'Onde nos encontrar',
+          address_building: 'Edifício Parthenon · Centro',
+          address_area: 'Atendemos São José dos Campos, Jacareí e toda a região do Vale do Paraíba.',
+          maps: 'Abrir no Google Maps →',
+          cta_h2: 'Toda boa obra começa com uma conversa.',
+        },
+        footer: {
+          nav: 'Navegação', contact: 'Contato',
+          desc: 'Construção, reforma e engenharia com a tranquilidade de quem acompanha cada etapa. Vale do Paraíba.',
+          copyright: '© 2026 Frois Xavier Construtora.',
+        },
+      },
+
+      en: {
+        nav: { home: 'Home', about: 'About Us', services: 'Services', works: 'Projects', contact: 'Contact' },
+        company: { tagline: 'CONSTRUCTION CO.' },
+        status: { andamento: 'In Progress', embreve: 'Coming Soon', concluida: 'Completed' },
+        tipos: { 'Construção Residencial': 'Residential Construction', 'Reforma Residencial': 'Residential Renovation', 'Obra Comercial': 'Commercial Project' },
+        lightbox: { back: 'All photos' },
+        home: {
+          hero: {
+            h1: 'We build with<br><span class="italic text-gold-light font-normal">technical responsibility</span><br>from design to delivery.',
+            p: 'Technical oversight at every stage, a fixed budget agreed before work begins, and a registered project backed by full legal documentation. Construction, renovation, and engineering for those who take their build seriously.',
+            cta: 'Our Services →',
+          },
+          intro: {
+            overline: 'About Frois Xavier',
+            h2: 'Before raising walls, we build trust. Every project starts with clarity on scope, timeline, and price — <span class="italic text-gold">and with the transparency</span> of taking on only what we deliver well.',
+            p: 'Frois Xavier was founded on a simple principle: a serious build leaves no room for improvisation. Every contract includes a licensed engineer from start to finish, a detailed written estimate, and the security of technical documentation that protects you during and after delivery.',
+          },
+          diff: {
+            overline: 'Why Frois Xavier',
+            h2: 'Four commitments. One build with no surprises.',
+            c1h: 'On-site technical responsibility', c1p: 'The engineer who signs the project stays on site through every phase. Technical accountability is ours — and it never leaves the job.',
+            c2h: 'A truly fixed quote', c2p: 'The price is set in writing before a single brick is laid. What we agree is what you pay — no surprise charges mid-project.',
+            c3h: 'Legally backed construction', c3p: 'Every build is registered with the CREA — the documentary guarantee that safeguards your asset during and after delivery.',
+            c4h: 'A timeline grounded in reality', c4p: 'Schedules built around the actual work, not empty promises. At completion, a final inspection and handover report so you can verify every detail.',
+          },
+          services: {
+            overline: 'What we do',
+            h2: 'From foundation to finished home.',
+            cta: 'See all services →',
+            s1h: 'Residential Construction', s1p: 'Your home built from the ground up, with engineering oversight at every stage — including through the Minha Casa Minha Vida programme.',
+            s2h: 'Residential Renovations', s2p: 'Renovate with confidence: fixed budget, agreed timeline, and every phase done in the right order.',
+            s3h: 'Commercial Projects', s3p: 'Your space ready to operate — construction and renovation focused on reopening fast.',
+          },
+          cta: { overline: "Let's talk", h2: 'Your project deserves to start the right way.', btn: 'Contact us' },
+        },
+        about: {
+          overline: 'Who We Are',
+          h1: 'Serious construction leaves no room for <span class="italic text-gold-light">improvisation.</span>',
+          p: 'Frois Xavier was built on this principle: expertise, transparency, and accountability at every stage — construction and renovation across the Vale do Paraíba.',
+          work: {
+            overline: 'How we work',
+            h2: 'Before raising walls, we build trust.',
+            p1: 'Frois Xavier is a construction company specialising in residential and commercial building and renovation, serving the entire Vale do Paraíba region. We operate on one guiding principle: every contract includes a licensed engineer from start to finish, a detailed written estimate before work begins, and technical documentation that protects you during and after delivery.',
+            p2: 'We aim to deliver more than walls — we deliver peace of mind. Every project is carried out in accordance with technical standards and registered with the CREA, protecting you from unexpected costs and schedules that only exist on paper.',
+          },
+          pillars: {
+            c1h: 'Engineering first', c1p: 'A licensed engineer is responsible for every project, from design to handover. Technical decisions, not improvisation.',
+            c2h: 'Budget transparency', c2p: 'The price is agreed in writing before work starts. What we commit to is what you pay.',
+            c3h: 'Full documentation', c3p: 'Legally compliant, CREA-registered builds — protecting your asset today and in the future.',
+          },
+          resp: {
+            overline: 'Accountability at every stage',
+            p1: 'Every service we take on is managed with genuine technical responsibility: a licensed engineer oversees the work from design to handover, everything is executed to ABNT standards, and the project is CREA-registered. It is not just about building fast — it is about building right, with a safe site and lasting quality.',
+            p2: 'We work with a defined written scope and timeline, controlled materials, and open communication at every phase. You follow the progress, understand every decision, and receive your build with all documentation in order — from the contract to the final inspection. That is how we care for the assets of those who trust us: with the same attention we would give our own.',
+          },
+          team: {
+            overline: 'Who leads',
+            h2: 'Two people at the helm of every build.',
+            p1role: 'Project & Operations Management',
+            p1desc: 'Handles planning, timelines, and the coordination of every phase, so the build runs without improvisation and you always know exactly where things stand.',
+            p2role: 'Engineering & Execution',
+            p2desc: 'Responsible for the technical oversight of the project from design to handover, ensuring execution to code and the quality that adds lasting value to your property.',
+          },
+          cta_h2: "Let's talk about your project.",
+          cta_btn: 'Contact us',
+        },
+        services: {
+          overline: 'What we do for you',
+          h1: 'Construction and renovation<br><span class="italic text-gold-light">from design to delivery.</span>',
+          p: 'Our core strength is building and renovating with a licensed engineer present at every stage. Need a technical report or regularisation? Engineering is part of what we do.',
+          index: {
+            c1h: 'Residential Construction', c1p: 'From foundation to finished home, with a licensed engineer. Includes projects through the Minha Casa Minha Vida programme.',
+            c2h: 'Residential Renovations', c2p: 'From structure to finishes, with a fixed budget and agreed timeline.',
+            c3h: 'Commercial Projects', c3p: 'Shop, office, clinic, or warehouse: construction and renovation planned to reopen fast.',
+            m1h: 'Minha Casa Minha Vida', m1p: 'We build through the Federal Government housing programme.',
+            m2h: 'Engineering & Regularisation', m2p: 'Technical reports, drawings, property regularisation, and fire safety — complementary services.',
+          },
+          construcao: { h2: 'Residential Construction' },
+          reformas: { h2: 'Residential Renovations' },
+          comercial: { overline: 'For your business', h2: 'Commercial Projects' },
+          mcmv: { overline: 'Home ownership support', h2: 'We build through the Minha Casa Minha Vida programme.' },
+          engenharia: {
+            overline: 'Complementary services',
+            h2: 'Engineering & Regularisation',
+            p: 'The same engineer who manages our construction projects also handles the technical and documentary needs of your property — so you never need to hire a different professional at each stage. Tap each area to see what we do.',
+          },
+        },
+        obras: {
+          overline: 'Portfolio',
+          h1: 'Projects that speak <span class="italic text-gold-light">for us.</span>',
+          p: 'Every project is managed with a licensed engineer on site and complete documentation. Follow what is in progress and what we have already delivered.',
+          filter_label: 'Filter:',
+          filter_all: 'All', filter_andamento: 'In Progress', filter_embreve: 'Coming Soon', filter_concluida: 'Completed',
+          empty_h3: 'Our portfolio is growing.',
+          empty_p: 'Records of our ongoing and completed projects are coming soon. Follow our Instagram in the meantime.',
+          instagram: 'View on Instagram',
+        },
+        contact: {
+          overline: 'Direct line',
+          h1: 'Get in touch.',
+          p: 'Tell us what you have in mind and we will show you the best path forward. Direct, straightforward service across the entire Vale do Paraíba.',
+          direct: 'Direct Contact',
+          p1_role: 'Project & Operations Management',
+          p1_wa: 'Message Pedro on WhatsApp →',
+          p2_role: 'Engineering & Execution',
+          p2_wa: 'Message Andrei on WhatsApp →',
+          channels: 'Channels',
+          address_title: 'Where to find us',
+          address_building: 'Edifício Parthenon · Centro',
+          address_area: 'We serve São José dos Campos, Jacareí, and the entire Vale do Paraíba region.',
+          maps: 'Open in Google Maps →',
+          cta_h2: 'Every great build starts with a conversation.',
+        },
+        footer: {
+          nav: 'Navigation', contact: 'Contact',
+          desc: 'Construction, renovation, and engineering — with the confidence that comes from overseeing every stage. Vale do Paraíba.',
+          copyright: '© 2026 Frois Xavier Construction Co.',
+        },
+      },
+    };
+
+    let currentLang = (function(){ try{ return localStorage.getItem('fxlang') || 'pt'; }catch(e){ return 'pt'; } })();
+
+    function getT(key) {
+      const parts = key.split('.');
+      let obj = LANG[currentLang];
+      for (const p of parts) { if (obj == null) return ''; obj = obj[p]; }
+      return obj != null ? String(obj) : '';
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      // Update <html lang> attribute
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      // Update text content elements
+      document.querySelectorAll('[data-t]').forEach(el => {
+        const v = getT(el.dataset.t);
+        if (v) el.textContent = v;
+      });
+      // Update innerHTML elements (those with HTML tags inside)
+      document.querySelectorAll('[data-t-html]').forEach(el => {
+        const v = getT(el.dataset.tHtml);
+        if (v) el.innerHTML = v;
+      });
+      // Sync all lang toggle buttons (header + mobile)
+      document.querySelectorAll('.lang-opt, .mobile-lang-opt').forEach(o => {
+        o.classList.toggle('active-lang', o.dataset.lang === lang);
+      });
+      // Re-render obras if the obras section is currently visible
+      const obrasSection = document.getElementById('sec-obras');
+      if (obrasSection && obrasSection.classList.contains('active')) {
+        renderObras();
+      }
+      // Persist preference
+      try { localStorage.setItem('fxlang', lang); } catch(e) {}
+    }
+    /* ===================================================== */
   </script>
   <!-- ===== BOTÃO FLUTUANTE WHATSAPP (todas as abas) ===== -->
   <a id="wa-float" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp" class="fixed bottom-5 right-5 z-50 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold hover:bg-gold-light text-white flex items-center justify-center shadow-[0_14px_34px_-8px_rgba(0,0,0,0.55)] transition-colors">
