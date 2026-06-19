@@ -1024,6 +1024,8 @@
 
       <!-- imagem -->
       <img id="lightbox-img" src="" alt="" class="max-w-[calc(100vw-112px)] max-h-[calc(100vh-80px)] lg:max-w-[calc(100vw-160px)] object-contain select-none"/>
+      <!-- vídeo (com controles de som: volume / mudo / play) -->
+      <video id="lightbox-video" src="" controls playsinline preload="metadata" class="hidden max-w-[calc(100vw-112px)] max-h-[calc(100vh-80px)] lg:max-w-[calc(100vw-160px)] object-contain"></video>
 
       <!-- seta direita -->
       <button onclick="lightboxNav(1, event)" class="absolute right-3 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white flex items-center justify-center transition-colors">
@@ -1056,6 +1058,28 @@
                     O site cria automaticamente a galeria com setas + lightbox (clicar amplia).
                     Se a obra ainda nao tem foto, use fotos: [] (mostra placeholder elegante).
          foto    -> a primeira foto (foto de capa). Repita a primeira da lista "fotos".
+
+       --- JEITO MAIS FACIL (recomendado): use "pasta" no lugar de "fotos" ---
+       Em vez de listar foto por foto, informe so a pasta do GitHub e quantos
+       espacos reservar. Suba os arquivos numerados (1, 2, 3, ...) na pasta e pronto:
+         pasta    -> nome da pasta no GitHub. Ex: "montante-aquarius"
+         maxFotos -> ate quantos numeros procurar. Ex: 120 (espaco pra crescer)
+       O site acha os arquivos sozinho, aceitando QUALQUER extensao/caixa:
+         .jpg .JPG .jpeg .png .webp  e tambem VIDEOS: .mp4 .MP4 .mov .webm
+       Ele detecta sozinho se e foto ou video, conta SO os que existem de verdade
+       e para depois de algumas faltas seguidas (entao pode reservar bastante espaco).
+       Os videos ganham botoes de som (volume / mudo / play) quando ampliados.
+       Modelo:
+       {
+         nome: "Reforma Mon152A — Jardim Aquarius",
+         tipo: "Reforma Residencial",
+         status: "andamento",
+         cidade: "São José dos Campos · SP",
+         tamanho: "",
+         ano: "2026",
+         pasta: "montante-aquarius",
+         maxFotos: 120
+       },
 
        --- COMO REMOVER UMA OBRA (ex: tirar a Casa Parque dos Sinos depois do teste) ---
        Apague o bloco inteiro da obra (do { ate o },). O site volta ao normal sozinho.
@@ -1410,31 +1434,109 @@
         ],
         foto: "jardim-marques/1.jpg"
       },
+      {
+        nome: "Reforma Mon152A — Jardim Aquarius",
+        tipo: "Reforma Residencial",
+        status: "andamento",
+        cidade: "São José dos Campos · SP",
+        tamanho: "",
+        ano: "2026",
+        pasta: "montante-aquarius", // pasta no GitHub — arquivos numerados 1, 2, 3, ...
+        maxFotos: 120              // espaço pra crescer; o site conta só os que existirem
+      },
       // Adicione suas obras reais aqui seguindo o modelo acima.
     ];
 
     let currentFilter = 'todas';
     const OBRAS_VALID_FOTOS = {}; // cache: obraRealIdx → [caminhos válidos]
 
-    // Testa quais imagens existem de verdade (retorna só as que carregam)
-    // Se .jpg não existir, tenta .jpeg automaticamente (e vice-versa)
+    // Extensões testadas automaticamente (maiúsculas e minúsculas)
+    const IMG_EXTS = ['jpg','jpeg','png','webp','JPG','JPEG','PNG','WEBP'];
+    const VID_EXTS = ['mp4','mov','webm','m4v','MP4','MOV','WEBM','M4V'];
+
+    function isVideoSrc(src){ return VID_EXTS.includes((src.split('.').pop() || '')); }
+
+    // testa 1 imagem (carrega de verdade?)
+    function testImage(src){
+      return new Promise(res => {
+        const img = new Image();
+        img.onload  = () => res(true);
+        img.onerror = () => res(false);
+        img.src = src;
+      });
+    }
+    // testa 1 vídeo (consegue ler os metadados?)
+    function testVideo(src){
+      return new Promise(res => {
+        const v = document.createElement('video');
+        let done = false;
+        const ok   = () => { if(!done){ done = true; res(true);  } };
+        const fail = () => { if(!done){ done = true; res(false); } };
+        v.onloadedmetadata = ok;
+        v.onerror = fail;
+        setTimeout(fail, 9000); // se travar, considera inexistente
+        v.preload = 'metadata';
+        v.muted = true;
+        v.src = src;
+      });
+    }
+
+    // Testa quais imagens existem de verdade (modelo antigo: lista com .jpg).
+    // Se .jpg não existir, tenta .jpeg automaticamente (e vice-versa).
+    // Retorna objetos { src, type }.
     function probeObraFotos(fotos) {
       if (!fotos || !fotos.length) return Promise.resolve([]);
       return Promise.all(fotos.map(src => new Promise(resolve => {
+        if (isVideoSrc(src)) { testVideo(src).then(ok => resolve(ok ? { src, type:'video' } : null)); return; }
         const img = new Image();
-        img.onload  = () => resolve(src);
+        img.onload  = () => resolve({ src, type:'image' });
         img.onerror = () => {
           const alt = src.endsWith('.jpg')  ? src.slice(0,-4)+'.jpeg'
                     : src.endsWith('.jpeg') ? src.slice(0,-5)+'.jpg'
                     : null;
           if (!alt) return resolve(null);
           const img2 = new Image();
-          img2.onload  = () => resolve(alt);
+          img2.onload  = () => resolve({ src:alt, type:'image' });
           img2.onerror = () => resolve(null);
           img2.src = alt;
         };
         img.src = src;
       }))).then(res => res.filter(Boolean));
+    }
+
+    // Modelo novo (mais fácil): a obra só informa a "pasta" do GitHub e quantos
+    // espaços reservar. Aqui testamos os arquivos numerados 1, 2, 3, ... tentando
+    // várias extensões (jpg, JPG, png, mp4, mov, ...). Conta SÓ os que existem e
+    // para depois de algumas faltas seguidas — assim sobra espaço para crescer
+    // sem deixar a página lenta. Detecta sozinho imagem x vídeo.
+    async function probeSlot(pasta, n){
+      // tenta as imagens em paralelo (caso comum)
+      const imgHits = await Promise.all(IMG_EXTS.map(ext => {
+        const cand = `${pasta}/${n}.${ext}`;
+        return testImage(cand).then(ok => ok ? cand : null);
+      }));
+      const img = imgHits.find(Boolean);
+      if (img) return { src: img, type:'image' };
+      // se não achou imagem, tenta os vídeos
+      const vidHits = await Promise.all(VID_EXTS.map(ext => {
+        const cand = `${pasta}/${n}.${ext}`;
+        return testVideo(cand).then(ok => ok ? cand : null);
+      }));
+      const vid = vidHits.find(Boolean);
+      if (vid) return { src: vid, type:'video' };
+      return null;
+    }
+    async function probePastaFotos(pasta, maxFotos){
+      const MAX = maxFotos || 120;
+      const STOP_AFTER = 6; // para após 6 números seguidos sem arquivo
+      const out = [];
+      let misses = 0;
+      for (let n = 1; n <= MAX; n++){
+        const found = await probeSlot(pasta, n);
+        if (found) { out.push(found); misses = 0; }
+        else { misses++; if (misses >= STOP_AFTER) break; }
+      }
+      return out;
     }
 
     function statusLabel(s) {
@@ -1479,6 +1581,9 @@
       await Promise.all(list.map(o => {
         const realIdx = OBRAS.indexOf(o);
         if (OBRAS_VALID_FOTOS[realIdx] !== undefined) return Promise.resolve();
+        if (o.pasta) {
+          return probePastaFotos(o.pasta, o.maxFotos).then(valid => { OBRAS_VALID_FOTOS[realIdx] = valid; });
+        }
         const raw = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
         return probeObraFotos(raw).then(valid => { OBRAS_VALID_FOTOS[realIdx] = valid; });
       }));
@@ -1493,13 +1598,15 @@
           ? `
             <div id="${cardId}-gallery" class="obra-gallery absolute inset-0 cursor-pointer" onclick="openLightbox(${obraRealIdx})">
               ${fotos.map((f, fi) => `
-                <img
-                  src="${f}"
-                  data-index="${fi}"
-                  alt="${o.nome} — foto ${fi + 1}"
-                  class="obra-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${fi === 0 ? 'opacity-100' : 'opacity-0'}"
-                  onerror="this.style.display='none';"
-                />
+                <div class="gallery-slide absolute inset-0 transition-opacity duration-500 ${fi === 0 ? 'opacity-100' : 'opacity-0'}" data-index="${fi}" data-type="${f.type}">
+                  ${f.type === 'video'
+                    ? `<video src="${f.src}" muted loop playsinline preload="metadata" class="obra-img w-full h-full object-cover"></video>
+                       <span class="absolute bottom-3 left-3 z-[6] flex items-center gap-1 bg-black/55 text-white text-[10px] font-semibold px-2 py-1 rounded-full pointer-events-none backdrop-blur-sm">
+                         <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Vídeo
+                       </span>`
+                    : `<img src="${f.src}" alt="${o.nome} — foto ${fi + 1}" class="obra-img w-full h-full object-cover" onerror="this.closest('.gallery-slide').style.display='none';"/>`
+                  }
+                </div>
               `).join('')}
             </div>
             ${hasGallery ? `
@@ -1568,6 +1675,13 @@
       });
       observeReveals();
 
+      // se o slide visível de algum card for vídeo, toca a prévia (mudo, em loop)
+      grid.querySelectorAll('.obra-gallery').forEach(g => {
+        const active = g.querySelector('.gallery-slide.opacity-100');
+        const vid = active && active.querySelector('video');
+        if (vid) vid.play().catch(()=>{});
+      });
+
       // swipe touch support para cada card
       list.forEach((o) => {
         const realIdx = OBRAS.indexOf(o);
@@ -1593,9 +1707,12 @@
       if (target === current) return;
 
       const gallery = document.getElementById(`${cardId}-gallery`);
-      gallery.querySelectorAll('img').forEach((img, i) => {
-        img.classList.toggle('opacity-100', i === target);
-        img.classList.toggle('opacity-0', i !== target);
+      gallery.querySelectorAll('.gallery-slide').forEach((slide, i) => {
+        const on = i === target;
+        slide.classList.toggle('opacity-100', on);
+        slide.classList.toggle('opacity-0', !on);
+        const vid = slide.querySelector('video');
+        if (vid) { if (on) { vid.play().catch(()=>{}); } else { vid.pause(); } }
       });
       // update dots (only if they exist — cards with >8 photos skip them)
       for (let i = 0; i < total; i++) {
@@ -1641,9 +1758,15 @@
       const inner = document.getElementById('lb-grid-inner');
       inner.innerHTML = lightboxFotos.map((f, i) => `
         <button onclick="lbOpenSingle(${i})" class="relative aspect-square overflow-hidden rounded-sm group focus:outline-none">
-          <img src="${f}" alt="Foto ${i+1}"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            onerror="this.parentElement.style.display='none'"/>
+          ${f.type === 'video'
+            ? `<video src="${f.src}" muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"></video>
+               <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                 <span class="w-9 h-9 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center">
+                   <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+                 </span>
+               </span>`
+            : `<img src="${f.src}" alt="Foto ${i+1}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display='none'"/>`
+          }
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
           <span class="absolute bottom-1.5 right-2 text-white/70 text-[10px] font-medium drop-shadow">${i+1}</span>
         </button>
@@ -1666,6 +1789,7 @@
 
     function lbShowGrid() {
       lbMode = 'grid';
+      const v = document.getElementById('lightbox-video'); if (v) v.pause();
       document.getElementById('lb-grid-view').classList.remove('hidden');
       document.getElementById('lb-grid-view').classList.add('flex-1');
       document.getElementById('lb-single-view').classList.add('hidden');
@@ -1698,14 +1822,30 @@
     }
 
     function renderLightboxSingle() {
+      const f = lightboxFotos[lightboxIndex];
       const img = document.getElementById('lightbox-img');
-      img.src = lightboxFotos[lightboxIndex];
-      img.alt = `Foto ${lightboxIndex + 1}`;
+      const vid = document.getElementById('lightbox-video');
+      if (f && f.type === 'video') {
+        img.classList.add('hidden');
+        img.src = '';
+        vid.classList.remove('hidden');
+        const abs = new URL(f.src, location.href).href;
+        if (vid.src !== abs) vid.src = f.src;
+        vid.currentTime = 0;
+        vid.play().catch(()=>{}); // veio de um clique, então pode tocar com som
+      } else {
+        vid.pause();
+        vid.classList.add('hidden');
+        img.classList.remove('hidden');
+        img.src = f ? f.src : '';
+        img.alt = `Foto ${lightboxIndex + 1}`;
+      }
       document.getElementById('lb-counter').textContent = `${lightboxIndex + 1} / ${lightboxFotos.length}`;
     }
 
     function closeLightbox() {
       const lb = document.getElementById('lightbox');
+      const v = document.getElementById('lightbox-video'); if (v) { v.pause(); v.src = ''; }
       lb.classList.add('hidden');
       lb.classList.remove('flex');
       document.body.style.overflow = '';
