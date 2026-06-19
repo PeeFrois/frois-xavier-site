@@ -811,44 +811,18 @@
 
       <div class="bg-stone py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
-          <!-- filter bar (3 camadas: natureza · setor · status) -->
-          <div id="obras-filter" class="mb-12 reveal space-y-5">
-
-            <!-- Linha 1: Natureza (Todas / Construções / Reformas) — só no desktop -->
-            <div class="hidden sm:flex flex-wrap items-center gap-3">
-              <span data-t="obras.group_nature" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0">Tipo de obra</span>
-              <div class="flex flex-wrap gap-2.5">
-                <button onclick="setFilter('nature','todas', this)" data-t="obras.nature_all" class="filter-pill filter-nature active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
-                <button onclick="setFilter('nature','construcao', this)" data-t="obras.nature_construcao" class="filter-pill filter-nature text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Construções</button>
-                <button onclick="setFilter('nature','reforma', this)" data-t="obras.nature_reforma" class="filter-pill filter-nature text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Reformas</button>
-              </div>
+          <!-- Filtro de situação (Todas / Em Andamento / Em Breve / Concluídas) -->
+          <div id="obras-filter" class="mb-10 reveal">
+            <div class="flex flex-wrap gap-2.5 justify-center sm:justify-start">
+              <button onclick="setFilter('status','todas', this)" data-t="obras.filter_all" class="filter-pill filter-status active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
+              <button onclick="setFilter('status','andamento', this)" data-t="obras.filter_andamento" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
+              <button onclick="setFilter('status','embreve', this)" data-t="obras.filter_embreve" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
+              <button onclick="setFilter('status','concluida', this)" data-t="obras.filter_concluida" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
             </div>
-
-            <!-- Linha 2: Setor (Todos / Residencial / Comercial) — só no desktop -->
-            <div class="hidden sm:flex flex-wrap items-center gap-3">
-              <span data-t="obras.group_sector" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0">Setor</span>
-              <div class="flex flex-wrap gap-2.5">
-                <button onclick="setFilter('sector','todas', this)" data-t="obras.sector_all" class="filter-pill filter-sector active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todos</button>
-                <button onclick="setFilter('sector','residencial', this)" data-t="obras.sector_residencial" class="filter-pill filter-sector text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Residencial</button>
-                <button onclick="setFilter('sector','comercial', this)" data-t="obras.sector_comercial" class="filter-pill filter-sector text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Comercial</button>
-              </div>
-            </div>
-
-            <!-- Linha 3: Status (Todas / Em Andamento / Em Breve / Concluídas) — sempre visível -->
-            <div class="flex flex-wrap items-center gap-3 sm:pt-1 sm:border-t sm:border-ink/10">
-              <span data-t="obras.group_status" class="hidden sm:block text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold sm:w-28 sm:shrink-0">Situação</span>
-              <div class="flex flex-wrap gap-2.5">
-                <button onclick="setFilter('status','todas', this)" data-t="obras.filter_all" class="filter-pill filter-status active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
-                <button onclick="setFilter('status','andamento', this)" data-t="obras.filter_andamento" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
-                <button onclick="setFilter('status','embreve', this)" data-t="obras.filter_embreve" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
-                <button onclick="setFilter('status','concluida', this)" data-t="obras.filter_concluida" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
-              </div>
-            </div>
-
           </div>
 
           <!-- contador de resultados -->
-          <div id="obras-count" class="text-ink-soft text-sm font-light mb-6"></div>
+          <div id="obras-count" class="text-ink-soft text-sm font-light mb-6 text-center sm:text-left"></div>
 
           <!-- obras grid (rendered by JS) -->
           <div id="obras-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"></div>
@@ -1187,34 +1161,11 @@
       // Adicione novas obras aqui: copie um bloco acima e troque os dados + a "pasta".
     ];
 
-    // Estado dos 3 filtros combinados
-    let activeFilters = { nature: 'todas', sector: 'todas', status: 'todas' };
+    // Filtro de situação (Todas / Em Andamento / Em Breve / Concluídas)
+    let activeStatus = 'todas';
 
-    // Deriva a "natureza" (construcao | reforma) a partir do tipo da obra.
-    // Pode ser sobrescrito definindo o.natureza diretamente na obra.
-    function obraNature(o){
-      if (o.natureza) return o.natureza;
-      const t = (o.tipo || '').toLowerCase();
-      if (t.includes('reforma')) return 'reforma';
-      return 'construcao'; // construção/obra nova por padrão
-    }
-    // Deriva o "setor" (residencial | comercial) a partir do tipo da obra.
-    // Pode ser sobrescrito definindo o.setor diretamente na obra.
-    function obraSector(o){
-      if (o.setor) return o.setor;
-      const t = (o.tipo || '').toLowerCase();
-      if (t.includes('comercial')) return 'comercial';
-      return 'residencial'; // residencial por padrão
-    }
     function obraMatchesFilters(o){
-      // No celular os filtros de "tipo de obra" e "setor" ficam escondidos,
-      // então só o filtro de Situação vale. Assim nada fica filtrado "invisível".
-      const isMobile = window.matchMedia('(max-width: 639px)').matches;
-      if (!isMobile) {
-        if (activeFilters.nature !== 'todas' && obraNature(o) !== activeFilters.nature) return false;
-        if (activeFilters.sector !== 'todas' && obraSector(o) !== activeFilters.sector) return false;
-      }
-      if (activeFilters.status !== 'todas' && o.status !== activeFilters.status) return false;
+      if (activeStatus !== 'todas' && o.status !== activeStatus) return false;
       return true;
     }
     const OBRAS_VALID_FOTOS = {}; // cache: obraRealIdx → [caminhos válidos]
@@ -1659,25 +1610,19 @@
       }
     });
 
-    // Aplica um filtro de um grupo específico (nature | sector | status)
+    // Aplica o filtro de situação
     function setFilter(group, value, btn) {
-      activeFilters[group] = value;
-      // destaca só o botão ativo DENTRO do grupo clicado
-      document.querySelectorAll('.filter-' + group).forEach(p => p.classList.remove('active-filter'));
+      activeStatus = value;
+      document.querySelectorAll('.filter-status').forEach(p => p.classList.remove('active-filter'));
       if (btn) btn.classList.add('active-filter');
       renderObras();
     }
-    // Compatibilidade: se algum código antigo ainda chamar filterObras
     function filterObras(value, btn) { setFilter('status', value, btn); }
-
-    // Limpa todos os filtros e re-sincroniza os botões "Todas/Todos"
     function resetFilters() {
-      activeFilters = { nature: 'todas', sector: 'todas', status: 'todas' };
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active-filter'));
-      ['nature','sector','status'].forEach(g => {
-        const first = document.querySelector('.filter-' + g);
-        if (first) first.classList.add('active-filter');
-      });
+      activeStatus = 'todas';
+      document.querySelectorAll('.filter-status').forEach(p => p.classList.remove('active-filter'));
+      const first = document.querySelector('.filter-status');
+      if (first) first.classList.add('active-filter');
       renderObras();
     }
 
@@ -1782,17 +1727,6 @@
       const pages = ['home','sobre','servicos','obras','contato'];
       changePage(pages.includes(hash) ? hash : 'home');
     });
-    // Re-renderiza as obras quando a tela cruza o limite celular/desktop
-    // (os filtros de tipo/setor aparecem ou somem conforme o tamanho).
-    (function(){
-      const mq = window.matchMedia('(max-width: 639px)');
-      const onChange = () => {
-        const sec = document.getElementById('sec-obras');
-        if (sec && sec.classList.contains('active')) renderObras();
-      };
-      if (mq.addEventListener) mq.addEventListener('change', onChange);
-      else if (mq.addListener) mq.addListener(onChange); // navegadores antigos
-    })();
 
     /* =================== TRANSLATIONS =================== */
     const LANG = {
@@ -1888,9 +1822,6 @@
           h1: 'Obras que falam <span class="italic text-gold-light">por nós.</span>',
           p: 'Cada projeto é conduzido com responsável técnico presente e documentação completa. Acompanhe aqui o que está em andamento e o que já entregamos.',
           filter_label: 'Filtrar:',
-          group_nature: 'Tipo de obra', nature_all: 'Todas', nature_construcao: 'Construções', nature_reforma: 'Reformas',
-          group_sector: 'Setor', sector_all: 'Todos', sector_residencial: 'Residencial', sector_comercial: 'Comercial',
-          group_status: 'Situação',
           filter_all: 'Todas', filter_andamento: 'Em Andamento', filter_embreve: 'Em Breve', filter_concluida: 'Concluídas',
           empty_h3: 'Nosso portfólio está crescendo.',
           empty_p: 'Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.',
@@ -2011,9 +1942,6 @@
           h1: 'Projects that speak <span class="italic text-gold-light">for us.</span>',
           p: 'Every project is managed with a licensed engineer on site and complete documentation. Follow what is in progress and what we have already delivered.',
           filter_label: 'Filter:',
-          group_nature: 'Type', nature_all: 'All', nature_construcao: 'New Builds', nature_reforma: 'Renovations',
-          group_sector: 'Sector', sector_all: 'All', sector_residencial: 'Residential', sector_comercial: 'Commercial',
-          group_status: 'Status',
           filter_all: 'All', filter_andamento: 'In Progress', filter_embreve: 'Coming Soon', filter_concluida: 'Completed',
           empty_h3: 'Our portfolio is growing.',
           empty_p: 'Records of our ongoing and completed projects are coming soon. Follow our Instagram in the meantime.',
