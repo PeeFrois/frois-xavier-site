@@ -133,6 +133,17 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       line-height: 0.8;
+      font-feature-settings: 'lnum' 1;
+    }
+
+    /* ---- Números alinhados nos títulos serifados (corrige "Mont152A") ---- */
+    .font-serif {
+      font-feature-settings: 'lnum' 1, 'tnum' 0;
+    }
+    /* Título das obras: um pouco mais encorpado para os números/letras ficarem nítidos */
+    .obra-title {
+      font-feature-settings: 'lnum' 1;
+      font-weight: 500;
     }
 
     /* ---- Service card hover ---- */
@@ -803,8 +814,8 @@
           <!-- filter bar (3 camadas: natureza · setor · status) -->
           <div id="obras-filter" class="mb-12 reveal space-y-5">
 
-            <!-- Linha 1: Natureza (Todas / Construções / Reformas) -->
-            <div class="flex flex-wrap items-center gap-3">
+            <!-- Linha 1: Natureza (Todas / Construções / Reformas) — só no desktop -->
+            <div class="hidden sm:flex flex-wrap items-center gap-3">
               <span data-t="obras.group_nature" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0">Tipo de obra</span>
               <div class="flex flex-wrap gap-2.5">
                 <button onclick="setFilter('nature','todas', this)" data-t="obras.nature_all" class="filter-pill filter-nature active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
@@ -813,8 +824,8 @@
               </div>
             </div>
 
-            <!-- Linha 2: Setor (Todos / Residencial / Comercial) -->
-            <div class="flex flex-wrap items-center gap-3">
+            <!-- Linha 2: Setor (Todos / Residencial / Comercial) — só no desktop -->
+            <div class="hidden sm:flex flex-wrap items-center gap-3">
               <span data-t="obras.group_sector" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0">Setor</span>
               <div class="flex flex-wrap gap-2.5">
                 <button onclick="setFilter('sector','todas', this)" data-t="obras.sector_all" class="filter-pill filter-sector active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todos</button>
@@ -823,10 +834,10 @@
               </div>
             </div>
 
-            <!-- Linha 3: Status (Todas / Em Andamento / Em Breve / Concluídas) -->
-            <div class="flex flex-wrap items-center gap-3 pt-1 border-t border-ink/10">
-              <span data-t="obras.group_status" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0 pt-4 sm:pt-0">Situação</span>
-              <div class="flex flex-wrap gap-2.5 pt-1 sm:pt-0">
+            <!-- Linha 3: Status (Todas / Em Andamento / Em Breve / Concluídas) — sempre visível -->
+            <div class="flex flex-wrap items-center gap-3 sm:pt-1 sm:border-t sm:border-ink/10">
+              <span data-t="obras.group_status" class="hidden sm:block text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold sm:w-28 sm:shrink-0">Situação</span>
+              <div class="flex flex-wrap gap-2.5">
                 <button onclick="setFilter('status','todas', this)" data-t="obras.filter_all" class="filter-pill filter-status active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
                 <button onclick="setFilter('status','andamento', this)" data-t="obras.filter_andamento" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
                 <button onclick="setFilter('status','embreve', this)" data-t="obras.filter_embreve" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
@@ -1108,7 +1119,7 @@
        basta editar o lista.json da pasta — nem precisa mexer neste arquivo.
        Modelo:
        {
-         nome: "Reforma Mon152A — Jardim Aquarius",
+         nome: "Reforma Mont152A — Jardim Aquarius",
          tipo: "Reforma Residencial",
          status: "andamento",
          cidade: "São José dos Campos · SP",
@@ -1165,7 +1176,7 @@
         pasta: "jardim-marques" // lê jardim-marques/lista.json
       },
       {
-        nome: "Reforma Mon152A — Jardim Aquarius",
+        nome: "Reforma Mont152A — Jardim Aquarius",
         tipo: "Reforma Residencial",
         status: "andamento",
         cidade: "São José dos Campos · SP",
@@ -1196,8 +1207,13 @@
       return 'residencial'; // residencial por padrão
     }
     function obraMatchesFilters(o){
-      if (activeFilters.nature !== 'todas' && obraNature(o) !== activeFilters.nature) return false;
-      if (activeFilters.sector !== 'todas' && obraSector(o) !== activeFilters.sector) return false;
+      // No celular os filtros de "tipo de obra" e "setor" ficam escondidos,
+      // então só o filtro de Situação vale. Assim nada fica filtrado "invisível".
+      const isMobile = window.matchMedia('(max-width: 639px)').matches;
+      if (!isMobile) {
+        if (activeFilters.nature !== 'todas' && obraNature(o) !== activeFilters.nature) return false;
+        if (activeFilters.sector !== 'todas' && obraSector(o) !== activeFilters.sector) return false;
+      }
       if (activeFilters.status !== 'todas' && o.status !== activeFilters.status) return false;
       return true;
     }
@@ -1276,7 +1292,20 @@
       const empty = document.getElementById('obras-empty');
       const filter = document.getElementById('obras-filter');
       const countEl = document.getElementById('obras-count');
-      const list = OBRAS.filter(obraMatchesFilters);
+      // Monta a lista com ordenação inteligente:
+      // 1) ordem invertida do código (a última obra adicionada aparece primeiro)
+      // 2) agrupada por status: Em Andamento -> Em Breve -> Concluídas
+      const STATUS_ORDER = { 'andamento': 0, 'embreve': 1, 'concluida': 2 };
+      const list = OBRAS
+        .map((o, i) => ({ o, i }))                 // guarda a posição original
+        .filter(x => obraMatchesFilters(x.o))
+        .sort((a, b) => {
+          const sa = STATUS_ORDER[a.o.status] ?? 99;
+          const sb = STATUS_ORDER[b.o.status] ?? 99;
+          if (sa !== sb) return sa - sb;           // primeiro pelo status
+          return b.i - a.i;                        // depois invertido (último adicionado primeiro)
+        })
+        .map(x => x.o);
 
       if (filter) filter.style.display = OBRAS.length === 0 ? 'none' : '';
 
@@ -1393,7 +1422,7 @@
             </div>
             <div class="p-6 lg:p-7">
               <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${LANG[currentLang].tipos[o.tipo] || o.tipo}</span>
-              <h3 class="font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
+              <h3 class="obra-title font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
               ${metaParts.length ? `
                 <div class="flex flex-wrap items-center gap-3 text-ink-soft text-sm font-light pt-4 border-t border-ink/10">
                   ${metaParts.map((p, pi) => `
@@ -1753,6 +1782,17 @@
       const pages = ['home','sobre','servicos','obras','contato'];
       changePage(pages.includes(hash) ? hash : 'home');
     });
+    // Re-renderiza as obras quando a tela cruza o limite celular/desktop
+    // (os filtros de tipo/setor aparecem ou somem conforme o tamanho).
+    (function(){
+      const mq = window.matchMedia('(max-width: 639px)');
+      const onChange = () => {
+        const sec = document.getElementById('sec-obras');
+        if (sec && sec.classList.contains('active')) renderObras();
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange); // navegadores antigos
+    })();
 
     /* =================== TRANSLATIONS =================== */
     const LANG = {
