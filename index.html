@@ -1373,7 +1373,7 @@
             </div>
             <div class="p-6 lg:p-7">
               <span class="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">${LANG[currentLang].tipos[o.tipo] || o.tipo}</span>
-              <h3 class="obra-title font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome}</h3>
+              <h3 class="obra-title font-serif text-ink text-2xl font-normal mt-2 mb-4 leading-tight">${o.nome.replace(' — ', '<br>')}</h3>
               ${metaParts.length ? `
                 <div class="flex flex-wrap items-center gap-3 text-ink-soft text-sm font-light pt-4 border-t border-ink/10">
                   ${metaParts.map((p, pi) => `
