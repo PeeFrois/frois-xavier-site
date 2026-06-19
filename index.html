@@ -51,7 +51,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/></noscript>
 
   <script>
     tailwind.config = {
@@ -799,14 +800,44 @@
 
       <div class="bg-stone py-16 lg:py-24 px-6 lg:px-10">
         <div class="max-w-site mx-auto">
-          <!-- filter bar -->
-          <div id="obras-filter" class="flex flex-wrap items-center gap-3 mb-12 reveal">
-            <span data-t="obras.filter_label" class="text-ink-soft text-xs uppercase tracking-[0.18em] font-semibold mr-2 hidden sm:block">Filtrar:</span>
-            <button onclick="filterObras('todas', this)" data-t="obras.filter_all" class="filter-pill active-filter text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
-            <button onclick="filterObras('andamento', this)" data-t="obras.filter_andamento" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
-            <button onclick="filterObras('embreve', this)" data-t="obras.filter_embreve" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
-            <button onclick="filterObras('concluida', this)" data-t="obras.filter_concluida" class="filter-pill text-xs uppercase tracking-[0.12em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
+          <!-- filter bar (3 camadas: natureza · setor · status) -->
+          <div id="obras-filter" class="mb-12 reveal space-y-5">
+
+            <!-- Linha 1: Natureza (Todas / Construções / Reformas) -->
+            <div class="flex flex-wrap items-center gap-3">
+              <span data-t="obras.group_nature" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0">Tipo de obra</span>
+              <div class="flex flex-wrap gap-2.5">
+                <button onclick="setFilter('nature','todas', this)" data-t="obras.nature_all" class="filter-pill filter-nature active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
+                <button onclick="setFilter('nature','construcao', this)" data-t="obras.nature_construcao" class="filter-pill filter-nature text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Construções</button>
+                <button onclick="setFilter('nature','reforma', this)" data-t="obras.nature_reforma" class="filter-pill filter-nature text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Reformas</button>
+              </div>
+            </div>
+
+            <!-- Linha 2: Setor (Todos / Residencial / Comercial) -->
+            <div class="flex flex-wrap items-center gap-3">
+              <span data-t="obras.group_sector" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0">Setor</span>
+              <div class="flex flex-wrap gap-2.5">
+                <button onclick="setFilter('sector','todas', this)" data-t="obras.sector_all" class="filter-pill filter-sector active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todos</button>
+                <button onclick="setFilter('sector','residencial', this)" data-t="obras.sector_residencial" class="filter-pill filter-sector text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Residencial</button>
+                <button onclick="setFilter('sector','comercial', this)" data-t="obras.sector_comercial" class="filter-pill filter-sector text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Comercial</button>
+              </div>
+            </div>
+
+            <!-- Linha 3: Status (Todas / Em Andamento / Em Breve / Concluídas) -->
+            <div class="flex flex-wrap items-center gap-3 pt-1 border-t border-ink/10">
+              <span data-t="obras.group_status" class="text-ink-soft text-[11px] uppercase tracking-[0.18em] font-bold w-full sm:w-28 sm:shrink-0 pt-4 sm:pt-0">Situação</span>
+              <div class="flex flex-wrap gap-2.5 pt-1 sm:pt-0">
+                <button onclick="setFilter('status','todas', this)" data-t="obras.filter_all" class="filter-pill filter-status active-filter text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Todas</button>
+                <button onclick="setFilter('status','andamento', this)" data-t="obras.filter_andamento" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Andamento</button>
+                <button onclick="setFilter('status','embreve', this)" data-t="obras.filter_embreve" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Em Breve</button>
+                <button onclick="setFilter('status','concluida', this)" data-t="obras.filter_concluida" class="filter-pill filter-status text-xs uppercase tracking-[0.1em] font-semibold px-5 py-2.5 border border-ink/20 rounded-full">Concluídas</button>
+              </div>
+            </div>
+
           </div>
+
+          <!-- contador de resultados -->
+          <div id="obras-count" class="text-ink-soft text-sm font-light mb-6"></div>
 
           <!-- obras grid (rendered by JS) -->
           <div id="obras-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"></div>
@@ -1044,8 +1075,8 @@
 
        Campos:
          nome    -> titulo da obra. Ex: "Casa Parque dos Sinos"
-         tipo    -> "Construcao Residencial" | "Construcao Comercial" | "Reforma" | "Minha Casa Minha Vida" | "Engenharia"
-         status  -> "andamento" (selo "Em Andamento") OU "concluida" (selo "Concluida")
+         tipo    -> use EXATAMENTE um destes (com acento): "Construção Residencial" | "Reforma Residencial" | "Obra Comercial"
+         status  -> "andamento" (selo Em Andamento) | "embreve" (selo Em Breve) | "concluida" (selo Concluída)
          cidade  -> Ex: "Jacarei · SP"
          tamanho -> Ex: "120 m²"  (deixe "" se nao quiser mostrar)
          ano     -> Ex: "2026"
@@ -1059,16 +1090,22 @@
                     Se a obra ainda nao tem foto, use fotos: [] (mostra placeholder elegante).
          foto    -> a primeira foto (foto de capa). Repita a primeira da lista "fotos".
 
-       --- JEITO MAIS FACIL (recomendado): use "pasta" no lugar de "fotos" ---
-       Em vez de listar foto por foto, informe so a pasta do GitHub e quantos
-       espacos reservar. Suba os arquivos numerados (1, 2, 3, ...) na pasta e pronto:
-         pasta    -> nome da pasta no GitHub. Ex: "montante-aquarius"
-         maxFotos -> ate quantos numeros procurar. Ex: 120 (espaco pra crescer)
-       O site acha os arquivos sozinho, aceitando QUALQUER extensao/caixa:
-         .jpg .JPG .jpeg .png .webp  e tambem VIDEOS: .mp4 .MP4 .mov .webm
-       Ele detecta sozinho se e foto ou video, conta SO os que existem de verdade
-       e para depois de algumas faltas seguidas (entao pode reservar bastante espaco).
-       Os videos ganham botoes de som (volume / mudo / play) quando ampliados.
+       --- JEITO RÁPIDO E RECOMENDADO: use "pasta" + arquivo lista.json ---
+       Em vez de listar foto por foto aqui no código, faça assim:
+         1) Suba as mídias numa pasta no GitHub (ex: "montante-aquarius").
+         2) Crie nessa pasta um arquivo chamado "lista.json" com os nomes
+            dos arquivos NA ORDEM que você quer exibir. Exemplo:
+              ["1.JPG","2.mp4","3.mp4","4.jpg","5.jpg","6.jpg"]
+         3) Aqui no código, a obra só precisa de:  pasta: "montante-aquarius"
+
+       Por que isso é importante: o site lê SÓ esse arquivinho de texto e já
+       sabe tudo — não fica testando arquivo por arquivo (era isso que deixava
+       o site lento). Pode misturar extensões à vontade (.jpg, .JPG, .jpeg,
+       .png) e vídeos (.mp4, .mov, .webm). A ordem do lista.json é a ordem que
+       aparece na galeria. Vídeos ganham som ao ampliar (clicar).
+
+       Não precisa mais de "maxFotos". Se quiser adicionar/remover fotos,
+       basta editar o lista.json da pasta — nem precisa mexer neste arquivo.
        Modelo:
        {
          nome: "Reforma Mon152A — Jardim Aquarius",
@@ -1077,8 +1114,7 @@
          cidade: "São José dos Campos · SP",
          tamanho: "",
          ano: "2026",
-         pasta: "montante-aquarius",
-         maxFotos: 120
+         pasta: "montante-aquarius"
        },
 
        --- COMO REMOVER UMA OBRA (ex: tirar a Casa Parque dos Sinos depois do teste) ---
@@ -1108,109 +1144,7 @@
         cidade: "Jacareí · SP",
         tamanho: "",
         ano: "2026",
-        fotos: [
-          "parque-dos-sinos/1.jpg",
-          "parque-dos-sinos/2.jpg",
-          "parque-dos-sinos/3.jpg",
-          "parque-dos-sinos/4.jpg",
-          "parque-dos-sinos/5.jpg",
-          "parque-dos-sinos/6.jpg",
-          "parque-dos-sinos/7.jpg",
-          "parque-dos-sinos/8.jpg",
-          "parque-dos-sinos/9.jpg",
-          "parque-dos-sinos/10.jpg",
-          "parque-dos-sinos/11.jpg",
-          "parque-dos-sinos/12.jpg",
-          "parque-dos-sinos/13.jpg",
-          "parque-dos-sinos/14.jpg",
-          "parque-dos-sinos/15.jpg",
-          "parque-dos-sinos/16.jpg",
-          "parque-dos-sinos/17.jpg",
-          "parque-dos-sinos/18.jpg",
-          "parque-dos-sinos/19.jpg",
-          "parque-dos-sinos/20.jpg",
-          "parque-dos-sinos/21.jpg",
-          "parque-dos-sinos/22.jpg",
-          "parque-dos-sinos/23.jpg",
-          "parque-dos-sinos/24.jpg",
-          "parque-dos-sinos/25.jpg",
-          "parque-dos-sinos/26.jpg",
-          "parque-dos-sinos/27.jpg",
-          "parque-dos-sinos/28.jpg",
-          "parque-dos-sinos/29.jpg",
-          "parque-dos-sinos/30.jpg",
-          "parque-dos-sinos/31.jpg",
-          "parque-dos-sinos/32.jpg",
-          "parque-dos-sinos/33.jpg",
-          "parque-dos-sinos/34.jpg",
-          "parque-dos-sinos/35.jpg",
-          "parque-dos-sinos/36.jpg",
-          "parque-dos-sinos/37.jpg",
-          "parque-dos-sinos/38.jpg",
-          "parque-dos-sinos/39.jpg",
-          "parque-dos-sinos/40.jpg",
-          "parque-dos-sinos/41.jpg",
-          "parque-dos-sinos/42.jpg",
-          "parque-dos-sinos/43.jpg",
-          "parque-dos-sinos/44.jpg",
-          "parque-dos-sinos/45.jpg",
-          "parque-dos-sinos/46.jpg",
-          "parque-dos-sinos/47.jpg",
-          "parque-dos-sinos/48.jpg",
-          "parque-dos-sinos/49.jpg",
-          "parque-dos-sinos/50.jpg",
-          "parque-dos-sinos/51.jpg",
-          "parque-dos-sinos/52.jpg",
-          "parque-dos-sinos/53.jpg",
-          "parque-dos-sinos/54.jpg",
-          "parque-dos-sinos/55.jpg",
-          "parque-dos-sinos/56.jpg",
-          "parque-dos-sinos/57.jpg",
-          "parque-dos-sinos/58.jpg",
-          "parque-dos-sinos/59.jpg",
-          "parque-dos-sinos/60.jpg",
-          "parque-dos-sinos/61.jpg",
-          "parque-dos-sinos/62.jpg",
-          "parque-dos-sinos/63.jpg",
-          "parque-dos-sinos/64.jpg",
-          "parque-dos-sinos/65.jpg",
-          "parque-dos-sinos/66.jpg",
-          "parque-dos-sinos/67.jpg",
-          "parque-dos-sinos/68.jpg",
-          "parque-dos-sinos/69.jpg",
-          "parque-dos-sinos/70.jpg",
-          "parque-dos-sinos/71.jpg",
-          "parque-dos-sinos/72.jpg",
-          "parque-dos-sinos/73.jpg",
-          "parque-dos-sinos/74.jpg",
-          "parque-dos-sinos/75.jpg",
-          "parque-dos-sinos/76.jpg",
-          "parque-dos-sinos/77.jpg",
-          "parque-dos-sinos/78.jpg",
-          "parque-dos-sinos/79.jpg",
-          "parque-dos-sinos/80.jpg",
-          "parque-dos-sinos/81.jpg",
-          "parque-dos-sinos/82.jpg",
-          "parque-dos-sinos/83.jpg",
-          "parque-dos-sinos/84.jpg",
-          "parque-dos-sinos/85.jpg",
-          "parque-dos-sinos/86.jpg",
-          "parque-dos-sinos/87.jpg",
-          "parque-dos-sinos/88.jpg",
-          "parque-dos-sinos/89.jpg",
-          "parque-dos-sinos/90.jpg",
-          "parque-dos-sinos/91.jpg",
-          "parque-dos-sinos/92.jpg",
-          "parque-dos-sinos/93.jpg",
-          "parque-dos-sinos/94.jpg",
-          "parque-dos-sinos/95.jpg",
-          "parque-dos-sinos/96.jpg",
-          "parque-dos-sinos/97.jpg",
-          "parque-dos-sinos/98.jpg",
-          "parque-dos-sinos/99.jpg",
-          "parque-dos-sinos/100.jpg"
-        ],
-        foto: "parque-dos-sinos/1.jpg"
+        pasta: "parque-dos-sinos" // lê parque-dos-sinos/lista.json
       },
       {
         nome: "Casa Novo Amanhecer",
@@ -1219,109 +1153,7 @@
         cidade: "Jacareí · SP",
         tamanho: "",
         ano: "2026",
-        fotos: [
-          "novo-amanhecer/1.jpg",
-          "novo-amanhecer/2.jpg",
-          "novo-amanhecer/3.jpg",
-          "novo-amanhecer/4.jpg",
-          "novo-amanhecer/5.jpg",
-          "novo-amanhecer/6.jpg",
-          "novo-amanhecer/7.jpg",
-          "novo-amanhecer/8.jpg",
-          "novo-amanhecer/9.jpg",
-          "novo-amanhecer/10.jpg",
-          "novo-amanhecer/11.jpg",
-          "novo-amanhecer/12.jpg",
-          "novo-amanhecer/13.jpg",
-          "novo-amanhecer/14.jpg",
-          "novo-amanhecer/15.jpg",
-          "novo-amanhecer/16.jpg",
-          "novo-amanhecer/17.jpg",
-          "novo-amanhecer/18.jpg",
-          "novo-amanhecer/19.jpg",
-          "novo-amanhecer/20.jpg",
-          "novo-amanhecer/21.jpg",
-          "novo-amanhecer/22.jpg",
-          "novo-amanhecer/23.jpg",
-          "novo-amanhecer/24.jpg",
-          "novo-amanhecer/25.jpg",
-          "novo-amanhecer/26.jpg",
-          "novo-amanhecer/27.jpg",
-          "novo-amanhecer/28.jpg",
-          "novo-amanhecer/29.jpg",
-          "novo-amanhecer/30.jpg",
-          "novo-amanhecer/31.jpg",
-          "novo-amanhecer/32.jpg",
-          "novo-amanhecer/33.jpg",
-          "novo-amanhecer/34.jpg",
-          "novo-amanhecer/35.jpg",
-          "novo-amanhecer/36.jpg",
-          "novo-amanhecer/37.jpg",
-          "novo-amanhecer/38.jpg",
-          "novo-amanhecer/39.jpg",
-          "novo-amanhecer/40.jpg",
-          "novo-amanhecer/41.jpg",
-          "novo-amanhecer/42.jpg",
-          "novo-amanhecer/43.jpg",
-          "novo-amanhecer/44.jpg",
-          "novo-amanhecer/45.jpg",
-          "novo-amanhecer/46.jpg",
-          "novo-amanhecer/47.jpg",
-          "novo-amanhecer/48.jpg",
-          "novo-amanhecer/49.jpg",
-          "novo-amanhecer/50.jpg",
-          "novo-amanhecer/51.jpg",
-          "novo-amanhecer/52.jpg",
-          "novo-amanhecer/53.jpg",
-          "novo-amanhecer/54.jpg",
-          "novo-amanhecer/55.jpg",
-          "novo-amanhecer/56.jpg",
-          "novo-amanhecer/57.jpg",
-          "novo-amanhecer/58.jpg",
-          "novo-amanhecer/59.jpg",
-          "novo-amanhecer/60.jpg",
-          "novo-amanhecer/61.jpg",
-          "novo-amanhecer/62.jpg",
-          "novo-amanhecer/63.jpg",
-          "novo-amanhecer/64.jpg",
-          "novo-amanhecer/65.jpg",
-          "novo-amanhecer/66.jpg",
-          "novo-amanhecer/67.jpg",
-          "novo-amanhecer/68.jpg",
-          "novo-amanhecer/69.jpg",
-          "novo-amanhecer/70.jpg",
-          "novo-amanhecer/71.jpg",
-          "novo-amanhecer/72.jpg",
-          "novo-amanhecer/73.jpg",
-          "novo-amanhecer/74.jpg",
-          "novo-amanhecer/75.jpg",
-          "novo-amanhecer/76.jpg",
-          "novo-amanhecer/77.jpg",
-          "novo-amanhecer/78.jpg",
-          "novo-amanhecer/79.jpg",
-          "novo-amanhecer/80.jpg",
-          "novo-amanhecer/81.jpg",
-          "novo-amanhecer/82.jpg",
-          "novo-amanhecer/83.jpg",
-          "novo-amanhecer/84.jpg",
-          "novo-amanhecer/85.jpg",
-          "novo-amanhecer/86.jpg",
-          "novo-amanhecer/87.jpg",
-          "novo-amanhecer/88.jpg",
-          "novo-amanhecer/89.jpg",
-          "novo-amanhecer/90.jpg",
-          "novo-amanhecer/91.jpg",
-          "novo-amanhecer/92.jpg",
-          "novo-amanhecer/93.jpg",
-          "novo-amanhecer/94.jpg",
-          "novo-amanhecer/95.jpg",
-          "novo-amanhecer/96.jpg",
-          "novo-amanhecer/97.jpg",
-          "novo-amanhecer/98.jpg",
-          "novo-amanhecer/99.jpg",
-          "novo-amanhecer/100.jpg"
-        ],
-        foto: "novo-amanhecer/1.jpg"
+        pasta: "novo-amanhecer" // lê novo-amanhecer/lista.json
       },
       {
         nome: "Casa Jardim do Marquês",
@@ -1330,109 +1162,7 @@
         cidade: "Jacareí · SP",
         tamanho: "",
         ano: "2026",
-        fotos: [
-          "jardim-marques/1.jpg",
-          "jardim-marques/2.jpg",
-          "jardim-marques/3.jpg",
-          "jardim-marques/4.jpg",
-          "jardim-marques/5.jpg",
-          "jardim-marques/6.jpg",
-          "jardim-marques/7.jpg",
-          "jardim-marques/8.jpg",
-          "jardim-marques/9.jpg",
-          "jardim-marques/10.jpg",
-          "jardim-marques/11.jpg",
-          "jardim-marques/12.jpg",
-          "jardim-marques/13.jpg",
-          "jardim-marques/14.jpg",
-          "jardim-marques/15.jpg",
-          "jardim-marques/16.jpg",
-          "jardim-marques/17.jpg",
-          "jardim-marques/18.jpg",
-          "jardim-marques/19.jpg",
-          "jardim-marques/20.jpg",
-          "jardim-marques/21.jpg",
-          "jardim-marques/22.jpg",
-          "jardim-marques/23.jpg",
-          "jardim-marques/24.jpg",
-          "jardim-marques/25.jpg",
-          "jardim-marques/26.jpg",
-          "jardim-marques/27.jpg",
-          "jardim-marques/28.jpg",
-          "jardim-marques/29.jpg",
-          "jardim-marques/30.jpg",
-          "jardim-marques/31.jpg",
-          "jardim-marques/32.jpg",
-          "jardim-marques/33.jpg",
-          "jardim-marques/34.jpg",
-          "jardim-marques/35.jpg",
-          "jardim-marques/36.jpg",
-          "jardim-marques/37.jpg",
-          "jardim-marques/38.jpg",
-          "jardim-marques/39.jpg",
-          "jardim-marques/40.jpg",
-          "jardim-marques/41.jpg",
-          "jardim-marques/42.jpg",
-          "jardim-marques/43.jpg",
-          "jardim-marques/44.jpg",
-          "jardim-marques/45.jpg",
-          "jardim-marques/46.jpg",
-          "jardim-marques/47.jpg",
-          "jardim-marques/48.jpg",
-          "jardim-marques/49.jpg",
-          "jardim-marques/50.jpg",
-          "jardim-marques/51.jpg",
-          "jardim-marques/52.jpg",
-          "jardim-marques/53.jpg",
-          "jardim-marques/54.jpg",
-          "jardim-marques/55.jpg",
-          "jardim-marques/56.jpg",
-          "jardim-marques/57.jpg",
-          "jardim-marques/58.jpg",
-          "jardim-marques/59.jpg",
-          "jardim-marques/60.jpg",
-          "jardim-marques/61.jpg",
-          "jardim-marques/62.jpg",
-          "jardim-marques/63.jpg",
-          "jardim-marques/64.jpg",
-          "jardim-marques/65.jpg",
-          "jardim-marques/66.jpg",
-          "jardim-marques/67.jpg",
-          "jardim-marques/68.jpg",
-          "jardim-marques/69.jpg",
-          "jardim-marques/70.jpg",
-          "jardim-marques/71.jpg",
-          "jardim-marques/72.jpg",
-          "jardim-marques/73.jpg",
-          "jardim-marques/74.jpg",
-          "jardim-marques/75.jpg",
-          "jardim-marques/76.jpg",
-          "jardim-marques/77.jpg",
-          "jardim-marques/78.jpg",
-          "jardim-marques/79.jpg",
-          "jardim-marques/80.jpg",
-          "jardim-marques/81.jpg",
-          "jardim-marques/82.jpg",
-          "jardim-marques/83.jpg",
-          "jardim-marques/84.jpg",
-          "jardim-marques/85.jpg",
-          "jardim-marques/86.jpg",
-          "jardim-marques/87.jpg",
-          "jardim-marques/88.jpg",
-          "jardim-marques/89.jpg",
-          "jardim-marques/90.jpg",
-          "jardim-marques/91.jpg",
-          "jardim-marques/92.jpg",
-          "jardim-marques/93.jpg",
-          "jardim-marques/94.jpg",
-          "jardim-marques/95.jpg",
-          "jardim-marques/96.jpg",
-          "jardim-marques/97.jpg",
-          "jardim-marques/98.jpg",
-          "jardim-marques/99.jpg",
-          "jardim-marques/100.jpg"
-        ],
-        foto: "jardim-marques/1.jpg"
+        pasta: "jardim-marques" // lê jardim-marques/lista.json
       },
       {
         nome: "Reforma Mon152A — Jardim Aquarius",
@@ -1441,102 +1171,81 @@
         cidade: "São José dos Campos · SP",
         tamanho: "",
         ano: "2026",
-        pasta: "montante-aquarius", // pasta no GitHub — arquivos numerados 1, 2, 3, ...
-        maxFotos: 120              // espaço pra crescer; o site conta só os que existirem
+        pasta: "montante-aquarius" // lê montante-aquarius/lista.json
       },
-      // Adicione suas obras reais aqui seguindo o modelo acima.
+      // Adicione novas obras aqui: copie um bloco acima e troque os dados + a "pasta".
     ];
 
-    let currentFilter = 'todas';
+    // Estado dos 3 filtros combinados
+    let activeFilters = { nature: 'todas', sector: 'todas', status: 'todas' };
+
+    // Deriva a "natureza" (construcao | reforma) a partir do tipo da obra.
+    // Pode ser sobrescrito definindo o.natureza diretamente na obra.
+    function obraNature(o){
+      if (o.natureza) return o.natureza;
+      const t = (o.tipo || '').toLowerCase();
+      if (t.includes('reforma')) return 'reforma';
+      return 'construcao'; // construção/obra nova por padrão
+    }
+    // Deriva o "setor" (residencial | comercial) a partir do tipo da obra.
+    // Pode ser sobrescrito definindo o.setor diretamente na obra.
+    function obraSector(o){
+      if (o.setor) return o.setor;
+      const t = (o.tipo || '').toLowerCase();
+      if (t.includes('comercial')) return 'comercial';
+      return 'residencial'; // residencial por padrão
+    }
+    function obraMatchesFilters(o){
+      if (activeFilters.nature !== 'todas' && obraNature(o) !== activeFilters.nature) return false;
+      if (activeFilters.sector !== 'todas' && obraSector(o) !== activeFilters.sector) return false;
+      if (activeFilters.status !== 'todas' && o.status !== activeFilters.status) return false;
+      return true;
+    }
     const OBRAS_VALID_FOTOS = {}; // cache: obraRealIdx → [caminhos válidos]
 
-    // Extensões testadas automaticamente (maiúsculas e minúsculas)
-    const IMG_EXTS = ['jpg','jpeg','png','webp','JPG','JPEG','PNG','WEBP'];
+    // Extensões reconhecidas como vídeo (o resto é tratado como imagem)
     const VID_EXTS = ['mp4','mov','webm','m4v','MP4','MOV','WEBM','M4V'];
-
     function isVideoSrc(src){ return VID_EXTS.includes((src.split('.').pop() || '')); }
+    function toMedia(src){ return { src, type: isVideoSrc(src) ? 'video' : 'image' }; }
 
-    // testa 1 imagem (carrega de verdade?)
-    function testImage(src){
-      return new Promise(res => {
-        const img = new Image();
-        img.onload  = () => res(true);
-        img.onerror = () => res(false);
-        img.src = src;
-      });
-    }
-    // testa 1 vídeo (consegue ler os metadados?)
-    function testVideo(src){
-      return new Promise(res => {
-        const v = document.createElement('video');
-        let done = false;
-        const ok   = () => { if(!done){ done = true; res(true);  } };
-        const fail = () => { if(!done){ done = true; res(false); } };
-        v.onloadedmetadata = ok;
-        v.onerror = fail;
-        setTimeout(fail, 9000); // se travar, considera inexistente
-        v.preload = 'metadata';
-        v.muted = true;
-        v.src = src;
-      });
-    }
+    /* =====================================================================
+       CARREGAMENTO RÁPIDO DAS MÍDIAS — via lista.json
+       ---------------------------------------------------------------------
+       Em vez de o site "adivinhar" os arquivos (testando 1.jpg, 1.jpeg,
+       1.JPG, 1.mp4... um por um — o que gerava centenas de requisições e
+       deixava tudo lento), agora cada pasta tem um arquivo "lista.json"
+       que diz exatamente o que existe lá dentro, na ordem desejada.
 
-    // Testa quais imagens existem de verdade (modelo antigo: lista com .jpg).
-    // Se .jpg não existir, tenta .jpeg automaticamente (e vice-versa).
-    // Retorna objetos { src, type }.
-    function probeObraFotos(fotos) {
-      if (!fotos || !fotos.length) return Promise.resolve([]);
-      return Promise.all(fotos.map(src => new Promise(resolve => {
-        if (isVideoSrc(src)) { testVideo(src).then(ok => resolve(ok ? { src, type:'video' } : null)); return; }
-        const img = new Image();
-        img.onload  = () => resolve({ src, type:'image' });
-        img.onerror = () => {
-          const alt = src.endsWith('.jpg')  ? src.slice(0,-4)+'.jpeg'
-                    : src.endsWith('.jpeg') ? src.slice(0,-5)+'.jpg'
-                    : null;
-          if (!alt) return resolve(null);
-          const img2 = new Image();
-          img2.onload  = () => resolve({ src:alt, type:'image' });
-          img2.onerror = () => resolve(null);
-          img2.src = alt;
-        };
-        img.src = src;
-      }))).then(res => res.filter(Boolean));
-    }
+       Exemplo de lista.json dentro da pasta "montante-aquarius":
+         ["1.JPG","2.mp4","3.mp4","4.jpg","5.jpg","6.jpg"]
 
-    // Modelo novo (mais fácil): a obra só informa a "pasta" do GitHub e quantos
-    // espaços reservar. Aqui testamos os arquivos numerados 1, 2, 3, ... tentando
-    // várias extensões (jpg, JPG, png, mp4, mov, ...). Conta SÓ os que existem e
-    // para depois de algumas faltas seguidas — assim sobra espaço para crescer
-    // sem deixar a página lenta. Detecta sozinho imagem x vídeo.
-    async function probeSlot(pasta, n){
-      // tenta as imagens em paralelo (caso comum)
-      const imgHits = await Promise.all(IMG_EXTS.map(ext => {
-        const cand = `${pasta}/${n}.${ext}`;
-        return testImage(cand).then(ok => ok ? cand : null);
-      }));
-      const img = imgHits.find(Boolean);
-      if (img) return { src: img, type:'image' };
-      // se não achou imagem, tenta os vídeos
-      const vidHits = await Promise.all(VID_EXTS.map(ext => {
-        const cand = `${pasta}/${n}.${ext}`;
-        return testVideo(cand).then(ok => ok ? cand : null);
-      }));
-      const vid = vidHits.find(Boolean);
-      if (vid) return { src: vid, type:'video' };
-      return null;
-    }
-    async function probePastaFotos(pasta, maxFotos){
-      const MAX = maxFotos || 120;
-      const STOP_AFTER = 6; // para após 6 números seguidos sem arquivo
-      const out = [];
-      let misses = 0;
-      for (let n = 1; n <= MAX; n++){
-        const found = await probeSlot(pasta, n);
-        if (found) { out.push(found); misses = 0; }
-        else { misses++; if (misses >= STOP_AFTER) break; }
+       O site lê SÓ esse arquivinho de texto (instantâneo) e pronto.
+       Não precisa mais de "maxFotos". Se a pasta não tiver lista.json,
+       o site ainda funciona usando a lista "fotos" escrita aqui no código
+       (modo de compatibilidade), mas o jeito rápido é o lista.json.
+       ===================================================================== */
+    async function loadListaJson(pasta){
+      try {
+        const resp = await fetch(`${pasta}/lista.json`, { cache: 'force-cache' });
+        if (!resp.ok) return null;
+        const arr = await resp.json();
+        if (!Array.isArray(arr)) return null;
+        // aceita "1.jpg" (vira "pasta/1.jpg") ou caminho já completo
+        return arr
+          .filter(x => typeof x === 'string' && x.trim() !== '')
+          .map(name => name.includes('/') ? name : `${pasta}/${name}`)
+          .map(toMedia);
+      } catch(e) {
+        return null;
       }
-      return out;
+    }
+
+    // Modo compatibilidade: usa a lista "fotos" do código. Não testa arquivo
+    // por arquivo — confia na lista. Imagens que não existirem sao escondidas
+    // sozinhas pelo onerror no próprio <img>.
+    function fromFotosList(fotos){
+      if (!fotos || !fotos.length) return [];
+      return fotos.map(toMedia);
     }
 
     function statusLabel(s) {
@@ -1566,26 +1275,57 @@
       const grid = document.getElementById('obras-grid');
       const empty = document.getElementById('obras-empty');
       const filter = document.getElementById('obras-filter');
-      const list = OBRAS.filter(o => currentFilter === 'todas' ? true : o.status === currentFilter);
+      const countEl = document.getElementById('obras-count');
+      const list = OBRAS.filter(obraMatchesFilters);
 
       if (filter) filter.style.display = OBRAS.length === 0 ? 'none' : '';
 
+      // contador de resultados
+      if (countEl) {
+        if (OBRAS.length === 0) {
+          countEl.textContent = '';
+        } else if (currentLang === 'pt') {
+          countEl.textContent = list.length === 1 ? '1 obra encontrada' : `${list.length} obras encontradas`;
+        } else {
+          countEl.textContent = list.length === 1 ? '1 project found' : `${list.length} projects found`;
+        }
+      }
+
       if (list.length === 0) {
         grid.innerHTML = '';
-        empty.classList.remove('hidden');
+        // Se há obras no total mas nenhuma casa o filtro, mostra aviso de filtro
+        if (OBRAS.length > 0) {
+          empty.classList.add('hidden');
+          grid.innerHTML = `
+            <div class="col-span-full border border-stone-dark bg-white py-16 px-8 text-center">
+              <div class="text-gold/40 flex justify-center mb-5">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              </div>
+              <h3 class="font-serif text-ink text-2xl font-light mb-2">${currentLang === 'pt' ? 'Nenhuma obra com esses filtros.' : 'No projects match these filters.'}</h3>
+              <p class="text-ink-soft font-light mb-6">${currentLang === 'pt' ? 'Tente ajustar os filtros acima para ver mais.' : 'Try adjusting the filters above to see more.'}</p>
+              <button onclick="resetFilters()" class="bg-forest hover:bg-forest-mid text-white text-[11px] uppercase tracking-[0.18em] font-bold px-7 py-3 transition-colors">${currentLang === 'pt' ? 'Limpar filtros' : 'Clear filters'}</button>
+            </div>`;
+        } else {
+          empty.classList.remove('hidden');
+        }
         return;
       }
       empty.classList.add('hidden');
 
-      // Probe imagens para cada obra (usa cache se já testado)
-      await Promise.all(list.map(o => {
+      // Carrega a lista de mídias de cada obra (usa cache se já carregado).
+      // Prioridade: lista.json da pasta → senão a lista "fotos" do código.
+      await Promise.all(list.map(async (o) => {
         const realIdx = OBRAS.indexOf(o);
-        if (OBRAS_VALID_FOTOS[realIdx] !== undefined) return Promise.resolve();
+        if (OBRAS_VALID_FOTOS[realIdx] !== undefined) return;
         if (o.pasta) {
-          return probePastaFotos(o.pasta, o.maxFotos).then(valid => { OBRAS_VALID_FOTOS[realIdx] = valid; });
+          const viaJson = await loadListaJson(o.pasta);
+          if (viaJson && viaJson.length) { OBRAS_VALID_FOTOS[realIdx] = viaJson; return; }
+          // pasta sem lista.json: cai pra "fotos" se houver, senão vazio
+          OBRAS_VALID_FOTOS[realIdx] = fromFotosList(o.fotos);
+          return;
         }
         const raw = (o.fotos && o.fotos.length) ? o.fotos : (o.foto ? [o.foto] : []);
-        return probeObraFotos(raw).then(valid => { OBRAS_VALID_FOTOS[realIdx] = valid; });
+        OBRAS_VALID_FOTOS[realIdx] = fromFotosList(raw);
       }));
 
       grid.innerHTML = list.map((o, idx) => {
@@ -1600,11 +1340,11 @@
               ${fotos.map((f, fi) => `
                 <div class="gallery-slide absolute inset-0 transition-opacity duration-500 ${fi === 0 ? 'opacity-100' : 'opacity-0'}" data-index="${fi}" data-type="${f.type}">
                   ${f.type === 'video'
-                    ? `<video src="${f.src}" muted loop playsinline preload="metadata" class="obra-img w-full h-full object-cover"></video>
+                    ? `<video src="${f.src}" muted loop playsinline preload="none" ${fi === 0 ? '' : 'data-lazy="1"'} class="obra-img w-full h-full object-cover"></video>
                        <span class="absolute bottom-3 left-3 z-[6] flex items-center gap-1 bg-black/55 text-white text-[10px] font-semibold px-2 py-1 rounded-full pointer-events-none backdrop-blur-sm">
                          <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Vídeo
                        </span>`
-                    : `<img src="${f.src}" alt="${o.nome} — foto ${fi + 1}" class="obra-img w-full h-full object-cover" onerror="this.closest('.gallery-slide').style.display='none';"/>`
+                    : `<img src="${f.src}" alt="${o.nome} — foto ${fi + 1}" ${fi === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" class="obra-img w-full h-full object-cover" onerror="this.closest('.gallery-slide').style.display='none';"/>`
                   }
                 </div>
               `).join('')}
@@ -1675,11 +1415,25 @@
       });
       observeReveals();
 
-      // se o slide visível de algum card for vídeo, toca a prévia (mudo, em loop)
+      // Vídeos das prévias só carregam/tocam quando o card aparece na tela.
+      // Isso evita baixar todos os vídeos de uma vez ao abrir a aba Obras.
+      if (!window._obraVideoObs) {
+        window._obraVideoObs = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            const v = en.target;
+            if (en.isIntersecting) {
+              if (v.preload === 'none') v.preload = 'metadata';
+              v.play().catch(()=>{});
+            } else {
+              v.pause();
+            }
+          });
+        }, { threshold: 0.25 });
+      }
       grid.querySelectorAll('.obra-gallery').forEach(g => {
         const active = g.querySelector('.gallery-slide.opacity-100');
         const vid = active && active.querySelector('video');
-        if (vid) vid.play().catch(()=>{});
+        if (vid) window._obraVideoObs.observe(vid);
       });
 
       // swipe touch support para cada card
@@ -1712,7 +1466,7 @@
         slide.classList.toggle('opacity-100', on);
         slide.classList.toggle('opacity-0', !on);
         const vid = slide.querySelector('video');
-        if (vid) { if (on) { vid.play().catch(()=>{}); } else { vid.pause(); } }
+        if (vid) { if (on) { if (vid.preload === 'none') vid.preload = 'metadata'; vid.play().catch(()=>{}); } else { vid.pause(); } }
       });
       // update dots (only if they exist — cards with >8 photos skip them)
       for (let i = 0; i < total; i++) {
@@ -1759,13 +1513,13 @@
       inner.innerHTML = lightboxFotos.map((f, i) => `
         <button onclick="lbOpenSingle(${i})" class="relative aspect-square overflow-hidden rounded-sm group focus:outline-none">
           ${f.type === 'video'
-            ? `<video src="${f.src}" muted playsinline preload="metadata" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"></video>
+            ? `<video src="${f.src}" muted playsinline preload="none" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"></video>
                <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
                  <span class="w-9 h-9 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center">
                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
                  </span>
                </span>`
-            : `<img src="${f.src}" alt="Foto ${i+1}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display='none'"/>`
+            : `<img src="${f.src}" alt="Foto ${i+1}" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display='none'"/>`
           }
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
           <span class="absolute bottom-1.5 right-2 text-white/70 text-[10px] font-medium drop-shadow">${i+1}</span>
@@ -1876,10 +1630,25 @@
       }
     });
 
-    function filterObras(f, btn) {
-      currentFilter = f;
+    // Aplica um filtro de um grupo específico (nature | sector | status)
+    function setFilter(group, value, btn) {
+      activeFilters[group] = value;
+      // destaca só o botão ativo DENTRO do grupo clicado
+      document.querySelectorAll('.filter-' + group).forEach(p => p.classList.remove('active-filter'));
+      if (btn) btn.classList.add('active-filter');
+      renderObras();
+    }
+    // Compatibilidade: se algum código antigo ainda chamar filterObras
+    function filterObras(value, btn) { setFilter('status', value, btn); }
+
+    // Limpa todos os filtros e re-sincroniza os botões "Todas/Todos"
+    function resetFilters() {
+      activeFilters = { nature: 'todas', sector: 'todas', status: 'todas' };
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active-filter'));
-      btn.classList.add('active-filter');
+      ['nature','sector','status'].forEach(g => {
+        const first = document.querySelector('.filter-' + g);
+        if (first) first.classList.add('active-filter');
+      });
       renderObras();
     }
 
@@ -2079,6 +1848,9 @@
           h1: 'Obras que falam <span class="italic text-gold-light">por nós.</span>',
           p: 'Cada projeto é conduzido com responsável técnico presente e documentação completa. Acompanhe aqui o que está em andamento e o que já entregamos.',
           filter_label: 'Filtrar:',
+          group_nature: 'Tipo de obra', nature_all: 'Todas', nature_construcao: 'Construções', nature_reforma: 'Reformas',
+          group_sector: 'Setor', sector_all: 'Todos', sector_residencial: 'Residencial', sector_comercial: 'Comercial',
+          group_status: 'Situação',
           filter_all: 'Todas', filter_andamento: 'Em Andamento', filter_embreve: 'Em Breve', filter_concluida: 'Concluídas',
           empty_h3: 'Nosso portfólio está crescendo.',
           empty_p: 'Em breve, registros das nossas obras em andamento e concluídas. Acompanhe pelo Instagram enquanto isso.',
@@ -2199,6 +1971,9 @@
           h1: 'Projects that speak <span class="italic text-gold-light">for us.</span>',
           p: 'Every project is managed with a licensed engineer on site and complete documentation. Follow what is in progress and what we have already delivered.',
           filter_label: 'Filter:',
+          group_nature: 'Type', nature_all: 'All', nature_construcao: 'New Builds', nature_reforma: 'Renovations',
+          group_sector: 'Sector', sector_all: 'All', sector_residencial: 'Residential', sector_comercial: 'Commercial',
+          group_status: 'Status',
           filter_all: 'All', filter_andamento: 'In Progress', filter_embreve: 'Coming Soon', filter_concluida: 'Completed',
           empty_h3: 'Our portfolio is growing.',
           empty_p: 'Records of our ongoing and completed projects are coming soon. Follow our Instagram in the meantime.',
