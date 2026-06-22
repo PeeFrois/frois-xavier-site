@@ -307,7 +307,7 @@
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
   <!-- ============ HEADER ============ -->
-  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 h-[68px] sm:h-[88px] flex items-center">
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 h-[68px] sm:h-[88px] flex items-center bg-forest-dark">
     <div class="max-w-site mx-auto px-6 lg:px-10 w-full flex items-center justify-between">
 
       <a href="#home" onclick="changePage('home', event)" class="focus:outline-none flex items-center gap-3 shrink-0 group">
@@ -370,9 +370,26 @@
     <section id="sec-home" class="page-section active">
 
       <!-- HERO -->
-      <div class="relative min-h-screen bg-gradient-to-br from-forest-dark via-forest to-forest-mid grain flex items-center px-6 lg:px-10 pt-[68px] sm:pt-[88px] overflow-hidden">
-        <!-- decorative oversized serif watermark -->
-        <span class="hidden md:block absolute -right-10 bottom-0 font-serif text-[28vw] leading-none text-white/[0.025] select-none pointer-events-none">FX</span>
+      <div class="relative min-h-screen grain flex items-center px-6 lg:px-10 pt-[68px] sm:pt-[88px] overflow-hidden bg-forest-dark">
+
+        <!-- subtle background video (Pexels royalty-free, commercial use, no attribution) -->
+        <!-- aerial time-lapse: no people, no readable brands; kept low-opacity so it reads as texture, not a dominant scene -->
+        <video
+          class="absolute inset-0 w-full h-full object-cover opacity-[0.18] scale-105"
+          style="filter: grayscale(1) contrast(1.05) brightness(0.9);"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="https://images.pexels.com/videos/7025003/city-construction-site-day-metropolis-7025003.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        >
+          <source src="https://videos.pexels.com/video-files/7025003/7025003-uhd_2732_1440_25fps.mp4" type="video/mp4">
+        </video>
+
+        <!-- forest-green wash on top: the green stays dominant, the build stays subtle -->
+        <div class="absolute inset-0 bg-gradient-to-br from-forest-dark/90 via-forest/78 to-forest-mid/72"></div>
+        <div class="absolute inset-0 bg-forest-dark/25"></div>
 
         <div class="max-w-site mx-auto w-full relative z-10">
           <div class="max-w-4xl">
@@ -398,7 +415,7 @@
         </div>
 
         <!-- scroll hint -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 hidden md:flex">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 hidden md:flex z-10">
           <span class="block w-px h-12 bg-gradient-to-b from-gold/50 to-transparent"></span>
         </div>
       </div>
@@ -1679,10 +1696,10 @@
       const burgers = document.querySelectorAll('.nav-burger');
       if (scrolled) {
         header.classList.add('bg-forest-dark/95','backdrop-blur-md','shadow-lg','border-b','border-white/10');
-        header.classList.remove('bg-transparent');
+        header.classList.remove('bg-forest-dark');
       } else {
         header.classList.remove('bg-forest-dark/95','backdrop-blur-md','shadow-lg','border-b','border-white/10');
-        header.classList.add('bg-transparent');
+        header.classList.add('bg-forest-dark');
       }
       // logo stays white (header background is always dark — hero or dark bar)
       links.forEach(l => {
