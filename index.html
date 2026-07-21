@@ -1210,7 +1210,7 @@
        ===================================================================== */
     async function loadListaJson(pasta){
       try {
-        const resp = await fetch(`${pasta}/lista.json`, { cache: 'force-cache' });
+        const resp = await fetch(`${pasta}/lista.json`, { cache: 'no-cache' });
         if (!resp.ok) return null;
         const arr = await resp.json();
         if (!Array.isArray(arr)) return null;
