@@ -125,11 +125,21 @@ font-size:13.5px;color:#8a8a86}
 p.fonte a{color:#a07830;font-weight:600;border-bottom:1px solid rgba(160,120,48,.35)}
 p.fonte a:hover{border-bottom-color:#a07830}
 
+p.cidade{margin:34px 0 4px;font-size:12px;font-weight:700;letter-spacing:.2em;
+text-transform:uppercase;color:#0a2a1e}
+p.cidade:first-of-type{margin-top:0}
+
 /* lista da aba de engenharia */
 .lista{list-style:none;padding:0;margin:0;border-top:1px solid rgba(17,17,17,.14)}
-.lista a{display:block;padding:22px 0;border-bottom:1px solid rgba(17,17,17,.09);
-transition:padding-left .3s,border-color .3s}
-.lista a:hover{padding-left:12px;border-bottom-color:#a07830}
+.lista a{display:block;padding:22px 46px 22px 0;position:relative;
+border-bottom:1px solid rgba(17,17,17,.09);
+transition:padding-left .32s cubic-bezier(.22,.61,.36,1),border-color .3s,background .3s}
+.lista a::after{content:'';position:absolute;right:16px;top:50%;width:9px;height:9px;
+margin-top:-5px;border-top:1.5px solid #a07830;border-right:1.5px solid #a07830;
+transform:rotate(45deg) translateX(-6px);opacity:0;
+transition:opacity .3s,transform .34s cubic-bezier(.22,.61,.36,1)}
+.lista a:hover{padding-left:16px;border-bottom-color:#a07830;background:rgba(255,255,255,.6)}
+.lista a:hover::after{opacity:1;transform:rotate(45deg) translateX(0)}
 .lista strong{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
 font-size:25px;line-height:1.25;color:#0a2a1e;letter-spacing:-.01em;margin-bottom:7px;
 transition:color .25s}
@@ -140,25 +150,74 @@ transition:color .25s}
 .onde{border-top:1px solid rgba(17,17,17,.14);padding-top:20px;margin:0;
 color:#6b6b68;font-size:15px;line-height:1.85;max-width:72ch}
 
+/* busca e filtro das dúvidas */
+.filtro{position:sticky;top:var(--topo,82px);z-index:30;background:#f4f2ed;
+padding:20px 0 18px;margin:0 0 -10px;border-bottom:1px solid rgba(17,17,17,.09)}
+.busca{position:relative;margin:0 0 14px}
+.busca input{width:100%;background:#fff;border:1px solid #e0dcd2;border-radius:2px;
+padding:15px 46px 15px 17px;font:inherit;font-size:16px;color:#111;
+transition:border-color .25s,box-shadow .25s}
+.busca input::placeholder{color:#a5a5a0}
+.busca input:focus{outline:none;border-color:#a07830;
+box-shadow:0 0 0 3px rgba(160,120,48,.12)}
+.busca svg{position:absolute;right:16px;top:50%;margin-top:-9px;width:18px;height:18px;
+stroke:#a07830;fill:none;stroke-width:1.7;pointer-events:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips button{font:inherit;font-size:12.5px;font-weight:600;letter-spacing:.03em;
+padding:8px 15px;border:1px solid #e0dcd2;background:#fff;color:#5c5c58;cursor:pointer;
+border-radius:2px;transition:all .22s}
+.chips button:hover{border-color:#a07830;color:#0a2a1e}
+.chips button[aria-pressed="true"]{background:#0a2a1e;border-color:#0a2a1e;color:#fff}
+.chips .conta{margin-left:auto;font-size:12.5px;color:#8a8a86;
+font-variant-numeric:tabular-nums;white-space:nowrap}
+.vazio{padding:56px 0;text-align:center;color:#8a8a86;font-size:16px}
+.vazio b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
+font-size:26px;color:#0a2a1e;margin-bottom:8px}
+.sec.oculta{display:none}
+details.oculta{display:none}
+@media(max-width:640px){
+  .filtro{padding:14px 0 12px}
+  .busca input{font-size:16px;padding:13px 42px 13px 14px}
+  .chips{gap:6px}
+  .chips button{font-size:11.5px;padding:7px 12px}
+  .chips .conta{width:100%;margin:6px 0 0;text-align:left}
+}
+
 /* faq */
 .faq{border-top:1px solid rgba(17,17,17,.14)}
-details{border-bottom:1px solid rgba(17,17,17,.09)}
-summary{cursor:pointer;list-style:none;padding:22px 44px 22px 0;position:relative;
+details{border-bottom:1px solid rgba(17,17,17,.09);position:relative;
+transition:background .28s ease}
+details::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+background:#a07830;transform:scaleY(0);transform-origin:top;
+transition:transform .32s cubic-bezier(.22,.61,.36,1)}
+details[open]{background:#fff}
+details[open]::before{transform:scaleY(1)}
+details:hover{background:rgba(255,255,255,.55)}
+summary{cursor:pointer;list-style:none;padding:22px 52px 22px 0;position:relative;
 font-size:17px;font-weight:600;color:#0a2a1e;line-height:1.45;
-transition:color .2s}
+transition:color .2s,padding-left .3s cubic-bezier(.22,.61,.36,1)}
 summary:hover{color:#a07830}
+details:hover summary,details[open] summary{padding-left:20px}
 summary::-webkit-details-marker{display:none}
-summary::after,summary::before{content:'';position:absolute;right:6px;background:#a07830;
-transition:transform .28s ease,opacity .28s ease}
-summary::after{top:34px;width:13px;height:1px}
-summary::before{top:28px;right:12px;width:1px;height:13px}
-details[open] summary{color:#a07830}
-details[open] summary::before{transform:rotate(90deg);opacity:0}
+summary .mais{position:absolute;right:14px;top:50%;width:26px;height:26px;
+margin-top:-13px;border:1px solid rgba(160,120,48,.32);border-radius:50%;
+transition:background .28s,border-color .28s,transform .38s cubic-bezier(.22,.61,.36,1)}
+summary .mais::after,summary .mais::before{content:'';position:absolute;background:#a07830;
+transition:opacity .28s,background .28s}
+summary .mais::after{left:7px;top:12px;width:11px;height:1px}
+summary .mais::before{left:12px;top:7px;width:1px;height:11px}
+details:hover summary .mais{border-color:#a07830;background:rgba(160,120,48,.08)}
+details[open] summary .mais{background:#a07830;border-color:#a07830;transform:rotate(180deg)}
+details[open] summary .mais::after{background:#fff}
+details[open] summary .mais::before{opacity:0}
+summary:focus-visible{outline:2px solid #a07830;outline-offset:-2px}
 .resp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s ease}
 details[open] .resp{grid-template-rows:1fr}
 .resp>div{overflow:hidden}
 .resp p{margin:0;padding:0 52px 26px 0;color:#5c5c58;font-size:16.5px;line-height:1.8;
-max-width:74ch}
+max-width:74ch;transition:padding-left .3s cubic-bezier(.22,.61,.36,1)}
+details[open] .resp p{padding-left:20px}
+details[open] p.fonte{margin-left:20px}
 
 /* chamada */
 .cta{background:#0a2a1e;margin-top:88px;padding:76px 0 80px;text-align:center}
@@ -201,6 +260,9 @@ footer h4{color:rgba(255,255,255,.38);font-size:9.5px;letter-spacing:.26em;
 text-transform:uppercase;font-weight:700;margin:0 0 18px}
 footer ul{list-style:none;padding:0;margin:0}
 footer li{margin-bottom:11px;line-height:1.5}
+footer li.sub{color:rgba(255,255,255,.3);font-size:9.5px;letter-spacing:.2em;
+text-transform:uppercase;font-weight:700;margin:16px 0 8px}
+footer li.sub:first-child{margin-top:0}
 footer a{color:rgba(255,255,255,.62);transition:color .2s}
 footer a:hover{color:#c09848}
 footer .sobre{color:rgba(255,255,255,.45);margin:0;max-width:34ch;line-height:1.75;
@@ -270,9 +332,9 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
   *{transition:none!important;scroll-behavior:auto!important}
 }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Reforma de apartamento em São José dos Campos com ART","serviceType":"Reforma de Apartamento em SJC","category":"Obras e Reformas","description":"Reforma de apartamento em São José dos Campos com ART no CREA-SP e plano de reforma conforme a NBR 16280 — a documentação que o síndico exige.","url":"https://www.froisxavier.com.br/reforma-de-apartamento-em-sao-jose-dos-campos","provider":{"@type":"GeneralContractor","name":"Frois Xavier Construtora","url":"https://www.froisxavier.com.br/","telephone":"+5512988667973","email":"froisxavier@gmail.com","address":{"@type":"PostalAddress","streetAddress":"R. Cap. João José de Macedo, 237 - Sala 1","addressLocality":"Jacareí","addressRegion":"SP","postalCode":"12327-030","addressCountry":"BR"},"areaServed":[{"@type":"City","name":"São José dos Campos"},{"@type":"City","name":"Jacareí"},{"@type":"AdministrativeArea","name":"Vale do Paraíba"}]},"areaServed":[{"@type":"City","name":"São José dos Campos"},{"@type":"City","name":"Jacareí"},{"@type":"AdministrativeArea","name":"Vale do Paraíba"}],"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.froisxavier.com.br/reforma-de-apartamento-em-sao-jose-dos-campos","servicePhone":{"@type":"ContactPoint","telephone":"+5512988667973"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Reforma de apartamento em São José dos Campos com ART","serviceType":"Reforma de apartamento em condomínio","category":"Obras e Reformas","description":"Reforma de apartamento em São José dos Campos com ART no CREA-SP e plano de reforma conforme a NBR 16280 — a documentação que o síndico exige.","url":"https://www.froisxavier.com.br/reforma-de-apartamento-em-sao-jose-dos-campos","provider":{"@type":"GeneralContractor","name":"Frois Xavier Construtora","url":"https://www.froisxavier.com.br/","telephone":"+5512988667973","email":"froisxavier@gmail.com","address":{"@type":"PostalAddress","streetAddress":"R. Cap. João José de Macedo, 237 - Sala 1","addressLocality":"Jacareí","addressRegion":"SP","postalCode":"12327-030","addressCountry":"BR"},"areaServed":[{"@type":"City","name":"São José dos Campos"},{"@type":"City","name":"Jacareí"},{"@type":"AdministrativeArea","name":"Vale do Paraíba"}]},"areaServed":[{"@type":"City","name":"São José dos Campos"},{"@type":"City","name":"Jacareí"},{"@type":"AdministrativeArea","name":"Vale do Paraíba"}],"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.froisxavier.com.br/reforma-de-apartamento-em-sao-jose-dos-campos","servicePhone":{"@type":"ContactPoint","telephone":"+5512988667973"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Preciso de ART para reformar apartamento?","acceptedAnswer":{"@type":"Answer","text":"Sim, sempre que a reforma alterar estrutura, vedação ou instalações — é o que determina a ABNT NBR 16280. A ART é emitida no CREA pelo engenheiro responsável e entregue ao síndico junto com o plano de reforma. Reforma apenas de acabamento, sem mexer em parede, elétrica ou hidráulica, normalmente não exige."}},{"@type":"Question","name":"O condomínio pode proibir minha reforma?","acceptedAnswer":{"@type":"Answer","text":"O síndico pode barrar obra que não apresente a documentação prevista na NBR 16280, que descumpra a convenção do condomínio ou que coloque a edificação em risco. Com plano de reforma, responsável técnico identificado e ART, a reforma cumpre o que a norma pede."}},{"@type":"Question","name":"O que é a NBR 16280?","acceptedAnswer":{"@type":"Answer","text":"É a norma da ABNT que regula reforma em edificações. Ela exige, antes do início da obra, um plano de reforma entregue ao síndico contendo a descrição dos serviços, a identificação do responsável técnico e a ART ou RRT quando houver alteração de estrutura, vedação ou instalações. Está em vigor há mais de dez anos e é a referência usada pelos condomínios."}},{"@type":"Question","name":"Quais documentos o síndico costuma exigir?","acceptedAnswer":{"@type":"Answer","text":"Na prática o conjunto é: plano de reforma descrevendo o que será feito, ART do responsável técnico, identificação da empresa e dos trabalhadores que entrarão no prédio, e cronograma com o horário de obra permitido pela convenção. Preparamos esse conjunto."}},{"@type":"Question","name":"Posso derrubar qualquer parede do apartamento?","acceptedAnswer":{"@type":"Answer","text":"Não. Algumas paredes são estruturais e sustentam o prédio; outras são apenas vedação. Derrubar uma parede estrutural compromete a edificação inteira e é o erro mais grave em reforma de apartamento. A identificação do que pode ou não ser removido é feita em visita técnica, antes de qualquer demolição."}},{"@type":"Question","name":"Quanto custa reformar um apartamento em São José dos Campos?","acceptedAnswer":{"@type":"Answer","text":"Depende da metragem, do estado das instalações e do padrão de acabamento. Apartamento antigo que precisa refazer elétrica e hidráulica custa bastante mais por metro quadrado do que apartamento que precisa só de acabamento. O orçamento é fechado por etapa, depois da visita técnica ao imóvel."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.froisxavier.com.br/"},{"@type":"ListItem","position":2,"name":"Obras e Reformas"},{"@type":"ListItem","position":3,"name":"Reforma de Apartamento em SJC","item":"https://www.froisxavier.com.br/reforma-de-apartamento-em-sao-jose-dos-campos"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.froisxavier.com.br/"},{"@type":"ListItem","position":2,"name":"Obras e Reformas"},{"@type":"ListItem","position":3,"name":"Reforma de apartamento em condomínio","item":"https://www.froisxavier.com.br/reforma-de-apartamento-em-sao-jose-dos-campos"}]}</script>
 </head>
 <body>
 <a class="pular" href="#conteudo">Ir para o conteúdo</a>
@@ -291,14 +353,14 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
       <a href="/engenharia" class="atual">Engenharia</a>
       <a href="/#contato">Contato</a>
     </nav>
-    <a class="topcta" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20de%20Apartamento%20em%20SJC" target="_blank" rel="noopener">Falar com o engenheiro</a>
+    <a class="topcta" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20de%20apartamento%20em%20condomínio" target="_blank" rel="noopener">Falar com o engenheiro</a>
   </div>
 </header>
 
 <section class="hero grao">
   <div class="shell"><div class="col">
     <nav class="mig" aria-label="Você está em">
-      <a href="/">Início</a><span>/</span>Obras e Reformas<span>/</span><em>Reforma de Apartamento em SJC</em>
+      <a href="/">Início</a><span>/</span><a href="/engenharia">Engenharia</a><span>/</span>São José dos Campos<span>/</span><em>Reforma de apartamento em condomínio</em>
     </nav>
     <p class="over">São José dos Campos · Vale do Paraíba</p>
     <h1>Reforma de apartamento em São José dos Campos com ART</h1>
@@ -327,23 +389,23 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
 </ul></section>
 <section class="sec rev"><p class="over">Cobertura</p><h2>Onde atendemos</h2><p class="onde">Atendemos condomínios em toda São José dos Campos: Centro, Jardim Aquarius, Parque Residencial Aquarius, Urbanova, Jardim Esplanada, Vila Adyana, Jardim Satélite, Bosque dos Eucaliptos, Vila Ema, Jardim das Indústrias, Jardim São Dimas, Jardim das Colinas, Jardim Morumbi, Vila Industrial, Parque Industrial, Monte Castelo, Santana, Jardim Oswaldo Cruz, Jardim Paulista, Vila Maria, Campos de São José, Cidade Vista Verde, Floradas de São José, Putim e Eugênio de Melo.</p></section>
 <section class="sec rev"><p class="over">Dúvidas frequentes</p><h2>Perguntas e respostas</h2><div class="faq">
-<details><summary>Preciso de ART para reformar apartamento?</summary><div class="resp"><div><p>Sim, sempre que a reforma alterar estrutura, vedação ou instalações — é o que determina a ABNT NBR 16280. A ART é emitida no CREA pelo engenheiro responsável e entregue ao síndico junto com o plano de reforma. Reforma apenas de acabamento, sem mexer em parede, elétrica ou hidráulica, normalmente não exige.</p></div></div></details>
-<details><summary>O condomínio pode proibir minha reforma?</summary><div class="resp"><div><p>O síndico pode barrar obra que não apresente a documentação prevista na NBR 16280, que descumpra a convenção do condomínio ou que coloque a edificação em risco. Com plano de reforma, responsável técnico identificado e ART, a reforma cumpre o que a norma pede.</p></div></div></details>
-<details><summary>O que é a NBR 16280?</summary><div class="resp"><div><p>É a norma da ABNT que regula reforma em edificações. Ela exige, antes do início da obra, um plano de reforma entregue ao síndico contendo a descrição dos serviços, a identificação do responsável técnico e a ART ou RRT quando houver alteração de estrutura, vedação ou instalações. Está em vigor há mais de dez anos e é a referência usada pelos condomínios.</p></div></div></details>
-<details><summary>Quais documentos o síndico costuma exigir?</summary><div class="resp"><div><p>Na prática o conjunto é: plano de reforma descrevendo o que será feito, ART do responsável técnico, identificação da empresa e dos trabalhadores que entrarão no prédio, e cronograma com o horário de obra permitido pela convenção. Preparamos esse conjunto.</p></div></div></details>
-<details><summary>Posso derrubar qualquer parede do apartamento?</summary><div class="resp"><div><p>Não. Algumas paredes são estruturais e sustentam o prédio; outras são apenas vedação. Derrubar uma parede estrutural compromete a edificação inteira e é o erro mais grave em reforma de apartamento. A identificação do que pode ou não ser removido é feita em visita técnica, antes de qualquer demolição.</p></div></div></details>
-<details><summary>Quanto custa reformar um apartamento em São José dos Campos?</summary><div class="resp"><div><p>Depende da metragem, do estado das instalações e do padrão de acabamento. Apartamento antigo que precisa refazer elétrica e hidráulica custa bastante mais por metro quadrado do que apartamento que precisa só de acabamento. O orçamento é fechado por etapa, depois da visita técnica ao imóvel.</p></div></div></details>
+<details><summary>Preciso de ART para reformar apartamento?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>Sim, sempre que a reforma alterar estrutura, vedação ou instalações — é o que determina a ABNT NBR 16280. A ART é emitida no CREA pelo engenheiro responsável e entregue ao síndico junto com o plano de reforma. Reforma apenas de acabamento, sem mexer em parede, elétrica ou hidráulica, normalmente não exige.</p></div></div></details>
+<details><summary>O condomínio pode proibir minha reforma?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>O síndico pode barrar obra que não apresente a documentação prevista na NBR 16280, que descumpra a convenção do condomínio ou que coloque a edificação em risco. Com plano de reforma, responsável técnico identificado e ART, a reforma cumpre o que a norma pede.</p></div></div></details>
+<details><summary>O que é a NBR 16280?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>É a norma da ABNT que regula reforma em edificações. Ela exige, antes do início da obra, um plano de reforma entregue ao síndico contendo a descrição dos serviços, a identificação do responsável técnico e a ART ou RRT quando houver alteração de estrutura, vedação ou instalações. Está em vigor há mais de dez anos e é a referência usada pelos condomínios.</p></div></div></details>
+<details><summary>Quais documentos o síndico costuma exigir?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>Na prática o conjunto é: plano de reforma descrevendo o que será feito, ART do responsável técnico, identificação da empresa e dos trabalhadores que entrarão no prédio, e cronograma com o horário de obra permitido pela convenção. Preparamos esse conjunto.</p></div></div></details>
+<details><summary>Posso derrubar qualquer parede do apartamento?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>Não. Algumas paredes são estruturais e sustentam o prédio; outras são apenas vedação. Derrubar uma parede estrutural compromete a edificação inteira e é o erro mais grave em reforma de apartamento. A identificação do que pode ou não ser removido é feita em visita técnica, antes de qualquer demolição.</p></div></div></details>
+<details><summary>Quanto custa reformar um apartamento em São José dos Campos?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>Depende da metragem, do estado das instalações e do padrão de acabamento. Apartamento antigo que precisa refazer elétrica e hidráulica custa bastante mais por metro quadrado do que apartamento que precisa só de acabamento. O orçamento é fechado por etapa, depois da visita técnica ao imóvel.</p></div></div></details>
 </div></section>
 </div></div>
 <section class="cta grao"><div class="shell"><div class="col">
 <p class="over">Atendimento</p>
 <h2>Fale com o engenheiro responsável</h2>
 <p>Atendemos São José dos Campos, Jacareí e a região do Vale do Paraíba. Analisamos o seu caso e explicamos o que a documentação exige antes de qualquer contratação.</p>
-<a class="btn" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20de%20Apartamento%20em%20SJC" target="_blank" rel="noopener">Falar no WhatsApp</a>
+<a class="btn" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20de%20apartamento%20em%20condomínio" target="_blank" rel="noopener">Falar no WhatsApp</a>
 </div></div></section>
 <div class="shell"><div class="col"><section class="sec rev"><p class="over">Continue</p><h2>Serviços relacionados</h2><ul class="rel">
 <li><a href="/preciso-de-engenheiro-para-reformar-apartamento"><span>Guias e Custos</span><strong>Preciso de engenheiro para reformar?</strong><em>Ver a página &rarr;</em></a></li>
-<li><a href="/reforma-residencial-em-sao-jose-dos-campos"><span>Obras e Reformas</span><strong>Reforma Residencial em SJC</strong><em>Ver a página &rarr;</em></a></li>
+<li><a href="/reforma-residencial-em-sao-jose-dos-campos"><span>São José dos Campos</span><strong>Reforma de casa e apartamento</strong><em>Ver a página &rarr;</em></a></li>
 <li><a href="/art-responsabilidade-tecnica"><span>Laudos e Vistorias</span><strong>ART — Responsabilidade Técnica</strong><em>Ver a página &rarr;</em></a></li>
 </ul></section>
 <p class="nota">Conteúdo técnico produzido pela Frois Xavier Construtora com base na legislação vigente e nas normas da ABNT. Todo serviço técnico é conduzido por engenheiro civil registrado no CREA-SP, com Anotação de Responsabilidade Técnica (ART) vinculada. Esta página tem caráter informativo e não substitui a análise do caso concreto — prazos e exigências variam conforme o município, o órgão competente e a situação do imóvel.</p>
@@ -357,7 +419,7 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
         dos Campos, Jacareí e Vale do Paraíba — com engenheiro civil registrado no CREA-SP
         e ART em cada obra.</p>
       </div>
-      <div><h4>Obras e Reformas</h4><ul><li><a href="/construtora-em-sao-jose-dos-campos">Construtora em São José dos Campos</a></li><li><a href="/reforma-residencial-em-sao-jose-dos-campos">Reforma Residencial em SJC</a></li><li><a href="/reforma-de-apartamento-em-sao-jose-dos-campos">Reforma de Apartamento em SJC</a></li><li><a href="/reforma-comercial-em-sao-jose-dos-campos">Reforma Comercial em SJC</a></li><li><a href="/construcao-de-casas-em-sao-jose-dos-campos">Construção de Casas em SJC</a></li><li><a href="/construtora-em-jacarei">Construtora em Jacareí</a></li><li><a href="/reforma-residencial-em-jacarei">Reforma Residencial em Jacareí</a></li><li><a href="/reparos-e-manutencao-predial">Reparos e Manutenção Predial</a></li><li><a href="/preciso-de-engenheiro-para-reformar-apartamento">Preciso de engenheiro para reformar?</a></li><li><a href="/quanto-custa-construir-ou-reformar">Quanto custa construir ou reformar</a></li></ul></div>
+      <div><h4>Obras e Reformas</h4><ul><li class="sub">São José dos Campos</li><li><a href="/construtora-em-sao-jose-dos-campos">Construtora e obras em geral</a></li><li><a href="/reforma-residencial-em-sao-jose-dos-campos">Reforma de casa e apartamento</a></li><li><a href="/reforma-de-apartamento-em-sao-jose-dos-campos">Reforma de apartamento em condomínio</a></li><li><a href="/reforma-comercial-em-sao-jose-dos-campos">Reforma comercial</a></li><li><a href="/construcao-de-casas-em-sao-jose-dos-campos">Construção de casas</a></li><li class="sub">Jacareí</li><li><a href="/construtora-em-jacarei">Construtora e obras em geral</a></li><li><a href="/reforma-residencial-em-jacarei">Reforma de casa e apartamento</a></li><li class="sub">Toda a região</li><li><a href="/reparos-e-manutencao-predial">Reparos e Manutenção Predial</a></li><li><a href="/preciso-de-engenheiro-para-reformar-apartamento">Preciso de engenheiro para reformar?</a></li><li><a href="/quanto-custa-construir-ou-reformar">Quanto custa construir ou reformar</a></li></ul></div>
       <div><h4>Regularização e Laudos</h4><ul><li><a href="/habite-se">Habite-se</a></li><li><a href="/usucapiao">Usucapião</a></li><li><a href="/desmembramento-e-unificacao">Desmembramento e Unificação</a></li><li><a href="/regularizacao-de-imoveis">Regularização de Imóveis</a></li><li><a href="/art-responsabilidade-tecnica">ART — Responsabilidade Técnica</a></li><li><a href="/laudo-cautelar-de-vizinhanca">Laudo Cautelar de Vizinhança</a></li><li><a href="/laudo-de-vicios-construtivos">Laudo de Vícios Construtivos</a></li><li><a href="/relatorio-fotografico">Relatório Fotográfico</a></li><li><a href="/avcb">AVCB</a></li><li><a href="/clcb">CLCB</a></li><li><a href="/minha-casa-minha-vida">Minha Casa Minha Vida</a></li></ul></div>
       <div>
         <h4>Contato</h4>
