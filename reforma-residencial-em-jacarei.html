@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://www.froisxavier.com.br/reforma-residencial-em-jacarei"/>
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large"/>
 <meta name="author" content="Frois Xavier Construtora"/>
+<meta name="theme-color" content="#0a2a1e"/>
 <meta name="geo.region" content="BR-SP"/>
 <meta name="geo.placename" content="Jacareí"/>
 <meta property="og:type" content="article"/>
@@ -22,327 +23,311 @@
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="sitemap" type="application/xml" href="https://www.froisxavier.com.br/sitemap.xml"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@300;400;500;600;700;800&display=swap"/></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f4f2ed;color:#111;font-family:Manrope,-apple-system,
-BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;
-line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#f4f2ed;color:#111;
+font-family:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+font-size:17px;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
 img{max-width:100%;height:auto;display:block}
-a{color:#a07830;text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:860px;margin:0 auto;padding:0 22px}
-.wide{max-width:1320px;margin:0 auto;padding:0 22px}
+a{color:inherit;text-decoration:none}
+::selection{background:#0a2a1e;color:#d8b878}
+:focus-visible{outline:2px solid #a07830;outline-offset:3px}
+.topo a:focus-visible,.hero a:focus-visible,footer a:focus-visible,.cta a:focus-visible{
+outline-color:#d8b878}
+.pular{position:absolute;left:-9999px;top:0;background:#a07830;color:#fff;padding:12px 20px;
+font-size:13px;font-weight:700;z-index:99}
+.pular:focus{left:0}
 
-header.top{background:#0a2a1e;padding:16px 0}
-header.top .wide{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.marca{display:flex;align-items:center;gap:11px}
-.marca img{height:40px;width:auto}
-.marca .n{display:flex;flex-direction:column;line-height:1}
-.marca .n b{color:#fff;font-size:16px;font-weight:800;letter-spacing:.12em;white-space:nowrap}
-.marca .n span{color:#c09848;font-size:9.5px;font-weight:500;letter-spacing:.4em;margin-top:5px}
-.topcta{color:#d8b878;border:1px solid rgba(216,184,120,.4);border-radius:2px;
-padding:9px 18px;font-size:13px;font-weight:600;letter-spacing:.06em;white-space:nowrap}
-.topcta:hover{background:#a07830;border-color:#a07830;color:#fff;text-decoration:none}
+.shell{max-width:1320px;margin:0 auto;padding:0 24px}
+.col{max-width:960px;margin:0 auto}
+.grao{position:relative}
+.grao::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.04;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grao>*{position:relative;z-index:1}
 
-.mig{background:#e8e4da;padding:11px 0;font-size:12.5px;color:#6b6b68;
-letter-spacing:.02em}
-.mig a{color:#4a4a48}
-.mig i{font-style:normal;color:#a07830;margin:0 7px}
+/* ---------------------------------------------------------- cabeçalho */
+.topo{background:rgba(10,42,30,.94);position:sticky;top:0;z-index:50;
+backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);
+border-bottom:1px solid rgba(255,255,255,.06)}
+@supports not (backdrop-filter:blur(2px)){.topo{background:#0a2a1e}}
+.topo .col{display:flex;align-items:center;justify-content:space-between;gap:20px;
+min-height:82px}
+.marca{display:flex;align-items:center;gap:12px}
+.marca img{height:42px;width:auto}
+.marca b{display:block;color:#fff;font-size:16px;font-weight:800;letter-spacing:.13em;
+line-height:1;white-space:nowrap}
+.marca i{display:block;color:#c09848;font-size:9.5px;font-weight:600;letter-spacing:.42em;
+font-style:normal;margin-top:6px;line-height:1}
+.topcta{border:1px solid rgba(216,184,120,.38);color:#d8b878;padding:11px 22px;
+font-size:12.5px;font-weight:600;letter-spacing:.07em;white-space:nowrap;
+transition:background .25s,color .25s,border-color .25s}
+.topcta:hover{background:#a07830;border-color:#a07830;color:#fff}
 
-main{padding:46px 0 10px}
-.eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
-color:#a07830;margin:0 0 14px}
-h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(31px,6.2vw,50px);
-line-height:1.12;letter-spacing:-.01em;color:#0a2a1e;margin:0 0 22px}
-h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(25px,4.4vw,34px);
-line-height:1.2;color:#0a2a1e;margin:52px 0 18px}
-h3{font-size:16.5px;font-weight:700;color:#0a2a1e;margin:0 0 6px;letter-spacing:-.01em}
-p{margin:0 0 18px}
+/* ---------------------------------------------------------- hero */
+.hero{background:#0a2a1e;padding:16px 0 78px;overflow:hidden}
+.mig{font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.4);margin:0 0 46px;
+display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.mig a{color:rgba(255,255,255,.55);transition:color .2s}
+.mig a:hover{color:#d8b878}
+.mig span{color:rgba(255,255,255,.22)}
+.mig em{font-style:normal;color:rgba(255,255,255,.72)}
+.over{font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+color:#c09848;margin:0 0 22px}
+.hero h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;
+font-size:clamp(35px,6.2vw,62px);line-height:1.05;letter-spacing:-.015em;color:#fff;
+margin:0;max-width:17ch}
+.lead{margin:32px 0 0;max-width:58ch;color:rgba(255,255,255,.7);font-size:18px;
+font-weight:300;line-height:1.72;padding-left:22px;border-left:1px solid rgba(216,184,120,.45)}
 
-.resumo{background:#fff;border-left:3px solid #a07830;padding:24px 26px;margin:0 0 6px;
-font-size:18.5px;line-height:1.66;color:#1d1d1b}
-.resumo p{margin:0}
+/* ---------------------------------------------------------- seções */
+main{padding:0 0 10px}
+.sec{padding:76px 0 0}
+.sec:first-child{padding-top:82px}
+h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;
+font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.012em;color:#0a2a1e;
+margin:0 0 30px;max-width:22ch}
+.sec .over{color:#a07830;margin-bottom:16px}
+.prosa p{margin:0 0 22px;color:#3c3c39;font-size:17.5px;line-height:1.8;max-width:68ch}
+.prosa p:last-child{margin-bottom:0}
 
-.blocos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
-margin:0 0 8px;padding:0;list-style:none}
-.blocos li{background:#fff;border:1px solid #e8e4da;border-radius:3px;padding:20px 21px}
-.blocos li p{margin:0;font-size:15px;color:#4a4a48;line-height:1.62}
+/* fios finos, padrão da home */
+.itens{display:grid;gap:34px 44px;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));
+list-style:none;padding:0;margin:0}
+.itens li{border-top:1px solid rgba(17,17,17,.14);padding-top:18px;
+transition:border-color .3s}
+.itens li:hover{border-top-color:#a07830}
+.itens h3{font-size:15.5px;font-weight:700;color:#0a2a1e;margin:0 0 8px;
+letter-spacing:-.005em;line-height:1.35}
+.itens p{margin:0;color:#5c5c58;font-size:15.5px;line-height:1.7}
 
-ul.passos{list-style:none;padding:0;margin:0;counter-reset:p}
-ul.passos li{counter-increment:p;position:relative;padding:0 0 18px 48px;
-border-left:1px solid #e0dcd2;margin-left:15px}
-ul.passos li:last-child{border-left-color:transparent;padding-bottom:0}
-ul.passos li::before{content:counter(p,decimal-leading-zero);position:absolute;left:-15px;top:-2px;
-width:30px;height:30px;border-radius:50%;background:#0a2a1e;color:#d8b878;font-size:11px;
-font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:.04em}
+/* método — sem bolinha, sem número */
+.metodo{list-style:none;padding:0;margin:0;border-top:1px solid rgba(17,17,17,.14)}
+.metodo li{position:relative;padding:20px 0 20px 34px;
+border-bottom:1px solid rgba(17,17,17,.09);color:#3c3c39;font-size:16.5px;line-height:1.72}
+.metodo li>span{display:block;max-width:70ch}
+.metodo li::before{content:'';position:absolute;left:0;top:33px;width:18px;height:1px;
+background:#a07830}
 
-details{background:#fff;border:1px solid #e8e4da;border-radius:3px;margin:0 0 10px}
-details[open]{border-color:#d6cfbf}
-summary{cursor:pointer;padding:17px 46px 17px 21px;font-weight:700;font-size:16.5px;
-color:#0a2a1e;position:relative;list-style:none;line-height:1.45}
+/* lista da aba de engenharia */
+.lista{list-style:none;padding:0;margin:0;border-top:1px solid rgba(17,17,17,.14)}
+.lista a{display:block;padding:22px 0;border-bottom:1px solid rgba(17,17,17,.09);
+transition:padding-left .3s,border-color .3s}
+.lista a:hover{padding-left:12px;border-bottom-color:#a07830}
+.lista strong{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
+font-size:25px;line-height:1.25;color:#0a2a1e;letter-spacing:-.01em;margin-bottom:7px;
+transition:color .25s}
+.lista a:hover strong{color:#a07830}
+.lista span{display:block;color:#6b6b68;font-size:15.5px;line-height:1.65;max-width:70ch}
+
+/* onde atendemos */
+.onde{border-top:1px solid rgba(17,17,17,.14);padding-top:20px;margin:0;
+color:#6b6b68;font-size:15px;line-height:1.85;max-width:72ch}
+
+/* faq */
+.faq{border-top:1px solid rgba(17,17,17,.14)}
+details{border-bottom:1px solid rgba(17,17,17,.09)}
+summary{cursor:pointer;list-style:none;padding:22px 44px 22px 0;position:relative;
+font-size:17px;font-weight:600;color:#0a2a1e;line-height:1.45;
+transition:color .2s}
+summary:hover{color:#a07830}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"";position:absolute;right:21px;top:26px;width:9px;height:9px;
-border-right:2px solid #a07830;border-bottom:2px solid #a07830;transform:rotate(45deg);
-transition:transform .2s}
-details[open] summary::after{transform:rotate(-135deg);top:29px}
-details .r{padding:0 21px 20px;color:#4a4a48;font-size:16px;line-height:1.72}
-details .r p{margin:0}
+summary::after,summary::before{content:'';position:absolute;right:6px;background:#a07830;
+transition:transform .28s ease,opacity .28s ease}
+summary::after{top:34px;width:13px;height:1px}
+summary::before{top:28px;right:12px;width:1px;height:13px}
+details[open] summary{color:#a07830}
+details[open] summary::before{transform:rotate(90deg);opacity:0}
+.resp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s ease}
+details[open] .resp{grid-template-rows:1fr}
+.resp>div{overflow:hidden}
+.resp p{margin:0;padding:0 52px 26px 0;color:#5c5c58;font-size:16.5px;line-height:1.8;
+max-width:74ch}
 
-.cta{background:#0a2a1e;border-radius:3px;padding:36px 32px;margin:58px 0 0;text-align:center}
-.cta h2{color:#fff;margin:0 0 12px}
-.cta p{color:rgba(255,255,255,.62);font-size:16px;max-width:560px;margin:0 auto 24px}
-.btn{display:inline-block;background:#a07830;color:#fff;padding:15px 34px;border-radius:2px;
-font-weight:700;font-size:14.5px;letter-spacing:.07em;text-transform:uppercase}
-.btn:hover{background:#c09848;text-decoration:none}
+/* chamada */
+.cta{background:#0a2a1e;margin-top:88px;padding:76px 0 80px;text-align:center}
+.cta h2{color:#fff;margin:0 auto 18px;max-width:18ch}
+.cta .over{color:#c09848}
+.cta p{color:rgba(255,255,255,.62);font-size:17px;font-weight:300;max-width:56ch;
+margin:0 auto 36px;line-height:1.75}
+.btn{display:inline-block;background:#a07830;color:#fff;padding:17px 42px;
+font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+transition:background .25s,transform .2s}
+.btn:hover{background:#c09848;transform:translateY(-1px)}
 
-.rel{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-padding:0;margin:0;list-style:none}
-.rel a{display:block;background:#fff;border:1px solid #e8e4da;border-radius:3px;
-padding:17px 19px;color:#0a2a1e;font-weight:600;font-size:15.5px;line-height:1.4}
-.rel a:hover{border-color:#a07830;text-decoration:none}
-.rel a span{display:block;font-size:11px;font-weight:700;letter-spacing:.18em;
-text-transform:uppercase;color:#a07830;margin-bottom:6px}
+/* relacionados */
+.rel{display:grid;gap:30px 44px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+list-style:none;padding:0;margin:0}
+.rel a{display:flex;flex-direction:column;height:100%;
+border-top:1px solid rgba(17,17,17,.14);padding:20px 0 4px;transition:border-color .25s}
+.rel li{display:flex}
+.rel strong{flex:1}
+.rel a:hover{border-color:#a07830}
+.rel span{display:block;font-size:9.5px;font-weight:700;letter-spacing:.24em;
+text-transform:uppercase;color:#a07830;margin-bottom:10px}
+.rel strong{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
+font-size:23px;line-height:1.26;color:#0a2a1e;letter-spacing:-.01em;
+transition:color .25s}
+.rel a:hover strong{color:#a07830}
+.rel em{display:block;font-style:normal;font-size:12px;color:#a07830;margin-top:14px;
+letter-spacing:.1em;text-transform:uppercase;font-weight:700;opacity:.55;
+transition:opacity .25s,transform .25s}
+.rel a:hover em{opacity:1;transform:translateX(4px)}
 
-.bairros{background:#fff;border:1px solid #e8e4da;border-radius:3px;padding:20px 22px;
-font-size:15.5px;color:#4a4a48;line-height:1.7;margin:0}
+.nota{margin:72px 0 0;padding-top:22px;border-top:1px solid rgba(17,17,17,.1);
+font-size:13px;color:#8a8a86;line-height:1.75}
 
-.nota{font-size:13.5px;color:#6b6b68;line-height:1.66;border-top:1px solid #e0dcd2;
-margin-top:44px;padding-top:20px}
-
-footer{background:#051811;margin-top:56px;padding:44px 0 26px;color:rgba(255,255,255,.55);
-font-size:14.5px}
-footer h4{color:rgba(255,255,255,.4);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-font-weight:700;margin:0 0 14px}
-footer a{color:rgba(255,255,255,.7)}
+/* ---------------------------------------------------------- rodapé */
+footer{background:#051811;padding:72px 0 30px;color:rgba(255,255,255,.55);font-size:14.5px}
+.fgrid{display:grid;gap:44px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));
+padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.09)}
+footer h4{color:rgba(255,255,255,.38);font-size:9.5px;letter-spacing:.26em;
+text-transform:uppercase;font-weight:700;margin:0 0 18px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:11px;line-height:1.5}
+footer a{color:rgba(255,255,255,.62);transition:color .2s}
 footer a:hover{color:#c09848}
-.fg{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.1)}
-.fg ul{list-style:none;padding:0;margin:0}
-.fg li{margin-bottom:9px}
-.fim{padding-top:20px;font-size:11.5px;color:rgba(255,255,255,.35);line-height:1.7}
-@media(max-width:560px){
-  body{font-size:16.5px}
-  main{padding:32px 0 6px}
-  .resumo{padding:20px 20px;font-size:17px}
-  header.top .wide{gap:10px}
-  .marca img{height:34px}
-  .topcta{padding:8px 13px;font-size:12px}
+footer .sobre{color:rgba(255,255,255,.45);margin:0;max-width:34ch;line-height:1.75;
+font-size:14.5px;font-weight:300}
+.fim{padding-top:30px;font-size:11.5px;color:rgba(255,255,255,.3);line-height:1.9;
+letter-spacing:.02em}
+
+/* ---------------------------------------------------------- responsivo */
+@media(max-width:900px){
+  .hero{padding-bottom:62px}
+  .sec{padding-top:62px}
+  .cta{margin-top:70px;padding:62px 0 66px}
 }
-@media(max-width:420px){
-  .marca .n b{font-size:13.5px;letter-spacing:.09em}
-  .marca .n span{font-size:8px;letter-spacing:.3em}
-  .marca img{height:30px}
-  .topcta{padding:8px 10px;font-size:11px;letter-spacing:.02em}
-  h2{margin:42px 0 16px}
-  summary{padding:15px 40px 15px 17px;font-size:15.5px}
-  details .r{padding:0 17px 17px;font-size:15.5px}
-  .blocos li{padding:17px 18px}
-  .cta{padding:30px 20px}
-  .btn{padding:14px 24px;font-size:13px}
+@media(max-width:640px){
+  body{font-size:16.5px}
+  .shell{padding:0 20px}
+  .topo .col{min-height:68px}
+  .marca img{height:34px}
+  .marca b{font-size:13.5px;letter-spacing:.1em}
+  .marca i{font-size:8px;letter-spacing:.3em;margin-top:5px}
+  .topcta{padding:9px 13px;font-size:11px;letter-spacing:.03em}
+  .mig{margin-bottom:34px;font-size:11.5px;gap:7px}
+  .hero{padding-bottom:52px}
+  .hero h1{max-width:none}
+  .lead{font-size:16.5px;margin-top:26px;padding-left:18px}
+  .sec{padding-top:52px}
+  h2{margin-bottom:24px;max-width:none}
+  .prosa p{font-size:16.5px;margin-bottom:19px}
+  .itens{gap:26px 0}
+  .metodo li{padding:17px 0 17px 28px;font-size:16px}
+  .metodo li::before{top:29px;width:14px}
+  summary{font-size:16px;padding:19px 40px 19px 0}
+  summary::after{top:31px}
+  summary::before{top:25px}
+  .cta{margin-top:58px;padding:54px 0 58px}
+  .cta h2{max-width:none}
+  .btn{padding:16px 30px;font-size:12px;letter-spacing:.1em}
+  .lista a{padding:18px 0}
+  .lista a:hover{padding-left:0}
+  .lista strong{font-size:21px}
+  .lista span{font-size:15px}
+  .rel a{padding:18px 0 20px}
+  .rel strong{font-size:21px}
+  .rel em{opacity:1;transform:none}
+  .nota{margin-top:56px}
+  footer{padding:56px 0 26px}
+  .fgrid{gap:34px;padding-bottom:34px}
+  .resp p{padding-right:20px;font-size:16px}
+}
+.rev{opacity:0;transform:translateY(16px);
+transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rev.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rev{opacity:1!important;transform:none!important}
+  *{transition:none!important;scroll-behavior:auto!important}
 }
 </style>
-<script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "Service",
- "name": "Reforma de casa e apartamento em Jacareí",
- "serviceType": "Reforma Residencial em Jacareí",
- "category": "Obras e Reformas",
- "description": "Reforma de casa e apartamento em Jacareí com engenheiro civil do CREA-SP, ART e orçamento por etapa. Construtora sediada no Centro de Jacareí.",
- "url": "https://www.froisxavier.com.br/reforma-residencial-em-jacarei",
- "provider": {
-  "@type": "GeneralContractor",
-  "name": "Frois Xavier Construtora",
-  "url": "https://www.froisxavier.com.br/",
-  "telephone": "+5512988667973",
-  "email": "froisxavier@gmail.com",
-  "address": {
-   "@type": "PostalAddress",
-   "streetAddress": "R. Cap. João José de Macedo, 237 - Sala 1",
-   "addressLocality": "Jacareí",
-   "addressRegion": "SP",
-   "postalCode": "12327-030",
-   "addressCountry": "BR"
-  }
- },
- "areaServed": [
-  {
-   "@type": "City",
-   "name": "Jacareí"
-  },
-  {
-   "@type": "City",
-   "name": "São José dos Campos"
-  },
-  {
-   "@type": "AdministrativeArea",
-   "name": "Vale do Paraíba"
-  }
- ],
- "availableChannel": {
-  "@type": "ServiceChannel",
-  "serviceUrl": "https://www.froisxavier.com.br/reforma-residencial-em-jacarei",
-  "servicePhone": {
-   "@type": "ContactPoint",
-   "telephone": "+5512988667973"
-  }
- }
-}</script>
-<script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "Quanto custa reformar uma casa em Jacareí?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "O custo depende da área, do estado do imóvel, de quanto há de elétrica e hidráulica a refazer e do padrão de acabamento. Reforma que mexe em instalação custa bem mais por metro quadrado do que reforma de acabamento. O orçamento é fechado após a visita técnica, detalhado por etapa."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Preciso de engenheiro para reformar em Jacareí?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Para reforma que altera estrutura, vedação ou instalações, sim — é o que exige a NBR 16280, e nesses casos a ART é emitida no CREA-SP. Reforma apenas de acabamento normalmente não exige. A avaliação prévia diz em qual caso a sua obra está."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Reforma que aumenta a área precisa ser regularizada?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Sim. Área construída acrescida sem aprovação deixa o imóvel irregular perante o município e impede financiamento, escrituração e averbação. Jacareí tem legislação própria de regularização — a Lei Municipal 6.718/2025 e o Decreto 126/2025 — e conduzimos esse processo."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Vocês fazem reforma de um ambiente só?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Sim. Banheiro e cozinha são os mais pedidos e os que mais dependem de impermeabilização e hidráulica bem executadas."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Quanto tempo demora a reforma?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "O prazo depende do escopo e da área e é definido no cronograma junto com o orçamento, depois da visita ao imóvel. Não damos prazo por telefone, porque prazo dado sem ver a obra não se cumpre."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Vocês fornecem material?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Trabalhamos com e sem fornecimento de material. O orçamento apresenta os dois valores separados para você decidir."
-   }
-  }
- ]
-}</script>
-<script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [
-  {
-   "@type": "ListItem",
-   "position": 1,
-   "name": "Início",
-   "item": "https://www.froisxavier.com.br/"
-  },
-  {
-   "@type": "ListItem",
-   "position": 2,
-   "name": "Obras e Reformas"
-  },
-  {
-   "@type": "ListItem",
-   "position": 3,
-   "name": "Reforma Residencial em Jacareí",
-   "item": "https://www.froisxavier.com.br/reforma-residencial-em-jacarei"
-  }
- ]
-}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Reforma de casa e apartamento em Jacareí","serviceType":"Reforma Residencial em Jacareí","category":"Obras e Reformas","description":"Reforma de casa e apartamento em Jacareí com engenheiro civil do CREA-SP, ART e orçamento por etapa. Construtora sediada no Centro de Jacareí.","url":"https://www.froisxavier.com.br/reforma-residencial-em-jacarei","provider":{"@type":"GeneralContractor","name":"Frois Xavier Construtora","url":"https://www.froisxavier.com.br/","telephone":"+5512988667973","email":"froisxavier@gmail.com","address":{"@type":"PostalAddress","streetAddress":"R. Cap. João José de Macedo, 237 - Sala 1","addressLocality":"Jacareí","addressRegion":"SP","postalCode":"12327-030","addressCountry":"BR"},"areaServed":[{"@type":"City","name":"São José dos Campos"},{"@type":"City","name":"Jacareí"},{"@type":"AdministrativeArea","name":"Vale do Paraíba"}]},"areaServed":[{"@type":"City","name":"São José dos Campos"},{"@type":"City","name":"Jacareí"},{"@type":"AdministrativeArea","name":"Vale do Paraíba"}],"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://www.froisxavier.com.br/reforma-residencial-em-jacarei","servicePhone":{"@type":"ContactPoint","telephone":"+5512988667973"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto custa reformar uma casa em Jacareí?","acceptedAnswer":{"@type":"Answer","text":"O custo depende da área, do estado do imóvel, de quanto há de elétrica e hidráulica a refazer e do padrão de acabamento. Reforma que mexe em instalação custa bem mais por metro quadrado do que reforma de acabamento. O orçamento é fechado após a visita técnica, detalhado por etapa."}},{"@type":"Question","name":"Preciso de engenheiro para reformar em Jacareí?","acceptedAnswer":{"@type":"Answer","text":"Para reforma que altera estrutura, vedação ou instalações, sim — é o que exige a NBR 16280, e nesses casos a ART é emitida no CREA-SP. Reforma apenas de acabamento normalmente não exige. A avaliação prévia diz em qual caso a sua obra está."}},{"@type":"Question","name":"Reforma que aumenta a área precisa ser regularizada?","acceptedAnswer":{"@type":"Answer","text":"Sim. Área construída acrescida sem aprovação deixa o imóvel irregular perante o município e impede financiamento, escrituração e averbação. Jacareí tem legislação própria de regularização — a Lei Municipal 6.718/2025 e o Decreto 126/2025 — e conduzimos esse processo."}},{"@type":"Question","name":"Vocês fazem reforma de um ambiente só?","acceptedAnswer":{"@type":"Answer","text":"Sim. Banheiro e cozinha são os mais pedidos e os que mais dependem de impermeabilização e hidráulica bem executadas."}},{"@type":"Question","name":"Quanto tempo demora a reforma?","acceptedAnswer":{"@type":"Answer","text":"O prazo depende do escopo e da área e é definido no cronograma junto com o orçamento, depois da visita ao imóvel. Não damos prazo por telefone, porque prazo dado sem ver a obra não se cumpre."}},{"@type":"Question","name":"Vocês fornecem material?","acceptedAnswer":{"@type":"Answer","text":"Trabalhamos com e sem fornecimento de material. O orçamento apresenta os dois valores separados para você decidir."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.froisxavier.com.br/"},{"@type":"ListItem","position":2,"name":"Obras e Reformas"},{"@type":"ListItem","position":3,"name":"Reforma Residencial em Jacareí","item":"https://www.froisxavier.com.br/reforma-residencial-em-jacarei"}]}</script>
 </head>
 <body>
+<a class="pular" href="#conteudo">Ir para o conteúdo</a>
 
-<header class="top">
-  <div class="wide">
-    <a class="marca" href="/">
-      <img src="data:image/png;base64,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" alt="Frois Xavier Construtora" width="48" height="48"/>
-      <span class="n"><b>FROIS XAVIER</b><span>CONSTRUTORA</span></span>
+<header class="topo">
+  <div class="shell"><div class="col wide">
+    <a class="marca" href="/" aria-label="Frois Xavier Construtora — início">
+      <img src="data:image/png;base64,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" alt="" width="48" height="48"/>
+      <span><b>FROIS XAVIER</b><i>CONSTRUTORA</i></span>
     </a>
-    <a class="topcta" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20Residencial%20em%20Jacareí"
-       target="_blank" rel="noopener">Falar com o engenheiro</a>
-  </div>
+    <a class="topcta" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20Residencial%20em%20Jacareí" target="_blank" rel="noopener">Falar com o engenheiro</a>
+  </div></div>
 </header>
 
-<nav class="mig" aria-label="Você está em">
-  <div class="wrap"><a href="/">Início</a><i>›</i>Obras e Reformas<i>›</i>Reforma Residencial em Jacareí</div>
-</nav>
-<main><div class="wrap">
-<p class="eyebrow">Obras e Reformas · Jacareí · Vale do Paraíba</p>
-<h1>Reforma de casa e apartamento em Jacareí</h1>
-<div class="resumo"><p>Reforma residencial em Jacareí conduzida por engenheiro civil registrado no CREA-SP, com visita ao imóvel, orçamento detalhado por etapa e ART emitida. Somos sediados no Centro de Jacareí — a visita e o acompanhamento são na mesma cidade.</p></div>
-<h2>O que entra em uma reforma residencial bem conduzida</h2>
+<section class="hero grao">
+  <div class="shell"><div class="col">
+    <nav class="mig" aria-label="Você está em">
+      <a href="/">Início</a><span>/</span>Obras e Reformas<span>/</span><em>Reforma Residencial em Jacareí</em>
+    </nav>
+    <p class="over">Jacareí · Vale do Paraíba</p>
+    <h1>Reforma de casa e apartamento em Jacareí</h1>
+    <p class="lead">Reforma residencial em Jacareí conduzida por engenheiro civil registrado no CREA-SP, com visita ao imóvel, orçamento detalhado por etapa e ART emitida. Somos sediados no Centro de Jacareí — a visita e o acompanhamento são na mesma cidade.</p>
+  </div></div>
+</section>
+<main id="conteudo"><div class="shell"><div class="col">
+<section class="sec rev"><p class="over">Definição</p><h2>O que entra em uma reforma residencial bem conduzida</h2><div class="prosa">
 <p>Reforma começa no levantamento, não na demolição. Saber o que é estrutural, por onde passam as instalações e o que a norma exige é o que impede a obra de parar no meio ou de custar muito mais do que o combinado.</p>
 <p>A ABNT NBR 16280 trata de reforma em edificações e exige plano de reforma e responsável técnico quando a obra altera estrutura, vedação ou instalações. A NBR 15575 define os requisitos de desempenho que a edificação precisa manter depois da intervenção.</p>
 <p>Orçamento que não separa material de mão de obra e não diz o que está fora do escopo é o orçamento que vira aditivo no meio da obra.</p>
-<h2>O que atendemos</h2><ul class="blocos">
+</div></section>
+<section class="sec rev"><p class="over">Escopo</p><h2>O que atendemos</h2><ul class="itens">
 <li><h3>Reforma completa</h3><p>Casa ou apartamento inteiro, com cronograma por etapa e instalações compatibilizadas.</p></li>
 <li><h3>Reforma por ambiente</h3><p>Banheiro, cozinha ou área de serviço — onde impermeabilização e hidráulica definem o resultado.</p></li>
 <li><h3>Ampliação</h3><p>Quarto, edícula ou pavimento novo, com projeto e regularização da área acrescida.</p></li>
 <li><h3>Reforma para vender ou alugar</h3><p>Intervenção pontual para valorizar o imóvel, sem gastar onde não há retorno.</p></li>
-</ul>
-<h2>Como trabalhamos</h2><ul class="passos">
-<li>Visita ao imóvel em Jacareí para levantar o que existe e o que as instalações comportam.</li>
-<li>Escopo escrito e orçamento por etapa, com material e mão de obra separados.</li>
-<li>Projeto e ART quando a reforma altera estrutura, vedação ou instalações.</li>
-<li>Execução com engenheiro acompanhando e registro do que fica embutido.</li>
-<li>Entrega com a documentação técnica da reforma executada.</li>
-</ul>
-<h2>Onde atendemos</h2><p class="bairros">Atendemos reforma residencial em toda Jacareí: Centro, Cidade Nova, Villa Branca, Jardim Paraíba, Jardim Califórnia, Parque Meia Lua, São Silvestre, Jardim Santa Maria e Parque dos Príncipes.</p>
-<h2>Perguntas frequentes</h2>
-<details><summary>Quanto custa reformar uma casa em Jacareí?</summary><div class="r"><p>O custo depende da área, do estado do imóvel, de quanto há de elétrica e hidráulica a refazer e do padrão de acabamento. Reforma que mexe em instalação custa bem mais por metro quadrado do que reforma de acabamento. O orçamento é fechado após a visita técnica, detalhado por etapa.</p></div></details>
-<details><summary>Preciso de engenheiro para reformar em Jacareí?</summary><div class="r"><p>Para reforma que altera estrutura, vedação ou instalações, sim — é o que exige a NBR 16280, e nesses casos a ART é emitida no CREA-SP. Reforma apenas de acabamento normalmente não exige. A avaliação prévia diz em qual caso a sua obra está.</p></div></details>
-<details><summary>Reforma que aumenta a área precisa ser regularizada?</summary><div class="r"><p>Sim. Área construída acrescida sem aprovação deixa o imóvel irregular perante o município e impede financiamento, escrituração e averbação. Jacareí tem legislação própria de regularização — a Lei Municipal 6.718/2025 e o Decreto 126/2025 — e conduzimos esse processo.</p></div></details>
-<details><summary>Vocês fazem reforma de um ambiente só?</summary><div class="r"><p>Sim. Banheiro e cozinha são os mais pedidos e os que mais dependem de impermeabilização e hidráulica bem executadas.</p></div></details>
-<details><summary>Quanto tempo demora a reforma?</summary><div class="r"><p>O prazo depende do escopo e da área e é definido no cronograma junto com o orçamento, depois da visita ao imóvel. Não damos prazo por telefone, porque prazo dado sem ver a obra não se cumpre.</p></div></details>
-<details><summary>Vocês fornecem material?</summary><div class="r"><p>Trabalhamos com e sem fornecimento de material. O orçamento apresenta os dois valores separados para você decidir.</p></div></details>
-<div class="cta">
+</ul></section>
+<section class="sec rev"><p class="over">Método</p><h2>Como trabalhamos</h2><ul class="metodo">
+<li><span>Visita ao imóvel em Jacareí para levantar o que existe e o que as instalações comportam.</span></li>
+<li><span>Escopo escrito e orçamento por etapa, com material e mão de obra separados.</span></li>
+<li><span>Projeto e ART quando a reforma altera estrutura, vedação ou instalações.</span></li>
+<li><span>Execução com engenheiro acompanhando e registro do que fica embutido.</span></li>
+<li><span>Entrega com a documentação técnica da reforma executada.</span></li>
+</ul></section>
+<section class="sec rev"><p class="over">Cobertura</p><h2>Onde atendemos</h2><p class="onde">Atendemos reforma residencial em toda Jacareí: Centro, Cidade Nova, Villa Branca, Jardim Paraíba, Jardim Califórnia, Parque Meia Lua, São Silvestre, Jardim Santa Maria e Parque dos Príncipes.</p></section>
+<section class="sec rev"><p class="over">Dúvidas frequentes</p><h2>Perguntas e respostas</h2><div class="faq">
+<details><summary>Quanto custa reformar uma casa em Jacareí?</summary><div class="resp"><div><p>O custo depende da área, do estado do imóvel, de quanto há de elétrica e hidráulica a refazer e do padrão de acabamento. Reforma que mexe em instalação custa bem mais por metro quadrado do que reforma de acabamento. O orçamento é fechado após a visita técnica, detalhado por etapa.</p></div></div></details>
+<details><summary>Preciso de engenheiro para reformar em Jacareí?</summary><div class="resp"><div><p>Para reforma que altera estrutura, vedação ou instalações, sim — é o que exige a NBR 16280, e nesses casos a ART é emitida no CREA-SP. Reforma apenas de acabamento normalmente não exige. A avaliação prévia diz em qual caso a sua obra está.</p></div></div></details>
+<details><summary>Reforma que aumenta a área precisa ser regularizada?</summary><div class="resp"><div><p>Sim. Área construída acrescida sem aprovação deixa o imóvel irregular perante o município e impede financiamento, escrituração e averbação. Jacareí tem legislação própria de regularização — a Lei Municipal 6.718/2025 e o Decreto 126/2025 — e conduzimos esse processo.</p></div></div></details>
+<details><summary>Vocês fazem reforma de um ambiente só?</summary><div class="resp"><div><p>Sim. Banheiro e cozinha são os mais pedidos e os que mais dependem de impermeabilização e hidráulica bem executadas.</p></div></div></details>
+<details><summary>Quanto tempo demora a reforma?</summary><div class="resp"><div><p>O prazo depende do escopo e da área e é definido no cronograma junto com o orçamento, depois da visita ao imóvel. Não damos prazo por telefone, porque prazo dado sem ver a obra não se cumpre.</p></div></div></details>
+<details><summary>Vocês fornecem material?</summary><div class="resp"><div><p>Trabalhamos com e sem fornecimento de material. O orçamento apresenta os dois valores separados para você decidir.</p></div></div></details>
+</div></section>
+</div></div>
+<section class="cta grao"><div class="shell"><div class="col">
+<p class="over">Atendimento</p>
 <h2>Fale com o engenheiro responsável</h2>
-<p>Atendemos Jacareí, São José dos Campos e região do Vale do Paraíba. Analisamos o seu caso e explicamos o que a documentação exige antes de qualquer contratação.</p>
+<p>Atendemos São José dos Campos, Jacareí e a região do Vale do Paraíba. Analisamos o seu caso e explicamos o que a documentação exige antes de qualquer contratação.</p>
 <a class="btn" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Reforma%20Residencial%20em%20Jacareí" target="_blank" rel="noopener">Falar no WhatsApp</a>
-</div>
-<h2>Serviços relacionados</h2><ul class="rel">
-<li><a href="/construtora-em-jacarei"><span>Obras e Reformas</span>Construtora em Jacareí</a></li>
-<li><a href="/regularizacao-de-imoveis"><span>Plantas e Regularização</span>Regularização de Imóveis</a></li>
-<li><a href="/preciso-de-engenheiro-para-reformar-apartamento"><span>Guias e Custos</span>Preciso de engenheiro para reformar?</a></li>
-</ul>
+</div></div></section>
+<div class="shell"><div class="col"><section class="sec rev"><p class="over">Continue</p><h2>Serviços relacionados</h2><ul class="rel">
+<li><a href="/construtora-em-jacarei"><span>Obras e Reformas</span><strong>Construtora em Jacareí</strong><em>Ver a página &rarr;</em></a></li>
+<li><a href="/regularizacao-de-imoveis"><span>Plantas e Regularização</span><strong>Regularização de Imóveis</strong><em>Ver a página &rarr;</em></a></li>
+<li><a href="/preciso-de-engenheiro-para-reformar-apartamento"><span>Guias e Custos</span><strong>Preciso de engenheiro para reformar?</strong><em>Ver a página &rarr;</em></a></li>
+</ul></section>
 <p class="nota">Conteúdo técnico produzido pela Frois Xavier Construtora com base na legislação vigente e nas normas da ABNT. Todo serviço técnico é conduzido por engenheiro civil registrado no CREA-SP, com Anotação de Responsabilidade Técnica (ART) vinculada. Esta página tem caráter informativo e não substitui a análise do caso concreto — prazos e exigências variam conforme o município, o órgão competente e a situação do imóvel.</p>
-</div></main>
+</div></div></main>
 <footer>
-  <div class="wide">
-    <div class="fg">
+  <div class="shell"><div class="col wide">
+    <div class="fgrid">
       <div>
         <h4>Frois Xavier Construtora</h4>
-        <p style="margin:0">Construção, reforma, laudos técnicos e regularização de imóveis
-        no Vale do Paraíba, com engenheiro responsável e respaldo documental.</p>
+        <p class="sobre">Construção, reforma, reparos e regularização de imóveis em São José
+        dos Campos, Jacareí e Vale do Paraíba — com engenheiro civil registrado no CREA-SP
+        e ART em cada obra.</p>
       </div>
-      <div>
-        <h4>Laudos e Vistorias</h4>
-        <ul>{laudos}</ul>
-      </div>
-      <div>
-        <h4>Plantas e Regularização</h4>
-        <ul>{plantas}</ul>
-      </div>
+      <div><h4>Obras e Reformas</h4><ul><li><a href="/construtora-em-sao-jose-dos-campos">Construtora em São José dos Campos</a></li><li><a href="/reforma-residencial-em-sao-jose-dos-campos">Reforma Residencial em SJC</a></li><li><a href="/reforma-de-apartamento-em-sao-jose-dos-campos">Reforma de Apartamento em SJC</a></li><li><a href="/reforma-comercial-em-sao-jose-dos-campos">Reforma Comercial em SJC</a></li><li><a href="/construcao-de-casas-em-sao-jose-dos-campos">Construção de Casas em SJC</a></li><li><a href="/construtora-em-jacarei">Construtora em Jacareí</a></li><li><a href="/reforma-residencial-em-jacarei">Reforma Residencial em Jacareí</a></li><li><a href="/reparos-e-manutencao-predial">Reparos e Manutenção Predial</a></li><li><a href="/preciso-de-engenheiro-para-reformar-apartamento">Preciso de engenheiro para reformar?</a></li><li><a href="/quanto-custa-construir-ou-reformar">Quanto custa construir ou reformar</a></li></ul></div>
+      <div><h4>Regularização e Laudos</h4><ul><li><a href="/habite-se">Habite-se</a></li><li><a href="/usucapiao">Usucapião</a></li><li><a href="/desmembramento-e-unificacao">Desmembramento e Unificação</a></li><li><a href="/regularizacao-de-imoveis">Regularização de Imóveis</a></li><li><a href="/art-responsabilidade-tecnica">ART — Responsabilidade Técnica</a></li><li><a href="/laudo-cautelar-de-vizinhanca">Laudo Cautelar de Vizinhança</a></li><li><a href="/laudo-de-vicios-construtivos">Laudo de Vícios Construtivos</a></li><li><a href="/relatorio-fotografico">Relatório Fotográfico</a></li><li><a href="/avcb">AVCB</a></li><li><a href="/clcb">CLCB</a></li><li><a href="/minha-casa-minha-vida">Minha Casa Minha Vida</a></li></ul></div>
       <div>
         <h4>Contato</h4>
         <ul>
@@ -355,10 +340,24 @@ padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.1)}
     </div>
     <div class="fim">
       R. Cap. João José de Macedo, 237 — Sala 1 · Centro · Jacareí — SP · CEP 12327-030<br/>
-      CNPJ 68.053.220/0001-17 · Engenheiro responsável registrado no CREA-SP<br/>
+      CNPJ 68.053.220/0001-17 · Engenheiro civil responsável registrado no CREA-SP<br/>
       © 2026 Frois Xavier Construtora. Todos os direitos reservados.
     </div>
-  </div>
+  </div></div>
 </footer>
+
+<script>
+(function(){
+  var a=document.querySelectorAll('.rev');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){
+    a.forEach(function(e){e.classList.add('on')});return;
+  }
+  var o=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})
+  },{rootMargin:'0px 0px -12% 0px',threshold:.06});
+  a.forEach(function(e){o.observe(e)});
+})();
+</script>
+
 </body>
 </html>
