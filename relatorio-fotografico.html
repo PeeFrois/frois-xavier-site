@@ -26,8 +26,7 @@
 <link rel="sitemap" type="application/xml" href="https://www.froisxavier.com.br/sitemap.xml"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@300;400;500;600;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@300;400;500;600;700;800&display=swap"/>
 <style>
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -53,27 +52,26 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .grao>*{position:relative;z-index:1}
 
 /* ---------------------------------------------------------- cabeçalho */
-.topo{background:rgba(10,42,30,.94);position:sticky;top:0;z-index:50;
-backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);
-border-bottom:1px solid rgba(255,255,255,.06)}
-@supports not (backdrop-filter:blur(2px)){.topo{background:#0a2a1e}}
-.topo .shell{display:flex;align-items:center;justify-content:space-between;gap:40px;
-min-height:82px}
-.marca{display:flex;align-items:center;gap:12px}
-.marca img{height:42px;width:auto}
-.marca b{display:block;color:#fff;font-size:16px;font-weight:800;letter-spacing:.13em;
+.topo{background:#0a2a1e;position:sticky;top:0;z-index:50}
+.topo .shell{display:flex;align-items:center;justify-content:space-between;gap:36px;
+min-height:88px}
+.marca{display:flex;align-items:center;gap:12px;flex:none}
+.marca img{height:44px;width:auto}
+.marca b{display:block;color:#fff;font-size:19px;font-weight:700;letter-spacing:.1em;
 line-height:1;white-space:nowrap}
-.marca i{display:block;color:#c09848;font-size:9.5px;font-weight:600;letter-spacing:.42em;
+.marca i{display:block;color:#c09848;font-size:10px;font-weight:500;letter-spacing:.42em;
 font-style:normal;margin-top:6px;line-height:1}
-.menu{display:flex;align-items:center;gap:30px;flex:1;justify-content:center}
-.menu a{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-color:rgba(255,255,255,.6);white-space:nowrap;transition:color .22s}
-.menu a:hover{color:#d8b878}
-.menu a.atual{color:#c09848}
-.topcta{border:1px solid rgba(216,184,120,.38);color:#d8b878;padding:11px 22px;
-font-size:12.5px;font-weight:600;letter-spacing:.07em;white-space:nowrap;
-transition:background .25s,color .25s,border-color .25s}
-.topcta:hover{background:#a07830;border-color:#a07830;color:#fff}
+.menu{display:flex;align-items:center;gap:36px;flex:none}
+.menu a{position:relative;font-size:12px;font-weight:600;letter-spacing:.22em;
+text-transform:uppercase;color:rgba(255,255,255,.78);white-space:nowrap;
+padding-bottom:5px;transition:color .22s}
+.menu a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;
+background:#a07830;transform:scaleX(0);transform-origin:left;
+transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+.menu a:hover{color:#fff}
+.menu a:hover::after{transform:scaleX(1)}
+.menu a.atual{color:#fff}
+.menu a.atual::after{transform:scaleX(1)}
 
 /* ---------------------------------------------------------- hero */
 .hero{background:#0a2a1e;padding:16px 0 78px;overflow:hidden}
@@ -124,10 +122,6 @@ p.fonte{margin:18px 0 0!important;padding-top:14px;border-top:1px solid rgba(17,
 font-size:13.5px;color:#8a8a86}
 p.fonte a{color:#a07830;font-weight:600;border-bottom:1px solid rgba(160,120,48,.35)}
 p.fonte a:hover{border-bottom-color:#a07830}
-
-p.cidade{margin:34px 0 4px;font-size:12px;font-weight:700;letter-spacing:.2em;
-text-transform:uppercase;color:#0a2a1e}
-p.cidade:first-of-type{margin-top:0}
 
 /* lista da aba de engenharia */
 .lista{list-style:none;padding:0;margin:0;border-top:1px solid rgba(17,17,17,.14)}
@@ -260,9 +254,6 @@ footer h4{color:rgba(255,255,255,.38);font-size:9.5px;letter-spacing:.26em;
 text-transform:uppercase;font-weight:700;margin:0 0 18px}
 footer ul{list-style:none;padding:0;margin:0}
 footer li{margin-bottom:11px;line-height:1.5}
-footer li.sub{color:rgba(255,255,255,.3);font-size:9.5px;letter-spacing:.2em;
-text-transform:uppercase;font-weight:700;margin:16px 0 8px}
-footer li.sub:first-child{margin-top:0}
 footer a{color:rgba(255,255,255,.62);transition:color .2s}
 footer a:hover{color:#c09848}
 footer .sobre{color:rgba(255,255,255,.45);margin:0;max-width:34ch;line-height:1.75;
@@ -271,18 +262,23 @@ font-size:14.5px;font-weight:300}
 letter-spacing:.02em}
 
 /* ---------------------------------------------------------- responsivo */
-@media(max-width:1180px){
-  .menu{gap:18px}
-  .menu a{font-size:10.5px;letter-spacing:.15em}
+@media(max-width:1080px){
+  .topo .shell{gap:24px}
+  .menu{gap:24px}
+  .menu a{font-size:11px;letter-spacing:.16em}
 }
-@media(max-width:980px){
-  .topo .shell{flex-wrap:wrap;padding:14px 24px;min-height:0;gap:14px}
-  .menu{order:3;width:100%;flex:none;justify-content:flex-start;gap:0;
-  overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-  border-top:1px solid rgba(255,255,255,.08);padding-top:13px}
+@media(max-width:860px){
+  .topo .shell{flex-wrap:wrap;padding:16px 24px;min-height:0;gap:14px}
+  .marca img{height:36px}
+  .marca b{font-size:16px}
+  .marca i{font-size:8.5px;letter-spacing:.34em}
+  .menu{order:3;flex:0 0 100%;gap:0;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;border-top:1px solid rgba(255,255,255,.08);
+  padding-top:13px}
   .menu::-webkit-scrollbar{display:none}
-  .menu a{padding-right:24px}
+  .menu a{padding:0 26px 5px 0}
   .menu a:last-child{padding-right:0}
+  .menu a::after{right:26px}
 }
 @media(max-width:900px){
   .hero{padding-bottom:62px}
@@ -295,7 +291,6 @@ letter-spacing:.02em}
   .marca img{height:34px}
   .marca b{font-size:13.5px;letter-spacing:.1em}
   .marca i{font-size:8px;letter-spacing:.3em;margin-top:5px}
-  .topcta{padding:9px 13px;font-size:11px;letter-spacing:.03em}
   .mig{margin-bottom:34px;font-size:11.5px;gap:7px}
   .hero{padding-bottom:52px}
   .hero h1{max-width:none}
@@ -324,11 +319,7 @@ letter-spacing:.02em}
   .fgrid{gap:34px;padding-bottom:34px}
   .resp p{padding-right:20px;font-size:16px}
 }
-.rev{opacity:0;transform:translateY(16px);
-transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
-.rev.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
-  .rev{opacity:1!important;transform:none!important}
   *{transition:none!important;scroll-behavior:auto!important}
 }
 </style>
@@ -340,7 +331,7 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
 <a class="pular" href="#conteudo">Ir para o conteúdo</a>
 
 <header class="topo">
-  <div class="shell"><div class="col wide">
+  <div class="shell">
     <a class="marca" href="/" aria-label="Frois Xavier Construtora — início">
       <img src="data:image/png;base64,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" alt="" width="48" height="48"/>
       <span><b>FROIS XAVIER</b><i>CONSTRUTORA</i></span>
@@ -350,10 +341,9 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
       <a href="/#sobre">Sobre Nós</a>
       <a href="/#servicos">Serviços</a>
       <a href="/#obras">Obras</a>
-      <a href="/engenharia" class="atual">Engenharia</a>
+      <a href="/duvidas-frequentes">FAQ</a>
       <a href="/#contato">Contato</a>
     </nav>
-    <a class="topcta" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Relatório%20Fotográfico" target="_blank" rel="noopener">Falar com o engenheiro</a>
   </div>
 </header>
 
@@ -368,25 +358,25 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
   </div></div>
 </section>
 <main id="conteudo"><div class="shell"><div class="col">
-<section class="sec rev"><p class="over">Definição</p><h2>O que é o relatório fotográfico técnico</h2><div class="prosa">
+<section class="sec"><p class="over">Definição</p><h2>O que é o relatório fotográfico técnico</h2><div class="prosa">
 <p>O relatório reúne fotografias coloridas, nítidas e sem distorção, capturadas em período diurno, cobrindo fachadas, ambientes internos, áreas úmidas, áreas comuns e pontos específicos de interesse.</p>
 <p>Cada imagem recebe legenda com identificação do ambiente e descrição do que está sendo demonstrado. As fotos são datadas e o conjunto é paginado e assinado.</p>
 <p>Quando o relatório instrui um processo administrativo, seguimos o roteiro exigido pelo órgão — por exemplo, os critérios de cobertura que a prefeitura define para processos de regularização.</p>
 </div></section>
-<section class="sec rev"><p class="over">Quando</p><h2>Quando você precisa disso</h2><ul class="itens">
+<section class="sec"><p class="over">Quando</p><h2>Quando você precisa disso</h2><ul class="itens">
 <li><h3>Vai protocolar processo na prefeitura</h3><p>Regularização, habite-se e anistia exigem relatório fotográfico com critérios definidos de cobertura.</p></li>
 <li><h3>Precisa comprovar o estado do imóvel em uma data</h3><p>Antes de uma obra, de uma locação, de uma venda ou de uma perícia.</p></li>
 <li><h3>Está em negociação ou disputa</h3><p>Fotos organizadas com responsável técnico sustentam a sua posição melhor que imagens avulsas.</p></li>
 <li><h3>Quer documentar a evolução de uma obra</h3><p>Registro periódico que comprova etapas executadas e prazos cumpridos.</p></li>
 </ul></section>
-<section class="sec rev"><p class="over">Método</p><h2>Como conduzimos o serviço</h2><ul class="metodo">
+<section class="sec"><p class="over">Método</p><h2>Como conduzimos o serviço</h2><ul class="metodo">
 <li><span>Visita técnica com engenheiro e registro fotográfico completo conforme a finalidade do documento.</span></li>
 <li><span>Cobertura de fachadas, via e passeio público, cômodos internos, áreas úmidas e área permeável.</span></li>
 <li><span>Descrição técnica individual de cada fotografia, com identificação do ambiente.</span></li>
 <li><span>Documento paginado, datado e assinado por engenheiro civil do CREA-SP, com ART vinculada.</span></li>
 <li><span>Quando o processo exigir, formatação conforme o formulário do órgão de destino.</span></li>
 </ul></section>
-<section class="sec rev"><p class="over">Dúvidas frequentes</p><h2>Perguntas e respostas</h2><div class="faq">
+<section class="sec"><p class="over">Dúvidas frequentes</p><h2>Perguntas e respostas</h2><div class="faq">
 <details><summary>Qual a diferença entre relatório fotográfico e fotos comuns?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>O relatório tem estrutura definida, cobertura sistemática, legendas técnicas, data e responsável técnico identificado com ART. Fotos avulsas não comprovam quando foram tiradas nem por quem, e não têm quem responda tecnicamente pelo conteúdo.</p></div></div></details>
 <details><summary>O relatório fotográfico serve como prova judicial?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>Sim, como prova documental. A força vem da combinação entre registro datado, descrição técnica e assinatura de profissional habilitado. É comum que instrua perícias e produção antecipada de prova.</p></div></div></details>
 <details><summary>Quantas fotos o relatório precisa ter?<span class="mais" aria-hidden="true"></span></summary><div class="resp"><div><p>Depende da finalidade. Um processo de regularização na prefeitura tem critérios próprios de cobertura — fachadas, cômodos, áreas úmidas e área permeável. Um relatório de acompanhamento de obra segue a periodicidade contratada. O que define é a completude da cobertura, não o número.</p></div></div></details>
@@ -400,7 +390,7 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
 <p>Atendemos São José dos Campos, Jacareí e a região do Vale do Paraíba. Analisamos o seu caso e explicamos o que a documentação exige antes de qualquer contratação.</p>
 <a class="btn" href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20sobre%20Relatório%20Fotográfico" target="_blank" rel="noopener">Falar no WhatsApp</a>
 </div></div></section>
-<div class="shell"><div class="col"><section class="sec rev"><p class="over">Continue</p><h2>Serviços relacionados</h2><ul class="rel">
+<div class="shell"><div class="col"><section class="sec"><p class="over">Continue</p><h2>Serviços relacionados</h2><ul class="rel">
 <li><a href="/laudo-cautelar-de-vizinhanca"><span>Laudos e Vistorias</span><strong>Laudo Cautelar de Vizinhança</strong><em>Ver a página &rarr;</em></a></li>
 <li><a href="/laudo-de-vicios-construtivos"><span>Laudos e Vistorias</span><strong>Laudo de Vícios Construtivos</strong><em>Ver a página &rarr;</em></a></li>
 <li><a href="/regularizacao-de-imoveis"><span>Plantas e Regularização</span><strong>Regularização de Imóveis</strong><em>Ver a página &rarr;</em></a></li>
@@ -408,7 +398,7 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
 <p class="nota">Conteúdo técnico produzido pela Frois Xavier Construtora com base na legislação vigente e nas normas da ABNT. Todo serviço técnico é conduzido por engenheiro civil registrado no CREA-SP, com Anotação de Responsabilidade Técnica (ART) vinculada. Esta página tem caráter informativo e não substitui a análise do caso concreto — prazos e exigências variam conforme o município, o órgão competente e a situação do imóvel.</p>
 </div></div></main>
 <footer>
-  <div class="shell"><div class="col wide">
+  <div class="shell">
     <div class="fgrid">
       <div>
         <h4>Frois Xavier Construtora</h4>
@@ -416,7 +406,7 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
         dos Campos, Jacareí e Vale do Paraíba — com engenheiro civil registrado no CREA-SP
         e ART em cada obra.</p>
       </div>
-      <div><h4>Obras e Reformas</h4><ul><li class="sub">São José dos Campos</li><li><a href="/construtora-em-sao-jose-dos-campos">Construtora e obras em geral</a></li><li><a href="/reforma-residencial-em-sao-jose-dos-campos">Reforma de casa e apartamento</a></li><li><a href="/reforma-de-apartamento-em-sao-jose-dos-campos">Reforma de apartamento em condomínio</a></li><li><a href="/reforma-comercial-em-sao-jose-dos-campos">Reforma comercial</a></li><li><a href="/construcao-de-casas-em-sao-jose-dos-campos">Construção de casas</a></li><li class="sub">Jacareí</li><li><a href="/construtora-em-jacarei">Construtora e obras em geral</a></li><li><a href="/reforma-residencial-em-jacarei">Reforma de casa e apartamento</a></li><li class="sub">Toda a região</li><li><a href="/reparos-e-manutencao-predial">Reparos e Manutenção Predial</a></li><li><a href="/preciso-de-engenheiro-para-reformar-apartamento">Preciso de engenheiro para reformar?</a></li><li><a href="/quanto-custa-construir-ou-reformar">Quanto custa construir ou reformar</a></li></ul></div>
+      <div><h4>Obras e Reformas</h4><ul><li><a href="/construtora-em-sao-jose-dos-campos">Construtora e obras em geral</a></li><li><a href="/reforma-residencial-em-sao-jose-dos-campos">Reforma de casa e apartamento</a></li><li><a href="/reforma-de-apartamento-em-sao-jose-dos-campos">Reforma de apartamento em condomínio</a></li><li><a href="/reforma-comercial-em-sao-jose-dos-campos">Reforma comercial</a></li><li><a href="/construcao-de-casas-em-sao-jose-dos-campos">Construção de casas</a></li><li><a href="/construtora-em-jacarei">Construtora e obras em Jacareí</a></li><li><a href="/reforma-residencial-em-jacarei">Reforma de casa e apartamento em Jacareí</a></li><li><a href="/reparos-e-manutencao-predial">Reparos e Manutenção Predial</a></li><li><a href="/preciso-de-engenheiro-para-reformar-apartamento">Preciso de engenheiro para reformar?</a></li><li><a href="/quanto-custa-construir-ou-reformar">Quanto custa construir ou reformar</a></li></ul></div>
       <div><h4>Regularização e Laudos</h4><ul><li><a href="/habite-se">Habite-se</a></li><li><a href="/usucapiao">Usucapião</a></li><li><a href="/desmembramento-e-unificacao">Desmembramento e Unificação</a></li><li><a href="/regularizacao-de-imoveis">Regularização de Imóveis</a></li><li><a href="/art-responsabilidade-tecnica">ART — Responsabilidade Técnica</a></li><li><a href="/laudo-cautelar-de-vizinhanca">Laudo Cautelar de Vizinhança</a></li><li><a href="/laudo-de-vicios-construtivos">Laudo de Vícios Construtivos</a></li><li><a href="/relatorio-fotografico">Relatório Fotográfico</a></li><li><a href="/avcb">AVCB</a></li><li><a href="/clcb">CLCB</a></li><li><a href="/minha-casa-minha-vida">Minha Casa Minha Vida</a></li></ul></div>
       <div>
         <h4>Contato</h4>
@@ -435,19 +425,6 @@ transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.2
     </div>
   </div></div>
 </footer>
-
-<script>
-(function(){
-  var a=document.querySelectorAll('.rev');
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){
-    a.forEach(function(e){e.classList.add('on')});return;
-  }
-  var o=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})
-  },{rootMargin:'0px 0px -12% 0px',threshold:.06});
-  a.forEach(function(e){o.observe(e)});
-})();
-</script>
 
 </body>
 </html>
