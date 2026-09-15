@@ -194,6 +194,10 @@
 
     /* subtle grain / texture on dark sections */
     .grain { position: relative; }
+    /* o menu do celular precisa FLUTUAR, não ocupar espaço: sem esta
+       linha o .grain acima o torna relative e ele empurra a página
+       inteira para baixo, deixando a primeira tela vazia. */
+    #mobile-menu-box { position: fixed; }
     .grain::before {
       content:''; position:absolute; inset:0; pointer-events:none; opacity:0.04;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -392,6 +396,25 @@
               <button onclick="changePage('servicos')" data-t="home.hero.cta" class="border border-white/40 text-white text-[11px] uppercase tracking-[0.18em] font-bold px-9 py-4 hover:bg-white hover:text-forest transition-all bg-transparent">
                 Nossos Serviços →
               </button>
+          <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 reveal reveal-delay-3">
+            <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2.5 bg-gold hover:bg-gold-light text-white text-xs uppercase tracking-[0.18em] font-bold px-8 py-4 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.82 14.16c-.25.7-1.45 1.33-2 1.41-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.69-.62-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.21-1.6-1.21-3.06 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.7.67.51.25.58.84 2.04.91 2.19.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.64-.07.17-.2.74-.87.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2.01.95.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+              Pedir orçamento
+            </a>
+            <a href="tel:+5512988667973"
+               class="inline-flex items-center justify-center gap-2.5 border border-white/25 hover:border-gold-light text-white hover:text-gold-light text-xs uppercase tracking-[0.18em] font-bold px-8 py-4 transition-colors">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              (12) 98866-7973
+            </a>
+          </div>
+          <p class="text-white/45 text-[13.5px] font-normal mt-5 reveal reveal-delay-3">
+            Atendemos <strong class="text-white/70 font-semibold">São José dos Campos</strong>,
+            <strong class="text-white/70 font-semibold">Jacareí</strong> e todo o Vale do Paraíba
+            · Respondemos no mesmo dia, em horário comercial
+          </p>
+
             </div>
           </div>
         </div>
@@ -1030,7 +1053,7 @@
                     <p data-t="contact.p1_role" class="text-ink-soft text-base font-normal mt-0.5">Gestão de Obras &amp; Processos</p>
                     <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Pedro." target="_blank" rel="noopener" data-t="contact.p1_wa" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Pedro no WhatsApp →</a>
                   </div>
-                  <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 98866-7973</a>
+                  <a href="https://wa.me/5512988667973?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">WhatsApp</a><span class="shrink-0 text-ink-soft/40 mx-2">·</span><a href="tel:+5512988667973" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">Ligar</a>
                 </div>
                 <div class="flex items-start justify-between gap-4 border-b border-ink/10 pb-7">
                   <div>
@@ -1038,7 +1061,7 @@
                     <p data-t="contact.p2_role" class="text-ink-soft text-base font-normal mt-0.5">Engenharia &amp; Execução</p>
                     <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20falar%20com%20o%20Andrei." target="_blank" rel="noopener" data-t="contact.p2_wa" class="inline-block mt-3 text-forest font-semibold text-sm border-b border-forest/30 hover:border-forest transition-colors pb-0.5">Falar com Andrei no WhatsApp →</a>
                   </div>
-                  <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">(12) 99659-9313</a>
+                  <a href="https://wa.me/5512996599313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Frois%20Xavier%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">WhatsApp</a><span class="shrink-0 text-ink-soft/40 mx-2">·</span><a href="tel:+5512996599313" class="shrink-0 text-forest font-semibold text-sm hover:text-gold transition-colors whitespace-nowrap">Ligar</a>
                 </div>
               </div>
             </div>
@@ -1077,6 +1100,63 @@
                 Abrir no Google Maps →
               </a>
             </div>
+
+            <div class="bg-white border border-stone-dark p-8 lg:p-10 mb-6"><h3 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-5">Horário de atendimento</h3><div class="flex items-baseline justify-between gap-6 py-2.5 border-b border-ink/10"><span class="text-ink-light font-normal">Segunda a sexta</span><span class="text-ink font-semibold tabular-nums">08:00 — 18:00</span></div><div class="flex items-baseline justify-between gap-6 py-2.5 border-b border-ink/10"><span class="text-ink-light font-normal">Sábado</span><span class="text-ink font-semibold tabular-nums">08:00 — 12:00</span></div><div class="flex items-baseline justify-between gap-6 py-2.5 "><span class="text-ink-light font-normal">Domingo</span><span class="text-ink font-semibold tabular-nums">Fechado</span></div><p class="text-ink-soft text-[14.5px] font-normal mt-5 leading-relaxed">Fora desse horário, mande mensagem no WhatsApp: respondemos assim que o expediente abre. Visita à obra pode ser combinada em outro horário.</p></div>
+
+            <div class="bg-white border border-stone-dark p-8 lg:p-10 mb-6">
+              <h3 class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold mb-2">Prefere não abrir conversa agora?</h3>
+              <p class="text-ink-soft font-normal text-[15px] leading-relaxed mb-6">Responda quatro campos e nós preparamos a mensagem para você. Você confere antes de enviar — nada sai daqui sem você ler.</p>
+
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="of-nome" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">Seu nome</label>
+                  <input id="of-nome" type="text" autocomplete="name" oninput="ofMonta()"
+                    class="w-full border border-stone-dark bg-stone px-4 py-3 text-ink text-[15.5px] focus:outline-none focus:border-gold focus:bg-white transition-colors"/>
+                </div>
+                <div>
+                  <label for="of-cidade" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">Cidade e bairro</label>
+                  <input id="of-cidade" type="text" autocomplete="address-level2" oninput="ofMonta()"
+                    placeholder="Ex.: Jardim Aquarius, SJC"
+                    class="w-full border border-stone-dark bg-stone px-4 py-3 text-ink text-[15.5px] placeholder:text-ink-soft/50 focus:outline-none focus:border-gold focus:bg-white transition-colors"/>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="of-tipo" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">O que você precisa</label>
+                  <select id="of-tipo" onchange="ofMonta()"
+                    class="w-full border border-stone-dark bg-stone px-4 py-3 text-ink text-[15.5px] focus:outline-none focus:border-gold focus:bg-white transition-colors">
+                    <option value="">Escolha…</option>
+                    <option>Construir do zero</option>
+                    <option>Reformar casa</option>
+                    <option>Reformar apartamento</option>
+                    <option>Obra comercial (loja, escritório, clínica)</option>
+                    <option>Reparo ou manutenção</option>
+                    <option>Regularização, habite-se ou usucapião</option>
+                    <option>Laudo técnico</option>
+                    <option>AVCB ou CLCB</option>
+                    <option>Minha Casa Minha Vida</option>
+                    <option>Ainda não sei, quero orientação</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="of-det" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">Conte em uma linha <span class="text-ink-soft font-normal normal-case tracking-normal">(opcional)</span></label>
+                  <input id="of-det" type="text" oninput="ofMonta()"
+                    placeholder="Ex.: casa de 90 m², quero reformar cozinha e banheiro"
+                    class="w-full border border-stone-dark bg-stone px-4 py-3 text-ink text-[15.5px] placeholder:text-ink-soft/50 focus:outline-none focus:border-gold focus:bg-white transition-colors"/>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-3 mt-7">
+                <a id="of-wa" href="#" target="_blank" rel="noopener"
+                  class="inline-flex items-center justify-center gap-2.5 bg-forest hover:bg-forest-mid text-white text-xs uppercase tracking-[0.16em] font-bold px-7 py-4 transition-colors">
+                  Revisar e enviar no WhatsApp
+                </a>
+                <a id="of-mail" href="#"
+                  class="inline-flex items-center justify-center gap-2.5 border border-stone-dark hover:border-gold text-ink-soft hover:text-gold text-xs uppercase tracking-[0.16em] font-bold px-7 py-4 transition-colors">
+                  Prefiro por e-mail
+                </a>
+              </div>
+              <p class="text-ink-soft/80 text-[13px] mt-4 leading-relaxed">Não pedimos CPF, RG nem documento nesta etapa — só o necessário para entender o seu caso e te dar retorno.</p>
+            </div>
+
             <!-- embedded map -->
             <div class="aspect-[16/10] w-full overflow-hidden border border-stone-dark">
               <iframe
@@ -1137,6 +1217,7 @@
                 <span>Andrei Xavier — (12) 99659-9313</span>
               </a>
             </li>
+            <li class="pt-1"><a href="tel:+5512988667973" class="flex items-center gap-3 text-white/60 hover:text-gold-light transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="shrink-0"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Prefere ligar? (12) 98866-7973</span></a></li>
             <li>
               <a href="mailto:froisxavier@gmail.com" class="flex items-center gap-3 text-white/70 hover:text-gold-light transition-colors">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="shrink-0 opacity-70"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
@@ -1156,7 +1237,7 @@
       <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8">
         <div class="flex items-center gap-2.5 text-[11px] font-medium tracking-[0.08em] text-white/45 text-center md:text-left">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="shrink-0 text-gold-light/70"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>R. Cap. João José de Macedo, 237 — Sala 1 · Centro · Jacareí — SP · CEP 12327-030</span>
+          <span class="flex flex-wrap items-center gap-y-1"><span>R. Cap. João José de Macedo, 237 — Sala 1 · Centro · Jacareí — SP</span><span class="text-white/20 px-2" aria-hidden="true">·</span><span>CEP 12327-030</span><span class="text-white/20 px-2" aria-hidden="true">·</span><span>CNPJ 68.053.220/0001-17</span><span class="text-white/20 px-2" aria-hidden="true">·</span><span class="text-white/55">Seg a sex 08:00—18:00 · Sáb 08:00—12:00</span></span>
         </div>
         <div data-t="footer.copyright" class="text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 text-center md:text-right shrink-0">© 2026 Frois Xavier Construtora.</div>
       </div>
@@ -1841,7 +1922,7 @@
     var AS_BASE = null, AS_CARREGANDO = false, AS_N = 0, AS_HIST = [];
 
     var AS_SIN = {"habitese": ["habite", "se", "auto", "conclusao", "carta", "habitacao"], "habite": ["habitese", "auto", "conclusao"], "averbar": ["averbacao", "matricula", "cartorio", "registro"], "averbacao": ["averbar", "matricula", "cartorio", "registro"], "escritura": ["matricula", "cartorio", "registro", "escriturar"], "financiamento": ["financiar", "banco", "caixa", "credito"], "financiar": ["financiamento", "banco", "caixa"], "preco": ["custo", "valor", "quanto", "custa", "orcamento", "cub"], "custo": ["preco", "valor", "quanto", "custa", "orcamento", "cub"], "valor": ["preco", "custo", "quanto", "orcamento"], "custa": ["preco", "custo", "valor", "orcamento", "cub"], "orcamento": ["preco", "custo", "valor", "quanto"], "metro": ["m2", "metragem", "area", "quadrado"], "m2": ["metro", "metragem", "area"], "prazo": ["tempo", "demora", "quanto"], "demora": ["prazo", "tempo"], "bombeiro": ["avcb", "clcb", "incendio", "bombeiros"], "bombeiros": ["avcb", "clcb", "incendio", "bombeiro"], "incendio": ["avcb", "clcb", "bombeiro"], "avcb": ["bombeiro", "incendio", "vistoria"], "clcb": ["bombeiro", "incendio", "licenca"], "art": ["responsabilidade", "tecnica", "crea", "engenheiro"], "crea": ["art", "engenheiro", "responsabilidade"], "engenheiro": ["art", "crea", "responsavel", "tecnico"], "regularizar": ["regularizacao", "irregular", "legalizar", "habitese"], "regularizacao": ["regularizar", "irregular", "legalizar"], "irregular": ["regularizar", "regularizacao", "clandestino"], "clandestino": ["irregular", "regularizar"], "planta": ["projeto", "desenho", "memorial"], "projeto": ["planta", "memorial", "aprovacao"], "alvara": ["licenca", "aprovacao", "prefeitura"], "prefeitura": ["municipio", "alvara", "aprovacao"], "reforma": ["reformar", "obra", "renovar"], "reformar": ["reforma", "obra"], "construir": ["construcao", "obra", "edificar", "levantar"], "construcao": ["construir", "obra"], "ampliar": ["ampliacao", "aumentar", "edicula", "puxadinho"], "ampliacao": ["ampliar", "aumentar", "edicula"], "edicula": ["ampliacao", "ampliar", "puxadinho"], "puxadinho": ["edicula", "ampliacao", "irregular"], "apartamento": ["apto", "condominio", "predio"], "apto": ["apartamento", "condominio"], "condominio": ["apartamento", "predio", "sindico"], "trinca": ["rachadura", "fissura", "vicio", "patologia"], "rachadura": ["trinca", "fissura", "vicio"], "infiltracao": ["vazamento", "umidade", "vicio", "mofo"], "vazamento": ["infiltracao", "umidade"], "vicio": ["defeito", "trinca", "infiltracao", "laudo"], "defeito": ["vicio", "laudo", "trinca"], "laudo": ["vistoria", "relatorio", "perito", "pericia"], "vistoria": ["laudo", "relatorio", "inspecao"], "usucapiao": ["posse", "matricula", "cartorio"], "herdado": ["inventario", "heranca", "espolio", "partilha"], "heranca": ["inventario", "herdado", "partilha"], "inventario": ["heranca", "partilha", "espolio"], "vender": ["venda", "comprador", "escritura"], "venda": ["vender", "comprador"], "alugar": ["locacao", "inquilino", "aluguel"], "aluguel": ["alugar", "locacao", "inquilino"], "sjc": ["sao", "jose", "campos"], "jacarei": ["jacarei"], "mcmv": ["minha", "casa", "vida", "programa", "caixa"], "galpao": ["comercial", "industrial", "barracao"], "loja": ["comercial", "ponto", "salao"], "clinica": ["comercial", "consultorio"], "terreno": ["lote", "area"], "lote": ["terreno", "desmembramento"], "desmembrar": ["desmembramento", "lote", "dividir"], "goteira": ["telhado", "infiltracao", "cobertura"], "telhado": ["cobertura", "goteira", "reparo"], "pintura": ["pintar", "acabamento", "reparo"], "eletrica": ["fiacao", "instalacao", "quadro", "disjuntor"], "hidraulica": ["encanamento", "agua", "esgoto", "instalacao"]};
-    var AS_STOP = {"meus": 1, "vai": 1, "voces": 1, "suas": 1, "pode": 1, "isso": 1, "nas": 1, "lhe": 1, "se": 1, "este": 1, "sem": 1, "as": 1, "sobre": 1, "gostaria": 1, "com": 1, "que": 1, "la": 1, "ela": 1, "uns": 1, "nosso": 1, "ter": 1, "sou": 1, "ser": 1, "um": 1, "o": 1, "precisam": 1, "me": 1, "minha": 1, "os": 1, "havia": 1, "de": 1, "quais": 1, "muita": 1, "esse": 1, "mais": 1, "tem": 1, "vou": 1, "sempre": 1, "meu": 1, "vc": 1, "quem": 1, "ai": 1, "pro": 1, "nao": 1, "ate": 1, "fazem": 1, "entre": 1, "eram": 1, "aquilo": 1, "ou": 1, "mas": 1, "estar": 1, "quando": 1, "apos": 1, "menos": 1, "aquele": 1, "deve": 1, "minhas": 1, "queria": 1, "estao": 1, "devem": 1, "faz": 1, "saber": 1, "aqui": 1, "foi": 1, "onde": 1, "sei": 1, "muito": 1, "nossa": 1, "das": 1, "podia": 1, "te": 1, "fomos": 1, "temos": 1, "nos": 1, "uma": 1, "voce": 1, "aquela": 1, "da": 1, "vamos": 1, "elas": 1, "cuja": 1, "sua": 1, "fazer": 1, "so": 1, "tenho": 1, "ha": 1, "podem": 1, "nunca": 1, "no": 1, "estou": 1, "umas": 1, "preciso": 1, "cujo": 1, "precisa": 1, "tinha": 1, "apenas": 1, "posso": 1, "a": 1, "seus": 1, "ja": 1, "na": 1, "sob": 1, "devo": 1, "quero": 1, "esta": 1, "teve": 1, "porque": 1, "do": 1, "essa": 1, "para": 1, "qual": 1, "em": 1, "por": 1, "e": 1, "eles": 1, "fui": 1, "era": 1, "isto": 1, "fiz": 1, "ele": 1, "seu": 1, "eu": 1, "como": 1, "dos": 1, "faco": 1, "eh": 1, "pra": 1, "sao": 1};
+    var AS_STOP = {"de": 1, "a": 1, "faz": 1, "ele": 1, "quais": 1, "dos": 1, "menos": 1, "pra": 1, "eles": 1, "estao": 1, "ter": 1, "vai": 1, "com": 1, "precisa": 1, "tem": 1, "estar": 1, "pode": 1, "se": 1, "muita": 1, "das": 1, "fomos": 1, "nao": 1, "o": 1, "pro": 1, "uma": 1, "seu": 1, "entre": 1, "ate": 1, "foi": 1, "te": 1, "meu": 1, "posso": 1, "qual": 1, "gostaria": 1, "vc": 1, "nos": 1, "faco": 1, "os": 1, "meus": 1, "quero": 1, "um": 1, "onde": 1, "sempre": 1, "cuja": 1, "havia": 1, "quando": 1, "uns": 1, "quem": 1, "ela": 1, "sao": 1, "muito": 1, "podia": 1, "suas": 1, "ai": 1, "temos": 1, "as": 1, "isto": 1, "sem": 1, "aquilo": 1, "eu": 1, "cujo": 1, "seus": 1, "porque": 1, "fazem": 1, "ja": 1, "nunca": 1, "voces": 1, "deve": 1, "preciso": 1, "minha": 1, "eh": 1, "so": 1, "e": 1, "este": 1, "aquela": 1, "la": 1, "estou": 1, "teve": 1, "tenho": 1, "era": 1, "nossa": 1, "devem": 1, "no": 1, "da": 1, "minhas": 1, "na": 1, "vou": 1, "queria": 1, "ou": 1, "sua": 1, "tinha": 1, "nas": 1, "do": 1, "mas": 1, "sobre": 1, "apos": 1, "saber": 1, "sou": 1, "umas": 1, "voce": 1, "lhe": 1, "vamos": 1, "que": 1, "esse": 1, "fazer": 1, "podem": 1, "para": 1, "ha": 1, "como": 1, "essa": 1, "me": 1, "apenas": 1, "elas": 1, "fiz": 1, "eram": 1, "ser": 1, "sob": 1, "mais": 1, "nosso": 1, "em": 1, "por": 1, "precisam": 1, "fui": 1, "devo": 1, "aquele": 1, "aqui": 1, "esta": 1, "isso": 1, "sei": 1};
     var AS_ABRE = ['Olha o que encontrei aqui:', 'Isso eu respondo:', 'Encontrei esta:',
                    'Sobre isso:', 'Tenho resposta para essa:'];
 
@@ -2200,6 +2281,29 @@
     }
 
     if (document.getElementById('dg-opcoes')) dgRender();
+
+
+    /* ============ PEDIDO DE ORÇAMENTO ============ */
+    /* Quatro campos e nenhum servidor: o formulário monta a mensagem e a
+       pessoa confere antes de mandar. Sem CPF nem documento — a Opinion Box
+       mediu que 61% dos brasileiros se travam quando pedem dado sensível. */
+    function ofMonta(){
+      var v = function(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; };
+      var L = ['Olá! Vim pelo site da Frois Xavier.', ''];
+      if (v('of-nome'))   L.push('Meu nome: ' + v('of-nome'));
+      if (v('of-cidade')) L.push('Onde: ' + v('of-cidade'));
+      if (v('of-tipo'))   L.push('Preciso de: ' + v('of-tipo'));
+      if (v('of-det'))    L.push('Detalhe: ' + v('of-det'));
+      L.push('', 'Gostaria de um orçamento.');
+      var txt = L.join('\n');
+      var wa = document.getElementById('of-wa');
+      var mail = document.getElementById('of-mail');
+      if (wa) wa.href = 'https://wa.me/5512988667973?text=' + encodeURIComponent(txt);
+      if (mail) mail.href = 'mailto:froisxavier@gmail.com?subject=' +
+        encodeURIComponent('Orçamento pelo site' + (v('of-nome') ? ' — ' + v('of-nome') : '')) +
+        '&body=' + encodeURIComponent(txt);
+    }
+    if (document.getElementById('of-nome')) ofMonta();
 
     /* ============ MOBILE MENU ============ */
     function toggleMobileMenu() {
