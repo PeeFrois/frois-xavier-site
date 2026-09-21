@@ -445,36 +445,25 @@
       </div>
 
       <!-- ========================= DIAGNÓSTICO (novo) ========================= -->
-      <div id="diagnostico" class="bg-stone py-24 lg:py-32 px-6 lg:px-10" style="scroll-margin-top:80px;">
-        <div class="max-w-site mx-auto">
-          <div class="bg-forest grain relative overflow-hidden shadow-[0_40px_90px_-50px_rgba(5,24,17,0.75)] reveal">
-            <div class="grid lg:grid-cols-12 relative z-10">
-
-              <!-- chamada -->
-              <div class="lg:col-span-5 p-8 sm:p-10 lg:p-14 lg:border-r border-white/10 flex flex-col">
-                <span class="text-gold-light text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Diagnóstico gratuito</span>
-                <h2 class="font-serif text-white text-[32px] sm:text-4xl lg:text-[44px] font-light leading-[1.12] mb-6">Descubra em um minuto <span class="italic text-gold-light">como podemos ajudar na sua obra.</span></h2>
-                <p class="text-gold-pale/80 font-normal leading-relaxed text-[15.5px] max-w-md">Responda algumas perguntas simples. No fim você entende qual serviço resolve o seu caso — e, se quiser, envia tudo pronto para o nosso WhatsApp.</p>
-                <ul class="mt-8 space-y-3 text-[14.5px] text-white/70">
-                  <li class="flex items-center gap-3"><span class="w-4 h-px bg-gold-light shrink-0"></span>Sem cadastro e sem compromisso</li>
-                  <li class="flex items-center gap-3"><span class="w-4 h-px bg-gold-light shrink-0"></span>Você fala direto com quem executa a obra</li>
-                  <li class="flex items-center gap-3"><span class="w-4 h-px bg-gold-light shrink-0"></span>Resposta no mesmo dia, em horário comercial</li>
-                </ul>
-              </div>
-
-              <!-- perguntas -->
-              <div class="lg:col-span-7 border-t lg:border-t-0 border-white/10">
+      <div id="diagnostico" class="bg-stone py-24 lg:py-28 px-6 lg:px-10" style="scroll-margin-top:80px;">
+        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-12 reveal">
+          <span class="text-gold text-[11px] uppercase tracking-[0.28em] font-bold block mb-5">Diagnóstico gratuito</span>
+          <h2 class="font-serif text-ink text-4xl lg:text-5xl font-light leading-tight mb-5">Qual serviço resolve <span class="italic text-gold">o seu caso?</span></h2>
+          <p class="text-ink-soft font-normal leading-relaxed text-[16px]">Poucos cliques, sem cadastro. No fim você entende o caminho — e, se quiser, envia tudo pronto para o nosso WhatsApp.</p>
+        </div>
+        <div class="max-w-3xl mx-auto reveal reveal-delay-1">
+          <div class="bg-forest shadow-[0_24px_60px_-45px_rgba(5,24,17,0.55)]">
                 <div class="h-[3px] bg-white/10"><div id="dx-barra" class="h-full bg-gold-light transition-all duration-500" style="width:8%"></div></div>
-                <div class="p-8 sm:p-10 lg:p-14">
+                <div class="p-7 sm:p-10">
 
                   <div id="dx-quiz">
-                    <div class="flex items-center justify-between min-h-[28px] mb-6">
+                    <div id="dx-topo" class="hidden flex items-center justify-between min-h-[28px] mb-5">
                       <span id="dx-trilha" class="text-gold-light/80 text-[11px] uppercase tracking-[0.2em] font-bold truncate pr-4"></span>
                       <button type="button" id="dx-voltar" onclick="dxVoltar()" class="hidden shrink-0 text-white/60 hover:text-white text-[12px] uppercase tracking-[0.14em] font-semibold transition-colors min-h-[36px]">&larr; Voltar</button>
                     </div>
-                    <h3 id="dx-pergunta" class="font-serif text-white text-[26px] sm:text-[30px] font-normal leading-snug mb-2"></h3>
-                    <p id="dx-ajuda" class="text-white/55 font-normal text-[15px] leading-relaxed mb-7"></p>
-                    <div id="dx-opcoes" class="grid gap-2.5"></div>
+                    <h3 id="dx-pergunta" class="font-serif text-white text-[24px] sm:text-[28px] font-normal leading-snug mb-1.5"></h3>
+                    <p id="dx-ajuda" class="text-white/55 font-normal text-[14.5px] leading-relaxed mb-6"></p>
+                    <div id="dx-opcoes" class="grid sm:grid-cols-2 gap-2.5"></div>
 
                     <!-- último passo -->
                     <form id="dx-final" class="hidden" onsubmit="dxResultado(event)">
@@ -515,9 +504,6 @@
                   </div>
 
                 </div>
-              </div>
-
-            </div>
           </div>
         </div>
       </div>
@@ -576,15 +562,16 @@
         dxEl('dx-pergunta').textContent = q.p;
         dxEl('dx-ajuda').textContent = q.a || '';
         dxEl('dx-voltar').classList.toggle('hidden', dxPilha.length === 0);
+        dxEl('dx-topo').classList.toggle('hidden', dxPilha.length === 0);
         dxEl('dx-trilha').textContent = dxResp.length ? dxResp[0][1] : '';
         dxEl('dx-barra').style.width = Math.min(90, 8 + dxPilha.length * 22) + '%';
         var box = dxEl('dx-opcoes'); box.innerHTML = '';
         q.o.forEach(function(op){
           var b = document.createElement('button');
           b.type = 'button';
-          b.className = 'dx-op group w-full text-left flex items-center justify-between gap-4 border border-white/15 hover:border-gold-light hover:bg-white/[0.06] px-5 py-4 min-h-[60px] transition-colors';
-          b.innerHTML = '<span><span class="block text-gold-light font-semibold text-[15.5px] leading-snug"></span>' +
-            (op[1] ? '<span class="block text-white/55 text-[13.5px] leading-snug mt-1"></span>' : '') +
+          b.className = 'dx-op group w-full text-left flex items-center justify-between gap-3 border border-white/10 bg-white/[0.03] hover:border-gold-light/70 hover:bg-white/[0.07] px-4 py-3.5 min-h-[56px] transition-colors';
+          b.innerHTML = '<span><span class="block text-gold-light font-semibold text-[15px] leading-snug"></span>' +
+            (op[1] ? '<span class="block text-white/50 text-[13px] leading-snug mt-0.5"></span>' : '') +
             '</span><span class="text-gold-light/70 group-hover:text-gold-light text-lg shrink-0" aria-hidden="true">&rarr;</span>';
           var sp = b.querySelectorAll('span > span');
           sp[0].textContent = op[0];
@@ -606,6 +593,7 @@
         dxEl('dx-ajuda').textContent = 'Quanto mais detalhe, melhor a nossa primeira conversa.';
         dxEl('dx-ajuda').classList.remove('hidden');
         dxEl('dx-voltar').classList.remove('hidden');
+        dxEl('dx-topo').classList.remove('hidden');
         dxEl('dx-trilha').textContent = dxResp[0][1];
         dxEl('dx-barra').style.width = '92%';
       }
