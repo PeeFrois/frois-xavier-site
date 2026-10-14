@@ -308,6 +308,16 @@
     .as-dots i:nth-child(3){animation-delay:.32s}
     @keyframes asp{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
   </style>
+<!-- Google Analytics 4 (Frois Xavier - Site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YVF91B4BLS"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-YVF91B4BLS');
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';var ev=null,quem='';
+if(/wa\.me|api\.whatsapp|whatsapp\.com/i.test(h)){ev='clique_whatsapp';quem=/996599313/.test(h)?'Andrei':(/988667973/.test(h)?'Pedro':'outro');}
+else if(/^tel:/i.test(h)){ev='clique_telefone';}else if(/^mailto:/i.test(h)){ev='clique_email';}
+if(ev)gtag('event',ev,{contato:quem,pagina:location.pathname,link_url:h.slice(0,100)});},true);
+</script>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
