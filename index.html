@@ -688,11 +688,11 @@ if(ev)gtag('event',ev,{contato:quem,pagina:location.pathname,link_url:h.slice(0,
           li.innerHTML = '<span class="w-4 h-px bg-gold-light shrink-0"></span><span></span>';
           li.lastChild.textContent = t; ul.appendChild(li);
         });
-        var linhas = ['Olá! Vim pelo diagnóstico gratuito do site da Frois Xavier.', '', '*' + dxResp[0][1] + '*'];
-        dxResp.slice(1).forEach(function(r){ linhas.push('- ' + r[0] + ' ' + r[1]); });
-        if (texto) linhas.push('', 'O que eu preciso: ' + texto);
-        linhas.push('', 'Cidade da obra: ' + cidade);
-        if (nome) linhas.push('Nome: ' + nome);
+        var linhas = ['*DIAGNÓSTICO PELO SITE – FROIS XAVIER*', ''];
+        if (nome) linhas.push('*Nome:* ' + nome);
+        linhas.push('*Cidade da obra:* ' + cidade, '', '*Serviço:* ' + dxResp[0][1]);
+        dxResp.slice(1).forEach(function(r){ linhas.push('• ' + r[0] + ' ' + r[1]); });
+        if (texto) linhas.push('', '*Descrição do caso:*', texto);
         dxEl('dx-wa').href = 'https://wa.me/5512988667973?text=' + encodeURIComponent(linhas.join('\n'));
         dxEl('dx-leia').href = R.p;
         dxEl('dx-quiz').classList.add('hidden');
@@ -1320,11 +1320,30 @@ if(ev)gtag('event',ev,{contato:quem,pagina:location.pathname,link_url:h.slice(0,
                       <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-gold pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                   </div>
-                  <div class="sm:col-span-2">
-                    <label for="of-det" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">Conte em uma linha <span class="text-ink-soft font-normal normal-case tracking-normal">(opcional)</span></label>
-                    <input id="of-det" type="text" oninput="ofMonta()"
-                      placeholder="Ex.: casa de 90 m², quero reformar cozinha e banheiro"
+                  <div>
+                    <label for="of-imovel" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">Tipo de imóvel</label>
+                    <div class="relative">
+                      <select id="of-imovel" onchange="ofMonta()"
+                        class="w-full border border-forest/15 bg-white px-4 h-[52px] text-ink text-[15.5px] focus:outline-none focus:border-gold focus:bg-white transition-colors appearance-none pr-11 cursor-pointer">
+                        <option value="">Escolha…</option>
+                        <option>Casa</option>
+                        <option>Apartamento</option>
+                        <option>Comercial</option>
+                        <option>Terreno</option>
+                      </select>
+                      <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-gold pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="of-email" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">E-mail <span class="text-ink-soft font-normal normal-case tracking-normal">(opcional)</span></label>
+                    <input id="of-email" type="email" autocomplete="email" oninput="ofMonta()"
                       class="w-full border border-forest/15 bg-white px-4 h-[52px] text-ink text-[15.5px] placeholder:text-ink-soft/50 focus:outline-none focus:border-gold focus:bg-white transition-colors"/>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label for="of-det" class="block text-ink text-[11px] uppercase tracking-[0.16em] font-bold mb-2">Descreva o seu caso <span class="text-ink-soft font-normal normal-case tracking-normal">(opcional)</span></label>
+                    <textarea id="of-det" rows="4" oninput="ofMonta()"
+                      placeholder="Ex.: apartamento de 70 m², infiltração no teto do banheiro desde a entrega"
+                      class="w-full border border-forest/15 bg-white px-4 py-3 text-ink text-[15.5px] placeholder:text-ink-soft/50 focus:outline-none focus:border-gold focus:bg-white transition-colors resize-y"></textarea>
                   </div>
                 </div>
 
@@ -2324,12 +2343,13 @@ if(ev)gtag('event',ev,{contato:quem,pagina:location.pathname,link_url:h.slice(0,
        mediu que 61% dos brasileiros se travam quando pedem dado sensível. */
     function ofMonta(){
       var v = function(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; };
-      var L = ['Olá! Vim pelo site da Frois Xavier e gostaria de solicitar um orçamento.', ''];
-      if (v('of-nome'))   L.push('Meu nome: ' + v('of-nome'));
-      if (v('of-cidade')) L.push('Onde: ' + v('of-cidade'));
-      if (v('of-tipo'))   L.push('Preciso de: ' + v('of-tipo'));
-      if (v('of-det'))    L.push('Detalhe: ' + v('of-det'));
-      
+      var L = ['*SOLICITAÇÃO DE ORÇAMENTO – SITE FROIS XAVIER*', ''];
+      if (v('of-nome'))   L.push('*Nome:* ' + v('of-nome'));
+      if (v('of-cidade')) L.push('*Local:* ' + v('of-cidade'));
+      if (v('of-tipo'))   L.push('*Serviço:* ' + v('of-tipo'));
+      if (v('of-imovel')) L.push('*Imóvel:* ' + v('of-imovel'));
+      if (v('of-email'))  L.push('*E-mail:* ' + v('of-email'));
+      if (v('of-det'))    L.push('', '*Descrição do caso:*', v('of-det'));
       var txt = L.join('\n');
       var wa = document.getElementById('of-wa');
       var mail = document.getElementById('of-mail');
