@@ -307,6 +307,26 @@
     .as-dots i:nth-child(2){animation-delay:.16s}
     .as-dots i:nth-child(3){animation-delay:.32s}
     @keyframes asp{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+    /* Celular: menos margem dupla e caixas mais baixas (so abaixo de 640px) */
+@media (max-width:639px){
+  /* Celular mais amplo: Diagnóstico */
+  #diagnostico{padding:56px 16px !important}
+  #diagnostico h2{font-size:30px !important;margin-bottom:12px !important}
+  #diagnostico .max-w-2xl{margin-bottom:24px !important}
+  #diagnostico .p-7{padding:18px !important}
+  #dx-pergunta{font-size:21px !important}
+  #dx-ajuda{font-size:13.5px !important;margin-bottom:14px !important}
+  #dx-opcoes{gap:8px !important}
+  .dx-op{padding:10px 14px !important;min-height:48px !important;font-size:15px !important}
+  /* Contato */
+  #sec-contato .bg-stone{padding-top:48px !important;padding-bottom:48px !important;padding-left:16px !important;padding-right:16px !important}
+  #sec-contato .p-8{padding:20px !important}
+  #sec-contato h3.text-3xl{font-size:26px !important}
+  #sec-contato .mb-8{margin-bottom:20px !important}
+  #sec-contato input,#sec-contato select{height:46px !important}
+  #sec-contato label{margin-bottom:6px !important}
+}
   </style>
 <!-- Google Analytics 4 (Frois Xavier - Site) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVF91B4BLS"></script>
